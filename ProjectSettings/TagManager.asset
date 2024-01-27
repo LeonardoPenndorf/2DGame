@@ -14,8 +14,8 @@ TagManager:
   - UI
   - Ground
   - Climbing
-  - 
-  - 
+  - World
+  - Player
   - 
   - 
   - 
@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: World
+    uniqueID: 2817455249
+    locked: 0
   - name: Background
     uniqueID: 1823387903
     locked: 0

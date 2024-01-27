@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private void Run()
     {
         xAxisInput = Input.GetAxis("Horizontal"); // get horizontal axis input
+
         PlayerAnimator.SetBool("IsRunning", xAxisInput != 0); // set running and idle animations
         PlayerRigidbody.velocity = new Vector2(xAxisInput * runSpeed, PlayerRigidbody.velocity.y); // move
 
@@ -64,14 +65,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Climb()
     {
-        isClimbing = PlayerCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"));
-        PlayerAnimator.SetBool("IsClimbing", isClimbing); // toggle climbing animation
+        yAxisInput = Input.GetAxis("Vertical"); // get vertical  axis input
+
+        isClimbing = PlayerCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")); // check if the player is climbing
+        PlayerAnimator.SetBool("IsClimbing", yAxisInput != 0); // toggle climbing animation
 
         Debug.Log(isClimbing.ToString());
         if (isClimbing)
         {
-            yAxisInput = Input.GetAxis("Vertical");
-
             PlayerAnimator.SetBool("IsClimbing", isClimbing); // toggle climbing animation
 
             PlayerRigidbody.gravityScale = 0;
