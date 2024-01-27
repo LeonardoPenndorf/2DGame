@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // serializedField variables
-    [SerializeField] float runSpeed, jumpSpeed;
+    [SerializeField] float runSpeed, jumpSpeed, climbSpeed, gravity;
 
     // private variables
     private Rigidbody2D PlayerRigidbody;
@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private PolygonCollider2D PlayerFeet;
 
     private float xAxisInput, yAxisInput;
-
+    private bool isGrounded, isClimbing;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
         PlayerAnimator = GetComponent<Animator>();
         PlayerCollider = GetComponent<BoxCollider2D>();
         PlayerFeet = GetComponent<PolygonCollider2D>();
+
+        PlayerRigidbody.gravityScale = gravity; // set starting gravity
     }
 
     // Update is called once per frame
@@ -31,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
         Run();
 
         Jump();
+
+        Climb();
     }
 
     private void Run()
@@ -47,12 +51,35 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        bool isGrounded = PlayerFeet.IsTouchingLayers(LayerMask.GetMask("Ground")); // check if feet are touching the ground
+        isGrounded = PlayerFeet.IsTouchingLayers(LayerMask.GetMask("Ground")); // check if feet are touching the ground
+        isClimbing = PlayerCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")); // check if the player is climbing
+
         PlayerAnimator.SetBool("IsGrounded", isGrounded); // toggle jumping animation
 
-        if ((Input.GetKeyDown(KeyCode.Space)) && isGrounded) // can only jump when grounded
+        if ((Input.GetKeyDown(KeyCode.Space)) && (isGrounded || isClimbing)) // can jump when grounded or climbing
         {
             PlayerRigidbody.velocity = new Vector2(PlayerRigidbody.velocity.x, jumpSpeed); // jump
+        }
+    }
+
+    private void Climb()
+    {
+        isClimbing = PlayerCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"));
+        PlayerAnimator.SetBool("IsClimbing", isClimbing); // toggle climbing animation
+
+        Debug.Log(isClimbing.ToString());
+        if (isClimbing)
+        {
+            yAxisInput = Input.GetAxis("Vertical");
+
+            PlayerAnimator.SetBool("IsClimbing", isClimbing); // toggle climbing animation
+
+            PlayerRigidbody.gravityScale = 0;
+            PlayerRigidbody.velocity = new Vector2(PlayerRigidbody.velocity.x, climbSpeed * yAxisInput); // climb
+        }
+        else
+        {
+            PlayerRigidbody.gravityScale = gravity;
         }
     }
 }
