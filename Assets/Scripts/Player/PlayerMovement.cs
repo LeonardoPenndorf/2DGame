@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
             yAxisInput = Input.GetAxis("Vertical"); // get vertical  axis input
             PlayerAnimator.SetBool("IsClimbing", yAxisInput != 0); // toggle climbing animation
 
-            PlayerRigidbody.velocity = new Vector2(PlayerRigidbody.velocity.x, climbSpeed * yAxisInput); // climb
+            PlayerRigidbody.velocity = new Vector2(0, climbSpeed * yAxisInput); // climb
         }
     }
 
