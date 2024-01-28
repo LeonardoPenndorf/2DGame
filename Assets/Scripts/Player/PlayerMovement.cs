@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private PolygonCollider2D PlayerFeet;
 
     private float xAxisInput, yAxisInput;
-    private bool isGrounded, isClimbing;
+    private bool isGrounded, touchesClimbing, isClimbing;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +53,6 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         isGrounded = PlayerFeet.IsTouchingLayers(LayerMask.GetMask("Ground")); // check if feet are touching the ground
-        isClimbing = PlayerCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")); // check if the player is climbing
 
         PlayerAnimator.SetBool("IsGrounded", isGrounded); // toggle jumping animation
 
@@ -65,22 +64,42 @@ public class PlayerMovement : MonoBehaviour
 
     private void Climb()
     {
-        yAxisInput = Input.GetAxis("Vertical"); // get vertical  axis input
+        ToggleClimb(); // sets isClimbing and gravity
 
-        isClimbing = PlayerCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")); // check if the player is climbing
-        PlayerAnimator.SetBool("IsClimbing", yAxisInput != 0); // toggle climbing animation
-
-        Debug.Log(isClimbing.ToString());
         if (isClimbing)
         {
-            PlayerAnimator.SetBool("IsClimbing", isClimbing); // toggle climbing animation
+            yAxisInput = Input.GetAxis("Vertical"); // get vertical  axis input
+            PlayerAnimator.SetBool("IsClimbing", yAxisInput != 0); // toggle climbing animation
 
-            PlayerRigidbody.gravityScale = 0;
             PlayerRigidbody.velocity = new Vector2(PlayerRigidbody.velocity.x, climbSpeed * yAxisInput); // climb
         }
-        else
+    }
+
+    private void ToggleClimb()
+    {
+        touchesClimbing = PlayerCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")); // check if the player is climbing
+
+        if ((Input.GetKeyDown(KeyCode.Return)) && touchesClimbing) // start or stop climbing by pressing return
+        {
+            if (!isClimbing) // when not climbing start climbing
+            {
+                PlayerRigidbody.gravityScale = 0;
+
+                isClimbing = true;
+            }
+            else // when climbing stop climbing
+            {
+                PlayerRigidbody.gravityScale = gravity;
+
+                isClimbing = false;
+            }
+        }
+
+        if (!touchesClimbing || (Input.GetKeyDown(KeyCode.Space))) // if the player no longer touches climbing area or jumps, stop climbing
         {
             PlayerRigidbody.gravityScale = gravity;
+
+            isClimbing = false;
         }
     }
 }
