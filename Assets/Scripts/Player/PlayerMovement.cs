@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // serializedField variables
-    [SerializeField] float runSpeed, jumpSpeed, climbSpeed, gravity;
+    // public variables
+    public float runSpeed, jumpSpeed, climbSpeed, gravity;
 
     // private variables
     private Rigidbody2D PlayerRigidbody;
@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private PolygonCollider2D PlayerFeet;
 
     private float xAxisInput, yAxisInput;
-    private bool isGrounded, touchesClimbing, isClimbing;
+    private bool isGrounded, touchesClimbing, isClimbing, isStunned = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,11 +30,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Run();
 
-        Jump();
+        if (!isStunned) // cannot move when stunned
+        {
+            Run();
 
-        Climb();
+            Jump();
+
+            Climb();
+        }
     }
 
     private void Run()
@@ -101,5 +105,33 @@ public class PlayerMovement : MonoBehaviour
 
             isClimbing = false;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy")) // chek for enemy collision
+        {
+            float knockbackForce = collision.gameObject.GetComponent<EnemyStats>().knockbackForce; // get the knockbackforce of the enemy
+            
+            KnockBack(knockbackForce); // when hit by an attack, the player is knocked back
+        }
+    }
+
+    private void KnockBack(float knockbackForce)
+    {
+        isStunned = true; // prevent player from moving
+
+        Vector2 knockbackVector = new Vector2(knockbackForce, knockbackForce/2);
+
+        PlayerRigidbody.velocity = knockbackVector * new Vector2(-transform.localScale.x, 1f); // knockback
+
+        StartCoroutine(Stunned());
+    }
+
+    IEnumerator Stunned()
+    {
+        yield return new WaitForSeconds(1);
+
+        isStunned = false;
     }
 }

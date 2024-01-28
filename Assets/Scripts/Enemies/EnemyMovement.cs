@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    // serializedField variables
-    [SerializeField] float standardMovementSpeed, attackRange;
-
     // public variables
+    public float standardMovementSpeed, attackRange;
     public BoxCollider2D NavCollider; // checks for collison with ground and player
     public CircleCollider2D AggroCollider; // aggro range
 

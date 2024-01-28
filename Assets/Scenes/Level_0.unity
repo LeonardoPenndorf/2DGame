@@ -171,14 +171,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7425083173130407232, guid: 82e067bd5bb5cc54d9c2cbf3014368bc, type: 3}
-      propertyPath: m_Size.x
-      value: 0.8830137
-      objectReference: {fileID: 0}
-    - target: {fileID: 7425083173130407232, guid: 82e067bd5bb5cc54d9c2cbf3014368bc, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.050057888
-      objectReference: {fileID: 0}
     - target: {fileID: 8981849088813857201, guid: 82e067bd5bb5cc54d9c2cbf3014368bc, type: 3}
       propertyPath: m_Name
       value: Player
@@ -21032,7 +21024,7 @@ Transform:
   m_GameObject: {fileID: 933363581}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.237967, y: -6.696611, z: -23.253117}
+  m_LocalPosition: {x: -7.237967, y: -6.696611, z: -22.253117}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21103,6 +21095,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2316423572179088190, guid: ac35d0bacca6a40439b44bd93f9e9c8b, type: 3}
+      propertyPath: attackRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7620421130041004263, guid: ac35d0bacca6a40439b44bd93f9e9c8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.997

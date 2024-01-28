@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: 3313126806925355274}
   - component: {fileID: 8071697382096070187}
   - component: {fileID: 2316423572179088190}
+  - component: {fileID: 549625854782925260}
   m_Layer: 11
   m_Name: Piggy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,6 +277,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standardMovementSpeed: 3
-  attackRange: 1
+  attackRange: 0.2
   NavCollider: {fileID: 7587056634253237268}
   AggroCollider: {fileID: 8071697382096070187}
+--- !u!114 &549625854782925260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7683736750187264831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48aa6381252dba24ab1d9df5659c0b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  damage: 1
+  knockbackForce: 10
