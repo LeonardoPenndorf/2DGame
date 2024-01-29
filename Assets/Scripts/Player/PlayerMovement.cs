@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -19,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerRigidbody =GetComponent<Rigidbody2D>();
+        PlayerRigidbody = GetComponent<Rigidbody2D>();
         PlayerAnimator = GetComponent<Animator>();
         PlayerCollider = GetComponent<BoxCollider2D>();
         PlayerFeet = GetComponent<PolygonCollider2D>();
@@ -107,30 +106,33 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy")) // chek for enemy collision
-        {
-            float knockbackForce = collision.gameObject.GetComponent<EnemyStats>().knockbackForce; // get the knockbackforce of the enemy
-            
-            KnockBack(knockbackForce); // when hit by an attack, the player is knocked back
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Enemy") && !isStunned) // chek for enemy collision
+    //    {
+    //        float knockbackForce = collision.gameObject.GetComponent<EnemyStats>().knockbackForce; // get the knockbackforce of the enemy
 
-    private void KnockBack(float knockbackForce)
+    //        if (knockbackForce > 0) // check if attack has knockback
+    //        {
+    //            KnockBack(knockbackForce); // when hit by an attack, the player is knocked back
+    //        }
+    //    }
+    //}
+
+    public void KnockBack(float knockbackForce, float stunDuration)
     {
         isStunned = true; // prevent player from moving
 
-        Vector2 knockbackVector = new Vector2(knockbackForce, knockbackForce/2);
+        Vector2 knockbackVector = new Vector2(knockbackForce, knockbackForce / 2);
 
         PlayerRigidbody.velocity = knockbackVector * new Vector2(-transform.localScale.x, 1f); // knockback
 
-        StartCoroutine(Stunned());
+        StartCoroutine(Stunned(stunDuration));
     }
 
-    IEnumerator Stunned()
+    IEnumerator Stunned(float stunDuration)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(stunDuration);
 
         isStunned = false;
     }

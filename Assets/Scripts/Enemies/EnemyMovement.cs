@@ -11,7 +11,8 @@ public class EnemyMovement : MonoBehaviour
 
     // private varibales
     private Rigidbody2D EnemyRigidbody;
-    private GameObject Player;
+    private Animator EnemyAnimator;
+    private GameObject Player; // player gameobject is required for navigation when aggroed
     private float movementSpeed, direction = 1.0f;
     private bool isAggroed, checkNav;
 
@@ -19,7 +20,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         EnemyRigidbody = GetComponent<Rigidbody2D>();
-        AggroCollider = GetComponent<CircleCollider2D>();
+        EnemyAnimator = GetComponent<Animator>();
 
         Player = GameObject.FindWithTag("Player");
 
@@ -35,6 +36,8 @@ public class EnemyMovement : MonoBehaviour
         }
 
         Move(); // moves and rotates the enemy
+
+        EnemyAnimator.SetBool("IsMoving", movementSpeed != 0);
     }
 
     private void Move()

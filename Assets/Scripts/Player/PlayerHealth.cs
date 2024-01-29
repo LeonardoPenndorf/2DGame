@@ -6,41 +6,42 @@ public class PlayerHealth : MonoBehaviour
 {
     // public variables
     public int maxHealth, currentHealth;
+    public float maxInvTime;
 
     // private variables
     private Animator PlayerAnimator;
-    private BoxCollider2D PlayerCollider;
+    private float invTime;
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerAnimator = GetComponent<Animator>();
-        PlayerCollider = GetComponent<BoxCollider2D>();
 
         currentHealth = maxHealth;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    // Update is called once per frame
+    void Update()
     {
-        if (collision.gameObject.CompareTag("Enemy")) // chek for enemy collision
+        if (invTime > 0)
         {
-            int damage = collision.gameObject.GetComponent<EnemyStats>().damage; // get enemy damage
-            TakeDamge(damage);
-        }
-        else if (collision.gameObject.CompareTag("Healing"))
-        {
-            Heal();
+            invTime -= Time.deltaTime;
         }
     }
 
-    private void TakeDamge(int damage)
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Enemy") && (invTime <= 0)) // chek for enemy collision and if invincibilty time is over
+    //    {
+    //        int damage = collision.gameObject.GetComponent<EnemyStats>().damage; // get enemy damage
+    //        TakeDamge(damage);
+    //    }
+    //}
+
+    public void TakeDamge(int damage)
     {
         PlayerAnimator.SetTrigger("IsHit"); // trigger hit animation
         currentHealth -= damage;
-    }
-
-    private void Heal()
-    {
-        Debug.Log("Placeholder");
+        invTime = maxInvTime;
     }
 }
