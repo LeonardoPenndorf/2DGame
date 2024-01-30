@@ -7,8 +7,8 @@ public class PlayerMeleeAttack : MonoBehaviour
 {
     // public variables
     public int damage;
-    public float knockbackForce, maxCooldown, hurtBoxRadius;
-    public Transform HurtBox; // melee attack hurt box
+    public float knockbackForce, maxCooldown;
+    public GameObject HurtBox; // melee attack hurt box
 
     // private variables
     private Animator PlayerAnimator;
@@ -37,18 +37,16 @@ public class PlayerMeleeAttack : MonoBehaviour
         {
             PlayerAnimator.SetTrigger("MeleeAttack");
             cooldown = maxCooldown;
-
-            Collider2D[] EnemyColliderArray = Physics2D.OverlapCircleAll(HurtBox.transform.position, hurtBoxRadius, LayerMask.GetMask("Enemies")); // get the collider of all enemies iht by the attack
-
-            foreach(Collider2D EnemyCollider in EnemyColliderArray)
-            {
-                EnemyCollider.GetComponent<Health>().TakeDamge(damage);
-            }
         }
     }
 
-    private void OnDrawGizmos()
+    public void enableHurtboxCollider() // enable hurtbox collider at beginning of animation
     {
-        Gizmos.DrawWireSphere(HurtBox.transform.position, hurtBoxRadius);
+        HurtBox.GetComponent<BoxCollider2D>().enabled = true;
+    }
+
+    public void disableHurtboxCollider() // disable hurtbox collider at end of animation
+    {
+        HurtBox.GetComponent<BoxCollider2D>().enabled = false;
     }
 }

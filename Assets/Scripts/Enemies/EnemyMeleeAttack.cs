@@ -60,7 +60,7 @@ public class EnemyMeleeAttack : MonoBehaviour
         HurtBox.GetComponent<BoxCollider2D>().enabled = true;
     }
 
-    public void disableHurtboxCollider() // diable hurtbox collider at end of animation
+    public void disableHurtboxCollider() // disable hurtbox collider at end of animation
     {
         HurtBox.GetComponent<BoxCollider2D>().enabled = false;
     }

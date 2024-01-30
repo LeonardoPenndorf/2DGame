@@ -4,23 +4,21 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // public variables
-    public float runSpeed, jumpSpeed, climbSpeed, gravity;
+    public float runSpeed, jumpSpeed, gravity;
 
     // private variables
     private Rigidbody2D PlayerRigidbody;
     private Animator PlayerAnimator;
-    private BoxCollider2D PlayerCollider;
     private PolygonCollider2D PlayerFeet;
 
-    private float xAxisInput, yAxisInput;
-    private bool isGrounded, touchesClimbing, isClimbing, isStunned = false;
+    private float xAxisInput;
+    private bool isGrounded, isStunned = false;
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerRigidbody = GetComponent<Rigidbody2D>();
         PlayerAnimator = GetComponent<Animator>();
-        PlayerCollider = GetComponent<BoxCollider2D>();
         PlayerFeet = GetComponent<PolygonCollider2D>();
 
         PlayerRigidbody.gravityScale = gravity; // set starting gravity
@@ -29,14 +27,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (!isStunned) // cannot move when stunned
+        if (!isStunned && !IsAttacking()) // cannot move when stunned
         {
             Run();
 
             Jump();
-
-            Climb();
         }
     }
 
@@ -59,50 +54,9 @@ public class PlayerMovement : MonoBehaviour
 
         PlayerAnimator.SetBool("IsGrounded", isGrounded); // toggle jumping animation
 
-        if ((Input.GetKeyDown(KeyCode.Space)) && (isGrounded || isClimbing)) // can jump when grounded or climbing
+        if ((Input.GetKeyDown(KeyCode.Space)) && (isGrounded)) // can jump when grounded
         {
             PlayerRigidbody.velocity = new Vector2(PlayerRigidbody.velocity.x, jumpSpeed); // jump
-        }
-    }
-
-    private void Climb()
-    {
-        ToggleClimb(); // sets isClimbing and gravity
-
-        if (isClimbing)
-        {
-            yAxisInput = Input.GetAxis("Vertical"); // get vertical  axis input
-            PlayerAnimator.SetBool("IsClimbing", yAxisInput != 0); // toggle climbing animation
-
-            PlayerRigidbody.velocity = new Vector2(0, climbSpeed * yAxisInput); // climb
-        }
-    }
-
-    private void ToggleClimb()
-    {
-        touchesClimbing = PlayerCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")); // check if the player is climbing
-
-        if ((Input.GetKeyDown(KeyCode.E)) && touchesClimbing) // start or stop climbing by pressing return
-        {
-            if (!isClimbing) // when not climbing start climbing
-            {
-                PlayerRigidbody.gravityScale = 0;
-
-                isClimbing = true;
-            }
-            else // when climbing stop climbing
-            {
-                PlayerRigidbody.gravityScale = gravity;
-
-                isClimbing = false;
-            }
-        }
-
-        if (!touchesClimbing || (Input.GetKeyDown(KeyCode.Space))) // if the player no longer touches climbing area or jumps, stop climbing
-        {
-            PlayerRigidbody.gravityScale = gravity;
-
-            isClimbing = false;
         }
     }
 
@@ -122,5 +76,14 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(stunDuration);
 
         isStunned = false;
+    }
+
+    private bool IsAttacking()
+    {
+        // Assuming the "Warrior_MeleeAttack" animation is in the base layer (layer 0)
+        AnimatorStateInfo stateInfo = PlayerAnimator.GetCurrentAnimatorStateInfo(0);
+
+        // Replace "Warrior_MeleeAttack" with the actual name of your animation
+        return stateInfo.IsName("Warrior_MeleeAttack") || stateInfo.IsName("Warrior_AirAttack");
     }
 }

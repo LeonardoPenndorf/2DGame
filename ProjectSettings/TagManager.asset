@@ -14,7 +14,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - Climbing
+  - Hurtboxes
   - World
   - Player
   - Decoratrion
@@ -51,9 +51,6 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1334260199
-    locked: 0
-  - name: Climbing
-    uniqueID: 1650025525
     locked: 0
   - name: Traps
     uniqueID: 2761489897

@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8511971272375729107}
   m_Layer: 11
   m_Name: SkeletonWarrior
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,7 +176,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.266667, y: 4.266667}
+    oldSize: {x: 4, y: 4}
     newSize: {x: 4.266667, y: 4.266667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -221,7 +221,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.266667, y: 4.266667}
+    oldSize: {x: 4, y: 4}
     newSize: {x: 4.266667, y: 4.266667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3944a774e2b0f824cafdac46ff0ef99c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 15
   knockbackForce: 0
   stunDuration: 0
   attackRange: 1.2
@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 273543263180881083}
   - component: {fileID: 4563672298593596964}
   - component: {fileID: 8508320474321472119}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
