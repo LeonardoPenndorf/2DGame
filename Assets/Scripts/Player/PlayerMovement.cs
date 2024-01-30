@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
     {
         touchesClimbing = PlayerCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")); // check if the player is climbing
 
-        if ((Input.GetKeyDown(KeyCode.Return)) && touchesClimbing) // start or stop climbing by pressing return
+        if ((Input.GetKeyDown(KeyCode.E)) && touchesClimbing) // start or stop climbing by pressing return
         {
             if (!isClimbing) // when not climbing start climbing
             {
@@ -105,19 +105,6 @@ public class PlayerMovement : MonoBehaviour
             isClimbing = false;
         }
     }
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Enemy") && !isStunned) // chek for enemy collision
-    //    {
-    //        float knockbackForce = collision.gameObject.GetComponent<EnemyStats>().knockbackForce; // get the knockbackforce of the enemy
-
-    //        if (knockbackForce > 0) // check if attack has knockback
-    //        {
-    //            KnockBack(knockbackForce); // when hit by an attack, the player is knocked back
-    //        }
-    //    }
-    //}
 
     public void KnockBack(float knockbackForce, float stunDuration)
     {
