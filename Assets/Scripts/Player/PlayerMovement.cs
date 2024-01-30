@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     // public variables
     public float runSpeed, jumpSpeed, gravity;
+    public string[] animationsArray; // array containing the name of all animations that would stop you from moving
 
     // private variables
     private Rigidbody2D PlayerRigidbody;
@@ -27,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isStunned && !IsAttacking()) // cannot move when stunned
+        if (!isStunned && !CheckAnimations()) // cannot move when stunned or during certain animations
         {
             Run();
 
@@ -78,12 +79,18 @@ public class PlayerMovement : MonoBehaviour
         isStunned = false;
     }
 
-    private bool IsAttacking()
+    private bool CheckAnimations() // check if an animation is playing, which would prevent the player from moving
     {
-        // Assuming the "Warrior_MeleeAttack" animation is in the base layer (layer 0)
         AnimatorStateInfo stateInfo = PlayerAnimator.GetCurrentAnimatorStateInfo(0);
 
-        // Replace "Warrior_MeleeAttack" with the actual name of your animation
-        return stateInfo.IsName("Warrior_MeleeAttack") || stateInfo.IsName("Warrior_AirAttack");
+        foreach(string animationName in animationsArray)
+        {
+            if (stateInfo.IsName(animationName))
+            {
+                return true; // Return true if an animation is currently playing
+            }
+        }
+
+        return false;
     }
 }

@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 1733006571222690284}
   - component: {fileID: -5246074709064478077}
   - component: {fileID: 4593993611541728165}
+  - component: {fileID: 41005810356047400}
   m_Layer: 9
   m_Name: Warrior
   m_TagString: Player
@@ -318,6 +319,11 @@ MonoBehaviour:
   runSpeed: 10
   jumpSpeed: 15
   gravity: 4
+  animationsArray:
+  - Warrior_TakeHit
+  - Warrior_MeleeAttack
+  - Warrior_AirAttack
+  - Warrior_SpecialAttack
 --- !u!114 &1733006571222690284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,9 +336,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508d407931a7b6e45b50b3be7469520f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  baseDamage: 20
   knockbackForce: 10
   maxCooldown: 1.5
+  keyHoldDurationThreshold: 0.35
   HurtBox: {fileID: 6062602973029319167}
 --- !u!114 &-5246074709064478077
 MonoBehaviour:
@@ -370,3 +377,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &41005810356047400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157536053932933172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ef5b7f13eb4284b8b248279c344d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireSlash: {fileID: 2570856389410326685, guid: 4d579335fb455144290dd3e33af508e9, type: 3}
+  offsetVector: {x: 0, y: 0, z: 0}
+  FireSlashVector: {x: 0, y: 0}

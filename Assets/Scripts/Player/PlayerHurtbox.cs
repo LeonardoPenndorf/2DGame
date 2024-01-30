@@ -8,15 +8,11 @@ public class PlayerHurtbox : MonoBehaviour
     private int damage;
     private float knockbackForce; // all attributes come from PlayerMeleeAttack a script component of the parent
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        damage = GetComponentInParent<PlayerMeleeAttack>().damage;
-        knockbackForce = GetComponentInParent<PlayerMeleeAttack>().knockbackForce;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        damage = GetComponentInParent<PlayerMeleeAttack>().GetDamage();
+        knockbackForce = GetComponentInParent<PlayerMeleeAttack>().knockbackForce;
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.GetComponent<Health>().TakeDamge(damage);

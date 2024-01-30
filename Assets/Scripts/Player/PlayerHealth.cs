@@ -50,7 +50,7 @@ public class PlayerHealth : MonoBehaviour
     private void Death()
     {
         isDead = true;
-        animator.SetBool("IsDead", true);
+        animator.SetTrigger("IsDead");
         gameObject.GetComponent<PlayerMovement>().enabled = false;
         gameObject.GetComponent<PlayerMeleeAttack>().enabled = false;
     }
