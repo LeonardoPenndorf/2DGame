@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fcb540c511aac3c449d1519f72a0a49b
+guid: a816a519f3954bd4e921bf17e932974b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Run_0
+      name: Attack_1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a76347ee0d1078444a648a3b4ff89061
-      internalID: 39565746
+      spriteID: 9bf8f67c466e14249b68b00c6fcb7036
+      internalID: -1484929838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_1
+      name: Attack_1_1
       rect:
         serializedVersion: 2
         x: 128
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a609eafb0f4b0942833d3a9f8e77a06
-      internalID: 1605391035
+      spriteID: be21626c6c0dfff4c8f6899fa299fc89
+      internalID: -485395089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_2
+      name: Attack_1_2
       rect:
         serializedVersion: 2
         x: 256
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 462f8dbb40bf09f49b6883467dc76e8b
-      internalID: 680306178
+      spriteID: 8a6fd232ba77ece408d6a502faedcc6a
+      internalID: 476981300
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_3
+      name: Attack_1_3
       rect:
         serializedVersion: 2
         x: 384
@@ -187,92 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0edbb7113bcef7041bc0533251cd5503
-      internalID: 22903515
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Run_4
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4acd04ecfb19f7740a72f8a525546388
-      internalID: -323725231
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Run_5
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f491ac5813663ed41a9342904a49987a
-      internalID: -1446101621
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Run_6
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3a8ffae0d8503fa4c9b0d03ac97918ac
-      internalID: 100045402
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Run_7
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7ffc84df0e061b74d99080134d9fcd93
-      internalID: -1867586658
+      spriteID: 6acb064b4bb5e534c9d16105a79a8824
+      internalID: 1718815820
       vertices: []
       indices: 
       edges: []
@@ -288,14 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Run_0: 39565746
-      Run_1: 1605391035
-      Run_2: 680306178
-      Run_3: 22903515
-      Run_4: -323725231
-      Run_5: -1446101621
-      Run_6: 100045402
-      Run_7: -1867586658
+      Attack_1_0: -1484929838
+      Attack_1_1: -485395089
+      Attack_1_2: 476981300
+      Attack_1_3: 1718815820
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

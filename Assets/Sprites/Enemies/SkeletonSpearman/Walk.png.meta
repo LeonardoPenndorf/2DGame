@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fcb540c511aac3c449d1519f72a0a49b
+guid: 5ed7c648af72a3949b15998184c68f0c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Run_0
+      name: Walk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a76347ee0d1078444a648a3b4ff89061
-      internalID: 39565746
+      spriteID: 71afc2c4a9d9c4c4cb3fe85904f5c551
+      internalID: -193709171
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_1
+      name: Walk_1
       rect:
         serializedVersion: 2
         x: 128
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a609eafb0f4b0942833d3a9f8e77a06
-      internalID: 1605391035
+      spriteID: da8db74d29f7e8a448fbf891b71dce39
+      internalID: 1904911268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_2
+      name: Walk_2
       rect:
         serializedVersion: 2
         x: 256
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 462f8dbb40bf09f49b6883467dc76e8b
-      internalID: 680306178
+      spriteID: bf7c3033618b9104c9e18bda3e730d71
+      internalID: -906734314
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_3
+      name: Walk_3
       rect:
         serializedVersion: 2
         x: 384
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0edbb7113bcef7041bc0533251cd5503
-      internalID: 22903515
+      spriteID: 4a43381d1735ab14685277cf61f4481b
+      internalID: 983880237
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_4
+      name: Walk_4
       rect:
         serializedVersion: 2
         x: 512
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4acd04ecfb19f7740a72f8a525546388
-      internalID: -323725231
+      spriteID: c061557d2285cfb4aa1136da82929f42
+      internalID: -2056639308
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_5
+      name: Walk_5
       rect:
         serializedVersion: 2
         x: 640
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f491ac5813663ed41a9342904a49987a
-      internalID: -1446101621
+      spriteID: 93e1a9826f58d3b4da0d8fce993bba90
+      internalID: 1068664331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_6
+      name: Walk_6
       rect:
         serializedVersion: 2
         x: 768
@@ -250,29 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a8ffae0d8503fa4c9b0d03ac97918ac
-      internalID: 100045402
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Run_7
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7ffc84df0e061b74d99080134d9fcd93
-      internalID: -1867586658
+      spriteID: e22c7068cacaceb4fa9efc092156cebf
+      internalID: 2005453035
       vertices: []
       indices: 
       edges: []
@@ -288,14 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Run_0: 39565746
-      Run_1: 1605391035
-      Run_2: 680306178
-      Run_3: 22903515
-      Run_4: -323725231
-      Run_5: -1446101621
-      Run_6: 100045402
-      Run_7: -1867586658
+      Walk_0: -193709171
+      Walk_1: 1904911268
+      Walk_2: -906734314
+      Walk_3: 983880237
+      Walk_4: -2056639308
+      Walk_5: 1068664331
+      Walk_6: 2005453035
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

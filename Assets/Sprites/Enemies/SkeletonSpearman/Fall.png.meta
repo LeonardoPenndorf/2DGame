@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fcb540c511aac3c449d1519f72a0a49b
+guid: 716d8feaf1516904bb4715432a48923b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Run_0
+      name: Fall_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a76347ee0d1078444a648a3b4ff89061
-      internalID: 39565746
+      spriteID: 7503dcbcc9d7a864884879e4c29660f4
+      internalID: -1386872181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_1
+      name: Fall_1
       rect:
         serializedVersion: 2
         x: 128
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a609eafb0f4b0942833d3a9f8e77a06
-      internalID: 1605391035
+      spriteID: 05195386b9040424b83a8f1b20e75864
+      internalID: -235681994
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_2
+      name: Fall_2
       rect:
         serializedVersion: 2
         x: 256
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 462f8dbb40bf09f49b6883467dc76e8b
-      internalID: 680306178
+      spriteID: 35486bc64e79827479c2f0148d07aeeb
+      internalID: -65056648
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_3
+      name: Fall_3
       rect:
         serializedVersion: 2
         x: 384
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0edbb7113bcef7041bc0533251cd5503
-      internalID: 22903515
+      spriteID: 2a8359d9ab5e8d94ca4bcb963bdb7144
+      internalID: -940242545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_4
+      name: Fall_4
       rect:
         serializedVersion: 2
         x: 512
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4acd04ecfb19f7740a72f8a525546388
-      internalID: -323725231
+      spriteID: 3890b936988c71348aafb72c9f2b3e7f
+      internalID: -961465185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_5
+      name: Fall_5
       rect:
         serializedVersion: 2
         x: 640
@@ -229,50 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f491ac5813663ed41a9342904a49987a
-      internalID: -1446101621
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Run_6
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3a8ffae0d8503fa4c9b0d03ac97918ac
-      internalID: 100045402
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Run_7
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7ffc84df0e061b74d99080134d9fcd93
-      internalID: -1867586658
+      spriteID: 54e5154b7d263464db71c01883c760b1
+      internalID: -227715393
       vertices: []
       indices: 
       edges: []
@@ -288,14 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Run_0: 39565746
-      Run_1: 1605391035
-      Run_2: 680306178
-      Run_3: 22903515
-      Run_4: -323725231
-      Run_5: -1446101621
-      Run_6: 100045402
-      Run_7: -1867586658
+      Fall_0: -1386872181
+      Fall_1: -235681994
+      Fall_2: -65056648
+      Fall_3: -940242545
+      Fall_4: -961465185
+      Fall_5: -227715393
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -46,8 +46,8 @@ GameObject:
   - component: {fileID: 2897047008563775138}
   - component: {fileID: 9049978048595777156}
   - component: {fileID: 6375455577905011720}
-  - component: {fileID: -1737622961399374308}
   - component: {fileID: -5777206470827824927}
+  - component: {fileID: 3687360597640288862}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -279,23 +279,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runSpeed: 10
   jumpSpeed: 10
-  climbSpeed: 5
   gravity: 2
---- !u!114 &-1737622961399374308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8981849088813857201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f72b19551d950841875a9b9ee7d6728, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  maxIFrames: 1
+  animationsArray: []
 --- !u!114 &-5777206470827824927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,8 +293,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508d407931a7b6e45b50b3be7469520f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  baseDamage: 0
   knockbackForce: 10
   maxCooldown: 3
-  hurtBoxRadius: 0
+  keyHoldDurationThreshold: 0
   HurtBox: {fileID: 6781238959846330565}
+--- !u!114 &3687360597640288862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981849088813857201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6965ce9428cdf4f8f755316c06fca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  maxIFrames: 1

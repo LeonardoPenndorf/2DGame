@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7958972342953022930}
   - component: {fileID: 3576795300339255740}
   - component: {fileID: 9182681455592210072}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: FireSlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}

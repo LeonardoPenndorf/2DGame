@@ -15,7 +15,7 @@ public class PlayerHurtbox : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.GetComponent<Health>().TakeDamge(damage);
+            collision.GetComponent<EnemyHealth>().TakeDamge(damage);
         }
     }
 }

@@ -89,7 +89,10 @@ public class EnemyMovement : MonoBehaviour
         Collider2D PlayerCollider = Physics2D.OverlapCircle(transform.position, aggroRange, LayerMask.GetMask("Player"));
 
         if (PlayerCollider)
+        {
             isAggroed = true;
+            EnemyAnimator.SetBool("IsAggroed", true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
