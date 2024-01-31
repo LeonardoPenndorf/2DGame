@@ -50,7 +50,6 @@ public class EnemyMeleeAttack : MonoBehaviour
 
     private void MeleeAttack()
     {
-
         animator.SetTrigger("IsAttacking");
         cooldown = maxCooldown;
     }

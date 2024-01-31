@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 201708159627623836}
   - component: {fileID: 3801432270945796491}
   - component: {fileID: 739934596503987963}
-  - component: {fileID: 5363432471566422897}
   - component: {fileID: 5790404989426531973}
   - component: {fileID: 8511971272375729107}
   - component: {fileID: 3000085476613276697}
@@ -38,6 +37,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 273543263180881083}
+  - {fileID: 2324263033580388300}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5955105916413528193
@@ -185,13 +185,98 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7289591, y: 1.9741771}
   m_EdgeRadius: 0
---- !u!61 &5363432471566422897
-BoxCollider2D:
+--- !u!114 &5790404989426531973
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465361686494501331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee4b5654035d4a46b45b2e57331f4fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standardMovementSpeed: 2
+  aggroedMovementSpeed: 4
+  aggroRange: 6
+  NavCollider: {fileID: 2973035012900898970}
+  animationsArray:
+  - SkeletonSpearman_Hurt
+  - SkeletonSpearman_Attack1
+--- !u!114 &8511971272375729107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465361686494501331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3944a774e2b0f824cafdac46ff0ef99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  knockbackForce: 0
+  stunDuration: 0
+  attackRange: 2
+  maxCooldown: 3
+  HurtBox: {fileID: 7177992886720302207}
+--- !u!114 &3000085476613276697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465361686494501331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd9415b4cbd87e428a7b3fd5c4b45a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 15
+  currentHealth: 0
+  damageReduction: 0
+  maxIFrames: 0
+--- !u!1 &6026330851827974414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2324263033580388300}
+  - component: {fileID: 2973035012900898970}
+  m_Layer: 15
+  m_Name: Navigator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2324263033580388300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6026330851827974414}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.438, y: -1.956, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5820706599125276612}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2973035012900898970
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6026330851827974414}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -217,68 +302,19 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.23960733, y: -2.019139}
+  m_Offset: {x: 0.19643545, y: -0.08073449}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 4.266667, y: 4.266667}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.03854084, y: 0.47691345}
+  m_Size: {x: 0.036147118, y: 0.42930555}
   m_EdgeRadius: 0
---- !u!114 &5790404989426531973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465361686494501331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ee4b5654035d4a46b45b2e57331f4fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  standardMovementSpeed: 2
-  aggroedMovementSpeed: 4
-  aggroRange: 6
-  NavCollider: {fileID: 5363432471566422897}
---- !u!114 &8511971272375729107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465361686494501331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3944a774e2b0f824cafdac46ff0ef99c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  knockbackForce: 0
-  stunDuration: 0
-  attackRange: 1.5
-  maxCooldown: 3
-  HurtBox: {fileID: 7177992886720302207}
---- !u!114 &3000085476613276697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465361686494501331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd9415b4cbd87e428a7b3fd5c4b45a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 15
-  currentHealth: 0
-  maxIFrames: 0
 --- !u!1 &7177992886720302207
 GameObject:
   m_ObjectHideFlags: 0

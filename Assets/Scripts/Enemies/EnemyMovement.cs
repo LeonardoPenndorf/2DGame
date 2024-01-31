@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour
     // public variables
     public float standardMovementSpeed, aggroedMovementSpeed, aggroRange;
     public BoxCollider2D NavCollider; // checks for collison with ground and player
+    public string[] animationsArray; // array containing the name of all animations that would stop the enemy from moving
 
     // private varibales
     private Rigidbody2D EnemyRigidbody;
@@ -41,7 +42,14 @@ public class EnemyMovement : MonoBehaviour
             CheckAggro(); // if not, check if player is within aggro range
         }
 
-        Move(); // moves and rotates the enemy
+        if (!CheckAnimations()) // cannot move during certain animations
+        {
+            Move(); // moves and rotates the enemy
+        }
+        else
+        {
+            EnemyRigidbody.velocity = new Vector2(0, 0);
+        }
 
         EnemyAnimator.SetBool("IsMoving", movementSpeed != 0);
     }
@@ -64,7 +72,6 @@ public class EnemyMovement : MonoBehaviour
         if (!checkNav || (distance < attackRange)) // either cannot walk or player within attack range
         {
             movementSpeed = 0;
-
         }
         else
         {
@@ -106,5 +113,20 @@ public class EnemyMovement : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, aggroRange);
+    }
+
+    private bool CheckAnimations() // check if an animation is playing, which would prevent the enemy from moving
+    {
+        AnimatorStateInfo stateInfo = EnemyAnimator.GetCurrentAnimatorStateInfo(0);
+
+        foreach (string animationName in animationsArray)
+        {
+            if (stateInfo.IsName(animationName))
+            {
+                return true; // Return true if an animation is currently playing
+            }
+        }
+
+        return false;
     }
 }
