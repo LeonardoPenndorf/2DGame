@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -15,7 +16,7 @@ public class EnemyMovement : MonoBehaviour
     private GameObject Player; // player gameobject is required for navigation when aggroed
     private float movementSpeed, attackRange, direction = 1.0f;
     private bool isAggroed, checkNav;
-    private float distance; // distance between the enemy and the player
+    private float distance, xDistance; // distance between the enemy and the player
 
     // Start is called before the first frame update
     void Start()
@@ -68,8 +69,9 @@ public class EnemyMovement : MonoBehaviour
     {
         checkNav = NavCollider.IsTouchingLayers(LayerMask.GetMask("Ground")); // check if can walk
         distance = Vector2.Distance(Player.transform.position, transform.position);
+        xDistance = Mathf.Abs(Player.transform.position.x - transform.position.x);
 
-        if (!checkNav || (distance < attackRange)) // either cannot walk or player within attack range
+        if (!checkNav || (distance < attackRange) || (xDistance < attackRange)) // either cannot walk or player within attack range
         {
             movementSpeed = 0;
         }

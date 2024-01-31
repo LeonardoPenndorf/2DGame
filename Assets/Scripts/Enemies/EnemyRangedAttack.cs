@@ -1,23 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyMeleeAttack : MonoBehaviour
+public class EnemyRangedAttack : MonoBehaviour
 {
     // public variables
-    public int damage;
-    public float knockbackForce, // determines how satrong the knockback of the attack is 
-                 stunDuration,  // determines how long the player is stunned by the attack
-                 attackRange,
+    public float attackRange, 
+                 XOffset,
+                 YOffset,
+                 xVelocity, 
+                 yVelocity,
                  maxCooldown; // second the enemy needs to wait until he can attack again
-    public GameObject HurtBox; // melee attack hurt box
+    public GameObject Projectile; // Projectiles shot by rnaged attacks are separate prefabs
     public string[] animationsArray;
-
 
     // private variables
     private Animator EnemyAnimator;
-    private float cooldown;
+    private Rigidbody2D ProjectileRB;
+    private float cooldown, newXOffset, newXVelocity;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +36,6 @@ public class EnemyMeleeAttack : MonoBehaviour
         {
             CheckRange(); // if attack is of cooldown, check range
         }
-
     }
 
     private void CheckRange() // check if player is within attack range
@@ -45,24 +44,32 @@ public class EnemyMeleeAttack : MonoBehaviour
 
         if (PlayerCollider && !CheckEnemyAnimations())
         {
-            MeleeAttack(); // if player is within attack range, attack   
+            EnemyAnimator.SetTrigger("IsShooting");
+            cooldown = maxCooldown;
         }
     }
 
-    private void MeleeAttack()
+    private void SpawnProjectile() // called by the ranged attack animation
     {
-        EnemyAnimator.SetTrigger("IsAttacking");
-        cooldown = maxCooldown;
-    }
+        GameObject NewProjectile = Instantiate(Projectile) as GameObject;
 
-    public void enableHurtboxCollider() // enable hurtbox collider at beginning of animation
-    {
-        HurtBox.GetComponent<BoxCollider2D>().enabled = true;
-    }
+        newXOffset = XOffset; 
+        newXVelocity = xVelocity;
 
-    public void disableHurtboxCollider() // disable hurtbox collider at end of animation
-    {
-        HurtBox.GetComponent<BoxCollider2D>().enabled = false;
+        if (transform.rotation.eulerAngles.y == 0)
+        { // if the player is looing left flip everything
+            newXOffset = -newXOffset;
+            newXVelocity = -xVelocity;
+
+            NewProjectile.transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+        }
+
+        Vector2 spawnPosition = new Vector3(transform.position.x + newXOffset, transform.position.y + YOffset, 0);
+
+        NewProjectile.transform.position = spawnPosition;
+
+        ProjectileRB = NewProjectile.GetComponent<Rigidbody2D>();
+        ProjectileRB.velocity = new Vector2(newXVelocity, yVelocity);
     }
 
     private bool CheckEnemyAnimations() // check if an animation is playing, which would prevent the enemy from blocking

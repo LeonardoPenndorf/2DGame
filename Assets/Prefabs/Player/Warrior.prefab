@@ -355,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  maxIFrames: 2
+  maxIFrames: 0.5
 --- !u!95 &4593993611541728165
 Animator:
   serializedVersion: 5
@@ -390,5 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireSlash: {fileID: 2570856389410326685, guid: 4d579335fb455144290dd3e33af508e9, type: 3}
-  offsetVector: {x: 0, y: 0, z: 0}
-  FireSlashVector: {x: 0, y: 0}
+  xOffset: 0
+  yOffset: 0
+  xVelocity: 0
+  yVelocity: 0
