@@ -11,6 +11,7 @@ public class EnemyBlock : MonoBehaviour
 
     // private variables
     private Animator EnemyAnimator, PlayerAnimator;
+    private AnimationChecker animationsChecker; // class containing functions to check which animations are running
     private float cooldown;
 
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class EnemyBlock : MonoBehaviour
     {
         EnemyAnimator = GetComponent<Animator>();
         PlayerAnimator = GameObject.FindWithTag("Player").GetComponent<Animator>();
+        animationsChecker = GetComponent<AnimationChecker>();
     }
 
     // Update is called once per frame
@@ -29,15 +31,18 @@ public class EnemyBlock : MonoBehaviour
         }
         else
         {
-            CheckRange();
+            CheckBlock();
         }
     }
 
-    private void CheckRange() // check if player is within defense range
+    private void CheckBlock() // check if the enemy can or should block
     {
-        Collider2D PlayerCollider = Physics2D.OverlapCircle(transform.position, defenseRange, LayerMask.GetMask("Player"));
+        Collider2D PlayerCollider = Physics2D.OverlapCircle(transform.position, defenseRange, LayerMask.GetMask("Player")); // check if the enemy is within the defense range
+        bool preventingAnimation = animationsChecker.CheckAnimations(EnemyAnimationsArray); // check if an animation is playing, that would prevent the enemy from blocking
+        bool playerAttacking = animationsChecker.CheckPlayerIsAttacking(PlayerAnimationsArray); // check if the player is attacking
 
-        if (PlayerCollider && !CheckEnemyAnimations() && CheckPlayerIsAttacking())
+
+        if (PlayerCollider && !preventingAnimation && playerAttacking)
         {
             EnemyAnimator.SetBool("IsBlocking", true);
             gameObject.GetComponent<EnemyHealth>().SetIsBlocking(true);
@@ -47,36 +52,6 @@ public class EnemyBlock : MonoBehaviour
             EnemyAnimator.SetBool("IsBlocking", false);
             gameObject.GetComponent<EnemyHealth>().SetIsBlocking(false);
         }
-    }
-
-    private bool CheckEnemyAnimations() // check if an animation is playing, which would prevent the enemy from blocking
-    {
-        AnimatorStateInfo stateInfo = EnemyAnimator.GetCurrentAnimatorStateInfo(0);
-
-        foreach (string animationName in EnemyAnimationsArray)
-        {
-            if (stateInfo.IsName(animationName))
-            {
-                return true; // Return true if an animation in the array is currently playing
-            }
-        }
-
-        return false;
-    }
-
-    private bool CheckPlayerIsAttacking() // check if the player is attacking
-    {
-        AnimatorStateInfo stateInfo = PlayerAnimator.GetCurrentAnimatorStateInfo(0);
-
-        foreach (string animationName in PlayerAnimationsArray)
-        {
-            if (stateInfo.IsName(animationName))
-            {
-                return true; // Return true if an attack animation is currently playing
-            }
-        }
-
-        return false;
     }
 
     private void SetCooldown() // at the end of the block animation set block cooldown

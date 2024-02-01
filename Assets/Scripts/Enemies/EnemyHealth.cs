@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
     public float maxIFrames;
 
     // private variables
-    private Animator Animator;
+    private Animator EnemyAnimator;
     private Rigidbody2D EnemyRB;
     private float iFrames;
     private bool isBlocking = false; // some enemies can block
@@ -18,7 +18,7 @@ public class EnemyHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Animator = GetComponent<Animator>();
+        EnemyAnimator = GetComponent<Animator>();
         EnemyRB = GetComponent<Rigidbody2D>();
 
         currentHealth = maxHealth;
@@ -42,7 +42,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (iFrames <= 0 && currentHealth > 0)
         {
-            Animator.SetTrigger("IsHit"); // trigger hit animation
+            EnemyAnimator.SetTrigger("IsHit"); // trigger hit animation
 
             if (!isBlocking)
             {
@@ -60,7 +60,7 @@ public class EnemyHealth : MonoBehaviour
     private void Death()
     {
         EnemyRB.velocity = Vector3.zero;
-        Animator.SetTrigger("IsDead");
+        EnemyAnimator.SetTrigger("IsDead");
         GetComponent<EnemyMeleeAttack>().enabled = false;
         GetComponent<EnemyMovement>().enabled = false;
 
@@ -68,6 +68,7 @@ public class EnemyHealth : MonoBehaviour
         if(EnemyBlockComponent != null)
         {
             GetComponent<EnemyBlock>().enabled = false;
+            EnemyAnimator.SetBool("IsBlocking", false);
         }
     }
 

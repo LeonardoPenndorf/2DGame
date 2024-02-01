@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
     // private varibales
     private Rigidbody2D EnemyRigidbody;
     private Animator EnemyAnimator;
+    private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
     private GameObject Player; // player gameobject is required for navigation when aggroed
     private float movementSpeed, attackRange, direction = 1.0f;
     private bool isAggroed, checkNav;
@@ -23,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
     {
         EnemyRigidbody = GetComponent<Rigidbody2D>();
         EnemyAnimator = GetComponent<Animator>();
+        animationsChecker = GetComponent<AnimationChecker>();
 
         Player = GameObject.FindWithTag("Player");
 
@@ -43,7 +45,7 @@ public class EnemyMovement : MonoBehaviour
             CheckAggro(); // if not, check if player is within aggro range
         }
 
-        if (!CheckAnimations()) // cannot move during certain animations
+        if (!animationsChecker.CheckAnimations(animationsArray)) // cannot move during certain animations
         {
             Move(); // moves and rotates the enemy
         }
@@ -115,20 +117,5 @@ public class EnemyMovement : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, aggroRange);
-    }
-
-    private bool CheckAnimations() // check if an animation is playing, which would prevent the enemy from moving
-    {
-        AnimatorStateInfo stateInfo = EnemyAnimator.GetCurrentAnimatorStateInfo(0);
-
-        foreach (string animationName in animationsArray)
-        {
-            if (stateInfo.IsName(animationName))
-            {
-                return true; // Return true if an animation is currently playing
-            }
-        }
-
-        return false;
     }
 }

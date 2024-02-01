@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D PlayerRigidbody;
     private Animator PlayerAnimator;
     private PolygonCollider2D PlayerFeet;
+    private AnimationChecker animationsChecker; // class containing functions to check which animations are running
 
     private float xAxisInput;
     private bool isGrounded, isStunned = false;
@@ -20,7 +21,8 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerRigidbody = GetComponent<Rigidbody2D>();
         PlayerAnimator = GetComponent<Animator>();
-        PlayerFeet = GetComponent<PolygonCollider2D>();
+        PlayerFeet = GetComponent<PolygonCollider2D>(); 
+        animationsChecker = GetComponent<AnimationChecker>();
 
         PlayerRigidbody.gravityScale = gravity; // set starting gravity
     }
@@ -28,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isStunned && !CheckAnimations()) // cannot move when stunned or during certain animations
+        if (!isStunned && !animationsChecker.CheckAnimations(animationsArray)) // cannot move when stunned or during certain animations
         {
             Run();
 
@@ -77,20 +79,5 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(stunDuration);
 
         isStunned = false;
-    }
-
-    private bool CheckAnimations() // check if an animation is playing, which would prevent the player from moving
-    {
-        AnimatorStateInfo stateInfo = PlayerAnimator.GetCurrentAnimatorStateInfo(0);
-
-        foreach(string animationName in animationsArray)
-        {
-            if (stateInfo.IsName(animationName))
-            {
-                return true; // Return true if an animation is currently playing
-            }
-        }
-
-        return false;
     }
 }

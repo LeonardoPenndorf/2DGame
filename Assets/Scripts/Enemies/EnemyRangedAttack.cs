@@ -17,12 +17,14 @@ public class EnemyRangedAttack : MonoBehaviour
     // private variables
     private Animator EnemyAnimator;
     private Rigidbody2D ProjectileRB;
+    private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
     private float cooldown, newXOffset, newXVelocity;
 
     // Start is called before the first frame update
     void Start()
     {
         EnemyAnimator = GetComponent<Animator>();
+        animationsChecker = GetComponent<AnimationChecker>();
     }
 
     // Update is called once per frame
@@ -42,7 +44,7 @@ public class EnemyRangedAttack : MonoBehaviour
     {
         Collider2D PlayerCollider = Physics2D.OverlapCircle(transform.position, attackRange, LayerMask.GetMask("Player"));
 
-        if (PlayerCollider && !CheckEnemyAnimations())
+        if (PlayerCollider && !animationsChecker.CheckAnimations(animationsArray))
         {
             EnemyAnimator.SetTrigger("IsShooting");
             cooldown = maxCooldown;
@@ -70,20 +72,5 @@ public class EnemyRangedAttack : MonoBehaviour
 
         ProjectileRB = NewProjectile.GetComponent<Rigidbody2D>();
         ProjectileRB.velocity = new Vector2(newXVelocity, yVelocity);
-    }
-
-    private bool CheckEnemyAnimations() // check if an animation is playing, which would prevent the enemy from blocking
-    {
-        AnimatorStateInfo stateInfo = EnemyAnimator.GetCurrentAnimatorStateInfo(0);
-
-        foreach (string animationName in animationsArray)
-        {
-            if (stateInfo.IsName(animationName))
-            {
-                return true; // Return true if an animation in the array is currently playing
-            }
-        }
-
-        return false;
     }
 }

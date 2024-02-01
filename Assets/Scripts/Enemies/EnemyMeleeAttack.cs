@@ -17,12 +17,14 @@ public class EnemyMeleeAttack : MonoBehaviour
 
     // private variables
     private Animator EnemyAnimator;
+    private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
     private float cooldown;
 
     // Start is called before the first frame update
     void Start()
     {
         EnemyAnimator = GetComponent<Animator>();
+        animationsChecker = GetComponent<AnimationChecker>();
     }
 
     // Update is called once per frame
@@ -43,7 +45,7 @@ public class EnemyMeleeAttack : MonoBehaviour
     {
         Collider2D PlayerCollider = Physics2D.OverlapCircle(transform.position, attackRange, LayerMask.GetMask("Player"));
 
-        if (PlayerCollider && !CheckEnemyAnimations())
+        if (PlayerCollider && !animationsChecker.CheckAnimations(animationsArray))
         {
             MeleeAttack(); // if player is within attack range, attack   
         }
@@ -63,20 +65,5 @@ public class EnemyMeleeAttack : MonoBehaviour
     public void disableHurtboxCollider() // disable hurtbox collider at end of animation
     {
         HurtBox.GetComponent<BoxCollider2D>().enabled = false;
-    }
-
-    private bool CheckEnemyAnimations() // check if an animation is playing, which would prevent the enemy from blocking
-    {
-        AnimatorStateInfo stateInfo = EnemyAnimator.GetCurrentAnimatorStateInfo(0);
-
-        foreach (string animationName in animationsArray)
-        {
-            if (stateInfo.IsName(animationName))
-            {
-                return true; // Return true if an animation in the array is currently playing
-            }
-        }
-
-        return false;
     }
 }

@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: -5246074709064478077}
   - component: {fileID: 4593993611541728165}
   - component: {fileID: 41005810356047400}
+  - component: {fileID: 8691603822166462125}
   m_Layer: 9
   m_Name: Warrior
   m_TagString: Player
@@ -390,7 +391,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireSlash: {fileID: 2570856389410326685, guid: 4d579335fb455144290dd3e33af508e9, type: 3}
-  xOffset: 0
-  yOffset: 0
-  xVelocity: 0
+  xOffset: 3
+  yOffset: -2
+  xVelocity: 15
   yVelocity: 0
+--- !u!114 &8691603822166462125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157536053932933172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c58a1923fb2d14bb1e19fd2fa3004d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

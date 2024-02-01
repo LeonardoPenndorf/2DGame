@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8511971272375729107}
   - component: {fileID: 3000085476613276697}
   - component: {fileID: 3896439737020859165}
+  - component: {fileID: 2955763526739391039}
   m_Layer: 11
   m_Name: SkeletonArcher
   m_TagString: Enemy
@@ -224,7 +225,8 @@ MonoBehaviour:
   attackRange: 1.5
   maxCooldown: 2
   HurtBox: {fileID: 7177992886720302207}
-  animationsArray: []
+  animationsArray:
+  - SkeletonArcher_Shot
 --- !u!114 &3000085476613276697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +265,18 @@ MonoBehaviour:
   animationsArray:
   - SkeletonArcher_Hurt
   - SkeletonArcher_Attack2
+--- !u!114 &2955763526739391039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465361686494501331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c58a1923fb2d14bb1e19fd2fa3004d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6026330851827974414
 GameObject:
   m_ObjectHideFlags: 0
