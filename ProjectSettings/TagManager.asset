@@ -23,7 +23,7 @@ TagManager:
   - Traps
   - Effects
   - Navigation
-  - 
+  - Platforms
   - 
   - 
   - 
@@ -51,6 +51,9 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1334260199
+    locked: 0
+  - name: Platforms
+    uniqueID: 2012992329
     locked: 0
   - name: Traps
     uniqueID: 2761489897

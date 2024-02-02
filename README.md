@@ -10,3 +10,5 @@ skeletons: https://craftpix.net/freebies/free-skeleton-pixel-art-sprite-sheets/?
 player: https://chierit.itch.io/elementals-fire-knight
 
 Fire effects: https://bdragon1727.itch.io/fire-pixel-bullet-16x16
+
+Environment: https://szadiart.itch.io/pixle-castle-2d
