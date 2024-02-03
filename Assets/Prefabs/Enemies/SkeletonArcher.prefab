@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 201708159627623836}
   - component: {fileID: 3801432270945796491}
   - component: {fileID: 739934596503987963}
-  - component: {fileID: 5790404989426531973}
-  - component: {fileID: 8511971272375729107}
+  - component: {fileID: 2596114487306881664}
   - component: {fileID: 3000085476613276697}
+  - component: {fileID: 8511971272375729107}
   - component: {fileID: 3896439737020859165}
   - component: {fileID: 2955763526739391039}
   m_Layer: 11
@@ -187,26 +187,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7289591, y: 1.9741771}
   m_EdgeRadius: 0
---- !u!114 &5790404989426531973
+--- !u!114 &2596114487306881664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465361686494501331}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ee4b5654035d4a46b45b2e57331f4fe, type: 3}
+  m_Script: {fileID: 11500000, guid: b756ec693c9737e46be469a8b5892a00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   standardMovementSpeed: 2
-  aggroedMovementSpeed: 2
   aggroRange: 10
   NavCollider: {fileID: 2973035012900898970}
   animationsArray:
   - SkeletonArcher_Hurt
   - SkeletonArcher_Attack2
   - SkeletonArcher_Shot
+--- !u!114 &3000085476613276697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465361686494501331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd9415b4cbd87e428a7b3fd5c4b45a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  currentHealth: 0
+  damageReduction: 0
+  maxIFrames: 0
 --- !u!114 &8511971272375729107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,22 +242,6 @@ MonoBehaviour:
   HurtBox: {fileID: 7177992886720302207}
   animationsArray:
   - SkeletonArcher_Shot
---- !u!114 &3000085476613276697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465361686494501331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd9415b4cbd87e428a7b3fd5c4b45a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 20
-  currentHealth: 0
-  damageReduction: 0
-  maxIFrames: 0
 --- !u!114 &3896439737020859165
 MonoBehaviour:
   m_ObjectHideFlags: 0

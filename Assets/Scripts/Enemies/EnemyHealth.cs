@@ -62,7 +62,18 @@ public class EnemyHealth : MonoBehaviour
         EnemyRB.velocity = Vector3.zero;
         EnemyAnimator.SetTrigger("IsDead");
         GetComponent<EnemyMeleeAttack>().enabled = false;
-        GetComponent<EnemyMovement>().enabled = false;
+
+        EnemyMovement EnemyMovementComponent = GetComponent<EnemyMovement>();
+        if(EnemyMovementComponent != null)
+        {
+            GetComponent<EnemyMovement>().enabled = false;
+        }
+
+        RangedEnemyMovement RangedEnemyMovementComponent = GetComponent<RangedEnemyMovement>();
+        if (RangedEnemyMovementComponent != null)
+        {
+            GetComponent<RangedEnemyMovement>().enabled = false;
+        }
 
         EnemyBlock EnemyBlockComponent = GetComponent<EnemyBlock>(); // check if the enemy has the block component
         if(EnemyBlockComponent != null)

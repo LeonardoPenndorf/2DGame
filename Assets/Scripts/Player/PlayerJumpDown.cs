@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -7,6 +8,8 @@ public class PlayerJumpDown : MonoBehaviour
 {
     // public variables
     public GameObject PlayerFeet;
+    public Rigidbody2D PlayerRB;
+    public string[] animationsArray; // array containing the name of all animations that would stop you from moving
     public float disableTime;
 
     // private variables
@@ -14,6 +17,7 @@ public class PlayerJumpDown : MonoBehaviour
     private BoxCollider2D PlayerFeetCollider;
     private PlatformEffector2D CurrentPlatformEffector; // alows to jump through a platform from one side
     private PlayerMovement PlayerMovementScript; // We get isGrounded from the movement script
+    private AnimationChecker animationsChecker; // class containing functions to check which animations are running
     private bool isGrounded; // player can only jump down when grounded
 
     // Start is called before the first frame update
@@ -22,12 +26,21 @@ public class PlayerJumpDown : MonoBehaviour
         PlayerAnimator = GetComponent<Animator>();
         PlayerFeetCollider = PlayerFeet.GetComponent<BoxCollider2D>();
         PlayerMovementScript = GetComponent<PlayerMovement>();
+        animationsChecker = GetComponent<AnimationChecker>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        JumpDown();
+        if (!animationsChecker.CheckAnimations(animationsArray))
+        {
+            JumpDown();
+        }
+
+        if (PlayerRB.velocity.y >= 0 && PlayerRB.velocity.y <= 1 && !isGrounded) // switch to JumpPeak animation when velocity approaches 0
+        {
+            PlayerAnimator.SetTrigger("IsPeaking");
+        }
     }
 
     private void JumpDown() // Jump down from a platform
