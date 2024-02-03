@@ -260,9 +260,11 @@ MonoBehaviour:
   - SkeletonWarrior_Hurt
   - SkeletonWarrior_Attack3
   PlayerAnimationsArray:
-  - Warrior_MeleeAttack
   - Warrior_AirAttack
   - Warrior_SpecialAttack
+  - Warrior_MeleeAttack_1
+  - Warrior_MeleeAttack_2
+  - Warrior_MeleeAttack_3
 --- !u!114 &8946261200819521260
 MonoBehaviour:
   m_ObjectHideFlags: 0

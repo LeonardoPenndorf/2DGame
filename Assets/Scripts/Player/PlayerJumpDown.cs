@@ -9,7 +9,6 @@ public class PlayerJumpDown : MonoBehaviour
     // public variables
     public GameObject PlayerFeet;
     public Rigidbody2D PlayerRB;
-    public string[] animationsArray; // array containing the name of all animations that would stop you from moving
     public float disableTime;
 
     // private variables
@@ -18,6 +17,7 @@ public class PlayerJumpDown : MonoBehaviour
     private PlatformEffector2D CurrentPlatformEffector; // alows to jump through a platform from one side
     private PlayerMovement PlayerMovementScript; // We get isGrounded from the movement script
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
+    private string[] animationsArray; // array containing the name of all animations that would stop you from moving
     private bool isGrounded; // player can only jump down when grounded
 
     // Start is called before the first frame update
@@ -27,6 +27,8 @@ public class PlayerJumpDown : MonoBehaviour
         PlayerFeetCollider = PlayerFeet.GetComponent<BoxCollider2D>();
         PlayerMovementScript = GetComponent<PlayerMovement>();
         animationsChecker = GetComponent<AnimationChecker>();
+
+        animationsArray = GetComponent<PlayerMovement>().animationsArray;
     }
 
     // Update is called once per frame

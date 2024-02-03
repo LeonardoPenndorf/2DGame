@@ -42,4 +42,18 @@ public class AnimationChecker : MonoBehaviour
 
         return false;
     }
+
+    public string GetCurrentAnimation() // Returns the name of the currently playing animation
+    {
+        AnimatorStateInfo stateInfo = MyAnimator.GetCurrentAnimatorStateInfo(0);
+        // Loop through all animation clips to find the one that is currently playing
+        foreach (AnimationClip clip in MyAnimator.runtimeAnimatorController.animationClips)
+        {
+            if (stateInfo.IsName(clip.name))
+            {
+                return clip.name; // Return the name of the currently playing animation
+            }
+        }
+        return ""; // Return an empty string if no animation is found
+    }
 }

@@ -179,13 +179,13 @@ GameObject:
   - component: {fileID: 3247166011699043646}
   - component: {fileID: 359505279110432522}
   - component: {fileID: 8540299747823049924}
-  - component: {fileID: -5345504813646555920}
-  - component: {fileID: 1733006571222690284}
-  - component: {fileID: -5246074709064478077}
   - component: {fileID: 4593993611541728165}
+  - component: {fileID: -5246074709064478077}
+  - component: {fileID: -5345504813646555920}
+  - component: {fileID: 3553670192834770497}
+  - component: {fileID: 1733006571222690284}
   - component: {fileID: 41005810356047400}
   - component: {fileID: 8691603822166462125}
-  - component: {fileID: 3553670192834770497}
   m_Layer: 9
   m_Name: Warrior
   m_TagString: Player
@@ -334,59 +334,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9742193, y: 1.958499}
   m_EdgeRadius: 0
---- !u!114 &-5345504813646555920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7157536053932933172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8da1590f1e193584cbdaef051150b026, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runSpeed: 10
-  jumpSpeed: 15
-  gravity: 4
-  animationsArray:
-  - Warrior_TakeHit
-  - Warrior_MeleeAttack
-  - Warrior_AirAttack
-  - Warrior_SpecialAttack
-  PlayerFeet: {fileID: 3792087196651171425}
---- !u!114 &1733006571222690284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7157536053932933172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 508d407931a7b6e45b50b3be7469520f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseDamage: 20
-  knockbackForce: 10
-  maxCooldown: 1.5
-  keyHoldDurationThreshold: 0.35
-  HurtBox: {fileID: 6062602973029319167}
---- !u!114 &-5246074709064478077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7157536053932933172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c6965ce9428cdf4f8f755316c06fca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  maxIFrames: 0.5
 --- !u!95 &4593993611541728165
 Animator:
   serializedVersion: 5
@@ -408,6 +355,79 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-5246074709064478077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157536053932933172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6965ce9428cdf4f8f755316c06fca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  maxIFrames: 0.5
+--- !u!114 &-5345504813646555920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157536053932933172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da1590f1e193584cbdaef051150b026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runSpeed: 10
+  jumpSpeed: 15
+  gravity: 4
+  animationsArray:
+  - Warrior_TakeHit
+  - Warrior_AirAttack
+  - Warrior_SpecialAttack
+  - Warrior_MeleeAttack_1
+  - Warrior_MeleeAttack_2
+  - Warrior_MeleeAttack_3
+  - Warrior_EndAttack_1
+  - Warrior_EndAttack_2
+  PlayerFeet: {fileID: 3792087196651171425}
+--- !u!114 &3553670192834770497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157536053932933172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 557f2b80b7d167d46b5b6d2e499c846a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerFeet: {fileID: 3792087196651171425}
+  PlayerRB: {fileID: 359505279110432522}
+  disableTime: 0.3
+--- !u!114 &1733006571222690284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157536053932933172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508d407931a7b6e45b50b3be7469520f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HurtBox: {fileID: 6062602973029319167}
+  baseDamage: 20
+  maxComboDelay: 1.7
+  knockbackForce: 10
+  AirAttackCooldown: 0.5
+  keyHoldDurationThreshold: 0.35
 --- !u!114 &41005810356047400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,23 +457,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c58a1923fb2d14bb1e19fd2fa3004d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3553670192834770497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7157536053932933172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 557f2b80b7d167d46b5b6d2e499c846a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerFeet: {fileID: 3792087196651171425}
-  PlayerRB: {fileID: 359505279110432522}
-  animationsArray:
-  - Warrior_TakeHit
-  - Warrior_MeleeAttack
-  - Warrior_AirAttack
-  - Warrior_SpecialAttack
-  disableTime: 0.3
