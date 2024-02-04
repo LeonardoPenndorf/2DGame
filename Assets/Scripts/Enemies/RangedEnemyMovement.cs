@@ -11,6 +11,7 @@ public class RangedEnemyMovement : MonoBehaviour
 
     // private varibales
     private Animator EnemyAnimator;
+    private EnemyAggro enemyAggro; // script that manages the aggro state of enemies
     private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
     private GameObject Player; // player gameobject is required for navigation when aggroed
     private bool isAggroed;
@@ -19,6 +20,7 @@ public class RangedEnemyMovement : MonoBehaviour
     void Start()
     {
         EnemyAnimator = GetComponent<Animator>();
+        enemyAggro = GetComponent<EnemyAggro>();
         animationsChecker = GetComponent<AnimationChecker>();
 
         Player = GameObject.FindWithTag("Player");
@@ -27,13 +29,11 @@ public class RangedEnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isAggroed = enemyAggro.GetIsAggroed();
+
         if (isAggroed && !animationsChecker.CheckAnimations(animationsArray))
         {
             Rotate();
-        }
-        else
-        {
-            CheckAggro(); // if not, check if player is within aggro range
         }
     }
 
@@ -47,17 +47,6 @@ public class RangedEnemyMovement : MonoBehaviour
         else if (Player.transform.position.x > transform.position.x)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
-    }
-
-    private void CheckAggro() // check if player is within aggro range
-    {
-        Collider2D PlayerCollider = Physics2D.OverlapCircle(transform.position, aggroRange, LayerMask.GetMask("Player"));
-
-        if (PlayerCollider)
-        {
-            isAggroed = true;
-            EnemyAnimator.SetBool("IsAggroed", true);
         }
     }
 }

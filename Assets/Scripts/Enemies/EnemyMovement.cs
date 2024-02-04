@@ -7,14 +7,14 @@ public class EnemyMovement : MonoBehaviour
 {
     // public variables
     public float standardMovementSpeed, // movement speed of enemy when not aggroed
-                 aggroedMovementSpeed, // some enemies move faster when aggroed
-                 aggroRange; // when player moves within aggro range, enemy begins moving towards the player
+                 aggroedMovementSpeed; // some enemies move faster when aggroed
     public BoxCollider2D NavCollider; // checks for collison with ground and player
     public string[] animationsArray; // array containing the name of all animations that would stop the enemy from moving
 
     // private varibales
     private Rigidbody2D EnemyRigidbody;
     private Animator EnemyAnimator;
+    private EnemyAggro enemyAggro; // script that manages the aggro state of enemies
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
     private GameObject Player; // player gameobject is required for navigation when aggroed
     private float movementSpeed, // current movement speed
@@ -29,6 +29,7 @@ public class EnemyMovement : MonoBehaviour
     {
         EnemyRigidbody = GetComponent<Rigidbody2D>();
         EnemyAnimator = GetComponent<Animator>();
+        enemyAggro = GetComponent<EnemyAggro>();
         animationsChecker = GetComponent<AnimationChecker>();
 
         Player = GameObject.FindWithTag("Player");
@@ -44,10 +45,6 @@ public class EnemyMovement : MonoBehaviour
         if (isAggroed)
         {
             MoveTowardsPlayer(); // if aggroed guides enemy movement
-        }
-        else
-        {
-            CheckAggro(); // if not, check if player is within aggro range
         }
 
         if (!animationsChecker.CheckAnimations(animationsArray)) // cannot move during certain animations
@@ -100,27 +97,11 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void CheckAggro() // check if player is within aggro range
-    {
-        Collider2D PlayerCollider = Physics2D.OverlapCircle(transform.position, aggroRange, LayerMask.GetMask("Player"));
-
-        if (PlayerCollider)
-        {
-            isAggroed = true;
-            EnemyAnimator.SetBool("IsAggroed", true);
-        }
-    }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         checkNav = NavCollider.IsTouchingLayers(LayerMask.GetMask("Ground")); // check if can walk
 
         if (!checkNav && !isAggroed)
             direction = -direction;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, aggroRange);
     }
 }

@@ -43,7 +43,6 @@ public class PlayerHealth : MonoBehaviour
             if (!isBlocking)
             {
                 currentHealth -= damage;
-                Debug.Log("not blocking");
             }
             else
             {

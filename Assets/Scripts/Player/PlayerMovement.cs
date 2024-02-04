@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // public variables
+    public GameObject PlayerFeet; // empty game object with a box collider 2D
+    public KeyCode JumpKeyCode; // key that needs to be pressed to jump
     public float runSpeed, jumpSpeed, gravity;
     public string[] animationsArray; // array containing the name of all animations that would stop you from moving
-    public GameObject PlayerFeet; // empty game object with a box collider 2D
 
     // private variables
     private Rigidbody2D PlayerRigidbody;
@@ -59,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
         PlayerAnimator.SetBool("IsGrounded", isGrounded); // toggle jumping animation
 
-        if ((Input.GetKeyDown(KeyCode.Space)) && isGrounded) // can jump when grounded
+        if ((Input.GetKeyDown(JumpKeyCode)) && isGrounded) // can only jump when grounded
         {
             PlayerRigidbody.velocity = new Vector2(PlayerRigidbody.velocity.x, jumpSpeed); // jump
         }

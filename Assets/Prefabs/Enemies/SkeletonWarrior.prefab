@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3000085476613276697}
   - component: {fileID: 577543980193481257}
   - component: {fileID: 8946261200819521260}
+  - component: {fileID: 7569493765594364775}
   m_Layer: 11
   m_Name: SkeletonWarrior
   m_TagString: Enemy
@@ -174,7 +175,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.019256115, y: -1.1015465}
+  m_Offset: {x: 0.0044646263, y: -1.1015465}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -185,7 +186,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5320883, y: 1.7830057}
+  m_Size: {x: 0.8517027, y: 1.7830057}
   m_EdgeRadius: 0
 --- !u!114 &5790404989426531973
 MonoBehaviour:
@@ -277,6 +278,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c58a1923fb2d14bb1e19fd2fa3004d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7569493765594364775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465361686494501331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8dba4f4bd861ec4e943ac90c88cde88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewDistance: 10
+  fovAngle: 45
 --- !u!1 &7177992886720302207
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +408,7 @@ Transform:
   m_GameObject: {fileID: 9196557201352742097}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.256, y: -2.013, z: 0}
+  m_LocalPosition: {x: -1.305, y: -2.013, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

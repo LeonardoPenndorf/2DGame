@@ -7,7 +7,7 @@ public class EnemyMeleeAttack : MonoBehaviour
 {
     // public variables
     public int damage;
-    public float knockbackForce, // determines how satrong the knockback of the attack is 
+    public float knockbackForce, // determines how strong the knockback of the attack is 
                  stunDuration,  // determines how long the player is stunned by the attack
                  attackRange,
                  maxCooldown; // second the enemy needs to wait until he can attack again

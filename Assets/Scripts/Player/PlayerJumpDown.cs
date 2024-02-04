@@ -9,6 +9,7 @@ public class PlayerJumpDown : MonoBehaviour
     // public variables
     public GameObject PlayerFeet;
     public Rigidbody2D PlayerRB;
+    public KeyCode JumpDownKeyCode; // key that needs to be pressed to jump down
     public float disableTime;
 
     // private variables
@@ -47,7 +48,7 @@ public class PlayerJumpDown : MonoBehaviour
 
     private void JumpDown() // Jump down from a platform
     {
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(JumpDownKeyCode))
         {
             isGrounded = PlayerMovementScript.GetIsGrounded();
 

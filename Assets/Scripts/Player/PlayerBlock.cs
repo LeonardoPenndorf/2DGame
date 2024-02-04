@@ -9,16 +9,12 @@ public class PlayerBlock : MonoBehaviour
     // private variables
     private Animator PlayerAnimator;
     private PlayerHealth playerHealth;
-    private AnimationChecker animationChecker;
-    private string[] animationsArray;
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerAnimator = GetComponent<Animator>();
         playerHealth = GetComponent<PlayerHealth>();
-        animationChecker = GetComponent<AnimationChecker>();
-        animationsArray = GetComponent<PlayerMovement>().animationsArray;
     }
 
     // Update is called once per frame
@@ -29,16 +25,24 @@ public class PlayerBlock : MonoBehaviour
 
     private void Block()
     {
-        if (Input.GetKeyDown(blockKeyCode) && !animationChecker.CheckAnimations(animationsArray))
+        if (Input.GetKey(blockKeyCode))
         {
             PlayerAnimator.SetBool("IsBlocking", true);
-            playerHealth.SetIsBlocking(true);
         }
 
         if (Input.GetKeyUp(blockKeyCode))
         {
             PlayerAnimator.SetBool("IsBlocking", false);
-            playerHealth.SetIsBlocking(false);
         }
+    }
+
+    private void StartBlock() // called in the start block animation
+    {
+        playerHealth.SetIsBlocking(true);
+    }
+
+    private void EndBlock() // called in the end block animation
+    {
+        playerHealth.SetIsBlocking(false);
     }
 }
