@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewDistance: 10
+  aggroRange: 2
   fovAngle: 45
 --- !u!1 &6026330851827974414
 GameObject:

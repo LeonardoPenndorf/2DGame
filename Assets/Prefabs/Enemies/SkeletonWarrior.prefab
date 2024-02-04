@@ -202,7 +202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardMovementSpeed: 2
   aggroedMovementSpeed: 4
-  aggroRange: 6
   NavCollider: {fileID: 2997377273203828482}
   animationsArray:
   - SkeletonWarrior_Hurt
@@ -291,6 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewDistance: 10
+  aggroRange: 2
   fovAngle: 45
 --- !u!1 &7177992886720302207
 GameObject:

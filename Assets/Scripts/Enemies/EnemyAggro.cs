@@ -6,7 +6,7 @@ public class EnemyAggro : MonoBehaviour
 {
     // public variables
     public float viewDistance,
-                 aggroradius,
+                 aggroRange,
                  fovAngle;
 
     // private variables
@@ -26,25 +26,33 @@ public class EnemyAggro : MonoBehaviour
     {
         if (!isAggroed)
         {
-            DetectPlayerFOV();
-            DetectPlayerRadius();
+            if(DetectPlayerWithFOV() || DetectPlayerWithRadius())
+            {
+                isAggroed = true;
+                EnemyAnimator.SetBool("IsAggroed", true);
+            }
         }
     }
 
-    private void DetectPlayerFOV()
+    private bool DetectPlayerWithFOV() // detect enemy with field of view field of view
     {
         Vector2 directionToPlayer = Player.position - transform.position;
         float angleBetweenEnemyAndPlayer = Vector2.Angle(-transform.right, directionToPlayer);
 
         if (directionToPlayer.magnitude < viewDistance && angleBetweenEnemyAndPlayer < fovAngle / 2)
-        {
-            isAggroed = true;
-            EnemyAnimator.SetBool("IsAggroed", true);
-        }
+            return true;
+        
+        return false;
     }
 
-    private void DetectPlayerRadius()
+    private bool DetectPlayerWithRadius()  // detect player with radius around enemy
     {
+        Collider2D PlayerCollider = Physics2D.OverlapCircle(transform.position, aggroRange, LayerMask.GetMask("Player"));
+
+        if (PlayerCollider)
+            return true;
+
+        return false;
     }
 
     private void LooseAggro()
@@ -59,7 +67,7 @@ public class EnemyAggro : MonoBehaviour
         if (Player == null) return;
 
         Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(transform.position, viewDistance);
+        Gizmos.DrawWireSphere(transform.position, aggroRange);
 
         Vector2 fovLeftBoundary = Quaternion.Euler(0, 0, -fovAngle / 2) * (-transform.right) * viewDistance;
         Vector2 fovRightBoundary = Quaternion.Euler(0, 0, fovAngle / 2) * (-transform.right) * viewDistance;
@@ -78,7 +86,6 @@ public class EnemyAggro : MonoBehaviour
         {
             Gizmos.color = Color.red;
         }
-
         Gizmos.DrawLine(transform.position, Player.position);
     }
 }

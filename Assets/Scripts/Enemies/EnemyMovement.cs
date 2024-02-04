@@ -42,9 +42,12 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isAggroed = enemyAggro.GetIsAggroed();
+
         if (isAggroed)
         {
             MoveTowardsPlayer(); // if aggroed guides enemy movement
+            Debug.Log("aaaaaaaaaaa");
         }
 
         if (!animationsChecker.CheckAnimations(animationsArray)) // cannot move during certain animations
