@@ -1,40 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RangedEnemyMovement : MonoBehaviour
 {
     // public variables
-    public float standardMovementSpeed, aggroRange;
-    public BoxCollider2D NavCollider; // checks for collison with ground and player
+    public float aggroRange; // when player moves within aggro range, enemy begins attacking
     public string[] animationsArray; // array containing the name of all animations that would stop the enemy from moving
 
     // private varibales
-    private Rigidbody2D EnemyRigidbody;
     private Animator EnemyAnimator;
     private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
     private GameObject Player; // player gameobject is required for navigation when aggroed
-    private float movementSpeed, 
-                  attackRange, 
-                  dangerRange,
-                  meleeRange, 
-                  direction = 1.0f;
-    private bool isAggroed, checkNav;
-    private float xDistance; // distance between the enemy and the player on the x axis
+    private bool isAggroed;
 
     // Start is called before the first frame update
     void Start()
     {
-        EnemyRigidbody = GetComponent<Rigidbody2D>();
         EnemyAnimator = GetComponent<Animator>();
         animationsChecker = GetComponent<AnimationChecker>();
 
         Player = GameObject.FindWithTag("Player");
-
-        movementSpeed = 0; // set movement speed
-
-        attackRange = gameObject.GetComponent<EnemyRangedAttack>().attackRange; // fetch attack range to determine how close the enemy should get to the player to attack
-
     }
 
     // Update is called once per frame
@@ -48,8 +35,6 @@ public class RangedEnemyMovement : MonoBehaviour
         {
             CheckAggro(); // if not, check if player is within aggro range
         }
-
-        EnemyAnimator.SetBool("IsMoving", movementSpeed != 0);
     }
 
     private void Rotate()

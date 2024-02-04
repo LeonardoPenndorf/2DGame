@@ -5,13 +5,14 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     // public variables
-    public int maxHealth, currentHealth;
+    public int maxHealth, currentHealth, damageReduction;
     public float maxIFrames;
 
     // private variables
     private Animator animator;
     private float iFrames;
-    private bool isDead = false;
+    private bool isDead = false, 
+                 isBlocking = false; // when blocking takes less damage
 
     // Start is called before the first frame update
     void Start()
@@ -39,12 +40,26 @@ public class PlayerHealth : MonoBehaviour
     {
         if ((iFrames <= 0) && !isDead)
         {
-            currentHealth -= damage;
+            if (!isBlocking)
+            {
+                currentHealth -= damage;
+                Debug.Log("not blocking");
+            }
+            else
+            {
+                currentHealth -= Mathf.Max((damage - damageReduction), 0);
+            }
+
             iFrames = maxIFrames;
 
             if(currentHealth > 0)
                 animator.SetTrigger("IsHit"); // trigger hit animation
         }
+    }
+
+    public void SetIsBlocking(bool newIsBlocking)
+    {
+        isBlocking = newIsBlocking;
     }
 
     private void Death()

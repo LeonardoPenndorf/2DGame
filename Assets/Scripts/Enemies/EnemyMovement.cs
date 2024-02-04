@@ -6,18 +6,23 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     // public variables
-    public float standardMovementSpeed, aggroedMovementSpeed, aggroRange;
+    public float standardMovementSpeed, // movement speed of enemy when not aggroed
+                 aggroedMovementSpeed, // some enemies move faster when aggroed
+                 aggroRange; // when player moves within aggro range, enemy begins moving towards the player
     public BoxCollider2D NavCollider; // checks for collison with ground and player
     public string[] animationsArray; // array containing the name of all animations that would stop the enemy from moving
 
     // private varibales
     private Rigidbody2D EnemyRigidbody;
     private Animator EnemyAnimator;
-    private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
+    private AnimationChecker animationsChecker; // class containing functions to check which animations are running
     private GameObject Player; // player gameobject is required for navigation when aggroed
-    private float movementSpeed, attackRange, direction = 1.0f;
+    private float movementSpeed, // current movement speed
+                  attackRange, // when player is within attack range, enemy stops moving
+                  direction = 1.0f, // direction the enemy is facing
+                  distance, // distance between the player and the enemy in 2 dimension
+                  xDistance; // distance between the player and the enemy on the x axis
     private bool isAggroed, checkNav;
-    private float distance, xDistance; // distance between the enemy and the player
 
     // Start is called before the first frame update
     void Start()

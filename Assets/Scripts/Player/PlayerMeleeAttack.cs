@@ -6,6 +6,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 {
     // public variables
     public GameObject HurtBox; // melee attack hurt box
+    public KeyCode AttackKeyCode; // key that needs to bee pressed to attack
     public int baseDamage; // base damage of all attacks. This vlaue is used to set the damage of a specifc attack
     public float maxComboDelay, // maximum amount of time between clicks
                  knockbackForce, // the knockback force of an attack (not yet implemented)
@@ -39,12 +40,12 @@ public class PlayerMeleeAttack : MonoBehaviour
             cooldownTimer -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) && !isKeyHoldCoroutineRunning) // registers when return has been pressed 
+        if (Input.GetKeyDown(AttackKeyCode) && !isKeyHoldCoroutineRunning) // registers when return has been pressed 
         {
             StartCoroutine(MeasureKeyHoldDuration()); // measures how long return is being pressed
         }
 
-        if (Input.GetKeyUp(KeyCode.Return)) // registers when return is no longer pressed
+        if (Input.GetKeyUp(AttackKeyCode)) // registers when return is no longer pressed
         {
             CheckAttack(); // check if regualr melee attack or special
         }
@@ -142,7 +143,7 @@ public class PlayerMeleeAttack : MonoBehaviour
         isKeyHoldCoroutineRunning = true;
         keyHoldDuration = 0.0f;
 
-        while (Input.GetKey(KeyCode.Return))
+        while (Input.GetKey(AttackKeyCode))
         {
             keyHoldDuration += Time.deltaTime;
             yield return null; // Wait for the next frame

@@ -10,7 +10,8 @@ public class EnemyBlock : MonoBehaviour
     public string[] EnemyAnimationsArray, PlayerAnimationsArray;
 
     // private variables
-    private Animator EnemyAnimator, PlayerAnimator;
+    private Animator EnemyAnimator;
+    private EnemyHealth enemyHealth;
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
     private float cooldown;
 
@@ -18,7 +19,7 @@ public class EnemyBlock : MonoBehaviour
     void Start()
     {
         EnemyAnimator = GetComponent<Animator>();
-        PlayerAnimator = GameObject.FindWithTag("Player").GetComponent<Animator>();
+        enemyHealth = GetComponent<EnemyHealth>();
         animationsChecker = GetComponent<AnimationChecker>();
     }
 
@@ -45,12 +46,12 @@ public class EnemyBlock : MonoBehaviour
         if (PlayerCollider && !preventingAnimation && playerAttacking)
         {
             EnemyAnimator.SetBool("IsBlocking", true);
-            gameObject.GetComponent<EnemyHealth>().SetIsBlocking(true);
+            enemyHealth.SetIsBlocking(true);
         }
         else
         {
             EnemyAnimator.SetBool("IsBlocking", false);
-            gameObject.GetComponent<EnemyHealth>().SetIsBlocking(false);
+            enemyHealth.SetIsBlocking(false);
         }
     }
 
