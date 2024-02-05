@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Climbing
   - Enemy
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Effects
   - Navigation
   - Platforms
-  - 
+  - Door
   - 
   - 
   - 
@@ -48,6 +49,9 @@ TagManager:
     locked: 0
   - name: Decoration
     uniqueID: 1997040493
+    locked: 0
+  - name: Door
+    uniqueID: 1588301033
     locked: 0
   - name: Foreground
     uniqueID: 1334260199

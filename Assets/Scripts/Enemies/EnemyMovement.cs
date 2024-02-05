@@ -47,7 +47,6 @@ public class EnemyMovement : MonoBehaviour
         if (isAggroed)
         {
             MoveTowardsPlayer(); // if aggroed guides enemy movement
-            Debug.Log("aaaaaaaaaaa");
         }
 
         if (!animationsChecker.CheckAnimations(animationsArray)) // cannot move during certain animations

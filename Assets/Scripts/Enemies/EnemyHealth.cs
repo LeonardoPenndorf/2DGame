@@ -22,6 +22,8 @@ public class EnemyHealth : MonoBehaviour
         EnemyRB = GetComponent<Rigidbody2D>();
 
         currentHealth = maxHealth;
+
+        EnemyManager.instance.RegisterEnemy(gameObject); // add enemy to the enemies list in enemy manager
     }
 
     // Update is called once per frame
@@ -81,6 +83,8 @@ public class EnemyHealth : MonoBehaviour
             GetComponent<EnemyBlock>().enabled = false;
             EnemyAnimator.SetBool("IsBlocking", false);
         }
+
+        EnemyManager.instance.EnemyDied(gameObject); // remove enemy from the enemies list in enemy manager
     }
 
     public void SetIsBlocking(bool newState)
