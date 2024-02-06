@@ -1100,7 +1100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 5742129777185823283}
-  pauseKey: 101
+  pauseKey: 27
 --- !u!1 &8101864445173380144
 GameObject:
   m_ObjectHideFlags: 0

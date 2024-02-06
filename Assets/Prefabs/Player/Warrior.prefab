@@ -370,7 +370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
   damageReduction: 20
   maxIFrames: 0.5
 --- !u!114 &-5345504813646555920
@@ -491,4 +490,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6ad6cea53c3eb439314b6a14f297d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeaveKeyCode: 13
+  LeaveKeyCode: 101

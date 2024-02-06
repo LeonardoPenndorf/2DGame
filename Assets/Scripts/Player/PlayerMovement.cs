@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // [SerializeField]  variables
+    [SerializeField] GameObject PlayerFeet; // empty game object with a box collider 2D
+    [SerializeField] KeyCode JumpKeyCode; // key that needs to be pressed to jump
+    [SerializeField] float runSpeed, jumpSpeed, gravity;
+    
     // public variables
-    public GameObject PlayerFeet; // empty game object with a box collider 2D
-    public KeyCode JumpKeyCode; // key that needs to be pressed to jump
-    public float runSpeed, jumpSpeed, gravity;
     public string[] animationsArray; // array containing the name of all animations that would stop you from moving
 
     // private variables

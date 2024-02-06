@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    // public variable
-    public int healAmount;
+    // [SerializeField] variable
+    [SerializeField] int healAmount;
     // private variables
     private PlayerHealth PlayerHealthComponent;
 

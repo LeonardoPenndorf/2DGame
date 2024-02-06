@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class RangedEnemyMovement : MonoBehaviour
 {
-    // public variables
-    public float aggroRange; // when player moves within aggro range, enemy begins attacking
-    public string[] animationsArray; // array containing the name of all animations that would stop the enemy from moving
+    // [SerializeField] variables
+    [SerializeField] string[] animationsArray; // array containing the name of all animations that would stop the enemy from moving
 
     // private varibales
     private Animator EnemyAnimator;

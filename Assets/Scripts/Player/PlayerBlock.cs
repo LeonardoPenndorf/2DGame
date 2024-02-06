@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerBlock : MonoBehaviour
 {
-    // public variables
-    public KeyCode blockKeyCode; // key that needs to bee pressed to block
+    // [SerializeField] variables
+    [SerializeField] KeyCode blockKeyCode; // key that needs to bee pressed to block
+
     // private variables
     private Animator PlayerAnimator;
     private PlayerHealth playerHealth;
@@ -22,12 +23,12 @@ public class PlayerBlock : MonoBehaviour
     {
         if (TogglePauseMenu.gameIsPaused) return;
 
-        Block();
+        HandleBlockInput();
     }
 
-    private void Block()
+    private void HandleBlockInput()
     {
-        if (Input.GetKey(blockKeyCode))
+        if (Input.GetKeyDown(blockKeyCode))
         {
             PlayerAnimator.SetBool("IsBlocking", true);
         }

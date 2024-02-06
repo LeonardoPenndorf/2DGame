@@ -4,32 +4,55 @@ using UnityEngine;
 
 public class EnemyAggro : MonoBehaviour
 {
-    // public variables
-    public float viewDistance,
-                 aggroRange,
-                 fovAngle;
+    // [SerializeField] variables
+    [SerializeField] float viewDistance,
+                           aggroRange,
+                           fovAngle, 
+                           looseAggroTime = 5f; // Time in seconds to loose aggro
 
     // private variables
     private Animator EnemyAnimator;
     private Transform Player;
-    private bool isAggroed = false;
+    private float timeSinceLastSeen;
+    private int playerLayerMask;
+    private bool playerDetected = false, 
+                 isAggroed = false;
 
     // Start is called before the first frame update
     void Start()
     {
         EnemyAnimator = GetComponent<Animator>();
         Player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerLayerMask = LayerMask.GetMask("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+        playerDetected = DetectPlayerWithFOV() || DetectPlayerWithRadius();
+
         if (!isAggroed)
         {
-            if(DetectPlayerWithFOV() || DetectPlayerWithRadius())
+            if(playerDetected)
             {
                 isAggroed = true;
                 EnemyAnimator.SetBool("IsAggroed", true);
+                timeSinceLastSeen = 0f; // Reset timer
+            }
+        }
+        else
+        {
+            if (playerDetected)
+            {
+                timeSinceLastSeen = 0f; // Reset timer since player is still within aggro range/FOV
+            }
+            else
+            {
+                timeSinceLastSeen += Time.deltaTime;
+                if (timeSinceLastSeen >= looseAggroTime)
+                {
+                    LooseAggro();
+                }
             }
         }
     }
@@ -47,17 +70,14 @@ public class EnemyAggro : MonoBehaviour
 
     private bool DetectPlayerWithRadius()  // detect player with radius around enemy
     {
-        Collider2D PlayerCollider = Physics2D.OverlapCircle(transform.position, aggroRange, LayerMask.GetMask("Player"));
-
-        if (PlayerCollider)
-            return true;
-
-        return false;
+        return Physics2D.OverlapCircle(transform.position, aggroRange, playerLayerMask);
     }
 
     private void LooseAggro()
     {
-        Debug.Log("Placeholder");
+        isAggroed = false;
+        EnemyAnimator.SetBool("IsAggroed", false);
+        timeSinceLastSeen = 0f; // Reset timer as a precaution
     }
 
     public bool GetIsAggroed() { return isAggroed; }

@@ -48,6 +48,11 @@ public class EnemyMovement : MonoBehaviour
         {
             MoveTowardsPlayer(); // if aggroed guides enemy movement
         }
+        else
+        {
+            movementSpeed = standardMovementSpeed; // when loosing aggro stop running as well as following the player
+
+        }
 
         if (!animationsChecker.CheckAnimations(animationsArray)) // cannot move during certain animations
         {
@@ -73,7 +78,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void MoveTowardsPlayer()
     {
-        checkNav = NavCollider.IsTouchingLayers(LayerMask.GetMask("Ground")); // check if can walk
+        checkNav = NavCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || NavCollider.IsTouchingLayers(LayerMask.GetMask("Platforms")); // check if can walk
         distance = Vector2.Distance(Player.transform.position, transform.position);
         xDistance = Mathf.Abs(Player.transform.position.x - transform.position.x);
 
@@ -101,9 +106,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        checkNav = NavCollider.IsTouchingLayers(LayerMask.GetMask("Ground")); // check if can walk
+        checkNav = NavCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || NavCollider.IsTouchingLayers(LayerMask.GetMask("Platforms")); // check if can walk
 
         if (!checkNav && !isAggroed)
+        {
             direction = -direction;
+        }
     }
 }

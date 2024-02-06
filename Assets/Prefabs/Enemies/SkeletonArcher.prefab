@@ -255,10 +255,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 10
+  fovAngle: 60
   XOffset: 0
   YOffset: -0.4
-  xVelocity: 15
-  yVelocity: 0
+  xVelocity: 20
+  minYVelocity: -1.5
+  maxYVelocity: 1.5
   maxCooldown: 4
   Projectile: {fileID: 6859765699701903693, guid: e841f7282892fd346b8ce5bf754cc5d1, type: 3}
   animationsArray:
@@ -291,6 +293,7 @@ MonoBehaviour:
   viewDistance: 10
   aggroRange: 2
   fovAngle: 45
+  looseAggroTime: 5
 --- !u!114 &-1100123820332016772
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,11 +6,11 @@ using UnityEngine.Tilemaps;
 
 public class PlayerJumpDown : MonoBehaviour
 {
-    // public variables
-    public GameObject PlayerFeet;
-    public Rigidbody2D PlayerRB;
-    public KeyCode JumpDownKeyCode; // key that needs to be pressed to jump down
-    public float disableTime;
+    // [SerializeField] variables
+    [SerializeField] GameObject PlayerFeet;
+    [SerializeField] Rigidbody2D PlayerRB;
+    [SerializeField] KeyCode JumpDownKeyCode; // key that needs to be pressed to jump down
+    [SerializeField] float disableTime;
 
     // private variables
     private Animator PlayerAnimator;

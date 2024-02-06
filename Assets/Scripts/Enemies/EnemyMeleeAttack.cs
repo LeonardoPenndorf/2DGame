@@ -5,18 +5,20 @@ using UnityEngine;
 
 public class EnemyMeleeAttack : MonoBehaviour
 {
+    // [SerializeField] variables
+    [SerializeField] GameObject HurtBox; // melee attack hurt box
+    [SerializeField] string[] animationsArray;
+
     // public variables
     public int damage;
     public float knockbackForce, // determines how strong the knockback of the attack is 
                  stunDuration,  // determines how long the player is stunned by the attack
                  attackRange,
                  maxCooldown; // second the enemy needs to wait until he can attack again
-    public GameObject HurtBox; // melee attack hurt box
-    public string[] animationsArray;
-
 
     // private variables
     private Animator EnemyAnimator;
+    private EnemyAggro enemyAggro;
     private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
     private float cooldown;
 
@@ -24,21 +26,19 @@ public class EnemyMeleeAttack : MonoBehaviour
     void Start()
     {
         EnemyAnimator = GetComponent<Animator>();
+        enemyAggro = GetComponent<EnemyAggro>();
         animationsChecker = GetComponent<AnimationChecker>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (cooldown > 0)
-        {
-            cooldown -= Time.deltaTime;
-        }
-        else
-        {
-            CheckRange(); // if attack is of cooldown, check range
-        }
+        cooldown -= Time.deltaTime;
 
+        if (cooldown <= 0 && enemyAggro.GetIsAggroed())
+        {
+            CheckRange();
+        }
     }
 
     private void CheckRange() // check if player is within attack range

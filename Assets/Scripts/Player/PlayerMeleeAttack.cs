@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class PlayerMeleeAttack : MonoBehaviour
 {
-    // public variables
-    public GameObject HurtBox; // melee attack hurt box
-    public KeyCode AttackKeyCode; // key that needs to bee pressed to attack
-    public int baseDamage; // base damage of all attacks. This vlaue is used to set the damage of a specifc attack
-    public float maxComboDelay, // maximum amount of time between clicks
-                 knockbackForce, // the knockback force of an attack (not yet implemented)
+    // [SerializeField] variables
+    [SerializeField] GameObject HurtBox; // melee attack hurt box
+    [SerializeField] KeyCode AttackKeyCode; // key that needs to bee pressed to attack
+    [SerializeField] float maxComboDelay, // maximum amount of time between clicks
                  AirAttackCooldown, // after air attacking cooldown must end before attacking again 
                  keyHoldDurationThreshold; // amount of time that needs to pass to register as hoplding down
+
+    // public variables
+    public int baseDamage; // base damage of all attacks. This vlaue is used to set the damage of a specifc attack
+    public float knockbackForce; // the knockback force of an attack (not yet implemented)
 
     // private variables
     private BoxCollider2D HurtBoxCollider;

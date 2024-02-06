@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    // public variables
-    public int maxHealth, currentHealth, damageReduction;
-    public float maxIFrames;
+    // [SerializeField] variables
+    [SerializeField] int maxHealth, currentHealth, damageReduction;
+    [SerializeField] float maxIFrames;
 
     // private variables
     private Animator EnemyAnimator;

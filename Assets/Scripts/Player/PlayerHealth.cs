@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    // public variables
-    public int maxHealth, currentHealth, damageReduction;
-    public float maxIFrames;
+    // [SerializeField] variables
+    [SerializeField] int maxHealth, damageReduction;
+    [SerializeField] float maxIFrames;
 
     // private variables
     private PlayerManager playerManager; // player manager stores persistent values such as health
@@ -21,28 +21,33 @@ public class PlayerHealth : MonoBehaviour
         playerManager = PlayerManager.instance; // there is only ever a single player manager instance
         animator = GetComponent<Animator>();
 
-        currentHealth = playerManager.GetPlayerHealth(); // get current health from manager
-        if (currentHealth == 0) // in the first room current health is 0
-        {
-            currentHealth = maxHealth;
-            playerManager.AdjustPlayerHealth(maxHealth);
-        }
+        InitializeHealth();
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentHealth = PlayerManager.instance.GetPlayerHealth(); // get the current health value
+        UpdateIFrames();
 
-        if (iFrames > 0)
-        {
-            iFrames -= Time.deltaTime;
-        }
+        CheckDeathCondition();
+    }
 
-        if (currentHealth <= 0)
+    private void InitializeHealth()
+    {
+        if (playerManager.GetPlayerHealth() <= 0) // in the first room current health is 0
         {
-            Death();
+            playerManager.SetPlayerHealth(maxHealth);
         }
+    }
+
+    private void UpdateIFrames()
+    {
+        if (iFrames > 0) iFrames -= Time.deltaTime;
+    }
+
+    private void CheckDeathCondition()
+    {
+        if (playerManager.GetPlayerHealth() <= 0 && !isDead) Death();
     }
 
     public void TakeDamage(int damage)
@@ -60,14 +65,21 @@ public class PlayerHealth : MonoBehaviour
 
             iFrames = maxIFrames;
 
-            if (currentHealth > 0)
+            if (playerManager.GetPlayerHealth() > 0 && !isBlocking) // don't play hit animation when dead or blocking
                 animator.SetTrigger("IsHit"); // trigger hit animation
         }
     }
 
     public void Heal(int healAmount)
     {
-        playerManager.AdjustPlayerHealth(healAmount);
+        if (!isDead)
+        {
+            int currentHealth = playerManager.GetPlayerHealth();
+
+            int newHealth = Mathf.Min(currentHealth + healAmount, maxHealth); // prevent overhealing
+
+            playerManager.SetPlayerHealth(newHealth);
+        }
     }
 
     public void SetIsBlocking(bool newIsBlocking)

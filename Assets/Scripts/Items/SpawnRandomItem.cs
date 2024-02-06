@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class SpawnRandomItem : MonoBehaviour
 {
-    // public variables
-    public GameObject[] itemsArray;
-    public float spawnChance; // float value between 0 and 1 representing spawn chance
-    public Vector2 launchVector; // when spawning iem is laucnhed
+    // [SerializeField] variables
+    [SerializeField] GameObject[] itemsArray;
+    [SerializeField] float spawnChance; // float value between 0 and 1 representing spawn chance
+    [SerializeField] Vector2 launchVector; // when spawning iem is laucnhed
 
     // private variables
     private int randomItemIndex;

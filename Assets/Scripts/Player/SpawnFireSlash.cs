@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SpawnFireSlash : MonoBehaviour
 {
-    // public variables
-    public GameObject FireSlash; // sepcial attack spawns a fire slash
-    public float xOffset, yOffset; // offset from the player
-    public float xVelocity, yVelocity;
+    // [SerializeField] variables
+    [SerializeField] GameObject FireSlash; // sepcial attack spawns a fire slash
+    [SerializeField] float xOffset, yOffset; // offset from the player
+    [SerializeField] float xVelocity, yVelocity;
 
     // private variables
     private Rigidbody2D FireSlashRB;

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerLeaveRoom : MonoBehaviour
 {
-    // public variables
-    public KeyCode LeaveKeyCode;
+    // [SerializeField] variables
+    [SerializeField] KeyCode LeaveKeyCode;
 
     // privatew variables
     private BoxCollider2D PlayerCollider;
