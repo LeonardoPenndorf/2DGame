@@ -69,6 +69,7 @@ public class EnemyHealth : MonoBehaviour
     private void Death()
     {
         EnemyRB.velocity = Vector3.zero;
+        EnemyRB.bodyType = RigidbodyType2D.Static;
         EnemyAnimator.SetTrigger("IsDead");
 
         EnemyCollider.enabled = false; // game objects should not collide with dead enemies

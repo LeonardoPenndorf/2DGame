@@ -13,6 +13,7 @@ public class RangedEnemyMovement : MonoBehaviour
     private EnemyAggro enemyAggro; // script that manages the aggro state of enemies
     private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
     private GameObject Player; // player gameobject is required for navigation when aggroed
+    private EnemyKnockback enemyKnockback;
     private bool isAggroed;
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class RangedEnemyMovement : MonoBehaviour
         EnemyAnimator = GetComponent<Animator>();
         enemyAggro = GetComponent<EnemyAggro>();
         animationsChecker = GetComponent<AnimationChecker>();
+        enemyKnockback = GetComponent<EnemyKnockback>();
 
         Player = GameObject.FindWithTag("Player");
     }
@@ -28,6 +30,8 @@ public class RangedEnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (enemyKnockback.GetIsStunned()) return; // can't moved when stunned
+
         isAggroed = enemyAggro.GetIsAggroed();
 
         if (isAggroed && !animationsChecker.CheckAnimations(animationsArray))

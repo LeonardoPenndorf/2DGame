@@ -431,11 +431,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HurtBox: {fileID: 6062602973029319167}
   AttackKeyCode: 323
-  baseDamage: 20
   maxComboDelay: 1.7
-  knockbackForce: 10
   AirAttackCooldown: 1
   keyHoldDurationThreshold: 0.35
+  baseDamage: 20
+  knockbackVector: {x: 6, y: 2}
 --- !u!114 &41005810356047400
 MonoBehaviour:
   m_ObjectHideFlags: 0

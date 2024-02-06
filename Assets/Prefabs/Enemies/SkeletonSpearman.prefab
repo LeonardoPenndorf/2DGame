@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 5034238083783719870}
   - component: {fileID: 508879910443987835}
   - component: {fileID: 5351560157378732112}
+  - component: {fileID: 2310256468810609714}
   m_Layer: 11
   m_Name: SkeletonSpearman
   m_TagString: Enemy
@@ -124,14 +125,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465361686494501331}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -172,7 +173,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.19135523, y: -0.9975971}
@@ -218,13 +219,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3944a774e2b0f824cafdac46ff0ef99c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HurtBox: {fileID: 7177992886720302207}
+  animationsArray: []
   damage: 10
   knockbackForce: 0
   stunDuration: 0
   attackRange: 2
   maxCooldown: 2
-  HurtBox: {fileID: 7177992886720302207}
-  animationsArray: []
 --- !u!114 &3000085476613276697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd9415b4cbd87e428a7b3fd5c4b45a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 30
   currentHealth: 0
   damageReduction: 0
   maxIFrames: 0
@@ -268,6 +269,7 @@ MonoBehaviour:
   viewDistance: 10
   aggroRange: 2
   fovAngle: 45
+  looseAggroTime: 5
 --- !u!114 &5351560157378732112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,6 +287,18 @@ MonoBehaviour:
   - {fileID: 3909300074024647732, guid: fe4f4741e07a89242920714c86a5f3df, type: 3}
   spawnChance: 0.1
   launchVector: {x: 4, y: 2}
+--- !u!114 &2310256468810609714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465361686494501331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d170329c6a1514098ed72028463198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6026330851827974414
 GameObject:
   m_ObjectHideFlags: 0

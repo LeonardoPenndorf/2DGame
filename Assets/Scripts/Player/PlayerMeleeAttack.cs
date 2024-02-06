@@ -13,7 +13,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     // public variables
     public int baseDamage; // base damage of all attacks. This vlaue is used to set the damage of a specifc attack
-    public float knockbackForce; // the knockback force of an attack (not yet implemented)
+    public Vector2 knockbackVector; // the knockback force of an attack
 
     // private variables
     private BoxCollider2D HurtBoxCollider;

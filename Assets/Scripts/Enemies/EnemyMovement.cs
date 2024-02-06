@@ -17,12 +17,14 @@ public class EnemyMovement : MonoBehaviour
     private EnemyAggro enemyAggro; // script that manages the aggro state of enemies
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
     private GameObject Player; // player gameobject is required for navigation when aggroed
+    private EnemyKnockback enemyKnockback;
     private float movementSpeed, // current movement speed
                   attackRange, // when player is within attack range, enemy stops moving
                   direction = 1.0f, // direction the enemy is facing
                   distance, // distance between the player and the enemy in 2 dimension
                   xDistance; // distance between the player and the enemy on the x axis
-    private bool isAggroed, checkNav;
+    private bool isAggroed, 
+                 checkNav;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,7 @@ public class EnemyMovement : MonoBehaviour
         EnemyAnimator = GetComponent<Animator>();
         enemyAggro = GetComponent<EnemyAggro>();
         animationsChecker = GetComponent<AnimationChecker>();
+        enemyKnockback = GetComponent<EnemyKnockback>();
 
         Player = GameObject.FindWithTag("Player");
 
@@ -42,6 +45,8 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (enemyKnockback.GetIsStunned()) return; // can't moved when stunned
+
         isAggroed = enemyAggro.GetIsAggroed();
 
         if (isAggroed)
