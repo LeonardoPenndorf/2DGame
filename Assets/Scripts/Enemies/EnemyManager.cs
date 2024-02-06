@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    // public variables
     public static EnemyManager instance; // Singleton pattern
 
+    // private variables
     private List<GameObject> enemies = new List<GameObject>(); // list containing all enemy game objects
 
     void Awake()

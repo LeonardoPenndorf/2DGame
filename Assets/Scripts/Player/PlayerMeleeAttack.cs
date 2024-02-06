@@ -35,6 +35,8 @@ public class PlayerMeleeAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (TogglePauseMenu.gameIsPaused) return;
+
         if (cooldownTimer > 0)
         {
             cooldownTimer -= Time.deltaTime;

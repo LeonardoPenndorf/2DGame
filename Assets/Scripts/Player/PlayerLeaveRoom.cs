@@ -20,6 +20,8 @@ public class PlayerLeaveRoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (TogglePauseMenu.gameIsPaused) return;
+
         LeaveRoom();
     }
 

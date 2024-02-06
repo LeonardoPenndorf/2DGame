@@ -35,6 +35,8 @@ public class PlayerJumpDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (TogglePauseMenu.gameIsPaused) return;
+
         if (!animationsChecker.CheckAnimations(animationsArray))
         {
             JumpDown();

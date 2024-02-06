@@ -36,7 +36,7 @@ public class BombScript : MonoBehaviour
 
         if (PlayerCollider)
         {
-            PlayerCollider.GetComponent<PlayerHealth>().TakeDamge(damage);
+            PlayerCollider.GetComponent<PlayerHealth>().TakeDamage(damage);
             PlayerCollider.GetComponent<PlayerMovement>().KnockBack(ExplosionKnockbackForce, stunDuration);
 
         }

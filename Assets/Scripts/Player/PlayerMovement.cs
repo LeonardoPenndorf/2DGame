@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (TogglePauseMenu.gameIsPaused) return;
+
         if (!isStunned && !animationsChecker.CheckAnimations(animationsArray)) // cannot move when stunned or during certain animations
         {
             Run();

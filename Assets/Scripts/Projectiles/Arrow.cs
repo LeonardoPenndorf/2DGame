@@ -25,12 +25,12 @@ public class Arrow : MonoBehaviour
 
         if(playerCollision)
         {
-            collision.GetComponent<PlayerHealth>().TakeDamge(damage);
+            collision.GetComponent<PlayerHealth>().TakeDamage(damage);
             Destroy(gameObject);
         }
         else if (enemyCollision) // has friendly fire
         {
-            collision.GetComponent<EnemyHealth>().TakeDamge(damage);
+            collision.GetComponent<EnemyHealth>().TakeDamage(damage);
             Destroy(gameObject);
         }
         else if (groundCollision)

@@ -388,7 +388,7 @@ MonoBehaviour:
   PlayerFeet: {fileID: 3792087196651171425}
   JumpKeyCode: 32
   runSpeed: 10
-  jumpSpeed: 15
+  jumpSpeed: 17
   gravity: 4
   animationsArray:
   - Warrior_TakeHit
@@ -435,7 +435,7 @@ MonoBehaviour:
   baseDamage: 20
   maxComboDelay: 1.7
   knockbackForce: 10
-  AirAttackCooldown: 0.5
+  AirAttackCooldown: 1
   keyHoldDurationThreshold: 0.35
 --- !u!114 &41005810356047400
 MonoBehaviour:

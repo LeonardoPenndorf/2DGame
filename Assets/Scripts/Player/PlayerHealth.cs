@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     public float maxIFrames;
 
     // private variables
+    private PlayerManager playerManager; // player manager stores persistent values such as health
     private Animator animator;
     private float iFrames;
     private bool isDead = false, 
@@ -17,14 +18,22 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerManager = PlayerManager.instance; // there is only ever a single player manager instance
         animator = GetComponent<Animator>();
 
-        currentHealth = maxHealth;
+        currentHealth = playerManager.GetPlayerHealth(); // get current health from manager
+        if (currentHealth == 0) // in the first room current health is 0
+        {
+            currentHealth = maxHealth;
+            playerManager.AdjustPlayerHealth(maxHealth);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        currentHealth = PlayerManager.instance.GetPlayerHealth(); // get the current health value
+
         if (iFrames > 0)
         {
             iFrames -= Time.deltaTime;
@@ -36,24 +45,29 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamge(int damage)
+    public void TakeDamage(int damage)
     {
         if ((iFrames <= 0) && !isDead)
         {
             if (!isBlocking)
             {
-                currentHealth -= damage;
+                playerManager.AdjustPlayerHealth(-damage);
             }
             else
             {
-                currentHealth -= Mathf.Max((damage - damageReduction), 0);
+                playerManager.AdjustPlayerHealth(-Mathf.Max((damage - damageReduction), 0));
             }
 
             iFrames = maxIFrames;
 
-            if(currentHealth > 0)
+            if (currentHealth > 0)
                 animator.SetTrigger("IsHit"); // trigger hit animation
         }
+    }
+
+    public void Heal(int healAmount)
+    {
+        playerManager.AdjustPlayerHealth(healAmount);
     }
 
     public void SetIsBlocking(bool newIsBlocking)

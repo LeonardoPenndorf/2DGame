@@ -7,6 +7,8 @@ TagManager:
   - Climbing
   - Enemy
   - Door
+  - Healing
+  - Diamond
   layers:
   - Default
   - TransparentFX
@@ -26,7 +28,7 @@ TagManager:
   - Navigation
   - Platforms
   - Door
-  - 
+  - Items
   - 
   - 
   - 
@@ -67,6 +69,9 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Items
+    uniqueID: 956996775
     locked: 0
   - name: Effects
     uniqueID: 3582615981

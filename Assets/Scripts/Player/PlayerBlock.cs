@@ -20,6 +20,8 @@ public class PlayerBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (TogglePauseMenu.gameIsPaused) return;
+
         Block();
     }
 

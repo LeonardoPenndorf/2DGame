@@ -24,7 +24,7 @@ public class FireSlash : MonoBehaviour
 
         if (enemyCollision)
         {
-            collision.GetComponent<EnemyHealth>().TakeDamge(damage);
+            collision.GetComponent<EnemyHealth>().TakeDamage(damage);
             Destroy(gameObject);
         }
 

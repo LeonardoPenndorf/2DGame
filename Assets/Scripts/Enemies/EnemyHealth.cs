@@ -11,6 +11,9 @@ public class EnemyHealth : MonoBehaviour
     // private variables
     private Animator EnemyAnimator;
     private Rigidbody2D EnemyRB;
+    private BoxCollider2D EnemyCollider;
+    private GameObject Hurtbox;
+    private SpawnRandomItem SpawnRandomItemComponent;
     private float iFrames;
     private bool isBlocking = false; // some enemies can block
 
@@ -20,6 +23,10 @@ public class EnemyHealth : MonoBehaviour
     {
         EnemyAnimator = GetComponent<Animator>();
         EnemyRB = GetComponent<Rigidbody2D>();
+        EnemyCollider = GetComponent<BoxCollider2D>();
+        SpawnRandomItemComponent = GetComponent<SpawnRandomItem>();
+
+        Hurtbox = transform.Find("Hurtbox").gameObject;
 
         currentHealth = maxHealth;
 
@@ -40,7 +47,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamge(int damage)
+    public void TakeDamage(int damage)
     {
         if (iFrames <= 0 && currentHealth > 0)
         {
@@ -63,6 +70,14 @@ public class EnemyHealth : MonoBehaviour
     {
         EnemyRB.velocity = Vector3.zero;
         EnemyAnimator.SetTrigger("IsDead");
+
+        EnemyCollider.enabled = false; // game objects should not collide with dead enemies
+        Hurtbox.SetActive(false); // if enemy was killed during its attacking animation the hurtbox collider will be enabled, thus we must deactivate the hurtbox gameobject to prevent issues
+
+        SpawnRandomItemComponent.SpawnItem(); // sometimes enemies will spawn items on death
+
+        EnemyManager.instance.EnemyDied(gameObject); // remove enemy from the enemies list in enemy manager
+
         GetComponent<EnemyMeleeAttack>().enabled = false;
 
         EnemyMovement EnemyMovementComponent = GetComponent<EnemyMovement>();
@@ -84,7 +99,7 @@ public class EnemyHealth : MonoBehaviour
             EnemyAnimator.SetBool("IsBlocking", false);
         }
 
-        EnemyManager.instance.EnemyDied(gameObject); // remove enemy from the enemies list in enemy manager
+        GetComponent<EnemyHealth>().enabled = false;
     }
 
     public void SetIsBlocking(bool newState)

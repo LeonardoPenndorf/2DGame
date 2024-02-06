@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3000085476613276697}
   - component: {fileID: 5034238083783719870}
   - component: {fileID: 508879910443987835}
+  - component: {fileID: 5351560157378732112}
   m_Layer: 11
   m_Name: SkeletonSpearman
   m_TagString: Enemy
@@ -267,6 +268,23 @@ MonoBehaviour:
   viewDistance: 10
   aggroRange: 2
   fovAngle: 45
+--- !u!114 &5351560157378732112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465361686494501331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e0f00ca8aa30c4c83ac36ffa572de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsArray:
+  - {fileID: 3909300074024647732, guid: 2c53d24ac153e9c4eaf1cee31b34b94f, type: 3}
+  - {fileID: 3909300074024647732, guid: fe4f4741e07a89242920714c86a5f3df, type: 3}
+  spawnChance: 0.1
+  launchVector: {x: 4, y: 2}
 --- !u!1 &6026330851827974414
 GameObject:
   m_ObjectHideFlags: 0
