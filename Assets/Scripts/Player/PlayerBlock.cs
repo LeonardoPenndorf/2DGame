@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerBlock : MonoBehaviour
 {
@@ -18,24 +19,20 @@ public class PlayerBlock : MonoBehaviour
         playerHealth = GetComponent<PlayerHealth>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HandleBlockInput(InputAction.CallbackContext context)
     {
         if (TogglePauseMenu.gameIsPaused) return;
 
-        HandleBlockInput();
-    }
-
-    private void HandleBlockInput()
-    {
-        if (Input.GetKeyDown(blockKeyCode))
+        if (context.started)
         {
             PlayerAnimator.SetBool("IsBlocking", true);
+
         }
 
-        if (Input.GetKeyUp(blockKeyCode))
+        if (context.canceled)
         {
             PlayerAnimator.SetBool("IsBlocking", false);
+
         }
     }
 

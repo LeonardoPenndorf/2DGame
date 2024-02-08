@@ -247,6 +247,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1081256511085253101, guid: d440c9caa47f41d4f9429d3cb792fee0, type: 3}
   m_PrefabInstance: {fileID: 226843695}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &315402221 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3560074648740790137, guid: c70e6de5080fb3d4fb409f1a70a1a75b, type: 3}
+  m_PrefabInstance: {fileID: 8782649105096672077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e51ddbb5305f0e4fa3572ebd63edb7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &368720110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25239,14 +25250,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1733006571222690284, guid: 8aa652d56b08ecd4ebd2569212c66314, type: 3}
-      propertyPath: knockbackVector.x
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1733006571222690284, guid: 8aa652d56b08ecd4ebd2569212c66314, type: 3}
-      propertyPath: knockbackVector.y
-      value: 5
-      objectReference: {fileID: 0}
+    - target: {fileID: 1301676925191890625, guid: 8aa652d56b08ecd4ebd2569212c66314, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 315402221}
     - target: {fileID: 4389907814029081718, guid: 8aa652d56b08ecd4ebd2569212c66314, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.08
@@ -25490,7 +25497,7 @@ TilemapRenderer:
   m_SortingLayer: -6
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.5454545, y: 0.77272725, z: 0}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -25506,16 +25513,6 @@ Tilemap:
   m_GameObject: {fileID: 1602729945}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: -12, y: -3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 8
-      m_TileSpriteIndex: 8
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -5, y: 0, z: 0}
     second:
       serializedVersion: 2
@@ -25694,8 +25691,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: d1b1e892c57519a48bb346497be16df8, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: a16d07ff831896843bef2cba6ed72e05, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 52c41aa25ffbefe44823dc06e4125710, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 2
     m_Data: {fileID: -1821478526, guid: 9cad3d498ae02294f86c245f1cc39452, type: 3}
@@ -25713,10 +25710,10 @@ Tilemap:
     m_Data: {fileID: -1193285972, guid: 9cad3d498ae02294f86c245f1cc39452, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -1110094495, guid: 9cad3d498ae02294f86c245f1cc39452, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 32157581, guid: 4be97d1da3c19d841ab8a939ce1872b2, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 17
+  - m_RefCount: 16
     m_Data:
       e00: 1
       e01: 0
@@ -25735,7 +25732,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 17
+  - m_RefCount: 16
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -35976,8 +35973,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1582872797}
   - {fileID: 202277848}
+  - {fileID: 1582872797}
   - {fileID: 995869043}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -35995,7 +35992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5820706599125276612, guid: 34d85eec7ab4fdb4b8bacadff54b99e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.4542255
+      value: 3.38
       objectReference: {fileID: 0}
     - target: {fileID: 5820706599125276612, guid: 34d85eec7ab4fdb4b8bacadff54b99e7, type: 3}
       propertyPath: m_LocalPosition.y

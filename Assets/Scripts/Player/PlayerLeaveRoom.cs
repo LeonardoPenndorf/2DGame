@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerLeaveRoom : MonoBehaviour
 {
-    // [SerializeField] variables
-    [SerializeField] KeyCode LeaveKeyCode;
-
     // privatew variables
     private BoxCollider2D PlayerCollider;
     private ExitDoor ExitDoorComponent = null;
@@ -16,24 +13,13 @@ public class PlayerLeaveRoom : MonoBehaviour
     {
         PlayerCollider = GetComponent<BoxCollider2D>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (TogglePauseMenu.gameIsPaused) return;
-
-        LeaveRoom();
-    }
-
-    private void LeaveRoom()
+    
+    public void LeaveRoom()
     {
         if (!PlayerCollider.IsTouchingLayers(LayerMask.GetMask("Door")))
             return;
-
-        if (Input.GetKeyDown(LeaveKeyCode))
-        {
-            ExitDoorComponent.StartLoadingRoom();
-        }
+        
+        ExitDoorComponent.StartLoadingRoom();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

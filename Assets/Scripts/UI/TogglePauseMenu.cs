@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class TogglePauseMenu : MonoBehaviour
@@ -10,16 +11,14 @@ public class TogglePauseMenu : MonoBehaviour
     public KeyCode pauseKey;
     public static bool gameIsPaused = false;
 
-    // Update is called once per frame
-    void Update()
+    public void PauseUnpauseGame(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(pauseKey))
-        {
-            if (gameIsPaused)
-                ResumeGame();
-            else
-                PauseGame();
-        }
+        if (!context.performed) return; // only perform this function once
+
+        if (gameIsPaused)
+            ResumeGame();
+        else
+            PauseGame();
     }
 
     public void PauseGame()

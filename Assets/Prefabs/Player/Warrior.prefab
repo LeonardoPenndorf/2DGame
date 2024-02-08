@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 359505279110432522}
   - component: {fileID: 8540299747823049924}
   - component: {fileID: 4593993611541728165}
+  - component: {fileID: 1301676925191890625}
   - component: {fileID: -5246074709064478077}
   - component: {fileID: -5345504813646555920}
   - component: {fileID: 3553670192834770497}
@@ -357,6 +358,148 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1301676925191890625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157536053932933172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: cbeecb67ad27a6f48bc4eee196568060, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -5345504813646555920}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d81977c0-3881-45c1-87c7-a7a07cf41d05
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3553670192834770497}
+        m_TargetAssemblyTypeName: PlayerJumpDown, Assembly-CSharp
+        m_MethodName: JumpDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 24ffeb1f-978c-43c4-bc29-37e2e3509c58
+    m_ActionName: Player/JumpDown[/Keyboard/s,/DualShock4GamepadHID/dpad/down]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1733006571222690284}
+        m_TargetAssemblyTypeName: PlayerMeleeAttack, Assembly-CSharp
+        m_MethodName: CheckAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0c9b7492-ff6c-48f0-8846-d748079a1ea9
+    m_ActionName: Player/Attack[/Mouse/leftButton,/DualShock4GamepadHID/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1733006571222690284}
+        m_TargetAssemblyTypeName: PlayerMeleeAttack, Assembly-CSharp
+        m_MethodName: SpecialAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b656ca4f-964d-48e9-b079-2bf8fb5661bf
+    m_ActionName: Player/SpecialAttack[/Mouse/leftButton,/DualShock4GamepadHID/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TogglePauseMenu, Assembly-CSharp
+        m_MethodName: PauseUnpauseGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c20a7da9-0c2a-4c03-ab02-d5b5336a6311
+    m_ActionName: Player/PauseGame[/Keyboard/escape,/DualShock4GamepadHID/start]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3619389932709620366}
+        m_TargetAssemblyTypeName: PlayerLeaveRoom, Assembly-CSharp
+        m_MethodName: LeaveRoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 86c35da0-70ae-467d-a77b-aa9e5e7d0cf2
+    m_ActionName: Player/LeaveRoom[/Keyboard/e,/DualShock4GamepadHID/dpad/up]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3143726481697374373}
+        m_TargetAssemblyTypeName: PlayerBlock, Assembly-CSharp
+        m_MethodName: HandleBlockInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 67540289-c570-4292-b5e6-376b139b46fb
+    m_ActionName: Player/Block[/Mouse/rightButton,/DualShock4GamepadHID/buttonEast]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!114 &-5246074709064478077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,12 +573,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HurtBox: {fileID: 6062602973029319167}
-  AttackKeyCode: 323
   maxComboDelay: 1.7
-  AirAttackCooldown: 1
-  keyHoldDurationThreshold: 0.35
+  attackCooldown: 1.5
+  stunDuration: 1
   baseDamage: 20
-  knockbackVector: {x: 6, y: 2}
+  knockbackVector: {x: 7, y: 5}
 --- !u!114 &41005810356047400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,4 +632,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6ad6cea53c3eb439314b6a14f297d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeaveKeyCode: 101

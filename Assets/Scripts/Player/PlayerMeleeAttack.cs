@@ -1,19 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMeleeAttack : MonoBehaviour
 {
     // [SerializeField] variables
     [SerializeField] GameObject HurtBox; // melee attack hurt box
-    [SerializeField] KeyCode AttackKeyCode; // key that needs to bee pressed to attack
     [SerializeField] float maxComboDelay, // maximum amount of time between clicks
-                 AirAttackCooldown, // after air attacking cooldown must end before attacking again 
-                 keyHoldDurationThreshold; // amount of time that needs to pass to register as hoplding down
-
-    // public variables
-    public int baseDamage; // base damage of all attacks. This vlaue is used to set the damage of a specifc attack
-    public Vector2 knockbackVector; // the knockback force of an attack
+                           attackCooldown, // after air attacking cooldown must end before attacking again 
+                           stunDuration; // after being hit by an attack, the enemy is stunned for a short while
+    [SerializeField] int baseDamage; // base damage of all attacks. This vlaue is used to set the damage of a specifc attack
+    [SerializeField] Vector2 knockbackVector; // the knockback force of an attack
 
     // private variables
     private BoxCollider2D HurtBoxCollider;
@@ -22,9 +20,8 @@ public class PlayerMeleeAttack : MonoBehaviour
     private int damage, // damage of the current attack
                 attackComboCounter = 0; // records the cuurent combo account, this values ranges between 0 and 3
     private float lastClickTime, // the last time the player has clicked the attack button
-                  cooldownTimer,
-                  keyHoldDuration; // measures how long they key is being held to differentiate between holding and clicking
-    private bool isGrounded, isKeyHoldCoroutineRunning = false; // necessary to prevent the running of multiple instances of the same coroutine
+                  cooldownTimer;
+    private bool isGrounded;
 
     // Start is called before the first frame update
     void Start()
@@ -43,38 +40,30 @@ public class PlayerMeleeAttack : MonoBehaviour
         {
             cooldownTimer -= Time.deltaTime;
         }
-
-        if (Input.GetKeyDown(AttackKeyCode) && !isKeyHoldCoroutineRunning) // registers when return has been pressed 
-        {
-            StartCoroutine(MeasureKeyHoldDuration()); // measures how long return is being pressed
-        }
-
-        if (Input.GetKeyUp(AttackKeyCode)) // registers when return is no longer pressed
-        {
-            CheckAttack(); // check if regualr melee attack or special
-        }
     }
 
-    private void CheckAttack() // check which attack should be executed
+    public void CheckAttack(InputAction.CallbackContext context) // check which attack should be executed
     {
+        if (TogglePauseMenu.gameIsPaused || cooldownTimer > 0) return;
+
+        if (!context.performed) return; // only perform this function once
+
         isGrounded = PlayerMovementComponent.GetIsGrounded();
 
-        if (keyHoldDuration < keyHoldDurationThreshold && isGrounded) // if key was pressed and is grounded, execute regular attack
+        if (isGrounded)
         {
             AttackCombo();
         }
-        else if (keyHoldDuration < keyHoldDurationThreshold && !isGrounded && cooldownTimer <= 0) // if key was pressed and is not grounded, execute air attack
+        else
         {
             AirAttack();
-        }
-        else if (keyHoldDuration >= keyHoldDurationThreshold && isGrounded) // if key was held and is grounded, execute special attack
-        {
-            SpecialAttack();
         }
     }
 
     private void AttackCombo() // a 3 hit attack combo
     {
+        PlayerAnimator.SetInteger("AttackComboCounter", 1);
+
         float timeSinceLastClick = Time.time - lastClickTime;
         if (timeSinceLastClick <= maxComboDelay)
         {
@@ -102,6 +91,7 @@ public class PlayerMeleeAttack : MonoBehaviour
             case 3:
                 damage = baseDamage * 2; // Max combo damage
                 PlayerAnimator.SetInteger("AttackComboCounter", 3);
+                cooldownTimer = attackCooldown;
                 break;
         }
 
@@ -117,44 +107,41 @@ public class PlayerMeleeAttack : MonoBehaviour
         damage = baseDamage; // set damage to base damage
         PlayerAnimator.SetTrigger("AirAttack");
 
-        cooldownTimer = AirAttackCooldown;
+        cooldownTimer = attackCooldown;
     }
 
-    private void SpecialAttack() // a very powerful attack that also shoots a projectile
+    public void SpecialAttack(InputAction.CallbackContext context) // a very powerful attack that also shoots a projectile
     {
-        damage = baseDamage * 4; // special attacks deals a lot of damage
-        PlayerAnimator.SetTrigger("SpecialAttack");
+        if (TogglePauseMenu.gameIsPaused || cooldownTimer > 0) return;
+
+        if (context.performed)
+        {
+            damage = baseDamage * 4; // special attacks deals a lot of damage
+            PlayerAnimator.SetTrigger("SpecialAttack");
+            cooldownTimer = attackCooldown;
+        }
     }
 
-    public void enableHurtboxCollider() // enable hurtbox collider at beginning of attack animation
+    private void enableHurtboxCollider() // enable hurtbox collider at beginning of attack animation
     {
         HurtBoxCollider.enabled = true;
     }
 
-    public void disableHurtboxCollider() // disable hurtbox collider at end of attack animation
+    private void disableHurtboxCollider() // disable hurtbox collider at end of attack animation
     {
         HurtBoxCollider.enabled = false;
     }
 
-    public void ResetCounter() // called in the attack end animations and the third attack
+    private void ResetCounter() // called in the attack end animations and the third attack
     {
         PlayerAnimator.SetInteger("AttackComboCounter", 0);
     }
+
     public int GetDamage() { return damage; }
 
-    private IEnumerator MeasureKeyHoldDuration()
-    {
-        isKeyHoldCoroutineRunning = true;
-        keyHoldDuration = 0.0f;
+    public float GetStunDuration() { return stunDuration; }
 
-        while (Input.GetKey(AttackKeyCode))
-        {
-            keyHoldDuration += Time.deltaTime;
-            yield return null; // Wait for the next frame
-        }
-
-        isKeyHoldCoroutineRunning= false;
-    }
+    public Vector2 GetKnockbackVector() { return knockbackVector; }
 
     private IEnumerator ResetComboAfterDelay(float delay)
     {

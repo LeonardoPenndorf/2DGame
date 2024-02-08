@@ -6,17 +6,19 @@ public class PlayerHurtbox : MonoBehaviour
 {
     // private variables
     private int damage;
+    private float stunDuration;
     private Vector2 knockbackVector; // all attributes come from PlayerMeleeAttack a script component of the parent
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         damage = GetComponentInParent<PlayerMeleeAttack>().GetDamage();
-        knockbackVector = GetComponentInParent<PlayerMeleeAttack>().knockbackVector;
+        stunDuration = GetComponentInParent<PlayerMeleeAttack>().GetStunDuration();
+        knockbackVector = GetComponentInParent<PlayerMeleeAttack>().GetKnockbackVector();
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.GetComponent<EnemyHealth>().TakeDamage(damage);
-            collision.GetComponent<EnemyKnockback>().Knockback(knockbackVector, 5);
+            collision.GetComponent<EnemyKnockback>().Knockback(knockbackVector, stunDuration);
         }
     }
 }

@@ -35,22 +35,17 @@ public class PlayerJumpDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TogglePauseMenu.gameIsPaused) return;
-
-        if (!animationsChecker.CheckAnimations(animationsArray))
-        {
-            JumpDown();
-        }
-
         if (PlayerRB.velocity.y >= 0 && PlayerRB.velocity.y <= 1 && !isGrounded) // switch to JumpPeak animation when velocity approaches 0
         {
             PlayerAnimator.SetTrigger("IsPeaking");
         }
     }
 
-    private void JumpDown() // Jump down from a platform
+    public void JumpDown() // Jump down from a platform
     {
-        if (Input.GetKeyDown(JumpDownKeyCode))
+        if (TogglePauseMenu.gameIsPaused) return;
+
+        if (!animationsChecker.CheckAnimations(animationsArray))
         {
             isGrounded = PlayerMovementScript.GetIsGrounded();
 

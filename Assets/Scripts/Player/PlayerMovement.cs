@@ -40,9 +40,11 @@ public class PlayerMovement : MonoBehaviour
         if (!isStunned && !animationsChecker.CheckAnimations(animationsArray)) // cannot move when stunned or during certain animations
         {
             Run();
-
-            Jump();
         }
+
+        isGrounded = PlayerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || PlayerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Platforms")); // check if feet are touching the ground
+
+        PlayerAnimator.SetBool("IsGrounded", isGrounded); // toggle jumping animation
     }
 
     private void Run()
@@ -58,13 +60,11 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
-    private void Jump()
+    public void Jump()
     {
-        isGrounded = PlayerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || PlayerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Platforms")); // check if feet are touching the ground
+        if (TogglePauseMenu.gameIsPaused) return;
 
-        PlayerAnimator.SetBool("IsGrounded", isGrounded); // toggle jumping animation
-
-        if ((Input.GetKeyDown(JumpKeyCode)) && isGrounded) // can only jump when grounded
+        if (isGrounded && !isStunned && !animationsChecker.CheckAnimations(animationsArray)) // can only jump when grounded
         {
             PlayerRigidbody.velocity = new Vector2(PlayerRigidbody.velocity.x, jumpSpeed); // jump
         }
