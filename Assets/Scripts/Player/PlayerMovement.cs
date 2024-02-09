@@ -34,39 +34,41 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TogglePauseMenu.gameIsPaused) return;
+        isGrounded = PlayerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || PlayerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Platforms")); // check if feet are touching the ground
 
-        if (!isStunned && !animationsChecker.CheckAnimations(animationsArray)) // cannot move when stunned or during certain animations
+        PlayerAnimator.SetBool("IsGrounded", isGrounded); // toggle jumping animation
+
+        if (TogglePauseMenu.gameIsPaused || isGrounded) return;
+
+        xAxisInput = Input.GetAxis("Horizontal"); // get horizontal axis input
+
+        if (!animationsChecker.CheckAnimations(animationsArray)) // cannot move when stunned or during certain animations
         {
             Run();
         }
 
-        isGrounded = PlayerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || PlayerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Platforms")); // check if feet are touching the ground
-
-        PlayerAnimator.SetBool("IsGrounded", isGrounded); // toggle jumping animation
+        Rotate();
     }
 
     private void Run()
     {
-        xAxisInput = Input.GetAxis("Horizontal"); // get horizontal axis input
-
         PlayerAnimator.SetBool("IsRunning", xAxisInput != 0); // set running and idle animations
         PlayerRigidbody.velocity = new Vector2(xAxisInput * runSpeed, PlayerRigidbody.velocity.y); // move
+    }
 
-        if (PlayerRigidbody.velocity.x < 0) // turn left
+    private void Rotate()
+    {
+        if (xAxisInput < 0) // turn left
             transform.rotation = Quaternion.Euler(0, 180, 0);
-        else if (PlayerRigidbody.velocity.x > 0) // turn right
+        else if (xAxisInput > 0) // turn right
             transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     public void Jump()
     {
-        if (TogglePauseMenu.gameIsPaused) return;
+        if (TogglePauseMenu.gameIsPaused || !isGrounded || isStunned || animationsChecker.CheckAnimations(animationsArray)) return;
 
-        if (isGrounded && !isStunned && !animationsChecker.CheckAnimations(animationsArray)) // can only jump when grounded
-        {
-            PlayerRigidbody.velocity = new Vector2(PlayerRigidbody.velocity.x, jumpSpeed); // jump
-        }
+        PlayerRigidbody.velocity = new Vector2(PlayerRigidbody.velocity.x, jumpSpeed); // jump
     }
 
     public void KnockBack(Vector2 knockbackVector, float stunDuration, Transform enemyTransform)
