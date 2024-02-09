@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     // [SerializeField] variables
-    [SerializeField] int maxHealth, damageReduction;
+    [SerializeField] int maxHealth;
     [SerializeField] float maxIFrames;
 
     // private variables
     private PlayerManager playerManager; // player manager stores persistent values such as health
+    private PlayerBlock playerBlock;
     private Animator animator;
     private float iFrames;
     private bool isDead = false, 
@@ -19,6 +20,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         playerManager = PlayerManager.instance; // there is only ever a single player manager instance
+        playerBlock = GetComponent<PlayerBlock>();
         animator = GetComponent<Animator>();
 
         InitializeHealth();
@@ -50,24 +52,18 @@ public class PlayerHealth : MonoBehaviour
         if (playerManager.GetPlayerHealth() <= 0 && !isDead) Death();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Transform hurtboxTransform)
     {
-        if ((iFrames <= 0) && !isDead)
+        if ((iFrames > 0) || isDead || (isBlocking && playerBlock.IsAttackComingFromFront(hurtboxTransform))) { return; }
+
+        playerManager.AdjustPlayerHealth(-damage);
+
+        if (playerManager.GetPlayerHealth() > 0)
         {
-            if (!isBlocking)
-            {
-                playerManager.AdjustPlayerHealth(-damage);
-            }
-            else
-            {
-                playerManager.AdjustPlayerHealth(-Mathf.Max((damage - damageReduction), 0));
-            }
-
-            iFrames = maxIFrames;
-
-            if (playerManager.GetPlayerHealth() > 0 && !isBlocking) // don't play hit animation when dead or blocking
-                animator.SetTrigger("IsHit"); // trigger hit animation
+            animator.SetTrigger("IsHit");
         }
+
+        iFrames = maxIFrames;
     }
 
     public void Heal(int healAmount)

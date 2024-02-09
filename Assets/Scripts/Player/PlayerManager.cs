@@ -31,10 +31,7 @@ public class PlayerManager : MonoBehaviour
 
     public void SetPlayerHealth(int health) {  currentHealth = health; }
 
-    public void AdjustPlayerHealth(int health)
-    {
-        currentHealth += health;
-    }
+    public void AdjustPlayerHealth(int health) { currentHealth += health; }
 
     public void OnPlayerDeath()
     {

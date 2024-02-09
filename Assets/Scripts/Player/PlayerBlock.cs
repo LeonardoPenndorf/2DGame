@@ -8,6 +8,7 @@ public class PlayerBlock : MonoBehaviour
     // private variables
     private Animator PlayerAnimator;
     private PlayerHealth playerHealth;
+    private bool isFacingRight = true;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,25 @@ public class PlayerBlock : MonoBehaviour
         {
             PlayerAnimator.SetBool("IsBlocking", false);
 
+        }
+    }
+
+    public bool IsAttackComingFromFront(Transform hurtboxTrasnform)
+    {
+        isFacingRight = transform.rotation.y == 0;
+
+        Vector3 attackDirection = hurtboxTrasnform.position - transform.position;
+
+        // Normalize the direction to get either -1 (left) or 1 (right)
+        float direction = Mathf.Sign(attackDirection.x);
+
+        if ((isFacingRight && direction > 0) || (!isFacingRight && direction < 0))
+        {
+            return true; // Attack is coming from the front
+        }
+        else
+        {
+            return false; // Attack is coming from behind
         }
     }
 

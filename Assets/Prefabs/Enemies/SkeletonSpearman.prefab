@@ -224,7 +224,7 @@ MonoBehaviour:
   damage: 10
   knockbackForce: 0
   stunDuration: 0
-  attackRange: 2
+  attackRange: 1.7
   maxCooldown: 2
 --- !u!114 &3000085476613276697
 MonoBehaviour:
