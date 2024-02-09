@@ -16,13 +16,12 @@ Environment: https://szadiart.itch.io/pixle-castle-2d
 
 
 ToDo:
-1) Improve knockback
-2) Improve blocking
-3) Improve enemy vision
-4) Implement randomized room selection
-5) Implement UI
-6) Implement menu functionality
-7) Implement treasure chests
-8) Implement boss fights
-9) Add more traps
-10) Add more enemies
+1) Improve arrow script
+2) Improve enemy vision
+3) Implement randomized room selection
+4) Implement UI
+5) Implement menu functionality
+6) Implement treasure chests
+7) Implement boss fights
+8) Add more traps
+9) Add more enemies
