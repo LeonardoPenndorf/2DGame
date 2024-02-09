@@ -56,7 +56,7 @@ public class EnemyMovement : MonoBehaviour
         else
         {
             movementSpeed = standardMovementSpeed; // when loosing aggro stop running as well as following the player
-
+            CheckDirection();
         }
 
         if (!animationsChecker.CheckAnimations(animationsArray)) // cannot move during certain animations
@@ -111,11 +111,14 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        CheckDirection();
+    }
+
+    private void CheckDirection()
+    {
         checkNav = NavCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || NavCollider.IsTouchingLayers(LayerMask.GetMask("Platforms")); // check if can walk
 
         if (!checkNav && !isAggroed)
-        {
             direction = -direction;
-        }
     }
 }

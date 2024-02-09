@@ -42,15 +42,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PauseGame",
-                    "type": "Button",
-                    "id": "c20a7da9-0c2a-4c03-ab02-d5b5336a6311",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "LeaveRoom",
                     "type": "Button",
                     "id": "86c35da0-70ae-467d-a77b-aa9e5e7d0cf2",
@@ -63,6 +54,15 @@
                     "name": "Block",
                     "type": "Button",
                     "id": "67540289-c570-4292-b5e6-376b139b46fb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PauseGame",
+                    "type": "Button",
+                    "id": "11337278-0e17-4f71-afaa-a969aeaa10cd",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -160,28 +160,6 @@
                 },
                 {
                     "name": "",
-                    "id": "efc79cb6-b936-4962-bc7a-39da95ecdfe0",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PauseGame",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "76657d0e-ccaa-4aaa-b1d2-15df47d3a2ad",
-                    "path": "<Gamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PauseGame",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "f9cba9ae-406a-45a2-908a-c9b7902aed5a",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -221,6 +199,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c01b7973-ae9f-409e-a55e-cf032922bfc5",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d407a7e7-52bc-4cfd-a9a4-e91c0e66e158",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseGame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

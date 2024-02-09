@@ -5,9 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerBlock : MonoBehaviour
 {
-    // [SerializeField] variables
-    [SerializeField] KeyCode blockKeyCode; // key that needs to bee pressed to block
-
     // private variables
     private Animator PlayerAnimator;
     private PlayerHealth playerHealth;

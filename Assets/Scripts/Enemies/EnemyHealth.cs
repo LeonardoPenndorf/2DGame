@@ -14,6 +14,7 @@ public class EnemyHealth : MonoBehaviour
     private BoxCollider2D EnemyCollider;
     private GameObject Hurtbox;
     private SpawnRandomItem SpawnRandomItemComponent;
+    private EnemyAggro enemyAggro;
     private float iFrames;
     private bool isBlocking = false; // some enemies can block
 
@@ -25,6 +26,7 @@ public class EnemyHealth : MonoBehaviour
         EnemyRB = GetComponent<Rigidbody2D>();
         EnemyCollider = GetComponent<BoxCollider2D>();
         SpawnRandomItemComponent = GetComponent<SpawnRandomItem>();
+        enemyAggro = GetComponent<EnemyAggro>();
 
         Hurtbox = transform.Find("Hurtbox").gameObject;
 
@@ -49,6 +51,8 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        enemyAggro.SetIsAggroed(true);
+
         if (iFrames <= 0 && currentHealth > 0)
         {
             EnemyAnimator.SetTrigger("IsHit"); // trigger hit animation

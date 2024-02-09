@@ -449,22 +449,6 @@ MonoBehaviour:
     m_ActionName: Player/SpecialAttack[/Mouse/leftButton,/DualShock4GamepadHID/buttonWest]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TogglePauseMenu, Assembly-CSharp
-        m_MethodName: PauseUnpauseGame
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: c20a7da9-0c2a-4c03-ab02-d5b5336a6311
-    m_ActionName: Player/PauseGame[/Keyboard/escape,/DualShock4GamepadHID/start]
-  - m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: -3619389932709620366}
         m_TargetAssemblyTypeName: PlayerLeaveRoom, Assembly-CSharp
         m_MethodName: LeaveRoom
@@ -495,6 +479,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 67540289-c570-4292-b5e6-376b139b46fb
     m_ActionName: Player/Block[/Mouse/rightButton,/DualShock4GamepadHID/buttonEast]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3560074648740790137, guid: c70e6de5080fb3d4fb409f1a70a1a75b, type: 3}
+        m_TargetAssemblyTypeName: TogglePauseMenu, Assembly-CSharp
+        m_MethodName: PauseUnpauseGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 11337278-0e17-4f71-afaa-a969aeaa10cd
+    m_ActionName: Player/PauseGame[/Keyboard/escape,/DualShock4GamepadHID/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -528,7 +528,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerFeet: {fileID: 3792087196651171425}
-  JumpKeyCode: 32
   runSpeed: 10
   jumpSpeed: 17
   gravity: 4
@@ -558,8 +557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerFeet: {fileID: 3792087196651171425}
   PlayerRB: {fileID: 359505279110432522}
-  JumpDownKeyCode: 115
-  disableTime: 0.3
+  disableTime: 0.4
 --- !u!114 &1733006571222690284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,7 +572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HurtBox: {fileID: 6062602973029319167}
   maxComboDelay: 1.7
-  attackCooldown: 1.5
+  attackCooldown: 1
   stunDuration: 1
   baseDamage: 20
   knockbackVector: {x: 7, y: 5}
@@ -607,7 +605,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1eca2fde24a4743807a58295cc96b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockKeyCode: 324
 --- !u!114 &8691603822166462125
 MonoBehaviour:
   m_ObjectHideFlags: 0

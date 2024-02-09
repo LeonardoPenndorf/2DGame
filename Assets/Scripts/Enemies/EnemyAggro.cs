@@ -35,9 +35,7 @@ public class EnemyAggro : MonoBehaviour
         {
             if(playerDetected)
             {
-                isAggroed = true;
-                EnemyAnimator.SetBool("IsAggroed", true);
-                timeSinceLastSeen = 0f; // Reset timer
+                SetIsAggroed(true);
             }
         }
         else
@@ -51,7 +49,7 @@ public class EnemyAggro : MonoBehaviour
                 timeSinceLastSeen += Time.deltaTime;
                 if (timeSinceLastSeen >= looseAggroTime)
                 {
-                    LooseAggro();
+                    SetIsAggroed(false);
                 }
             }
         }
@@ -73,14 +71,15 @@ public class EnemyAggro : MonoBehaviour
         return Physics2D.OverlapCircle(transform.position, aggroRange, playerLayerMask);
     }
 
-    private void LooseAggro()
-    {
-        isAggroed = false;
-        EnemyAnimator.SetBool("IsAggroed", false);
-        timeSinceLastSeen = 0f; // Reset timer as a precaution
-    }
-
     public bool GetIsAggroed() { return isAggroed; }
+
+    public void SetIsAggroed(bool newState)
+    {
+        isAggroed = newState;
+        EnemyAnimator.SetBool("IsAggroed", newState);
+        timeSinceLastSeen = 0f;
+
+    }
 
     void OnDrawGizmos()
     {

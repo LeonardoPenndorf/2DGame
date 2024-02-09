@@ -7,9 +7,16 @@ using UnityEngine.UI;
 public class TogglePauseMenu : MonoBehaviour
 {
     // public variables
-    public GameObject PauseMenu;
-    public KeyCode pauseKey;
     public static bool gameIsPaused = false;
+
+    // private variables
+    private GameObject PauseMenu;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        PauseMenu = GameObject.Find("PauseMenu");
+    }
 
     public void PauseUnpauseGame(InputAction.CallbackContext context)
     {

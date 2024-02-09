@@ -12,3 +12,17 @@ player: https://chierit.itch.io/elementals-fire-knight
 Fire effects: https://bdragon1727.itch.io/fire-pixel-bullet-16x16
 
 Environment: https://szadiart.itch.io/pixle-castle-2d
+
+
+
+ToDo:
+1) Improve knockback
+2) Improve blocking
+3) Improve enemy vision
+4) Implement randomized room selection
+5) Implement UI
+6) Implement menu functionality
+7) Implement treasure chests
+8) Implement boss fights
+9) Add more traps
+10) Add more enemies

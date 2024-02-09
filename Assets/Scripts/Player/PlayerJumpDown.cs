@@ -9,7 +9,6 @@ public class PlayerJumpDown : MonoBehaviour
     // [SerializeField] variables
     [SerializeField] GameObject PlayerFeet;
     [SerializeField] Rigidbody2D PlayerRB;
-    [SerializeField] KeyCode JumpDownKeyCode; // key that needs to be pressed to jump down
     [SerializeField] float disableTime;
 
     // private variables

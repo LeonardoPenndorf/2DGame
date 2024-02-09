@@ -17,10 +17,8 @@ public class PlayerMeleeAttack : MonoBehaviour
     private BoxCollider2D HurtBoxCollider;
     private Animator PlayerAnimator;
     private PlayerMovement PlayerMovementComponent;
-    private int damage, // damage of the current attack
-                attackComboCounter = 0; // records the cuurent combo account, this values ranges between 0 and 3
-    private float lastClickTime, // the last time the player has clicked the attack button
-                  cooldownTimer;
+    private int damage; // damage of the current attack
+    private float cooldownTimer;
     private bool isGrounded;
 
     // Start is called before the first frame update
@@ -44,9 +42,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     public void CheckAttack(InputAction.CallbackContext context) // check which attack should be executed
     {
-        if (TogglePauseMenu.gameIsPaused || cooldownTimer > 0) return;
-
-        if (!context.performed) return; // only perform this function once
+        if (TogglePauseMenu.gameIsPaused || cooldownTimer > 0 || !context.performed) return;
 
         isGrounded = PlayerMovementComponent.GetIsGrounded();
 
@@ -58,47 +54,33 @@ public class PlayerMeleeAttack : MonoBehaviour
         {
             AirAttack();
         }
+
+        int comboCounter = PlayerAnimator.GetInteger("AttackComboCounter");
+        if (comboCounter == 0 || comboCounter == 3)
+        {
+            cooldownTimer = attackCooldown;
+        }
     }
 
     private void AttackCombo() // a 3 hit attack combo
     {
-        PlayerAnimator.SetInteger("AttackComboCounter", 1);
-
-        float timeSinceLastClick = Time.time - lastClickTime;
-        if (timeSinceLastClick <= maxComboDelay)
-        {
-            attackComboCounter++;
-        }
-        else
-        {
-            attackComboCounter = 1; // Reset counter if too much time has passed
-        }
-
-        lastClickTime = Time.time; // Update the last click time
-
-        attackComboCounter = Mathf.Clamp(attackComboCounter, 1, 3); // Clamp the click counter to ensure it's within combo range
-
         damage = baseDamage; // all combo attack except the last one deal base damage
 
-        switch (attackComboCounter)
+        switch (PlayerAnimator.GetInteger("AttackComboCounter"))
         {
-            case 1:
+            case 0:
                 PlayerAnimator.SetInteger("AttackComboCounter", 1);
                 break;
-            case 2:
+            case 1:
                 PlayerAnimator.SetInteger("AttackComboCounter", 2);
                 break;
-            case 3:
+            case 2:
                 damage = baseDamage * 2; // Max combo damage
                 PlayerAnimator.SetInteger("AttackComboCounter", 3);
-                cooldownTimer = attackCooldown;
                 break;
-        }
-
-        // Reset combo counter if max combo is reached or too much time passes between attacks
-        if (attackComboCounter == 3 || timeSinceLastClick > maxComboDelay)
-        {
-            StartCoroutine(ResetComboAfterDelay(maxComboDelay));
+            default:
+                PlayerAnimator.SetInteger("AttackComboCounter", 0);
+                break;
         }
     }
 
@@ -106,8 +88,6 @@ public class PlayerMeleeAttack : MonoBehaviour
     {
         damage = baseDamage; // set damage to base damage
         PlayerAnimator.SetTrigger("AirAttack");
-
-        cooldownTimer = attackCooldown;
     }
 
     public void SpecialAttack(InputAction.CallbackContext context) // a very powerful attack that also shoots a projectile
@@ -142,10 +122,4 @@ public class PlayerMeleeAttack : MonoBehaviour
     public float GetStunDuration() { return stunDuration; }
 
     public Vector2 GetKnockbackVector() { return knockbackVector; }
-
-    private IEnumerator ResetComboAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        attackComboCounter = 0; // Reset the combo counter after the delay
-    }
 }
