@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
 
     private float xAxisInput;
-    private bool isGrounded, isStunned = false;
+    private bool isGrounded, isStunned = false, facingRight;
 
     // Start is called before the first frame update
     void Start()
@@ -69,13 +69,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void KnockBack(float knockbackForce, float stunDuration)
+    public void KnockBack(Vector2 knockbackVector, float stunDuration, Transform enemyTransform)
     {
         isStunned = true; // prevent player from moving
 
-        Vector2 knockbackVector = new Vector2(knockbackForce, knockbackForce / 2);
+        facingRight = transform.localScale.x > 0;
 
-        PlayerRigidbody.velocity = knockbackVector * new Vector2(-transform.localScale.x, 1f); // knockback
+        if (enemyTransform.position.x < transform.position.x)
+        {
+            PlayerRigidbody.velocity = facingRight ? knockbackVector : new Vector2(-knockbackVector.x, knockbackVector.y);
+        }
+        else
+        {
+            PlayerRigidbody.velocity = facingRight ? new Vector2(-knockbackVector.x, knockbackVector.y) : knockbackVector;
+        }
 
         StartCoroutine(Stunned(stunDuration));
     }

@@ -16,7 +16,7 @@ public class EnemyMovement : MonoBehaviour
     private Animator EnemyAnimator;
     private EnemyAggro enemyAggro; // script that manages the aggro state of enemies
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
-    private GameObject Player; // player gameobject is required for navigation when aggroed
+    private Transform Player; // player transform is required for navigation when aggroed
     private EnemyKnockback enemyKnockback;
     private float movementSpeed, // current movement speed
                   attackRange, // when player is within attack range, enemy stops moving
@@ -35,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
         animationsChecker = GetComponent<AnimationChecker>();
         enemyKnockback = GetComponent<EnemyKnockback>();
 
-        Player = GameObject.FindWithTag("Player");
+        Player = GameObject.FindWithTag("Player").transform;
 
         movementSpeed = standardMovementSpeed; // set movement speed
 
@@ -84,8 +84,8 @@ public class EnemyMovement : MonoBehaviour
     private void MoveTowardsPlayer()
     {
         checkNav = NavCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || NavCollider.IsTouchingLayers(LayerMask.GetMask("Platforms")); // check if can walk
-        distance = Vector2.Distance(Player.transform.position, transform.position);
-        xDistance = Mathf.Abs(Player.transform.position.x - transform.position.x);
+        distance = Vector2.Distance(Player.position, transform.position);
+        xDistance = Mathf.Abs(Player.position.x - transform.position.x);
 
         if (!checkNav || (distance < attackRange) || (xDistance < attackRange)) // either cannot walk or player within attack range
         {
@@ -97,12 +97,12 @@ public class EnemyMovement : MonoBehaviour
         }
 
         // checks if player is to the right or to the left
-        if (Player.transform.position.x < transform.position.x)
+        if (Player.position.x < transform.position.x)
         {
             // Player is to the left
             direction = -1.0f;
         }
-        else if (Player.transform.position.x > transform.position.x)
+        else if (Player.position.x > transform.position.x)
         {
             // Player is to the right
             direction = 1.0f;

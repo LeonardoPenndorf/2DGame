@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class BombScript : MonoBehaviour
 {
-    // public variables
-    public float ExplosionRadius, ExplosionKnockbackForce, stunDuration;
-    public int damage;
+    // [SerializeField] variables
+    [SerializeField] float ExplosionRadius, stunDuration;
+    [SerializeField] int damage;
+    [SerializeField] Vector2 KnockbackVector;
 
     // private variables
     private CircleCollider2D TriggerCollider;
@@ -37,7 +38,7 @@ public class BombScript : MonoBehaviour
         if (PlayerCollider)
         {
             PlayerCollider.GetComponent<PlayerHealth>().TakeDamage(damage);
-            PlayerCollider.GetComponent<PlayerMovement>().KnockBack(ExplosionKnockbackForce, stunDuration);
+            PlayerCollider.GetComponent<PlayerMovement>().KnockBack(KnockbackVector, stunDuration, transform);
 
         }
     }

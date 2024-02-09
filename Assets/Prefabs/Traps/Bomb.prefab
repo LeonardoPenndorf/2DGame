@@ -156,6 +156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExplosionRadius: 1.8
-  ExplosionKnockbackForce: 25
   stunDuration: 1
   damage: 30
+  KnockbackVector: {x: 25, y: 15}

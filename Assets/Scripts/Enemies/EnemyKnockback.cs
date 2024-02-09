@@ -7,13 +7,16 @@ public class EnemyKnockback : MonoBehaviour
     // private variables
     private Rigidbody2D EnemyRB;
     private Animator EnemyAnimator;
-    private bool isStunned;
+    private Transform PlayerTransform;
+    private bool isStunned, facingRight;
 
     // Start is called before the first frame update
     void Start()
     {
         EnemyRB = GetComponent<Rigidbody2D>();
         EnemyAnimator = GetComponent<Animator>();
+
+        PlayerTransform = GameObject.FindWithTag("Player").transform;
     }
 
     public void Knockback(Vector2 knockbackVector, float stunDuration)
@@ -21,8 +24,16 @@ public class EnemyKnockback : MonoBehaviour
         EnemyAnimator.SetBool("IsMoving", false);
 
         isStunned = true; // prevent player from moving
+        facingRight = transform.localScale.x > 0;
 
-        EnemyRB.velocity = knockbackVector;
+        if (PlayerTransform.position.x < transform.position.x)
+        {
+            EnemyRB.velocity = facingRight ? knockbackVector : new Vector2(-knockbackVector.x, knockbackVector.y);
+        }
+        else
+        {
+            EnemyRB.velocity = facingRight ? new Vector2(-knockbackVector.x, knockbackVector.y) : knockbackVector;
+        }
 
         StartCoroutine(Stunned(stunDuration));
     }
