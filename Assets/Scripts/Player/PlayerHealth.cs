@@ -36,9 +36,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void InitializeHealth()
     {
-        if (playerManager.GetPlayerHealth() <= 0) // in the first room current health is 0
+        if (playerManager.GetMaxHealth() <= 0) // in the first room current health is 0
         {
-            playerManager.SetPlayerHealth(maxHealth);
+            playerManager.SetMaxHealth(maxHealth);
         }
     }
 
