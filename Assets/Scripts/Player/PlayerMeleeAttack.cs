@@ -75,7 +75,7 @@ public class PlayerMeleeAttack : MonoBehaviour
                 PlayerAnimator.SetInteger("AttackComboCounter", 2);
                 break;
             case 2:
-                damage = baseDamage * 2; // Max combo damage
+                damage = baseDamage * 2;
                 PlayerAnimator.SetInteger("AttackComboCounter", 3);
                 break;
             default:

@@ -194,3 +194,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmount: 5
+  PickUpSFX: {fileID: 8300000, guid: e8ca159b4427f5846b683309f306ff86, type: 3}

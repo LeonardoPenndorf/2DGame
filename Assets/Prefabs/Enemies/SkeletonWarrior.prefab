@@ -240,9 +240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd9415b4cbd87e428a7b3fd5c4b45a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 40
+  maxHealth: 60
   currentHealth: 0
-  damageReduction: 15
+  damageReduction: 30
   maxIFrames: 0
 --- !u!114 &577543980193481257
 MonoBehaviour:
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91090adf5645c564f9f7b2cb7abe2398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defenseRange: 3
+  defenseRange: 2
   maxCooldown: 2
   EnemyAnimationsArray:
   - SkeletonWarrior_Hurt

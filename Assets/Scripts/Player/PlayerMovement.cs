@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
         PlayerAnimator.SetBool("IsGrounded", isGrounded); // toggle jumping animation
 
-        if (TogglePauseMenu.gameIsPaused || isGrounded) return;
+        if (TogglePauseMenu.gameIsPaused) return;
 
         xAxisInput = Input.GetAxis("Horizontal"); // get horizontal axis input
 

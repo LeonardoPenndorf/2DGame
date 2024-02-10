@@ -6,6 +6,8 @@ public class PickUp : MonoBehaviour
 {
     // [SerializeField] variable
     [SerializeField] int healAmount;
+    [SerializeField] AudioClip PickUpSFX;
+
     // private variables
     private PlayerHealth PlayerHealthComponent;
 
@@ -18,6 +20,7 @@ public class PickUp : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) // only the player can pick up items
         {
+            AudioSource.PlayClipAtPoint(PickUpSFX, Camera.main.transform.position);
             ProcessPickup();
         }
     }
