@@ -222,6 +222,9 @@ MonoBehaviour:
   currentHealth: 0
   damageReduction: 0
   maxIFrames: 0
+  hurtSFX: {fileID: 8300000, guid: 4cd73b5459f7dfc4f98bf602efdfd4dc, type: 3}
+  blockSFX: {fileID: 0}
+  deathSFX: {fileID: 8300000, guid: 71069f49a2bca6945bd765c011af7fc3, type: 3}
 --- !u!114 &8511971272375729107
 MonoBehaviour:
   m_ObjectHideFlags: 0

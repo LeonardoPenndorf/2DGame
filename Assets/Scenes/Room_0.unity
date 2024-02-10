@@ -25366,6 +25366,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkeletonArcher
       objectReference: {fileID: 0}
+    - target: {fileID: 465361686494501331, guid: 3139876b64add29429ef2e419f50fee5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5820706599125276612, guid: 3139876b64add29429ef2e419f50fee5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.7162256
@@ -35978,6 +35982,10 @@ PrefabInstance:
     - target: {fileID: 465361686494501331, guid: 34d85eec7ab4fdb4b8bacadff54b99e7, type: 3}
       propertyPath: m_Name
       value: SkeletonSpearman
+      objectReference: {fileID: 0}
+    - target: {fileID: 465361686494501331, guid: 34d85eec7ab4fdb4b8bacadff54b99e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5820706599125276612, guid: 34d85eec7ab4fdb4b8bacadff54b99e7, type: 3}
       propertyPath: m_LocalPosition.x

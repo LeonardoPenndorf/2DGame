@@ -242,8 +242,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 60
   currentHealth: 0
-  damageReduction: 30
   maxIFrames: 0
+  hurtSFX: {fileID: 8300000, guid: 4cd73b5459f7dfc4f98bf602efdfd4dc, type: 3}
+  blockSFX: {fileID: 8300000, guid: 17b758fb3cb1b7143b746cb5ffee7a3b, type: 3}
+  deathSFX: {fileID: 8300000, guid: 71069f49a2bca6945bd765c011af7fc3, type: 3}
 --- !u!114 &577543980193481257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,8 +258,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91090adf5645c564f9f7b2cb7abe2398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defenseRange: 2
-  maxCooldown: 2
+  defenseRange: 3
+  maxCooldown: 4
+  blockDuration: 1.5
   EnemyAnimationsArray:
   - SkeletonWarrior_Hurt
   - SkeletonWarrior_Attack3

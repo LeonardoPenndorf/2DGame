@@ -13,6 +13,12 @@ Fire effects: https://bdragon1727.itch.io/fire-pixel-bullet-16x16
 
 Environment: https://szadiart.itch.io/pixle-castle-2d
 
+SFX Sources:
+
+https://mixkit.co/free-sound-effects/sword/
+
+https://quicksounds.com/library/sounds/skeleton
+
 
 
 ToDo:

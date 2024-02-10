@@ -5,8 +5,9 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     // [SerializeField] variables
-    [SerializeField] int maxHealth, currentHealth, damageReduction;
+    [SerializeField] int maxHealth, currentHealth;
     [SerializeField] float maxIFrames;
+    [SerializeField] AudioClip hurtSFX, blockSFX, deathSFX;
 
     // private variables
     private Animator EnemyAnimator;
@@ -59,11 +60,12 @@ public class EnemyHealth : MonoBehaviour
 
             if (!isBlocking)
             {
+                AudioSource.PlayClipAtPoint(hurtSFX, Camera.main.transform.position);
                 currentHealth -= damage;
             }
-            else // when blocking subtract damage reduction from damage taken
+            else // when blocking take no damage
             {
-                currentHealth -= Mathf.Max((damage - damageReduction), 0);
+                AudioSource.PlayClipAtPoint(blockSFX, Camera.main.transform.position);
             }
 
             iFrames = maxIFrames;
@@ -72,6 +74,8 @@ public class EnemyHealth : MonoBehaviour
 
     private void Death()
     {
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position);
+
         EnemyRB.velocity = Vector3.zero;
         EnemyRB.bodyType = RigidbodyType2D.Static;
         EnemyAnimator.SetTrigger("IsDead");
