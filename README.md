@@ -13,6 +13,8 @@ Fire effects: https://bdragon1727.itch.io/fire-pixel-bullet-16x16
 
 Environment: https://szadiart.itch.io/pixle-castle-2d
 
+healthbar: https://byandrox.itch.io/crimson-fantasy-gui
+
 SFX Sources:
 
 https://mixkit.co/free-sound-effects/sword/
@@ -24,10 +26,13 @@ https://quicksounds.com/library/sounds/skeleton
 ToDo:
 1) Improve arrow script
 2) Improve enemy vision
-3) Implement randomized room selection
-4) Implement UI
-5) Implement menu functionality
-6) Implement treasure chests
-7) Implement boss fights
-8) Add more traps
-9) Add more enemies
+3) Improve ranged movement script
+4) Implement randomized room selection
+5) Implement UI
+6) Implement menu functionality
+7) Implement treasure chests
+8) Implement boss fights
+9) Implement proper death function
+10) Add more traps
+11) Add more enemies
+12) Add more rooms
