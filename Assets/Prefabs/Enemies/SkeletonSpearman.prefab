@@ -240,7 +240,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 30
   currentHealth: 0
-  damageReduction: 0
   maxIFrames: 0
   hurtSFX: {fileID: 8300000, guid: 4cd73b5459f7dfc4f98bf602efdfd4dc, type: 3}
   blockSFX: {fileID: 0}

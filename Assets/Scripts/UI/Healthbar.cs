@@ -9,13 +9,15 @@ public class Healthbar : MonoBehaviour
     // [SerializeField] variables
     [SerializeField] Sprite[] borders;
     [SerializeField] float[] thresholds;
+    [SerializeField] float regenSpeed; // regen speed of the health bar slider
 
     // private variables
     private PlayerManager playerManager;
     private Image healthbarBoder;
     private Slider healthbarSlider;
-    private int maxHealth;
-    private float healthPercantage;
+    private int maxHealth, currentHealth, difference;
+    private float healthPercentage;
+    private bool isScaling;
 
     // Start is called before the first frame update
     void Start()
@@ -23,42 +25,82 @@ public class Healthbar : MonoBehaviour
         playerManager = PlayerManager.instance; // there is only ever a single player manager instance
         healthbarSlider = GetComponent<Slider>();
         healthbarBoder = transform.Find("Border").GetComponent<Image>();
+
+        InitiliazeHealth(playerManager.GetMaxHealth());
     }
 
     private void Update()
     {
-        SetMaxHealth(playerManager.GetMaxHealth());
-        SetSliderValue(playerManager.GetPlayerHealth());
+        if ((!isScaling))
+            AdjustSliderValue(playerManager.GetPlayerHealth());
+
+        UpdateHealthBorder();
     }
 
-    public void SetMaxHealth(int newMaxHealth)
+    private void InitiliazeHealth(int newMaxHealth)
     {
         healthbarSlider.maxValue = newMaxHealth;
         maxHealth = newMaxHealth;
+
+        currentHealth = playerManager.GetPlayerHealth();
+        if (currentHealth <= 0)
+        {
+            SetSliderValue(maxHealth);
+        }
+        else
+        {
+            SetSliderValue(currentHealth);
+        }
     }
 
-    public void SetSliderValue(int health)
-    {
-        healthbarSlider.value = health;
-        healthPercantage = (float)health / maxHealth;
-
-        UpdateHealthBorder(healthPercantage);
+    private void SetSliderValue(int health) 
+    { 
+        healthbarSlider.value = health; 
+        currentHealth = health;
     }
 
-    private void UpdateHealthBorder(float healthPercentage)
+    private void AdjustSliderValue(int health)
     {
-        // Determine which sprite to use based on the current health percentage
+        difference = Mathf.Abs(currentHealth - health); // difference between the current health value and the new one
+
+        if (health != currentHealth)
+        {
+            StartCoroutine(ScaleHealth(difference, health > currentHealth ? 1 : -1));
+        }
+    }
+
+    private void UpdateHealthBorder()
+    {
+        healthPercentage = (float)currentHealth / maxHealth;
+        
+        healthbarBoder.sprite = borders[GetSpriteIndex()];
+    }
+
+    private int GetSpriteIndex() // Determine which sprite to use based on the current health percentage
+
+    {
         for (int i = 0; i < thresholds.Length; i++)
         {
             if (healthPercentage >= thresholds[i])
             {
-                healthbarBoder.sprite = borders[i];
-                return; // Exit the function once the correct sprite is assigned
+                return i; 
             }
         }
 
-        // If health percentage does not meet any of the above thresholds, use the last sprite
-        healthbarBoder.sprite = borders[borders.Length - 1];
+        return borders.Length - 1;
     }
 
+    private IEnumerator ScaleHealth(int difference, int modifier)
+    {
+        isScaling = true;
+
+        for (int i = 0; i < difference; i++)
+        {
+            healthbarSlider.value = currentHealth + modifier; // modifier is either a +1 or a -1
+            yield return new WaitForSeconds(regenSpeed);
+            currentHealth = (int)healthbarSlider.value;
+        }
+
+        isScaling = false;
+    }
 }
