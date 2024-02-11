@@ -9,14 +9,8 @@ public class TogglePauseMenu : MonoBehaviour
     // public variables
     public static bool gameIsPaused = false;
 
-    // private variables
-    private GameObject PauseMenu;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        PauseMenu = GameObject.Find("PauseMenu");
-    }
+    // [SerializeField] variables
+    [SerializeField] Canvas PauseMenu;
 
     public void PauseUnpauseGame(InputAction.CallbackContext context)
     {
@@ -30,14 +24,14 @@ public class TogglePauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        PauseMenu.SetActive(true);
+        PauseMenu.enabled = true;
         Time.timeScale = 0f;
         gameIsPaused = true;
     }
 
     private void ResumeGame()
     {
-        PauseMenu.SetActive(false);
+        PauseMenu.enabled = false;
         Time.timeScale = 1.0f;
         gameIsPaused = false;
     }

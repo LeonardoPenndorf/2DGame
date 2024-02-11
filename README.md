@@ -28,11 +28,13 @@ ToDo:
 2) Improve enemy vision
 3) Improve ranged movement script
 4) Implement randomized room selection
-5) Implement UI
-6) Implement menu functionality
-7) Implement treasure chests
-8) Implement boss fights
-9) Implement proper death function
-10) Add more traps
-11) Add more enemies
-12) Add more rooms
+5) Implement treasure chests
+6) Implement boss fights
+7) Implement scene transition animation
+8) Add more traps
+9) Add more enemies
+10) Add more rooms
+11) Traps should hurt enemies too
+12) Add more SFX
+13) Add particle effects
+14) Add upgrade shop

@@ -58,15 +58,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "PauseGame",
-                    "type": "Button",
-                    "id": "11337278-0e17-4f71-afaa-a969aeaa10cd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -201,10 +192,27 @@
                     "action": "Block",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "a5eb7c39-5cff-487f-b52c-162d66c0842f",
+            "actions": [
+                {
+                    "name": "PauseGame",
+                    "type": "Button",
+                    "id": "b0bce13e-4538-4056-b947-26281d84a843",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
                 {
                     "name": "",
-                    "id": "c01b7973-ae9f-409e-a55e-cf032922bfc5",
+                    "id": "c6a414d7-b25a-416e-93d5-5e10b0098a2b",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
@@ -215,7 +223,7 @@
                 },
                 {
                     "name": "",
-                    "id": "d407a7e7-52bc-4cfd-a9a4-e91c0e66e158",
+                    "id": "4ce84045-2af3-4c70-9702-a457e470997a",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",

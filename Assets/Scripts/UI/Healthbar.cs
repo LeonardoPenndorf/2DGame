@@ -25,8 +25,6 @@ public class Healthbar : MonoBehaviour
         playerManager = PlayerManager.instance; // there is only ever a single player manager instance
         healthbarSlider = GetComponent<Slider>();
         healthbarBoder = transform.Find("Border").GetComponent<Image>();
-
-        InitiliazeHealth(playerManager.GetMaxHealth());
     }
 
     private void Update()
@@ -37,23 +35,14 @@ public class Healthbar : MonoBehaviour
         UpdateHealthBorder();
     }
 
-    private void InitiliazeHealth(int newMaxHealth)
+    public void SetMaxHealth(int newMaxHealth)
     {
         healthbarSlider.maxValue = newMaxHealth;
         maxHealth = newMaxHealth;
-
-        currentHealth = playerManager.GetPlayerHealth();
-        if (currentHealth <= 0)
-        {
-            SetSliderValue(maxHealth);
-        }
-        else
-        {
-            SetSliderValue(currentHealth);
-        }
     }
 
-    private void SetSliderValue(int health) 
+
+    public void SetSliderValue(int health) 
     { 
         healthbarSlider.value = health; 
         currentHealth = health;

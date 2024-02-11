@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -8,11 +9,11 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager instance; // Singleton pattern
 
     // [SerializeField] variables
+    [SerializeField] Healthbar healthbar;
+    [SerializeField] DiamondsUI diamondsUI;
+    [SerializeField] Canvas deathCanvas;
     [SerializeField] int currentHealth, maxHealth; // stores the health of player
-    [SerializeField] string playerName; // yet to be implemented
-
-    // private varibales
-    private int currentDiamonds; // amount of diamonds collected by the player
+    [SerializeField] int currentDiamonds; // amount of diamonds collected by the player
 
     private void Awake()
     {
@@ -36,20 +37,24 @@ public class PlayerManager : MonoBehaviour
     public void SetMaxHealth(int health) 
     { 
         maxHealth = health;
-        SetPlayerHealth(maxHealth);
+        healthbar.SetMaxHealth(maxHealth);
     }
 
-    public void SetPlayerHealth(int health) { currentHealth = health; }
+    public void SetPlayerHealth(int health) 
+    { 
+        currentHealth = health;
+        healthbar.SetSliderValue(health);
+    }
 
     public void AdjustPlayerHealth(int health) { currentHealth += health; }
 
-    public void OnPlayerDeath()
-    {
-        Debug.Log("The player died!");
-        Destroy(gameObject);
-    }
+    public void OnPlayerDeath() { deathCanvas.enabled = true; }
 
     public int GetDiamonds() { return currentDiamonds; }
 
-    public void IncrementDiamonds() { currentDiamonds++; }
+    public void IncrementDiamonds()
+    { 
+        currentDiamonds++; 
+        diamondsUI.SetDiamonds(currentDiamonds);
+    }
 }

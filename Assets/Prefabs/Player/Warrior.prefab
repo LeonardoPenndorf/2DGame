@@ -481,7 +481,7 @@ MonoBehaviour:
     m_ActionName: Player/Block[/Mouse/rightButton,/DualShock4GamepadHID/buttonEast]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3560074648740790137, guid: c70e6de5080fb3d4fb409f1a70a1a75b, type: 3}
+      - m_Target: {fileID: 3456912444205281957, guid: a46843b19d031dd40a22fe3fe7f7ea78, type: 3}
         m_TargetAssemblyTypeName: TogglePauseMenu, Assembly-CSharp
         m_MethodName: PauseUnpauseGame
         m_Mode: 0

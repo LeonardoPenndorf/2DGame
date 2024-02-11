@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuButton : MonoBehaviour
+public class RestartButton : MonoBehaviour
 {
     // private variables
     private GameObject GameManager;
@@ -14,9 +14,9 @@ public class MainMenuButton : MonoBehaviour
         GameManager = GameObject.Find("GameManager");
     }
 
-    public void MainMenu()
+    public void Restart()
     {
         Destroy(GameManager);
-        SceneManager.LoadScene(0); // start game loading first room
+        SceneManager.LoadScene(1); // start game loading first room
     }
 }

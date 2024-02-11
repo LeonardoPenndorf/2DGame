@@ -39,6 +39,7 @@ public class PlayerHealth : MonoBehaviour
         if (playerManager.GetMaxHealth() <= 0) // in the first room current health is 0
         {
             playerManager.SetMaxHealth(maxHealth);
+            playerManager.SetPlayerHealth(maxHealth);
         }
     }
 
@@ -89,5 +90,7 @@ public class PlayerHealth : MonoBehaviour
         animator.SetTrigger("IsDead");
         gameObject.GetComponent<PlayerMovement>().enabled = false;
         gameObject.GetComponent<PlayerMeleeAttack>().enabled = false;
+
+        playerManager.OnPlayerDeath();
     }
 }
