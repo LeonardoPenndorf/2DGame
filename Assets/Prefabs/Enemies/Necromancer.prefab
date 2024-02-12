@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: -1100123820332016772}
   - component: {fileID: -2022468956871911863}
   - component: {fileID: 3113148272203150970}
+  - component: {fileID: 5484141743462960216}
   m_Layer: 11
   m_Name: Necromancer
   m_TagString: Enemy
@@ -320,8 +321,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57f29d425043f746a4d98e1e37b2515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reviveRadius: 5
-  maxCooldown: 5
+--- !u!114 &5484141743462960216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465361686494501331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b1106dc27ef2a48bfa0cc82977a659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reviveGameObject: {fileID: 3462800348039607868, guid: 8ed11e546a1f9c84e895701f631d8867, type: 3}
+  maxCooldown: 10
 --- !u!1 &6026330851827974414
 GameObject:
   m_ObjectHideFlags: 0

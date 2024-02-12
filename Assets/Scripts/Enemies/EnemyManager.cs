@@ -53,7 +53,7 @@ public class EnemyManager : MonoBehaviour
     {
         foreach (GameObject enemy in enemies)
         {
-            if (enemy.GetComponent<EnemyRevive>() != null)
+            if (enemy.GetComponent<EnemyCastReviveSpell>() != null)
             {
                 necromancerPresent = true;
                 return;

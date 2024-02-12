@@ -151,10 +151,10 @@ public class EnemyHealth : MonoBehaviour
             GetComponent<RangedEnemyMovement>().enabled = newState;
         }
 
-        EnemyRevive EnemyReviveComponent = GetComponent<EnemyRevive>();
+        EnemyCastReviveSpell EnemyReviveComponent = GetComponent<EnemyCastReviveSpell>();
         if (EnemyReviveComponent != null)
         {
-            GetComponent<EnemyRevive>().enabled = newState;
+            GetComponent<EnemyCastReviveSpell>().enabled = newState;
         }
 
         EnemyBlock EnemyBlockComponent = GetComponent<EnemyBlock>(); // check if the enemy has the block component

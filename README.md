@@ -17,6 +17,8 @@ healthbar: https://byandrox.itch.io/crimson-fantasy-gui
 
 Necromancer: https://lionheart963.itch.io/wizard?download
 
+magic effects: https://ppeldo.itch.io/2d-pixel-art-game-spellmagic-fx
+
 SFX Sources:
 
 https://mixkit.co/free-sound-effects/sword/
