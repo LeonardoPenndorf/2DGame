@@ -13,7 +13,6 @@ public class EnemyHealth : MonoBehaviour
     // private variables
     private Animator EnemyAnimator;
     private Rigidbody2D EnemyRB;
-    private BoxCollider2D EnemyCollider;
     private GameObject Hurtbox;
     private SpawnRandomItem SpawnRandomItemComponent;
     private EnemyAggro enemyAggro;
@@ -27,7 +26,6 @@ public class EnemyHealth : MonoBehaviour
     {
         EnemyAnimator = GetComponent<Animator>();
         EnemyRB = GetComponent<Rigidbody2D>();
-        EnemyCollider = GetComponent<BoxCollider2D>();
         SpawnRandomItemComponent = GetComponent<SpawnRandomItem>();
         enemyAggro = GetComponent<EnemyAggro>();
 
@@ -152,6 +150,12 @@ public class EnemyHealth : MonoBehaviour
         if (RangedEnemyMovementComponent != null)
         {
             GetComponent<RangedEnemyMovement>().enabled = newState;
+        }
+
+        EnemyRevive EnemyReviveComponent = GetComponent<EnemyRevive>();
+        if (EnemyReviveComponent != null)
+        {
+            GetComponent<EnemyRevive>().enabled = newState;
         }
 
         EnemyBlock EnemyBlockComponent = GetComponent<EnemyBlock>(); // check if the enemy has the block component

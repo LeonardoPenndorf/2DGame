@@ -233,6 +233,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "DisableMap",
+            "id": "278798d9-71ef-4d95-af75-94cab82c3b43",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "50f835e8-9dbe-43f6-81fa-373200014767",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d3b9f380-c5d3-433c-9ec3-cd3207144019",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

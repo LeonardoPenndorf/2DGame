@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ExitDoor : MonoBehaviour
@@ -10,6 +11,7 @@ public class ExitDoor : MonoBehaviour
 
     // private variables
     private Animator DoorAnimator;
+    private GameObject loadingScreen;
     private int currentRoomIndex;
     private bool allEnemiesDead = false;
 
@@ -17,6 +19,9 @@ public class ExitDoor : MonoBehaviour
     void Start()
     {
         DoorAnimator = GetComponent<Animator>();
+        loadingScreen = GameObject.Find("LoadingScreen");
+
+        loadingScreen.GetComponent<Image>().enabled = false;
     }
 
     // Update is called once per frame
@@ -46,6 +51,7 @@ public class ExitDoor : MonoBehaviour
 
     IEnumerator LoadRoom()
     {
+        loadingScreen.GetComponent<Image>().enabled = true;
         yield return new WaitForSeconds(loadingTime);
 
         currentRoomIndex = SceneManager.GetActiveScene().buildIndex; // get current scene

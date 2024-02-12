@@ -29,7 +29,7 @@ public class TogglePauseMenu : MonoBehaviour
         gameIsPaused = true;
     }
 
-    private void ResumeGame()
+    public void ResumeGame()
     {
         PauseMenu.enabled = false;
         Time.timeScale = 1.0f;

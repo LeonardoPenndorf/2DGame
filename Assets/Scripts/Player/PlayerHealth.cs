@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerHealth : MonoBehaviour
     private PlayerManager playerManager; // player manager stores persistent values such as health
     private PlayerBlock playerBlock;
     private Animator animator;
+    private PlayerInput playerInput; // upon death switch input mapto disable input
     private float iFrames;
     private bool isDead = false, 
                  isBlocking = false; // when blocking takes less damage
@@ -22,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
         playerManager = PlayerManager.instance; // there is only ever a single player manager instance
         playerBlock = GetComponent<PlayerBlock>();
         animator = GetComponent<Animator>();
+        playerInput = GetComponent<PlayerInput>();
 
         InitializeHealth();
     }
@@ -88,8 +91,8 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
         animator.SetTrigger("IsDead");
-        gameObject.GetComponent<PlayerMovement>().enabled = false;
-        gameObject.GetComponent<PlayerMeleeAttack>().enabled = false;
+        gameObject.GetComponent<PlayerMovement>().enabled = false; // prevent movement after death
+        playerInput.SwitchCurrentActionMap("DisableMap");
 
         playerManager.OnPlayerDeath();
     }
