@@ -21,6 +21,7 @@ public class EnemyMeleeAttack : MonoBehaviour
     private EnemyAggro enemyAggro;
     private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
     private float cooldown;
+    private int playerLayerMask;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,8 @@ public class EnemyMeleeAttack : MonoBehaviour
         EnemyAnimator = GetComponent<Animator>();
         enemyAggro = GetComponent<EnemyAggro>();
         animationsChecker = GetComponent<AnimationChecker>();
+
+        playerLayerMask = LayerMask.GetMask("Player");
     }
 
     // Update is called once per frame
@@ -43,7 +46,7 @@ public class EnemyMeleeAttack : MonoBehaviour
 
     private void CheckRange() // check if player is within attack range
     {
-        Collider2D PlayerCollider = Physics2D.OverlapCircle(transform.position, attackRange, LayerMask.GetMask("Player"));
+        Collider2D PlayerCollider = Physics2D.OverlapCircle(transform.position, attackRange, playerLayerMask);
 
         if (PlayerCollider && !animationsChecker.CheckAnimations(animationsArray))
         {

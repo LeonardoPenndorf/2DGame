@@ -9,7 +9,7 @@ public class Arrow : MonoBehaviour
 
     // private variables
     private BoxCollider2D ArrowCollider;
-    private bool groundCollision, playerCollision, enemyCollision;
+    private bool groundCollision, playerCollision;
 
     // Start is called before the first frame update
     void Start()
@@ -20,17 +20,11 @@ public class Arrow : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         playerCollision = ArrowCollider.IsTouchingLayers(LayerMask.GetMask("Player"));
-        enemyCollision = ArrowCollider.IsTouchingLayers(LayerMask.GetMask("Enemies"));
         groundCollision = ArrowCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
 
         if(playerCollision)
         {
             collision.GetComponent<PlayerHealth>().TakeDamage(damage, transform);
-            Destroy(gameObject);
-        }
-        else if (enemyCollision) // has friendly fire
-        {
-            collision.GetComponent<EnemyHealth>().TakeDamage(damage);
             Destroy(gameObject);
         }
         else if (groundCollision)

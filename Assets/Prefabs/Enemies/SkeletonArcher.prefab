@@ -221,6 +221,8 @@ MonoBehaviour:
   maxHealth: 20
   currentHealth: 0
   maxIFrames: 0
+  selfDestructDelay: 6
+  canBeRevived: 1
   hurtSFX: {fileID: 8300000, guid: 4cd73b5459f7dfc4f98bf602efdfd4dc, type: 3}
   blockSFX: {fileID: 0}
   deathSFX: {fileID: 8300000, guid: 71069f49a2bca6945bd765c011af7fc3, type: 3}
@@ -295,7 +297,7 @@ MonoBehaviour:
   viewDistance: 10
   aggroRange: 2
   fovAngle: 45
-  looseAggroTime: 5
+  looseAggroTime: 10
 --- !u!114 &-1100123820332016772
 MonoBehaviour:
   m_ObjectHideFlags: 0

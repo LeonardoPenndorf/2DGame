@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class EnemyRangedAttack : MonoBehaviour
 {
+    // public varibales
+    public float attackRange;
+
     // [SerializeField] variables
-    [SerializeField] float attackRange,
-                           fovAngle,
+    [SerializeField] float fovAngle,
                            XOffset,
                            YOffset,
                            xVelocity, 

@@ -9,7 +9,7 @@ public class FireSlash : MonoBehaviour
 
     // private variables
     private CircleCollider2D FireSlashCollider;
-    private bool groundCollision, enemyCollision;
+    private EnemyHealth enemyHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -19,16 +19,17 @@ public class FireSlash : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        enemyCollision = FireSlashCollider.IsTouchingLayers(LayerMask.GetMask("Enemies"));
-        groundCollision = FireSlashCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
-
-        if (enemyCollision)
+        if (FireSlashCollider.IsTouchingLayers(LayerMask.GetMask("Enemies")))
         {
-            collision.GetComponent<EnemyHealth>().TakeDamage(damage);
-            Destroy(gameObject);
+            enemyHealth = collision.GetComponent<EnemyHealth>();
+            if (enemyHealth != null && !enemyHealth.GetIsDead())
+            {
+                collision.GetComponent<EnemyHealth>().TakeDamage(damage);
+                Destroy(gameObject);
+            }
         }
 
-        if (groundCollision)
+        if (FireSlashCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             Destroy(gameObject);
         }

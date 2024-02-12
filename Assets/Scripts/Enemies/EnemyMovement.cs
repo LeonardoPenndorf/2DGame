@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -39,7 +40,16 @@ public class EnemyMovement : MonoBehaviour
 
         movementSpeed = standardMovementSpeed; // set movement speed
 
-        attackRange = gameObject.GetComponent<EnemyMeleeAttack>().attackRange; // fetch attack range to determine how close the enemy should get to the player to attack
+        EnemyMeleeAttack EnemyMeleeAttackComponent = GetComponent<EnemyMeleeAttack>();
+        if (EnemyMeleeAttackComponent != null)
+        {
+            attackRange = EnemyMeleeAttackComponent.attackRange; // fetch attack range to determine how close the enemy should get to the player to attack
+        }
+        else
+        {
+            EnemyRangedAttack EnemyRangedAttackComponent = GetComponent<EnemyRangedAttack>();
+            attackRange = EnemyRangedAttackComponent.attackRange;
+        }
     }
 
     // Update is called once per frame

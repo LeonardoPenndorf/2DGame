@@ -6,7 +6,8 @@ public class EnemyHealth : MonoBehaviour
 {
     // [SerializeField] variables
     [SerializeField] int maxHealth, currentHealth;
-    [SerializeField] float maxIFrames;
+    [SerializeField] float maxIFrames, selfDestructDelay;
+    [SerializeField] bool canBeRevived; // only certain enenmies can be revived
     [SerializeField] AudioClip hurtSFX, blockSFX, deathSFX;
 
     // private variables
@@ -17,7 +18,8 @@ public class EnemyHealth : MonoBehaviour
     private SpawnRandomItem SpawnRandomItemComponent;
     private EnemyAggro enemyAggro;
     private float iFrames;
-    private bool isBlocking = false; // some enemies can block
+    private bool isDead = false,
+                 isBlocking = false; // some enemies can block
 
 
     // Start is called before the first frame update
@@ -44,7 +46,7 @@ public class EnemyHealth : MonoBehaviour
             iFrames -= Time.deltaTime;
         }
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead)
         {
             Death();
         }
@@ -72,47 +74,97 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    public void Revive()
+    {
+        if(canBeRevived && isDead)
+        {
+            EnableDisable(true);
+
+            EnemyAnimator.SetTrigger("Revive");
+            currentHealth = maxHealth / 2;
+
+            canBeRevived = false; // enemies may only be revived once
+
+            isDead = false;
+        }
+    }
+
     private void Death()
     {
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position);
 
-        EnemyRB.velocity = Vector3.zero;
-        EnemyRB.bodyType = RigidbodyType2D.Static;
         EnemyAnimator.SetTrigger("IsDead");
-
-        EnemyCollider.enabled = false; // game objects should not collide with dead enemies
-        Hurtbox.SetActive(false); // if enemy was killed during its attacking animation the hurtbox collider will be enabled, thus we must deactivate the hurtbox gameobject to prevent issues
 
         SpawnRandomItemComponent.SpawnItem(); // sometimes enemies will spawn items on death
 
-        EnemyManager.instance.EnemyDied(gameObject); // remove enemy from the enemies list in enemy manager
 
-        GetComponent<EnemyMeleeAttack>().enabled = false;
-
-        EnemyMovement EnemyMovementComponent = GetComponent<EnemyMovement>();
-        if(EnemyMovementComponent != null)
+        EnableDisable(false);
+        if (!canBeRevived )
         {
-            GetComponent<EnemyMovement>().enabled = false;
+            StartCoroutine(SelfDestruct()); // if an enemy cannot be revived just destroy the game object after a short delay
+
         }
 
-        RangedEnemyMovement RangedEnemyMovementComponent = GetComponent<RangedEnemyMovement>();
-        if (RangedEnemyMovementComponent != null)
-        {
-            GetComponent<RangedEnemyMovement>().enabled = false;
-        }
-
-        EnemyBlock EnemyBlockComponent = GetComponent<EnemyBlock>(); // check if the enemy has the block component
-        if(EnemyBlockComponent != null)
-        {
-            GetComponent<EnemyBlock>().enabled = false;
-            EnemyAnimator.SetBool("IsBlocking", false);
-        }
-
-        GetComponent<EnemyHealth>().enabled = false;
+        isDead = true;
     }
 
     public void SetIsBlocking(bool newState)
     {
         isBlocking = newState;
+    }
+
+    public bool GetIsDead() {  return isDead; }
+
+    private void EnableDisable(bool newState) // disables components on death, enables them on revive
+    {
+        if (newState)
+        {
+            EnemyManager.instance.RegisterEnemy(gameObject); // add enemy to the enemies list in enemy manager
+        }
+        else
+        {
+            EnemyRB.velocity = Vector3.zero;
+            EnemyManager.instance.EnemyDied(gameObject); // remove enemy from the enemies list in enemy manager
+        }
+
+        //EnemyCollider.enabled = newState; // game objects should not collide with dead enemies
+        Hurtbox.SetActive(newState); // if enemy was killed during its attacking animation the hurtbox collider will be enabled, thus we must deactivate the hurtbox gameobject to prevent issues
+
+        EnemyMeleeAttack EnemyMeleeAttackComponent = GetComponent<EnemyMeleeAttack>();
+        if (EnemyMeleeAttackComponent != null)
+        {
+            GetComponent<EnemyMeleeAttack>().enabled = newState;
+        }
+
+        EnemyMovement EnemyMovementComponent = GetComponent<EnemyMovement>();
+        if (EnemyMovementComponent != null)
+        {
+            GetComponent<EnemyMovement>().enabled = newState;
+        }
+
+        EnemyKnockback EnemyKnockbackComponent = GetComponent<EnemyKnockback>();
+        if (EnemyKnockbackComponent != null)
+        {
+            GetComponent<EnemyKnockback>().enabled = newState;
+        }
+
+        RangedEnemyMovement RangedEnemyMovementComponent = GetComponent<RangedEnemyMovement>();
+        if (RangedEnemyMovementComponent != null)
+        {
+            GetComponent<RangedEnemyMovement>().enabled = newState;
+        }
+
+        EnemyBlock EnemyBlockComponent = GetComponent<EnemyBlock>(); // check if the enemy has the block component
+        if (EnemyBlockComponent != null)
+        {
+            GetComponent<EnemyBlock>().enabled = newState;
+            EnemyAnimator.SetBool("IsBlocking", false);
+        }
+    }
+
+    private IEnumerator SelfDestruct()
+    {
+        yield return new WaitForSeconds(selfDestructDelay);
+        Destroy(gameObject);
     }
 }
