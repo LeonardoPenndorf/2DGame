@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyKnockback : MonoBehaviour
 {
     // private variables
+    private EnemyHealth enemyHealth;
     private Rigidbody2D EnemyRB;
     private Animator EnemyAnimator;
     private Transform PlayerTransform;
@@ -13,6 +14,7 @@ public class EnemyKnockback : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemyHealth = GetComponent<EnemyHealth>();
         EnemyRB = GetComponent<Rigidbody2D>();
         EnemyAnimator = GetComponent<Animator>();
 
@@ -21,6 +23,8 @@ public class EnemyKnockback : MonoBehaviour
 
     public void Knockback(Vector2 knockbackVector, float stunDuration)
     {
+        if (enemyHealth.GetIsDead()) return; // cannot knockback corpses
+
         EnemyAnimator.SetBool("IsMoving", false);
 
         isStunned = true; // prevent player from moving

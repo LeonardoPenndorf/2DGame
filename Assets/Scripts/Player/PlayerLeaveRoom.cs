@@ -23,7 +23,7 @@ public class PlayerLeaveRoom : MonoBehaviour
     
     private void LeaveRoom()
     {
-        if (!PlayerCollider.IsTouchingLayers(LayerMask.GetMask("Door")))
+        if (!PlayerCollider.IsTouchingLayers(LayerMask.GetMask("Door")) || !playerMovement.GetIsGrounded())
             return;
 
         playerAnimator.SetTrigger("Leave");

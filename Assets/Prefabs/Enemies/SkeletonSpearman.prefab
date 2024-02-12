@@ -201,12 +201,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee4b5654035d4a46b45b2e57331f4fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standardMovementSpeed: 2
-  aggroedMovementSpeed: 4
-  NavCollider: {fileID: 2973035012900898970}
   animationsArray:
   - SkeletonSpearman_Hurt
   - SkeletonSpearman_Attack1
+  standardMovementSpeed: 2
+  aggroedMovementSpeed: 4
+  NavCollider: {fileID: 2973035012900898970}
+  patrols: 1
 --- !u!114 &8511971272375729107
 MonoBehaviour:
   m_ObjectHideFlags: 0

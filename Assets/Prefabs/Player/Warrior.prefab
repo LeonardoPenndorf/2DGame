@@ -181,13 +181,13 @@ GameObject:
   - component: {fileID: 8540299747823049924}
   - component: {fileID: 4593993611541728165}
   - component: {fileID: 1301676925191890625}
+  - component: {fileID: 8691603822166462125}
   - component: {fileID: -5246074709064478077}
   - component: {fileID: -5345504813646555920}
   - component: {fileID: 3553670192834770497}
   - component: {fileID: 1733006571222690284}
   - component: {fileID: 41005810356047400}
   - component: {fileID: 3143726481697374373}
-  - component: {fileID: 8691603822166462125}
   - component: {fileID: -3619389932709620366}
   m_Layer: 9
   m_Name: Warrior
@@ -480,26 +480,30 @@ MonoBehaviour:
     m_ActionId: 67540289-c570-4292-b5e6-376b139b46fb
     m_ActionName: Player/Block[/Mouse/rightButton,/DualShock4GamepadHID/buttonEast]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3456912444205281957, guid: a46843b19d031dd40a22fe3fe7f7ea78, type: 3}
-        m_TargetAssemblyTypeName: TogglePauseMenu, Assembly-CSharp
-        m_MethodName: PauseUnpauseGame
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 11337278-0e17-4f71-afaa-a969aeaa10cd
-    m_ActionName: Player/PauseGame[/Keyboard/escape,/DualShock4GamepadHID/start]
+      m_Calls: []
+    m_ActionId: b0bce13e-4538-4056-b947-26281d84a843
+    m_ActionName: UI/PauseGame[/Keyboard/escape,/DualShock4GamepadHID/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 50f835e8-9dbe-43f6-81fa-373200014767
+    m_ActionName: DisableMap/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &8691603822166462125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157536053932933172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c58a1923fb2d14bb1e19fd2fa3004d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-5246074709064478077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,18 +606,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f1eca2fde24a4743807a58295cc96b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8691603822166462125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7157536053932933172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7c58a1923fb2d14bb1e19fd2fa3004d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &-3619389932709620366

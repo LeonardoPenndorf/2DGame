@@ -9,7 +9,6 @@ public class RangedEnemyMovement : MonoBehaviour
     [SerializeField] string[] animationsArray; // array containing the name of all animations that would stop the enemy from moving
 
     // private varibales
-    private Animator EnemyAnimator;
     private EnemyAggro enemyAggro; // script that manages the aggro state of enemies
     private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
     private GameObject Player; // player gameobject is required for navigation when aggroed
@@ -19,7 +18,6 @@ public class RangedEnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EnemyAnimator = GetComponent<Animator>();
         enemyAggro = GetComponent<EnemyAggro>();
         animationsChecker = GetComponent<AnimationChecker>();
         enemyKnockback = GetComponent<EnemyKnockback>();

@@ -97,6 +97,16 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(Stunned(stunDuration));
     }
 
+    public void EnableRotate() // called in several animations
+    {
+        SetCanRotate(true);
+    }
+
+    public void DisableRotate()  // called in several animations
+    {
+        SetCanRotate(false);
+    }
+
     IEnumerator Stunned(float stunDuration)
     {
         yield return new WaitForSeconds(stunDuration);

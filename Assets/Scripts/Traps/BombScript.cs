@@ -13,12 +13,16 @@ public class BombScript : MonoBehaviour
     private CircleCollider2D TriggerCollider;
     private Animator BombAnimator;
     private bool playerNearby;
+    private int playerLayerMask, enemiesLayerMask;
 
     // Start is called before the first frame update
     void Start()
     {
         TriggerCollider = GetComponent<CircleCollider2D>();
         BombAnimator = GetComponent<Animator>();
+        
+        playerLayerMask = LayerMask.GetMask("Player");
+        enemiesLayerMask = LayerMask.GetMask("Enemies");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,13 +37,21 @@ public class BombScript : MonoBehaviour
 
     private void Explosion() // collider is activated when explosion animation starts
     {
-        Collider2D PlayerCollider = Physics2D.OverlapCircle(transform.position, ExplosionRadius, LayerMask.GetMask("Player"));
+        Collider2D PlayerCollider = Physics2D.OverlapCircle(transform.position, ExplosionRadius, playerLayerMask);
 
         if (PlayerCollider)
         {
             PlayerCollider.GetComponent<PlayerHealth>().TakeDamage(damage, transform);
             PlayerCollider.GetComponent<PlayerMovement>().KnockBack(KnockbackVector, stunDuration, transform);
 
+        }
+
+        Collider2D[] enemyCollision = Physics2D.OverlapCircleAll(transform.position, ExplosionRadius, enemiesLayerMask);
+
+        foreach (Collider2D collision in enemyCollision)
+        {
+            collision.GetComponent<EnemyHealth>().TakeDamage(damage);
+            collision.GetComponent<EnemyKnockback>().Knockback(KnockbackVector, stunDuration);
         }
     }
 
