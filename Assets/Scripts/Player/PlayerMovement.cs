@@ -18,7 +18,10 @@ public class PlayerMovement : MonoBehaviour
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
 
     private float xAxisInput;
-    private bool isGrounded, isStunned = false, facingRight;
+    private bool isGrounded, 
+                 isStunned = false, 
+                 facingRight,
+                 canRotate = true;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +50,10 @@ public class PlayerMovement : MonoBehaviour
             Run();
         }
 
-        Rotate();
+        if (canRotate)
+        {
+            Rotate();
+        }
     }
 
     private void Run()
@@ -63,6 +69,8 @@ public class PlayerMovement : MonoBehaviour
         else if (xAxisInput > 0) // turn right
             transform.rotation = Quaternion.Euler(0, 0, 0);
     }
+
+    public void SetCanRotate(bool newState) { canRotate = newState; }
 
     public void Jump()
     {

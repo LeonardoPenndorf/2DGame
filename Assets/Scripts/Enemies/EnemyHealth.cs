@@ -48,6 +48,11 @@ public class EnemyHealth : MonoBehaviour
         {
             Death();
         }
+
+        if (isDead && (!canBeRevived || !EnemyManager.instance.GetNecromancerPresent()))
+        {
+            StartCoroutine(SelfDestruct()); // destroy the game object after a short delay
+        }
     }
 
     public void TakeDamage(int damage)
@@ -95,13 +100,7 @@ public class EnemyHealth : MonoBehaviour
 
         SpawnRandomItemComponent.SpawnItem(); // sometimes enemies will spawn items on death
 
-
         EnableDisable(false);
-        if (!canBeRevived )
-        {
-            StartCoroutine(SelfDestruct()); // if an enemy cannot be revived just destroy the game object after a short delay
-
-        }
 
         isDead = true;
     }

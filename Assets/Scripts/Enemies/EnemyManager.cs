@@ -9,6 +9,7 @@ public class EnemyManager : MonoBehaviour
 
     // private variables
     private List<GameObject> enemies = new List<GameObject>(); // list containing all enemy game objects
+    private bool necromancerPresent = false;
 
     void Awake()
     {
@@ -28,6 +29,7 @@ public class EnemyManager : MonoBehaviour
         if (!enemies.Contains(enemy))
         {
             enemies.Add(enemy);
+            FindNecromancer();
         }
     }
 
@@ -36,11 +38,28 @@ public class EnemyManager : MonoBehaviour
         if (enemies.Contains(enemy))
         {
             enemies.Remove(enemy);
+            FindNecromancer();
         }
     }
 
     public bool AreAllEnemiesDead() // check if the enemies list is empty
     {
         return enemies.Count == 0;
+    }
+
+    public bool GetNecromancerPresent() { return necromancerPresent; }
+
+    private void FindNecromancer()
+    {
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy.GetComponent<EnemyRevive>() != null)
+            {
+                necromancerPresent = true;
+                return;
+            }
+        }
+
+        necromancerPresent = false;
     }
 }

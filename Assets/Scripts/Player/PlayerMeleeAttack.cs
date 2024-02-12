@@ -105,11 +105,13 @@ public class PlayerMeleeAttack : MonoBehaviour
     private void enableHurtboxCollider() // enable hurtbox collider at beginning of attack animation
     {
         HurtBoxCollider.enabled = true;
+        PlayerMovementComponent.SetCanRotate(false);
     }
 
     private void disableHurtboxCollider() // disable hurtbox collider at end of attack animation
     {
         HurtBoxCollider.enabled = false;
+        PlayerMovementComponent.SetCanRotate(true);
     }
 
     private void ResetCounter() // called in the attack end animations and the third attack
