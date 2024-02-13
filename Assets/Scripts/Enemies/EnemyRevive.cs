@@ -7,7 +7,6 @@ public class EnemyRevive : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("aaaa");
         if (collision.CompareTag("Enemy"))
         {
             EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();

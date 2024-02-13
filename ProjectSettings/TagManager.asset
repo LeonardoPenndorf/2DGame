@@ -9,6 +9,7 @@ TagManager:
   - Door
   - Healing
   - Diamond
+  - Buff
   layers:
   - Default
   - TransparentFX

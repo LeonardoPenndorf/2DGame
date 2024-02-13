@@ -5,16 +5,18 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     // [SerializeField] variable
-    [SerializeField] int healAmount;
+    [SerializeField] int healAmount, buffAmount;
     [SerializeField] AudioClip PickUpSFX;
 
     // private variables
-    private PlayerHealth PlayerHealthComponent;
+    private PlayerHealth playerHealth;
+    private PlayerManager playerManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerHealthComponent = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
+        playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
+        playerManager = PlayerManager.instance;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -30,10 +32,13 @@ public class PickUp : MonoBehaviour
         switch (gameObject.tag)
         {
             case "Healing":
-                PlayerHealthComponent.Heal(healAmount);
+                playerHealth.Heal(healAmount);
                 break;
             case "Diamond":
-                PlayerManager.instance.IncrementDiamonds();
+                playerManager.IncrementDiamonds();
+                break;
+            case "Buff":
+                playerManager.IncrementDamage(buffAmount);
                 break;
             default:
                 Debug.Log("Unhandled pickup tag.");

@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] Healthbar healthbar;
     [SerializeField] DiamondsUI diamondsUI;
     [SerializeField] Canvas deathCanvas;
-    [SerializeField] int currentHealth, maxHealth; // stores the health of player
+    [SerializeField] int currentHealth, maxHealth, damage; // stores the health of player
     [SerializeField] int currentDiamonds; // amount of diamonds collected by the player
 
     private void Awake()
@@ -34,6 +34,8 @@ public class PlayerManager : MonoBehaviour
 
     public int GetPlayerHealth() { return currentHealth; }
 
+    public int GetDamage() { return damage; }
+
     public void SetMaxHealth(int health) 
     { 
         maxHealth = health;
@@ -46,6 +48,8 @@ public class PlayerManager : MonoBehaviour
         healthbar.SetSliderValue(health);
     }
 
+    public void SetDamage(int newDamage) { damage = newDamage; }
+
     public void AdjustPlayerHealth(int health) { currentHealth += health; }
 
     public void OnPlayerDeath() { deathCanvas.enabled = true; }
@@ -57,4 +61,6 @@ public class PlayerManager : MonoBehaviour
         currentDiamonds++; 
         diamondsUI.SetDiamonds(currentDiamonds);
     }
+
+    public void IncrementDamage(int increment) { damage += increment; }
 }

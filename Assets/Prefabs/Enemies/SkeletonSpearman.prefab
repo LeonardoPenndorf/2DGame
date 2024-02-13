@@ -201,13 +201,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee4b5654035d4a46b45b2e57331f4fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationsArray:
-  - SkeletonSpearman_Hurt
-  - SkeletonSpearman_Attack1
   standardMovementSpeed: 2
   aggroedMovementSpeed: 4
   NavCollider: {fileID: 2973035012900898970}
-  patrols: 1
+  animationsArray:
+  - SkeletonSpearman_Hurt
+  - SkeletonSpearman_Attack1
 --- !u!114 &8511971272375729107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +289,8 @@ MonoBehaviour:
   itemsArray:
   - {fileID: 3909300074024647732, guid: 2c53d24ac153e9c4eaf1cee31b34b94f, type: 3}
   - {fileID: 3909300074024647732, guid: fe4f4741e07a89242920714c86a5f3df, type: 3}
-  spawnChance: 0.1
+  - {fileID: 7978458748290070588, guid: 48e27fa3b6010894ea0245559e609894, type: 3}
+  spawnChance: 0.2
   launchVector: {x: 4, y: 2}
 --- !u!114 &2310256468810609714
 MonoBehaviour:

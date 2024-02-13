@@ -10,10 +10,11 @@ public class PlayerMeleeAttack : MonoBehaviour
     [SerializeField] float maxComboDelay, // maximum amount of time between clicks
                            attackCooldown, // after air attacking cooldown must end before attacking again 
                            stunDuration; // after being hit by an attack, the enemy is stunned for a short while
-    [SerializeField] int baseDamage; // base damage of all attacks. This vlaue is used to set the damage of a specifc attack
+    [SerializeField] int baseDamage; // base damage of all attacks. This value is used to set the damage of a specifc attack
     [SerializeField] Vector2 knockbackVector; // the knockback force of an attack
 
     // private variables
+    private PlayerManager playerManager; // player manager stores persistent values such as health
     private BoxCollider2D HurtBoxCollider;
     private Animator PlayerAnimator;
     private PlayerMovement PlayerMovementComponent;
@@ -27,6 +28,9 @@ public class PlayerMeleeAttack : MonoBehaviour
         PlayerAnimator = GetComponent<Animator>();
         HurtBoxCollider = HurtBox.GetComponent<BoxCollider2D>();
         PlayerMovementComponent = GetComponent<PlayerMovement>();
+
+        playerManager = PlayerManager.instance;
+        InitializeDamage();
     }
 
     // Update is called once per frame
@@ -37,6 +41,14 @@ public class PlayerMeleeAttack : MonoBehaviour
         if (cooldownTimer > 0)
         {
             cooldownTimer -= Time.deltaTime;
+        }
+    }
+
+    private void InitializeDamage()
+    {
+        if (playerManager.GetDamage() <= 0)
+        {
+            playerManager.SetDamage(baseDamage);
         }
     }
 
@@ -64,7 +76,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     private void AttackCombo() // a 3 hit attack combo
     {
-        damage = baseDamage; // all combo attack except the last one deal base damage
+        damage = playerManager.GetDamage(); // all combo attack except the last one deal base damage
 
         switch (PlayerAnimator.GetInteger("AttackComboCounter"))
         {
@@ -75,7 +87,7 @@ public class PlayerMeleeAttack : MonoBehaviour
                 PlayerAnimator.SetInteger("AttackComboCounter", 2);
                 break;
             case 2:
-                damage = baseDamage * 2;
+                damage *= 2;
                 PlayerAnimator.SetInteger("AttackComboCounter", 3);
                 break;
             default:
@@ -86,7 +98,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     private void AirAttack() // a single attack that can  be performed mid air
     {
-        damage = baseDamage; // set damage to base damage
+        damage = playerManager.GetDamage(); // set damage to base damage
         PlayerAnimator.SetTrigger("AirAttack");
     }
 
@@ -96,7 +108,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
         if (context.performed)
         {
-            damage = baseDamage * 4; // special attacks deals a lot of damage
+            damage = playerManager.GetDamage() * 4; // special attacks deals a lot of damage
             PlayerAnimator.SetTrigger("SpecialAttack");
             cooldownTimer = attackCooldown;
         }
