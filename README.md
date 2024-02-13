@@ -19,6 +19,8 @@ Necromancer: https://lionheart963.itch.io/wizard?download
 
 magic effects: https://ppeldo.itch.io/2d-pixel-art-game-spellmagic-fx
 
+Traps: https://bdragon1727.itch.io/free-trap-platformer
+
 SFX Sources:
 
 https://mixkit.co/free-sound-effects/sword/
