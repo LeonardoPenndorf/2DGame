@@ -19,6 +19,7 @@ public class PlayerJumpDown : MonoBehaviour
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
     private string[] animationsArray; // array containing the name of all animations that would stop you from moving
     private bool isGrounded; // player can only jump down when grounded
+    private int playerlayerMask, navigationLayerMask, ignorePlatformsLayerMask;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,10 @@ public class PlayerJumpDown : MonoBehaviour
         animationsChecker = GetComponent<AnimationChecker>();
 
         animationsArray = GetComponent<PlayerMovement>().animationsArray;
+
+        playerlayerMask = gameObject.layer;
+        navigationLayerMask = PlayerFeet.layer;
+        ignorePlatformsLayerMask = LayerMask.NameToLayer("IgnorePlatforms");
     }
 
     // Update is called once per frame
@@ -66,8 +71,10 @@ public class PlayerJumpDown : MonoBehaviour
 
     private IEnumerator DisableCollision() // by briethly turning around the surface arc, the player can jump down
     {
-        CurrentPlatformEffector.surfaceArc = 0;
+        PlayerFeet.layer = ignorePlatformsLayerMask;
+        gameObject.layer = ignorePlatformsLayerMask;
         yield return new WaitForSeconds(disableTime);
-        CurrentPlatformEffector.surfaceArc = 180;
+        PlayerFeet.layer = navigationLayerMask;
+        gameObject.layer = playerlayerMask;
     }
 }

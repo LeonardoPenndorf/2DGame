@@ -7,7 +7,6 @@ public class EnemySummon : MonoBehaviour
     // [SerializeField] variables
     [SerializeField] float summonXDistance,
                            summonYDistance,
-                           maxXOffset,
                            maxCooldown;
     [SerializeField] GameObject SummonPrefab;
     [SerializeField] string[] animationsArray;
@@ -55,8 +54,7 @@ public class EnemySummon : MonoBehaviour
     private void Summon() // called during the summon animation
     {
         GameObject NewSummon = Instantiate(SummonPrefab) as GameObject;
-        xOffset = Random.Range(-maxXOffset, maxXOffset);
 
-        NewSummon.transform.position = new Vector3(AimPoint.position.x + xOffset, transform.position.y, 0);
+        NewSummon.transform.position = new Vector3(AimPoint.position.x, transform.position.y, 0);
     }
 }

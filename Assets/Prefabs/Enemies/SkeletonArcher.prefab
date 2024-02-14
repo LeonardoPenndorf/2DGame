@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2891714791d7f44ab2640d846e58f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 10
+  attackRange: 12
   spawnPosition: {fileID: 1987081506367897825}
   fovAngle: 60
   maxCooldown: 4

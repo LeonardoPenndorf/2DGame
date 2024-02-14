@@ -30,16 +30,16 @@ https://quicksounds.com/library/sounds/skeleton
 
 
 ToDo:
-1) Improve arrow script
-2) Improve enemy vision
-3) Improve ranged movement script
-4) Implement randomized room selection
-5) Implement treasure chests
-6) Implement boss fights
-7) Fix enemy overlap
-8) Fix enemy platform interaction
-9) Add more rooms
-10) Enemies should avoid traps
-11) Add more SFX
-12) Add particle effects
-13) Add upgrade shop
+1) Improve enemy vision
+2) Improve ranged movement script
+3) Implement randomized room selection
+4) Implement treasure chests
+5) Implement boss fights
+6) Fix enemy overlap
+7) Add more rooms
+8) Enemies should avoid traps
+9) Add more SFX
+10) Add particle effects
+11) Add upgrade shop
+12) projectiles should have max range
+13) fall damage
