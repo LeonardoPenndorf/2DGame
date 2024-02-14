@@ -62,9 +62,6 @@ TagManager:
   - name: Platforms
     uniqueID: 2012992329
     locked: 0
-  - name: Player
-    uniqueID: 1105132015
-    locked: 0
   - name: Traps
     uniqueID: 2761489897
     locked: 0
@@ -73,6 +70,9 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1105132015
     locked: 0
   - name: Items
     uniqueID: 956996775

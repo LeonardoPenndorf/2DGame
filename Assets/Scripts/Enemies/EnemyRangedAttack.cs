@@ -15,7 +15,7 @@ public class EnemyRangedAttack : MonoBehaviour
                            minYVelocity, // y velocity of projectile fluctuates between minYVelocity and maxYVelocity
                            maxYVelocity,
                            maxCooldown; // second the enemy needs to wait until he can attack again
-    [SerializeField] GameObject Projectile; // Projectiles shot by rnaged attacks are separate prefabs
+    [SerializeField] GameObject Projectile; // Projectiles shot by ranged attacks are separate prefabs
     [SerializeField] string[] animationsArray;
 
     // private variables
@@ -80,7 +80,7 @@ public class EnemyRangedAttack : MonoBehaviour
             newXOffset = -newXOffset;
             newXVelocity = -xVelocity;
 
-            NewProjectile.transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+            NewProjectile.transform.rotation = Quaternion.Euler(0.0f, 180.0f, newYVelocity * 2f);
         }
 
         Vector2 spawnPosition = new Vector3(transform.position.x + newXOffset, transform.position.y + YOffset, 0);

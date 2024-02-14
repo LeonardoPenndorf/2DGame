@@ -21,6 +21,8 @@ magic effects: https://ppeldo.itch.io/2d-pixel-art-game-spellmagic-fx
 
 Traps: https://bdragon1727.itch.io/free-trap-platformer
 
+bringer of death: https://clembod.itch.io/bringer-of-death-free
+
 SFX Sources:
 
 https://mixkit.co/free-sound-effects/sword/

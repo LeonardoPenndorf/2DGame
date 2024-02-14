@@ -248,7 +248,7 @@ MonoBehaviour:
   xVelocity: 20
   minYVelocity: -1.5
   maxYVelocity: 1.5
-  maxCooldown: 4
+  maxCooldown: 6
   Projectile: {fileID: 6859765699701903693, guid: cf817a71d815be244a1e30a7c4b6628f, type: 3}
   animationsArray:
   - Necromancer_Hurt
