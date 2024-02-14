@@ -18,6 +18,7 @@ public class PlayerMeleeAttack : MonoBehaviour
     private BoxCollider2D HurtBoxCollider;
     private Animator PlayerAnimator;
     private PlayerMovement PlayerMovementComponent;
+    private AnimationChecker animationChecker;
     private int damage; // damage of the current attack
     private float cooldownTimer;
     private bool isGrounded;
@@ -28,6 +29,7 @@ public class PlayerMeleeAttack : MonoBehaviour
         PlayerAnimator = GetComponent<Animator>();
         HurtBoxCollider = HurtBox.GetComponent<BoxCollider2D>();
         PlayerMovementComponent = GetComponent<PlayerMovement>();
+        animationChecker = GetComponent<AnimationChecker>();
 
         playerManager = PlayerManager.instance;
         InitializeDamage();
@@ -78,20 +80,20 @@ public class PlayerMeleeAttack : MonoBehaviour
     {
         damage = playerManager.GetDamage(); // all combo attack except the last one deal base damage
 
-        switch (PlayerAnimator.GetInteger("AttackComboCounter"))
+        switch (animationChecker.GetCurrentAnimation())
         {
-            case 0:
-                PlayerAnimator.SetInteger("AttackComboCounter", 1);
+            case "Warrior_MeleeAttack_3":
+                PlayerAnimator.SetInteger("AttackComboCounter", 0);
                 break;
-            case 1:
+            case "Warrior_MeleeAttack_1":
                 PlayerAnimator.SetInteger("AttackComboCounter", 2);
                 break;
-            case 2:
+            case "Warrior_MeleeAttack_2":
                 damage *= 2;
                 PlayerAnimator.SetInteger("AttackComboCounter", 3);
                 break;
             default:
-                PlayerAnimator.SetInteger("AttackComboCounter", 0);
+                PlayerAnimator.SetInteger("AttackComboCounter", 1);
                 break;
         }
     }

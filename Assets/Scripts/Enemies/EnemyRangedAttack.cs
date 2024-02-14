@@ -76,7 +76,7 @@ public class EnemyRangedAttack : MonoBehaviour
         newYVelocity = Random.Range(minYVelocity, maxYVelocity);
 
         if (transform.rotation.eulerAngles.y == 0)
-        { // if the player is looing left flip everything
+        {
             newXOffset = -newXOffset;
             newXVelocity = -xVelocity;
 
