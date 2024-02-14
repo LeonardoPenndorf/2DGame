@@ -990,7 +990,7 @@ GameObject:
   - component: {fileID: 2114335764382153550}
   - component: {fileID: 2289148713553245632}
   m_Layer: 5
-  m_Name: LoadScreen
+  m_Name: LoadingScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1880,6 +1880,7 @@ MonoBehaviour:
   deathCanvas: {fileID: 368167654103134823}
   currentHealth: 100
   maxHealth: 0
+  damage: 0
   currentDiamonds: 0
 --- !u!114 &7444833559081826693
 MonoBehaviour:

@@ -488,7 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   summonXDistance: 15
   summonYDistance: 3
-  maxXOffset: 4
+  maxXOffset: 2
   maxCooldown: 10
   SummonPrefab: {fileID: 4041557730093189792, guid: a8feef04b3a7ea244a7cde5c9cd7c65b, type: 3}
   animationsArray:

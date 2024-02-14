@@ -13,7 +13,7 @@ public class EnemySummon : MonoBehaviour
     [SerializeField] string[] animationsArray;
 
     // private variables
-    private Transform Player;
+    private Transform AimPoint;
     private Animator EnemyAnimator;
     private EnemyAggro enemyAggro;
     private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
@@ -26,7 +26,7 @@ public class EnemySummon : MonoBehaviour
         enemyAggro = GetComponent<EnemyAggro>();
         animationsChecker = GetComponent<AnimationChecker>();
 
-        Player = GameObject.FindGameObjectWithTag("Player").transform;
+        AimPoint = GameObject.FindGameObjectWithTag("Player").transform.Find("AimPoint");
     }
 
     // Update is called once per frame
@@ -42,8 +42,8 @@ public class EnemySummon : MonoBehaviour
 
     private void CheckRange() // check if player is within summon range
     {
-        xDistance = Mathf.Abs(Player.position.x - transform.position.x);
-        yDistance = Mathf.Abs(Player.position.y - transform.position.y);
+        xDistance = Mathf.Abs(AimPoint.position.x - transform.position.x);
+        yDistance = Mathf.Abs(AimPoint.position.y - transform.position.y);
 
         if ((xDistance <= summonXDistance) &&  (yDistance <= summonYDistance) && !animationsChecker.CheckAnimations(animationsArray))
         {
@@ -57,6 +57,6 @@ public class EnemySummon : MonoBehaviour
         GameObject NewSummon = Instantiate(SummonPrefab) as GameObject;
         xOffset = Random.Range(-maxXOffset, maxXOffset);
 
-        NewSummon.transform.position = new Vector3(Player.position.x + xOffset, transform.position.y, 0);
+        NewSummon.transform.position = new Vector3(AimPoint.position.x + xOffset, transform.position.y, 0);
     }
 }

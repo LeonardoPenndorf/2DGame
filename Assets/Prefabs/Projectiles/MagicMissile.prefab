@@ -75,11 +75,11 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -712351315
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1035564441, guid: f02ecac7cd3db5c4c9470efb4ba8a191, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -172,6 +172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3252a7756cac2b4bbcb59219dec2f63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 0
+  speed: 12
+  xBounds: 10
+  yBounds: 5
   damage: 15
 --- !u!95 &2998981225662780254
 Animator:
