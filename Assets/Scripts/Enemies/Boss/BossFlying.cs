@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class BossFlying : MonoBehaviour
 {
+    // public variables
+    public string[] animationsArray;
+
     // [SerializeField] variables
     [SerializeField] float speed;
-    [SerializeField] string[] animationsArray;
 
     // private variables
     private Animator animator;

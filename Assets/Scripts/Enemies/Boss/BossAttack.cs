@@ -11,7 +11,6 @@ public class BossAttack : MonoBehaviour
     // [SerializeField] variables
     [SerializeField] GameObject HurtBox; // melee attack hurt box
     [SerializeField] float maxCooldown;
-    [SerializeField] string[] animationsArray;
 
     // private variables
     private Animator animator;
@@ -19,6 +18,8 @@ public class BossAttack : MonoBehaviour
     private AnimationChecker animationChecker;
     private float cooldown, 
                   distance;
+    private string[] animationsArray;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class BossAttack : MonoBehaviour
         animator = GetComponent<Animator>();
         playerTransform = GameObject.FindWithTag("Player").transform;
         animationChecker = GetComponent<AnimationChecker>();
+        animationsArray = GetComponent<BossFlying>().animationsArray;
     }
 
     // Update is called once per frame

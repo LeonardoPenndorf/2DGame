@@ -11,6 +11,7 @@ public class PlayerLeaveRoom : MonoBehaviour
     private Animator playerAnimator;
     private PlayerInput playerInput; // when leaving switch input map to disable input
     private PlayerMovement playerMovement; // prevent moving during leave animation
+    private EnemyManager enemyManager;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +20,12 @@ public class PlayerLeaveRoom : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
         playerMovement = GetComponent<PlayerMovement>();
+        enemyManager = EnemyManager.instance;
     }
     
     private void LeaveRoom()
     {
-        if (!PlayerCollider.IsTouchingLayers(LayerMask.GetMask("Door")) || !playerMovement.GetIsGrounded())
+        if (!PlayerCollider.IsTouchingLayers(LayerMask.GetMask("Door")) || !playerMovement.GetIsGrounded() || !enemyManager.AreAllEnemiesDead())
             return;
 
         playerAnimator.SetTrigger("Leave");

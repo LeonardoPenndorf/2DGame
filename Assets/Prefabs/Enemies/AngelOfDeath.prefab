@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5458250210221656732}
   - component: {fileID: 579744602650824471}
   - component: {fileID: 3121720637327481200}
+  - component: {fileID: 1719293751857645380}
   - component: {fileID: 3504878707104760798}
   m_Layer: 11
   m_Name: AngelOfDeath
@@ -38,6 +39,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 493439272197955522}
+  - {fileID: 2149180829976923851}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8319419391709614865
@@ -233,9 +235,31 @@ MonoBehaviour:
   damage: 40
   attackRange: 1.5
   HurtBox: {fileID: 6737820267910601007}
-  maxCooldown: 3
+  maxCooldown: 2
   animationsArray:
   - AngelOfDeath_Cast
+  - AngelOfDeath_Hurt
+  - AngelOfDeath_Teleport
+  - AngelOfDeath_Attack_Teleport
+--- !u!114 &1719293751857645380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4260116733164473512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f59a3b50964c6045a49308fee97dbef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flameSkull: {fileID: 8092460453905015526, guid: 1fd357c8952865a47be301d1999c26a1, type: 3}
+  maxCooldown: 7
+  minDistance: 5
+  interval: 0.5
+  amount: 3
+  animationsArray:
+  - AngelOfDeath_Attack
   - AngelOfDeath_Hurt
   - AngelOfDeath_Teleport
   - AngelOfDeath_Attack_Teleport
@@ -341,3 +365,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf7e3f6343faf543bc8244aecbcac07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7823322619098462055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2149180829976923851}
+  m_Layer: 11
+  m_Name: spawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2149180829976923851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7823322619098462055}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.707, y: -1.161, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8245280312430061454}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
