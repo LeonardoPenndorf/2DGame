@@ -10,6 +10,8 @@ TagManager:
   - Healing
   - Diamond
   - Buff
+  - Boss
+  - BossHealthbar
   layers:
   - Default
   - TransparentFX

@@ -82,6 +82,8 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public bool GetIsBlocking() {  return isBlocking; }
+
     public void SetIsBlocking(bool newIsBlocking)
     {
         isBlocking = newIsBlocking;
