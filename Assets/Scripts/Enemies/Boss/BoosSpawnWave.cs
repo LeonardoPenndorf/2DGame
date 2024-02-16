@@ -17,6 +17,15 @@ public class BoosSpawnWave : MonoBehaviour
     private void SpawnWave()
     {
         GameObject newWave = Instantiate(wave, spawnTransform.position, Quaternion.identity);
-        newWave.GetComponent<Arrow>().direction = transform.rotation.y * -1;
+
+        if (transform.rotation.y == 0)
+        {
+            newWave.GetComponent<Arrow>().direction = -1;
+
+        }
+        else
+        {
+            newWave.GetComponent<Arrow>().direction = 1;
+        }
     }
 }

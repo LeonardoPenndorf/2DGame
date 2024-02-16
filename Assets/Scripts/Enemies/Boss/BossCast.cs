@@ -27,6 +27,8 @@ public class BossCast : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
         animationsArray = GetComponent<BossFlying>().animationsArray;
+
+        cooldown = maxCooldown;
     }
 
     // Update is called once per frame

@@ -15,7 +15,6 @@ public class Arrow : MonoBehaviour
     private Transform AimPoint;
     private Rigidbody2D ProjectileRB;
     private Collider2D ArrowCollider;
-    private bool groundCollision, playerCollision;
     float xVelocity, yVelocity;
     private Vector3 velocityVector;
 
@@ -32,15 +31,12 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        playerCollision = ArrowCollider.IsTouchingLayers(LayerMask.GetMask("Player"));
-        groundCollision = ArrowCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
-
-        if(playerCollision)
+        if(collision.CompareTag("Player"))
         {
             collision.GetComponent<PlayerHealth>().TakeDamage(damage, transform);
             Destroy(gameObject);
         }
-        else if (groundCollision)
+        else if (ArrowCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             Destroy(gameObject);
         }

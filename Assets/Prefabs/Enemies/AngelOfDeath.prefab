@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1719293751857645380}
   - component: {fileID: 6824842298860111508}
   - component: {fileID: 3504878707104760798}
+  - component: {fileID: 5212282412839720494}
   m_Layer: 11
   m_Name: AngelOfDeath
   m_TagString: Boss
@@ -236,7 +237,7 @@ MonoBehaviour:
   damage: 40
   attackRange: 1.5
   HurtBox: {fileID: 6737820267910601007}
-  maxCooldown: 3
+  maxCooldown: 2
 --- !u!114 &1719293751857645380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flameSkull: {fileID: 8092460453905015526, guid: 1fd357c8952865a47be301d1999c26a1, type: 3}
-  maxCooldown: 8
+  maxCooldown: 9
   minDistance: 5
   interval: 0.5
   amount: 3
@@ -279,6 +280,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c58a1923fb2d14bb1e19fd2fa3004d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5212282412839720494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4260116733164473512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901f173afd360904893cefb2c67b46d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCooldown: 15
+  teleportTime: 3
+  amount: 0
 --- !u!1 &6737820267910601007
 GameObject:
   m_ObjectHideFlags: 0
