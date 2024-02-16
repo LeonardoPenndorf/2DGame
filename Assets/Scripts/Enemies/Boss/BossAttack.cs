@@ -61,9 +61,4 @@ public class BossAttack : MonoBehaviour
     {
         HurtBox.GetComponent<BoxCollider2D>().enabled = false;
     }
-
-    private void SpawnWave()
-    {
-        Debug.Log("Placeholder");
-    }
 }

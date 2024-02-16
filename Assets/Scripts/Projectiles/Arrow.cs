@@ -14,7 +14,7 @@ public class Arrow : MonoBehaviour
     // private variables
     private Transform AimPoint;
     private Rigidbody2D ProjectileRB;
-    private BoxCollider2D ArrowCollider;
+    private Collider2D ArrowCollider;
     private bool groundCollision, playerCollision;
     float xVelocity, yVelocity;
     private Vector3 velocityVector;
@@ -24,7 +24,7 @@ public class Arrow : MonoBehaviour
     {
         AimPoint = GameObject.FindGameObjectWithTag("Player").transform.Find("AimPoint");
         ProjectileRB = GetComponent<Rigidbody2D>();
-        ArrowCollider = GetComponent<BoxCollider2D>();
+        ArrowCollider = GetComponent<Collider2D>();
 
         SetVelocity();
         SetRotation();
@@ -53,7 +53,7 @@ public class Arrow : MonoBehaviour
         xVelocity = EnsureMinMagnitude(velocityVector.x);
         yVelocity = Mathf.Clamp(velocityVector.y, -yBounds, yBounds);
 
-        if ((direction < 0 && xVelocity < 0) || (direction == 0 && xVelocity > 0)) // ensure the prjectile flies in the same direction the enemy is facing
+        if ((direction < 0 && xVelocity < 0) || (direction >= 0 && xVelocity > 0)) // ensure the prjectile flies in the same direction the enemy is facing
         {
             xVelocity = -xVelocity;
         }

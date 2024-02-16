@@ -21,6 +21,8 @@ Traps: https://bdragon1727.itch.io/free-trap-platformer
 
 bringer of death: https://clembod.itch.io/bringer-of-death-free
 
+angel of death: https://sanctumpixel.itch.io/angel-of-death-pixel-art-character
+
 SFX Sources:
 
 https://mixkit.co/free-sound-effects/sword/

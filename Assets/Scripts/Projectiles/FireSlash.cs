@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class FireSlash : MonoBehaviour
 {
-    // public variables
-    public int damage;
-
     // private variables
+    private PlayerManager playerManager; // player manager stores persistent values such as health
     private CircleCollider2D FireSlashCollider;
     private EnemyHealth enemyHealth;
+    private int damage;
 
     // Start is called before the first frame update
     void Start()
     {
         FireSlashCollider = GetComponent<CircleCollider2D>();
+        playerManager = PlayerManager.instance;
+
+        damage = playerManager.GetDamage() / 2;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

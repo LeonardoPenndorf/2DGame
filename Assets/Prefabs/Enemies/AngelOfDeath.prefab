@@ -17,10 +17,11 @@ GameObject:
   - component: {fileID: 579744602650824471}
   - component: {fileID: 3121720637327481200}
   - component: {fileID: 1719293751857645380}
+  - component: {fileID: 6824842298860111508}
   - component: {fileID: 3504878707104760798}
   m_Layer: 11
   m_Name: AngelOfDeath
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,13 +214,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c45e65058d6a6428ca23e3399e7ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
   animationsArray:
   - AngelOfDeath_Attack
   - AngelOfDeath_Cast
   - AngelOfDeath_Hurt
   - AngelOfDeath_Teleport
   - AngelOfDeath_Attack_Teleport
+  speed: 4
 --- !u!114 &3121720637327481200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,12 +236,7 @@ MonoBehaviour:
   damage: 40
   attackRange: 1.5
   HurtBox: {fileID: 6737820267910601007}
-  maxCooldown: 2
-  animationsArray:
-  - AngelOfDeath_Cast
-  - AngelOfDeath_Hurt
-  - AngelOfDeath_Teleport
-  - AngelOfDeath_Attack_Teleport
+  maxCooldown: 3
 --- !u!114 &1719293751857645380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,15 +250,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flameSkull: {fileID: 8092460453905015526, guid: 1fd357c8952865a47be301d1999c26a1, type: 3}
-  maxCooldown: 7
+  maxCooldown: 8
   minDistance: 5
   interval: 0.5
   amount: 3
-  animationsArray:
-  - AngelOfDeath_Attack
-  - AngelOfDeath_Hurt
-  - AngelOfDeath_Teleport
-  - AngelOfDeath_Attack_Teleport
+--- !u!114 &6824842298860111508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4260116733164473512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 483d891ef4f49eb4685bf4c15bc4c972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wave: {fileID: 3038605286205751018, guid: 625a91e65c93898468fade73dff77251, type: 3}
 --- !u!114 &3504878707104760798
 MonoBehaviour:
   m_ObjectHideFlags: 0
