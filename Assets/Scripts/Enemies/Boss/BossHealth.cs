@@ -5,11 +5,12 @@ using UnityEngine;
 public class BossHealth : MonoBehaviour
 {
     // [SerializeField] variables
-    [SerializeField] int maxHealth, lifeSteal;
+    [SerializeField] int maxHealth;
 
     // private variables
     private Animator animator;
     private int currentHealth;
+    private bool isDead;
 
     // Start is called before the first frame update
     void Start()
@@ -29,11 +30,11 @@ public class BossHealth : MonoBehaviour
 
     public int GetCurrentHealth() { return currentHealth; }
 
+    public bool GetIsDead() { return isDead; }
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         animator.SetTrigger("IsHit");
     }
-
-    public void Heal() { currentHealth += lifeSteal; }
 }

@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class BossCast : MonoBehaviour
 {
+    // public variables
+    public float minDistance;
+
     // [SerializeField] variables
     [SerializeField] GameObject flameSkull;
-    [SerializeField] float maxCooldown, minDistance, interval;
+    [SerializeField] float maxCooldown, interval;
     [SerializeField] int amount; // amount of flame skulls spawned
 
     // private variables
@@ -54,7 +57,9 @@ public class BossCast : MonoBehaviour
 
     private IEnumerator SpawnFlameSkull() // called during the casting animation
     {
-        for(int i = 0; i < amount; i++)
+        cooldown = maxCooldown;
+
+        for (int i = 0; i < amount; i++)
         {
             GameObject newFlameSkull = Instantiate(flameSkull, spawnTransform.position, Quaternion.identity);
 

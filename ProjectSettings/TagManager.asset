@@ -12,6 +12,7 @@ TagManager:
   - Buff
   - Boss
   - BossHealthbar
+  - TeleportAnchor
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - Door
   - Items
   - IgnorePlatforms
-  - 
+  - Boss
   - 
   - 
   - 

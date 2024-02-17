@@ -23,12 +23,6 @@ public class BossHurtBox : MonoBehaviour
             playerHealth = collision.GetComponent<PlayerHealth>();
 
             playerHealth.TakeDamage(damage, transform);
-            CheckLifeSteal(playerHealth.GetIsBlocking());
         }
-    }
-
-    private void CheckLifeSteal(bool isBlocking)
-    {
-        if (!isBlocking) bossHealth.Heal();
     }
 }

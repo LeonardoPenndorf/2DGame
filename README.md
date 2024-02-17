@@ -23,6 +23,8 @@ bringer of death: https://clembod.itch.io/bringer-of-death-free
 
 angel of death: https://sanctumpixel.itch.io/angel-of-death-pixel-art-character
 
+more magic effects: https://bdragon1727.itch.io/retro-impact-effect-pack-all
+
 SFX Sources:
 
 https://mixkit.co/free-sound-effects/sword/

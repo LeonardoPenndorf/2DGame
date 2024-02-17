@@ -46,6 +46,7 @@ public class Explosion : MonoBehaviour
         animator.SetTrigger("Explosion");
         homingMissile.enabled = false;
         rb.velocity = Vector3.zero;
+        circleCollider.enabled = false;
     }
 
     private void SelfDestruct() { Destroy(gameObject); } // called at the end of the explosion animation

@@ -2,41 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyKnockback : MonoBehaviour
+public class BossKnockback : MonoBehaviour
 {
-    // private variables
-    private EnemyHealth enemyHealth;
-    private Rigidbody2D EnemyRB;
-    private Animator EnemyAnimator;
+    private BossHealth bossHealth;
+    private Rigidbody2D rb;
+    private Animator animator;
     private Transform aimTransform;
     private bool isStunned, facingRight;
 
     // Start is called before the first frame update
     void Start()
     {
-        enemyHealth = GetComponent<EnemyHealth>();
-        EnemyRB = GetComponent<Rigidbody2D>();
-        EnemyAnimator = GetComponent<Animator>();
+        bossHealth = GetComponent<BossHealth>();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
         aimTransform = GameObject.FindWithTag("Player").transform.Find("AimPoint").transform;
     }
 
     public void Knockback(Vector2 knockbackVector, float stunDuration)
     {
-        if (enemyHealth.GetIsDead()) return; // cannot knockback corpses
+        if (bossHealth.GetIsDead()) return;
 
-        EnemyAnimator.SetBool("IsMoving", false);
+        animator.SetBool("IsMoving", false);
 
         isStunned = true; // prevent player from moving
         facingRight = transform.localScale.x > 0;
 
         if (aimTransform.position.x < transform.position.x)
         {
-            EnemyRB.velocity = facingRight ? knockbackVector : new Vector2(-knockbackVector.x, knockbackVector.y);
+            rb.velocity = facingRight ? knockbackVector/2 : new Vector2(-knockbackVector.x, knockbackVector.y);
         }
         else
         {
-            EnemyRB.velocity = facingRight ? new Vector2(-knockbackVector.x, knockbackVector.y) : knockbackVector;
+            rb.velocity = facingRight ? new Vector2(-knockbackVector.x, knockbackVector.y) : knockbackVector;
         }
 
         StartCoroutine(Stunned(stunDuration));
@@ -45,7 +44,6 @@ public class EnemyKnockback : MonoBehaviour
     IEnumerator Stunned(float stunDuration)
     {
         yield return new WaitForSeconds(stunDuration);
-
         isStunned = false;
     }
 

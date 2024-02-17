@@ -38,6 +38,8 @@ public class BossHealthbar : MonoBehaviour
     public void SetMaxHealth(int newMaxHealth)
     {
         healthbarSlider.maxValue = newMaxHealth;
+        healthbarSlider.value = newMaxHealth;
+        currentHealth = newMaxHealth;
     }
 
     public void SetSliderValue(int health)
