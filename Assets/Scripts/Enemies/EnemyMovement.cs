@@ -9,8 +9,8 @@ public class EnemyMovement : MonoBehaviour
     // public variables
     public float standardMovementSpeed, // movement speed of enemy when not aggroed
                  aggroedMovementSpeed; // some enemies move faster when aggroed
-    public BoxCollider2D NavCollider; // checks for collison with ground and player
     public string[] animationsArray; // array containing the name of all animations that would stop the enemy from moving
+    public bool patrol;
 
     // private varibales
     private Rigidbody2D EnemyRigidbody;
@@ -19,13 +19,14 @@ public class EnemyMovement : MonoBehaviour
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
     private Transform Player; // player transform is required for navigation when aggroed
     private EnemyKnockback enemyKnockback;
+    private EnemyNavigator enemyNavigator;
     private float movementSpeed, // current movement speed
                   attackRange, // when player is within attack range, enemy stops moving
-                  direction = 1.0f, // direction the enemy is facing
+                  direction, // direction the enemy is facing
+                  startingDirection,
                   distance, // distance between the player and the enemy in 2 dimension
                   xDistance; // distance between the player and the enemy on the x axis
-    private bool isAggroed, 
-                 checkNav;
+    private bool isAggroed;
 
     // Start is called before the first frame update
     void Start()
@@ -35,21 +36,13 @@ public class EnemyMovement : MonoBehaviour
         enemyAggro = GetComponent<EnemyAggro>();
         animationsChecker = GetComponent<AnimationChecker>();
         enemyKnockback = GetComponent<EnemyKnockback>();
+        enemyNavigator = GetComponentInChildren<EnemyNavigator>();
 
         Player = GameObject.FindWithTag("Player").transform;
 
-        movementSpeed = standardMovementSpeed; // set movement speed
+        movementSpeed = 0; // set movement speed
 
-        EnemyMeleeAttack EnemyMeleeAttackComponent = GetComponent<EnemyMeleeAttack>();
-        if (EnemyMeleeAttackComponent != null)
-        {
-            attackRange = EnemyMeleeAttackComponent.attackRange; // fetch attack range to determine how close the enemy should get to the player to attack
-        }
-        else
-        {
-            EnemyRangedAttack EnemyRangedAttackComponent = GetComponent<EnemyRangedAttack>();
-            attackRange = EnemyRangedAttackComponent.attackRange;
-        }
+        Initialize();
     }
 
     // Update is called once per frame
@@ -63,72 +56,72 @@ public class EnemyMovement : MonoBehaviour
         {
             MoveTowardsPlayer(); // if aggroed guides enemy movement
         }
-        else
+        else if (patrol)
         {
             movementSpeed = standardMovementSpeed; // when loosing aggro stop running as well as following the player
-            CheckDirection();
-        }
-
-        if (!animationsChecker.CheckAnimations(animationsArray)) // cannot move during certain animations
-        {
-            Move(); // moves and rotates the enemy
+            enemyNavigator.CheckDirection();
         }
         else
         {
-            EnemyRigidbody.velocity = new Vector2(0, 0);
+            movementSpeed = 0;
+            direction = startingDirection; // none patrolling enemies just face the starting direction when not aggroed  
         }
 
+        if (!animationsChecker.CheckAnimations(animationsArray))
+        {
+            Move();
+            Rotate();
+        }
+        else EnemyRigidbody.velocity = Vector2.zero;
+
         EnemyAnimator.SetBool("IsMoving", movementSpeed != 0);
+    }
+
+    private void Initialize()
+    {
+        if (transform.rotation.y == 0) direction = -1;
+        else direction = transform.rotation.y;
+        startingDirection = direction;
+
+        EnemyRangedAttack EnemyRangedAttackComponent = GetComponent<EnemyRangedAttack>();
+        if (EnemyRangedAttackComponent != null)
+        {
+            attackRange = EnemyRangedAttackComponent.attackRange;
+        }
+        else
+        {
+            EnemyMeleeAttack EnemyMeleeAttackComponent = GetComponent<EnemyMeleeAttack>();
+            attackRange = EnemyMeleeAttackComponent.attackRange; // fetch attack range to determine how close the enemy should get to the player to attack
+        }
     }
 
     private void Move()
     {
         EnemyRigidbody.velocity = new Vector2(direction * movementSpeed, EnemyRigidbody.velocity.y);
-        
-        if (direction > 0) // turn left
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        else if (direction < 0) // turn right
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    private void Rotate()
+    {
+        if (direction > 0) transform.rotation = Quaternion.Euler(0, 180, 0); // turn left
+        else if (direction < 0) transform.rotation = Quaternion.Euler(0, 0, 0); // turn right
     }
 
     private void MoveTowardsPlayer()
     {
-        checkNav = NavCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || NavCollider.IsTouchingLayers(LayerMask.GetMask("Platforms")); // check if can walk
         distance = Vector2.Distance(Player.position, transform.position);
         xDistance = Mathf.Abs(Player.position.x - transform.position.x);
 
-        if (!checkNav || (distance < attackRange) || (xDistance < attackRange)) // either cannot walk or player within attack range
-        {
-            movementSpeed = 0;
-        }
-        else
-        {
-            movementSpeed = aggroedMovementSpeed; // when aggroed moves faster
-        }
+        if (!enemyNavigator.CheckNav() || (distance < attackRange) || (xDistance < attackRange)) // either cannot walk or player within attack range
+            movementSpeed = 0;     
+        else movementSpeed = aggroedMovementSpeed; // when aggroed moves faster
 
         // checks if player is to the right or to the left
         if (Player.position.x < transform.position.x)
-        {
-            // Player is to the left
-            direction = -1.0f;
-        }
+            direction = -1.0f; // turn left
+        
         else if (Player.position.x > transform.position.x)
-        {
-            // Player is to the right
-            direction = 1.0f;
-        }
+            direction = 1.0f; // turn right
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        CheckDirection();
-    }
-
-    private void CheckDirection()
-    {
-        checkNav = NavCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || NavCollider.IsTouchingLayers(LayerMask.GetMask("Platforms")); // check if can walk
-
-        if (!checkNav && !isAggroed)
-            direction = -direction;
-    }
+    public void SetDirection() { direction = -direction; }
 }

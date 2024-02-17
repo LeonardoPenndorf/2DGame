@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6263545278555529075}
   - component: {fileID: 7178622691524902511}
   - component: {fileID: 3739847522428002919}
+  - component: {fileID: -536179504999835254}
   m_Layer: 18
   m_Name: Diamond
   m_TagString: Diamond
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 956996775
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 2027896523, guid: 4ed646d75e2f9ca4e866d3c791027394, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -194,4 +195,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmount: 0
+  buffAmount: 0
   PickUpSFX: {fileID: 8300000, guid: ed2be55604489f342b9f3ec68d677124, type: 3}
+--- !u!114 &-536179504999835254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3909300074024647732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39cb893d38a7ebf44b673cc67e14f6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 15
+  blinkDuration: 5
+  opacity: 0.5
+  interval: 0.2

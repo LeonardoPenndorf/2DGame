@@ -236,10 +236,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardMovementSpeed: 4
   aggroedMovementSpeed: 4
-  NavCollider: {fileID: 2973035012900898970}
   animationsArray:
   - Necromancer_Hurt
   - Necromancer_Attack
+  patrol: 1
 --- !u!114 &3000085476613276697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2324263033580388300}
   - component: {fileID: 2973035012900898970}
+  - component: {fileID: 44142630850906822}
   m_Layer: 15
   m_Name: Navigator
   m_TagString: Untagged
@@ -429,6 +430,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.036147118, y: 0.42930555}
   m_EdgeRadius: 0
+--- !u!114 &44142630850906822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6026330851827974414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66ee41e410a8d8438f236c515442b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7177992886720302207
 GameObject:
   m_ObjectHideFlags: 0

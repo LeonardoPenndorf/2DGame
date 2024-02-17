@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3687989061788700621}
   m_Layer: 13
   m_Name: CircularSaw
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

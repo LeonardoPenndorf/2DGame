@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3801432270945796491}
   - component: {fileID: 739934596503987963}
   - component: {fileID: 2596114487306881664}
+  - component: {fileID: 5526489963044113138}
   - component: {fileID: 3000085476613276697}
   - component: {fileID: 8511971272375729107}
   - component: {fileID: 3896439737020859165}
@@ -198,11 +199,29 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465361686494501331}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b756ec693c9737e46be469a8b5892a00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationsArray:
+  - SkeletonArcher_Hurt
+  - SkeletonArcher_Attack2
+  - SkeletonArcher_Shot
+--- !u!114 &5526489963044113138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465361686494501331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee4b5654035d4a46b45b2e57331f4fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standardMovementSpeed: 2
+  aggroedMovementSpeed: 2
   animationsArray:
   - SkeletonArcher_Hurt
   - SkeletonArcher_Attack2
@@ -366,6 +385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2324263033580388300}
   - component: {fileID: 2973035012900898970}
+  - component: {fileID: 888114189308102419}
   m_Layer: 15
   m_Name: Navigator
   m_TagString: Untagged
@@ -433,6 +453,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.036147118, y: 0.42930555}
   m_EdgeRadius: 0
+--- !u!114 &888114189308102419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6026330851827974414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66ee41e410a8d8438f236c515442b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7177992886720302207
 GameObject:
   m_ObjectHideFlags: 0

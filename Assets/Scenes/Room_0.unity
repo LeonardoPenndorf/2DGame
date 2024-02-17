@@ -6672,7 +6672,7 @@ GameObject:
   - component: {fileID: 631973588}
   m_Layer: 6
   m_Name: Foreground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24902,8 +24902,8 @@ Transform:
   - {fileID: 1767543802}
   - {fileID: 1602729946}
   - {fileID: 631973585}
-  - {fileID: 467350861}
   - {fileID: 1680480662}
+  - {fileID: 467350861}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &845232028
@@ -26104,7 +26104,7 @@ GameObject:
   - component: {fileID: 1680480668}
   m_Layer: 16
   m_Name: Platforms
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

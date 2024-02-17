@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7533033657055568645}
   - component: {fileID: 6824963779457498715}
+  - component: {fileID: 492350076319016236}
   m_Layer: 15
   m_Name: Navigator
   m_TagString: Untagged
@@ -167,6 +168,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.036147118, y: 0.42930555}
   m_EdgeRadius: 0
+--- !u!114 &492350076319016236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5031168561301718999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66ee41e410a8d8438f236c515442b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7705512865641068251
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,11 +384,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardMovementSpeed: 4
   aggroedMovementSpeed: 4
-  NavCollider: {fileID: 6824963779457498715}
   animationsArray:
   - BringerOfDeath_Hurt
   - BringerOfDeath_Attack
   - BringerOfDeath_Summon
+  patrol: 1
 --- !u!114 &-3215087134609464037
 MonoBehaviour:
   m_ObjectHideFlags: 0

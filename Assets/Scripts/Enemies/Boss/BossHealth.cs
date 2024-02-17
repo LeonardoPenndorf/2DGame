@@ -21,6 +21,14 @@ public class BossHealth : MonoBehaviour
         DisplayHealthbar();
     }
 
+    void Update()
+    {
+        if (currentHealth <= 0 && !isDead)
+        {
+            Death();
+        }
+    }
+
     private void DisplayHealthbar()
     {
         Canvas canvas = GameObject.FindWithTag("BossHealthbar").GetComponent<Canvas>();
@@ -36,5 +44,17 @@ public class BossHealth : MonoBehaviour
     {
         currentHealth -= damage;
         animator.SetTrigger("IsHit");
+    }
+
+    private void Death()
+    {
+        isDead = true;
+
+        GetComponent<BossFlying>().enabled = false;
+        GetComponent<BossAttack>().enabled = false;
+        GetComponent<BossCast>().enabled = false;
+        GetComponent<BossTeleport>().enabled = false;
+
+        animator.SetTrigger("IsDead");
     }
 }

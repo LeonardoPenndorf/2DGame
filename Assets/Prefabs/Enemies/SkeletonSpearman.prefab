@@ -203,10 +203,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardMovementSpeed: 2
   aggroedMovementSpeed: 4
-  NavCollider: {fileID: 2973035012900898970}
   animationsArray:
   - SkeletonSpearman_Hurt
   - SkeletonSpearman_Attack1
+  patrol: 1
 --- !u!114 &8511971272375729107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2324263033580388300}
   - component: {fileID: 2973035012900898970}
+  - component: {fileID: 1280119662482116752}
   m_Layer: 15
   m_Name: Navigator
   m_TagString: Untagged
@@ -381,6 +382,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.036147118, y: 0.42930555}
   m_EdgeRadius: 0
+--- !u!114 &1280119662482116752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6026330851827974414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66ee41e410a8d8438f236c515442b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7177992886720302207
 GameObject:
   m_ObjectHideFlags: 0

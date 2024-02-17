@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4178863686361679242}
   - component: {fileID: 3563822231434875679}
   - component: {fileID: 5542602180730594669}
+  - component: {fileID: 6151114952423901750}
   m_Layer: 18
   m_Name: Buff
   m_TagString: Buff
@@ -196,3 +197,19 @@ MonoBehaviour:
   healAmount: 0
   buffAmount: 5
   PickUpSFX: {fileID: 8300000, guid: ed2be55604489f342b9f3ec68d677124, type: 3}
+--- !u!114 &6151114952423901750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7978458748290070588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39cb893d38a7ebf44b673cc67e14f6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 15
+  blinkDuration: 5
+  opacity: 0.5
+  interval: 0.2

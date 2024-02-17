@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2037961057284334119}
   - component: {fileID: 7178622691524902511}
   - component: {fileID: -4847206216499162150}
+  - component: {fileID: 2804340091376826884}
   m_Layer: 18
   m_Name: Heart
   m_TagString: Healing
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 956996775
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 1697616265, guid: 000b9f9c68e446b4e95f67a47c3c3e39, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -194,4 +195,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmount: 5
+  buffAmount: 0
   PickUpSFX: {fileID: 8300000, guid: e8ca159b4427f5846b683309f306ff86, type: 3}
+--- !u!114 &2804340091376826884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3909300074024647732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39cb893d38a7ebf44b673cc67e14f6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 15
+  blinkDuration: 5
+  opacity: 0.5
+  interval: 0.2

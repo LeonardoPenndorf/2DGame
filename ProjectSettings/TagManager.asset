@@ -13,6 +13,8 @@ TagManager:
   - Boss
   - BossHealthbar
   - TeleportAnchor
+  - Trap
+  - Ground
   layers:
   - Default
   - TransparentFX
