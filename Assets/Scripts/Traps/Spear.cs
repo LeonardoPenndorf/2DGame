@@ -13,13 +13,7 @@ public class Spear : MonoBehaviour
         spearCollider = transform.Find("HurtBox").GetComponent<BoxCollider2D>();
     }
 
-    private void EnableHurtbox()
-    {
-        spearCollider.enabled = true;
-    }
+    private void EnableHurtbox() { spearCollider.enabled = true; }
 
-    private void disableHurtbox()
-    {
-        spearCollider.enabled = false;
-    }
+    private void disableHurtbox() { spearCollider.enabled = false; }
 }

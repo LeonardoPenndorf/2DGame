@@ -100,7 +100,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     private void AirAttack() // a single attack that can  be performed mid air
     {
-        damage = playerManager.GetDamage(); // set damage to base damage
+        damage = playerManager.GetDamage() / 2; // set damage to base damage
         PlayerAnimator.SetTrigger("AirAttack");
     }
 

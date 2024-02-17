@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator PlayerAnimator;
     private BoxCollider2D PlayerFeetCollider;
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
+    private PlayerHealth playerHealth;
 
     private float xAxisInput;
     private bool isGrounded, 
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         PlayerAnimator = GetComponent<Animator>();
         PlayerFeetCollider = PlayerFeet.GetComponent<BoxCollider2D>(); 
         animationsChecker = GetComponent<AnimationChecker>();
+        playerHealth = GetComponent<PlayerHealth>();
 
         PlayerRigidbody.gravityScale = gravity; // set starting gravity
     }
@@ -81,6 +83,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void KnockBack(Vector2 knockbackVector, float stunDuration, Transform enemyTransform)
     {
+        if (playerHealth.GetIsDead()) return;
+
         isStunned = true; // prevent player from moving
 
         facingRight = transform.localScale.x > 0;

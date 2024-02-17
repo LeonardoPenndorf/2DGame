@@ -82,7 +82,9 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public bool GetIsBlocking() {  return isBlocking; }
+    public bool GetIsBlocking() { return isBlocking; }
+
+    public bool GetIsDead() { return isDead; }
 
     public void SetIsBlocking(bool newIsBlocking)
     {
