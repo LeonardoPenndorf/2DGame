@@ -6,7 +6,8 @@ public class EnemyHealth : MonoBehaviour
 {
     // [SerializeField] variables
     [SerializeField] int maxHealth, currentHealth;
-    [SerializeField] float maxIFrames, selfDestructDelay;
+    [SerializeField] float selfDestructDelay, // the enemy is destroyed after a short dealy on death
+                           fadeDuration; // time it takes the enemy to fade away when it is being destroyed
     [SerializeField] bool canBeRevived; // only certain enenmies can be revived
     [SerializeField] AudioClip hurtSFX, blockSFX, deathSFX;
 
@@ -16,8 +17,9 @@ public class EnemyHealth : MonoBehaviour
     private GameObject Hurtbox;
     private SpawnRandomItem SpawnRandomItemComponent;
     private EnemyAggro enemyAggro;
-    private float iFrames;
-    private bool isDead = false,
+    private SpriteRenderer spriteRenderer;
+    private bool coroutineIsRunning = false,
+                 isDead = false,
                  isBlocking = false; // some enemies can block
 
 
@@ -28,6 +30,7 @@ public class EnemyHealth : MonoBehaviour
         EnemyRB = GetComponent<Rigidbody2D>();
         SpawnRandomItemComponent = GetComponent<SpawnRandomItem>();
         enemyAggro = GetComponent<EnemyAggro>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         Hurtbox = transform.Find("Hurtbox").gameObject;
 
@@ -39,17 +42,12 @@ public class EnemyHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (iFrames > 0)
-        {
-            iFrames -= Time.deltaTime;
-        }
-
         if (currentHealth <= 0 && !isDead)
         {
             Death();
         }
 
-        if (isDead && (!canBeRevived || !EnemyManager.instance.GetNecromancerPresent()))
+        if (isDead && !coroutineIsRunning && (!canBeRevived || !EnemyManager.instance.GetNecromancerPresent()))
         {
             StartCoroutine(SelfDestruct()); // destroy the game object after a short delay
         }
@@ -57,38 +55,20 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isDead || currentHealth <= 0) return;
+
         enemyAggro.SetIsAggroed(true);
 
-        if (iFrames <= 0 && currentHealth > 0)
+        EnemyAnimator.SetTrigger("IsHit"); // trigger hit animation
+
+        if (!isBlocking)
         {
-            EnemyAnimator.SetTrigger("IsHit"); // trigger hit animation
-
-            if (!isBlocking)
-            {
-                AudioSource.PlayClipAtPoint(hurtSFX, Camera.main.transform.position);
-                currentHealth -= damage;
-            }
-            else // when blocking take no damage
-            {
-                AudioSource.PlayClipAtPoint(blockSFX, Camera.main.transform.position);
-            }
-
-            iFrames = maxIFrames;
+            AudioSource.PlayClipAtPoint(hurtSFX, Camera.main.transform.position);
+            currentHealth -= damage;
         }
-    }
-
-    public void Revive()
-    {
-        if(canBeRevived && isDead)
+        else // when blocking take no damage
         {
-            EnableDisable(true);
-
-            EnemyAnimator.SetTrigger("Revive");
-            currentHealth = maxHealth / 2;
-
-            canBeRevived = false; // enemies may only be revived once
-
-            isDead = false;
+            AudioSource.PlayClipAtPoint(blockSFX, Camera.main.transform.position);
         }
     }
 
@@ -165,9 +145,43 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    public void TriggerRevive() // trigger revive animation
+    {
+        if (canBeRevived && isDead) EnemyAnimator.SetTrigger("Revive");
+    }
+
+    private IEnumerator Revive() // called at the start of the revieve animation
+    {
+        yield return new WaitForSeconds(0.5f);
+        EnableDisable(true);
+
+        currentHealth = maxHealth / 2;
+
+        isDead = false;
+        canBeRevived = false; // enemies may only be revived once
+    }
+
     private IEnumerator SelfDestruct()
     {
+        coroutineIsRunning = true;
+
         yield return new WaitForSeconds(selfDestructDelay);
+
+        float currentTime = 0;
+
+        Color initialColor = spriteRenderer.color;
+
+        while (currentTime < fadeDuration)
+        {
+            // Calculate the proportion of the fade based on the elapsed time
+            float alpha = Mathf.Lerp(1f, 0f, currentTime / fadeDuration);
+
+            spriteRenderer.color = new Color(initialColor.r, initialColor.g, initialColor.b, alpha);
+
+            yield return null;
+            currentTime += Time.deltaTime;
+        }
+
         Destroy(gameObject);
     }
 }

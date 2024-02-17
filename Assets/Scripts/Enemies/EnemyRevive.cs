@@ -12,7 +12,7 @@ public class EnemyRevive : MonoBehaviour
             EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
-                enemyHealth.Revive();
+                enemyHealth.TriggerRevive();
             }
         }
     }
