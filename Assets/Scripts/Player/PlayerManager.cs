@@ -74,6 +74,9 @@ public class PlayerManager : MonoBehaviour
     {
         maxHealth += amount;
         currentHealth += amount;
+
+        healthbar.SetMaxHealth(maxHealth);
+        healthbar.SetSliderValue(currentHealth);
     }
 
     public void BuffDamage(int buffAmount, float buffDuration)

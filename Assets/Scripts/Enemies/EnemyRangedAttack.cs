@@ -20,6 +20,7 @@ public class EnemyRangedAttack : MonoBehaviour
     private Animator EnemyAnimator;
     private EnemyAggro enemyAggro;
     private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
+    private EnemyNavigator enemyNavigator;
     private float cooldown;
 
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class EnemyRangedAttack : MonoBehaviour
         EnemyAnimator = GetComponent<Animator>();
         enemyAggro = GetComponent<EnemyAggro>();
         animationsChecker = GetComponent<AnimationChecker>();
+        enemyNavigator = GetComponentInChildren<EnemyNavigator>();
 
         Player = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -45,7 +47,7 @@ public class EnemyRangedAttack : MonoBehaviour
 
     private void CheckRange() // check if player is within attack range
     {
-        if (DetectPlayerWithFOV() && !animationsChecker.CheckAnimations(animationsArray))
+        if (DetectPlayerWithFOV() && !animationsChecker.CheckAnimations(animationsArray) && enemyNavigator.CheckNav())
         {
             EnemyAnimator.SetTrigger("IsShooting");
             cooldown = maxCooldown;

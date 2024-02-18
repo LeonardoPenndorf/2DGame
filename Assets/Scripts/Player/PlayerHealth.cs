@@ -88,4 +88,12 @@ public class PlayerHealth : MonoBehaviour
 
         playerManager.OnPlayerDeath();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("KillZone"))
+        {
+            playerManager.AdjustPlayerHealth(-1000000000);
+        }
+    }
 }

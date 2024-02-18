@@ -13,6 +13,7 @@ public class EnemyBlock : MonoBehaviour
     private Animator EnemyAnimator;
     private EnemyHealth enemyHealth;
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
+    private EnemyNavigator enemyNavigator;
     private Transform Player;
     private float cooldown;
 
@@ -22,6 +23,8 @@ public class EnemyBlock : MonoBehaviour
         EnemyAnimator = GetComponent<Animator>();
         enemyHealth = GetComponent<EnemyHealth>();
         animationsChecker = GetComponent<AnimationChecker>();
+        enemyNavigator = GetComponentInChildren<EnemyNavigator>();
+
         Player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -39,7 +42,7 @@ public class EnemyBlock : MonoBehaviour
     {
         float distanceToPlayer = Vector2.Distance(transform.position, Player.position);
 
-        if (distanceToPlayer <= defenseRange && CanBlock())
+        if (distanceToPlayer <= defenseRange && CanBlock() && enemyNavigator.CheckNav())
         {
             StartCoroutine(Blocking());
         }

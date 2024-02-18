@@ -16,6 +16,7 @@ TagManager:
   - Trap
   - Ground
   - UI
+  - KillZone
   layers:
   - Default
   - TransparentFX

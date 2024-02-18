@@ -41,9 +41,6 @@ ToDo:
 5) Add more rooms
 6) Add more SFX
 7) Add particle effects
-8) Add upgrade shop
-9) improve fire slash
-10) fall damage
-11) enemy gravity
-12) Improve enemy block
-13) Glow effects
+8) improve fire slash
+9) Improve enemy block
+10) Glow effects

@@ -325,7 +325,7 @@ MonoBehaviour:
   - {fileID: 3909300074024647732, guid: 2c53d24ac153e9c4eaf1cee31b34b94f, type: 3}
   - {fileID: 3909300074024647732, guid: fe4f4741e07a89242920714c86a5f3df, type: 3}
   - {fileID: 7978458748290070588, guid: 48e27fa3b6010894ea0245559e609894, type: 3}
-  spawnChance: 1
+  spawnChance: 0.25
   launchVector: {x: 4, y: 2}
 --- !u!114 &-2022468956871911863
 MonoBehaviour:

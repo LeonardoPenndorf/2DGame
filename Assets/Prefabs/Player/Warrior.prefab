@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 41005810356047400}
   - component: {fileID: 3143726481697374373}
   - component: {fileID: -3619389932709620366}
+  - component: {fileID: 701683862012412736}
   m_Layer: 9
   m_Name: Warrior
   m_TagString: Player
@@ -552,7 +553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6965ce9428cdf4f8f755316c06fca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
   maxIFrames: 0.5
 --- !u!114 &-5345504813646555920
 MonoBehaviour:
@@ -575,7 +575,6 @@ MonoBehaviour:
   - Warrior_AirAttack
   - Warrior_SpecialAttack
   - Warrior_MeleeAttack_1
-  - Warrior_MeleeAttack_2
   - Warrior_MeleeAttack_3
   - Warrior_EndAttack_1
   - Warrior_EndAttack_2
@@ -613,7 +612,6 @@ MonoBehaviour:
   maxComboDelay: 1.7
   attackCooldown: 1
   stunDuration: 1
-  baseDamage: 20
   knockbackVector: {x: 7, y: 3}
 --- !u!114 &41005810356047400
 MonoBehaviour:
@@ -656,3 +654,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6ad6cea53c3eb439314b6a14f297d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &701683862012412736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157536053932933172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cae5ed75e7703e7479728b9bafa27def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallDamageThreshold: -33.5
+  damage: 20

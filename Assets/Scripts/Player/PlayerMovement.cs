@@ -20,11 +20,13 @@ public class PlayerMovement : MonoBehaviour
     private PlayerHealth playerHealth;
     private TogglePauseGame togglePauseGame;
 
-    private float xAxisInput;
+    private float xAxisInput, 
+                  speed;
     private bool isGrounded, 
                  isStunned = false, 
                  facingRight,
-                 canRotate = true;
+                 canRotate = true,
+                 reducedMobilty = false;
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +66,8 @@ public class PlayerMovement : MonoBehaviour
     private void Run()
     {
         PlayerAnimator.SetBool("IsRunning", xAxisInput != 0); // set running and idle animations
-        PlayerRigidbody.velocity = new Vector2(xAxisInput * runSpeed, PlayerRigidbody.velocity.y); // move
+        speed = reducedMobilty ? runSpeed/1.5f : runSpeed;
+        PlayerRigidbody.velocity = new Vector2(xAxisInput * speed, PlayerRigidbody.velocity.y); // move
     }
 
     private void Rotate()
@@ -79,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (togglePauseGame.GetGameIsPaused() || !isGrounded || isStunned || animationsChecker.CheckAnimations(animationsArray)) return;
+        if (togglePauseGame.GetGameIsPaused() || !isGrounded || isStunned || reducedMobilty || animationsChecker.CheckAnimations(animationsArray)) return;
 
         PlayerRigidbody.velocity = new Vector2(PlayerRigidbody.velocity.x, jumpSpeed); // jump
     }
@@ -113,6 +116,11 @@ public class PlayerMovement : MonoBehaviour
     {
         SetCanRotate(false);
     }
+
+    private void ReduceMobility() { reducedMobilty = true; } // called at the beginning of the second combo attack, during this attack the player can move a bit
+
+    private void RestoreMobility() { reducedMobilty = false; }
+
 
     IEnumerator Stunned(float stunDuration)
     {
