@@ -15,6 +15,7 @@ TagManager:
   - TeleportAnchor
   - Trap
   - Ground
+  - UI
   layers:
   - Default
   - TransparentFX

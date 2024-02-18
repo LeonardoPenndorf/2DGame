@@ -8,6 +8,7 @@ public class PlayerBlock : MonoBehaviour
     // private variables
     private Animator PlayerAnimator;
     private PlayerHealth playerHealth;
+    private TogglePauseGame togglePauseGame;
     private bool isFacingRight = true;
 
     // Start is called before the first frame update
@@ -15,11 +16,12 @@ public class PlayerBlock : MonoBehaviour
     {
         PlayerAnimator = GetComponent<Animator>();
         playerHealth = GetComponent<PlayerHealth>();
+        togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
     }
 
     public void HandleBlockInput(InputAction.CallbackContext context)
     {
-        if (TogglePauseMenu.gameIsPaused) return;
+        if (togglePauseGame.GetGameIsPaused()) return;
 
         if (context.started)
         {

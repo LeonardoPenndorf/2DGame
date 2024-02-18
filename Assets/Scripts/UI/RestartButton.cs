@@ -7,18 +7,18 @@ public class RestartButton : MonoBehaviour
 {
     // private variables
     private GameObject GameManager;
-    private TogglePauseMenu togglePauseMenu;
+    private TogglePauseGame togglePauseGame;
 
     // Start is called before the first frame update
     void Start()
     {
         GameManager = GameObject.Find("GameManager");
-        togglePauseMenu = GetComponentInParent<TogglePauseMenu>();
+        togglePauseGame = GetComponentInParent<TogglePauseGame>();
     }
 
     public void Restart()
     {
-        togglePauseMenu.ResumeGame();
+        togglePauseGame.PauseUnpauseGame(true);
         Destroy(GameManager);
         SceneManager.LoadScene(1); // start game loading first room
     }

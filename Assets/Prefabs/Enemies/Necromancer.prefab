@@ -260,6 +260,8 @@ MonoBehaviour:
   hurtSFX: {fileID: 8300000, guid: 4cd73b5459f7dfc4f98bf602efdfd4dc, type: 3}
   blockSFX: {fileID: 0}
   deathSFX: {fileID: 8300000, guid: 71069f49a2bca6945bd765c011af7fc3, type: 3}
+  animationsArray:
+  - Necromancer_Death
 --- !u!114 &3896439737020859165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,7 +325,7 @@ MonoBehaviour:
   - {fileID: 3909300074024647732, guid: 2c53d24ac153e9c4eaf1cee31b34b94f, type: 3}
   - {fileID: 3909300074024647732, guid: fe4f4741e07a89242920714c86a5f3df, type: 3}
   - {fileID: 7978458748290070588, guid: 48e27fa3b6010894ea0245559e609894, type: 3}
-  spawnChance: 0.2
+  spawnChance: 1
   launchVector: {x: 4, y: 2}
 --- !u!114 &-2022468956871911863
 MonoBehaviour:
@@ -442,6 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66ee41e410a8d8438f236c515442b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wait: 1
 --- !u!1 &7177992886720302207
 GameObject:
   m_ObjectHideFlags: 0

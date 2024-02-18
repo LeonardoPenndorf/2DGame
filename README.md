@@ -44,6 +44,6 @@ ToDo:
 8) Add upgrade shop
 9) improve fire slash
 10) fall damage
-11) Improve player rotation
+11) enemy gravity
 12) Improve enemy block
 13) Glow effects

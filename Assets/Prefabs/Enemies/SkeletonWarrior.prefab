@@ -222,7 +222,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HurtBox: {fileID: 7177992886720302207}
-  animationsArray: []
+  animationsArray:
+  - SkeletonWarrior_Hurt
+  - SkeletonWarrior_Block
   damage: 10
   knockbackForce: 0
   stunDuration: 0
@@ -248,6 +250,8 @@ MonoBehaviour:
   hurtSFX: {fileID: 8300000, guid: 4cd73b5459f7dfc4f98bf602efdfd4dc, type: 3}
   blockSFX: {fileID: 8300000, guid: 17b758fb3cb1b7143b746cb5ffee7a3b, type: 3}
   deathSFX: {fileID: 8300000, guid: 71069f49a2bca6945bd765c011af7fc3, type: 3}
+  animationsArray:
+  - SkeletonWarrior_Death
 --- !u!114 &577543980193481257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +320,7 @@ MonoBehaviour:
   - {fileID: 3909300074024647732, guid: 2c53d24ac153e9c4eaf1cee31b34b94f, type: 3}
   - {fileID: 3909300074024647732, guid: fe4f4741e07a89242920714c86a5f3df, type: 3}
   - {fileID: 7978458748290070588, guid: 48e27fa3b6010894ea0245559e609894, type: 3}
-  spawnChance: 0.2
+  spawnChance: 1
   launchVector: {x: 4, y: 2}
 --- !u!114 &-7412833426862325256
 MonoBehaviour:
@@ -510,3 +514,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66ee41e410a8d8438f236c515442b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wait: 1

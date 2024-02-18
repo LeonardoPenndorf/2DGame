@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class PlayerHealth : MonoBehaviour
 {
     // [SerializeField] variables
-    [SerializeField] int maxHealth;
     [SerializeField] float maxIFrames;
 
     // private variables
@@ -25,8 +24,6 @@ public class PlayerHealth : MonoBehaviour
         playerBlock = GetComponent<PlayerBlock>();
         animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
-
-        InitializeHealth();
     }
 
     // Update is called once per frame
@@ -35,15 +32,6 @@ public class PlayerHealth : MonoBehaviour
         UpdateIFrames();
 
         CheckDeathCondition();
-    }
-
-    private void InitializeHealth()
-    {
-        if (playerManager.GetMaxHealth() <= 0) // in the first room current health is 0
-        {
-            playerManager.SetMaxHealth(maxHealth);
-            playerManager.SetPlayerHealth(maxHealth);
-        }
     }
 
     private void UpdateIFrames()
@@ -76,7 +64,7 @@ public class PlayerHealth : MonoBehaviour
         {
             int currentHealth = playerManager.GetPlayerHealth();
 
-            int newHealth = Mathf.Min(currentHealth + healAmount, maxHealth); // prevent overhealing
+            int newHealth = Mathf.Min(currentHealth + healAmount, playerManager.GetMaxHealth()); // prevent overhealing
 
             playerManager.SetPlayerHealth(newHealth);
         }

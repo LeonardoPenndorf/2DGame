@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEditor.Timeline;
 using UnityEngine;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D PlayerFeetCollider;
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
     private PlayerHealth playerHealth;
+    private TogglePauseGame togglePauseGame;
 
     private float xAxisInput;
     private bool isGrounded, 
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         PlayerFeetCollider = PlayerFeet.GetComponent<BoxCollider2D>(); 
         animationsChecker = GetComponent<AnimationChecker>();
         playerHealth = GetComponent<PlayerHealth>();
+        togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
 
         PlayerRigidbody.gravityScale = gravity; // set starting gravity
     }
@@ -43,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
         PlayerAnimator.SetBool("IsGrounded", isGrounded); // toggle jumping animation
 
-        if (TogglePauseMenu.gameIsPaused) return;
+        if (togglePauseGame.GetGameIsPaused()) return;
 
         xAxisInput = Input.GetAxis("Horizontal"); // get horizontal axis input
 
@@ -76,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (TogglePauseMenu.gameIsPaused || !isGrounded || isStunned || animationsChecker.CheckAnimations(animationsArray)) return;
+        if (togglePauseGame.GetGameIsPaused() || !isGrounded || isStunned || animationsChecker.CheckAnimations(animationsArray)) return;
 
         PlayerRigidbody.velocity = new Vector2(PlayerRigidbody.velocity.x, jumpSpeed); // jump
     }

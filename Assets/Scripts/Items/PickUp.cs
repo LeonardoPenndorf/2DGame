@@ -6,6 +6,7 @@ public class PickUp : MonoBehaviour
 {
     // [SerializeField] variable
     [SerializeField] int healAmount, buffAmount;
+    [SerializeField] float buffDuration;
     [SerializeField] AudioClip PickUpSFX;
 
     // private variables
@@ -35,10 +36,10 @@ public class PickUp : MonoBehaviour
                 playerHealth.Heal(healAmount);
                 break;
             case "Diamond":
-                playerManager.IncrementDiamonds();
+                playerManager.AdjustDiamonds(1);
                 break;
             case "Buff":
-                playerManager.IncrementDamage(buffAmount);
+                playerManager.BuffDamage(buffAmount, buffDuration);
                 break;
             default:
                 Debug.Log("Unhandled pickup tag.");

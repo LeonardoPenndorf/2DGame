@@ -54,34 +54,20 @@ public class BossTeleport : MonoBehaviour
     private void Teleport()
     {
         isPresent = false;
-
-        animator.SetTrigger("IsTeleporting");
         bossCollider.enabled = false;
         bossFlying.enabled = false;
 
+        animator.SetTrigger("IsTeleporting");
+
         StartCoroutine(Reappear());
-    }
-
-    private void Attack()
-    {
-        CalcPosition(true);
-
-        animator.SetTrigger("IsAttacking");
-    }
-
-    private void Cast()
-    {
-        CalcPosition(false);
-
-        animator.SetTrigger("IsCasting");
     }
 
     private void CalcPosition(bool isAttacking) // calculate the new postion after teleporting
     {
         Vector2 offset = Vector2.zero;
-        float maxDistance = isAttacking ? attackRange : castDistance; // Define these variables as needed
+        float distance = isAttacking ? Random.Range(0, attackRange) : Random.Range(castDistance/2, castDistance);
         Vector2 randomDirection = Random.insideUnitCircle.normalized;
-        offset = randomDirection * maxDistance;
+        offset = randomDirection * distance;
 
         Vector2 newPosition = (Vector2)aimTransform.position + offset;
         
@@ -105,10 +91,13 @@ public class BossTeleport : MonoBehaviour
     {
         yield return new WaitForSeconds(teleportTime);
 
-        int i = Random.Range(0, 2);
+        bool isAttacking = Random.Range(0, 2) == 0;
+        CalcPosition(isAttacking);
 
-        if (i == 0) Attack();
-        else Cast();        
+        yield return new WaitForSeconds(0.1f); // Short delay to ensure position update is visible
+
+        if (isAttacking) animator.SetTrigger("IsAttacking");
+        else animator.SetTrigger("IsCasting");
 
         bossCollider.enabled = true;
         bossFlying.enabled = true;

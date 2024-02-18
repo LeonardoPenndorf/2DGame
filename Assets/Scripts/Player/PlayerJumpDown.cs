@@ -17,6 +17,7 @@ public class PlayerJumpDown : MonoBehaviour
     private PlatformEffector2D CurrentPlatformEffector; // alows to jump through a platform from one side
     private PlayerMovement PlayerMovementScript; // We get isGrounded from the movement script
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
+    private TogglePauseGame togglePauseGame;
     private string[] animationsArray; // array containing the name of all animations that would stop you from moving
     private bool isGrounded; // player can only jump down when grounded
     private int playerlayerMask, navigationLayerMask, ignorePlatformsLayerMask;
@@ -28,6 +29,7 @@ public class PlayerJumpDown : MonoBehaviour
         PlayerFeetCollider = PlayerFeet.GetComponent<BoxCollider2D>();
         PlayerMovementScript = GetComponent<PlayerMovement>();
         animationsChecker = GetComponent<AnimationChecker>();
+        togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
 
         animationsArray = GetComponent<PlayerMovement>().animationsArray;
 
@@ -47,7 +49,7 @@ public class PlayerJumpDown : MonoBehaviour
 
     public void JumpDown() // Jump down from a platform
     {
-        if (TogglePauseMenu.gameIsPaused) return;
+        if (togglePauseGame.GetGameIsPaused()) return;
 
         if (!animationsChecker.CheckAnimations(animationsArray))
         {

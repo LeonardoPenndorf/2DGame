@@ -28,6 +28,8 @@ public class PlayerManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             instance = this;
         }
+
+        currentHealth = maxHealth;
     }
 
     public int GetMaxHealth() { return maxHealth; }
@@ -50,17 +52,38 @@ public class PlayerManager : MonoBehaviour
 
     public void SetDamage(int newDamage) { damage = newDamage; }
 
-    public void AdjustPlayerHealth(int health) { currentHealth += health; }
+    public void AdjustPlayerHealth(int health) 
+    { 
+        currentHealth += health;
+        healthbar.SetSliderValue(currentHealth);
+    }
 
     public void OnPlayerDeath() { deathCanvas.enabled = true; }
 
     public int GetDiamonds() { return currentDiamonds; }
 
-    public void IncrementDiamonds()
+    public void AdjustDiamonds(int amount)
     { 
-        currentDiamonds++; 
+        currentDiamonds += amount; 
         diamondsUI.SetDiamonds(currentDiamonds);
     }
 
-    public void IncrementDamage(int increment) { damage += increment; }
+    public void UpgradeDamage(int amount) { damage += amount; }
+
+    public void UpgradeHealth(int amount)
+    {
+        maxHealth += amount;
+        currentHealth += amount;
+    }
+
+    public void BuffDamage(int buffAmount, float buffDuration)
+    {
+        StartCoroutine(BuffCoroutine(buffAmount, buffDuration));
+    }
+    private IEnumerator BuffCoroutine(int buffAmount, float buffDuration) // temporarily buff damage
+    {
+        damage += buffAmount;
+        yield return new WaitForSeconds(buffDuration);
+        damage -= buffAmount;
+    }
 }

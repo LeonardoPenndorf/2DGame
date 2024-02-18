@@ -10,7 +10,6 @@ public class PlayerMeleeAttack : MonoBehaviour
     [SerializeField] float maxComboDelay, // maximum amount of time between clicks
                            attackCooldown, // after air attacking cooldown must end before attacking again 
                            stunDuration; // after being hit by an attack, the enemy is stunned for a short while
-    [SerializeField] int baseDamage; // base damage of all attacks. This value is used to set the damage of a specifc attack
     [SerializeField] Vector2 knockbackVector; // the knockback force of an attack
 
     // private variables
@@ -19,6 +18,7 @@ public class PlayerMeleeAttack : MonoBehaviour
     private Animator PlayerAnimator;
     private PlayerMovement PlayerMovementComponent;
     private AnimationChecker animationChecker;
+    private TogglePauseGame togglePauseGame;
     private int damage; // damage of the current attack
     private float cooldownTimer;
     private bool isGrounded;
@@ -30,15 +30,14 @@ public class PlayerMeleeAttack : MonoBehaviour
         HurtBoxCollider = HurtBox.GetComponent<BoxCollider2D>();
         PlayerMovementComponent = GetComponent<PlayerMovement>();
         animationChecker = GetComponent<AnimationChecker>();
-
         playerManager = PlayerManager.instance;
-        InitializeDamage();
+        togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (TogglePauseMenu.gameIsPaused) return;
+        if (togglePauseGame.GetGameIsPaused()) return;
 
         if (cooldownTimer > 0)
         {
@@ -46,17 +45,10 @@ public class PlayerMeleeAttack : MonoBehaviour
         }
     }
 
-    private void InitializeDamage()
-    {
-        if (playerManager.GetDamage() <= 0)
-        {
-            playerManager.SetDamage(baseDamage);
-        }
-    }
 
     public void CheckAttack(InputAction.CallbackContext context) // check which attack should be executed
     {
-        if (TogglePauseMenu.gameIsPaused || cooldownTimer > 0 || !context.performed) return;
+        if (togglePauseGame.GetGameIsPaused() || cooldownTimer > 0 || !context.performed) return;
 
         isGrounded = PlayerMovementComponent.GetIsGrounded();
 
@@ -106,7 +98,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     public void SpecialAttack(InputAction.CallbackContext context) // a very powerful attack that also shoots a projectile
     {
-        if (TogglePauseMenu.gameIsPaused || cooldownTimer > 0) return;
+        if (togglePauseGame.GetGameIsPaused() || cooldownTimer > 0) return;
 
         if (context.performed)
         {

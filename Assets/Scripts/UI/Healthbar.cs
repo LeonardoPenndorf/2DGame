@@ -25,6 +25,9 @@ public class Healthbar : MonoBehaviour
         playerManager = PlayerManager.instance; // there is only ever a single player manager instance
         healthbarSlider = GetComponent<Slider>();
         healthbarBoder = transform.Find("Border").GetComponent<Image>();
+
+        SetMaxHealth(playerManager.GetMaxHealth());
+        SetSliderValue(playerManager.GetPlayerHealth());
     }
 
     private void Update()

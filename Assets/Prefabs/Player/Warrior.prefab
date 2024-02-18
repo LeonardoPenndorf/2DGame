@@ -519,6 +519,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 50f835e8-9dbe-43f6-81fa-373200014767
     m_ActionName: DisableMap/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c114b90a-2e8e-49bc-94c1-dda8fbd33d11
+    m_ActionName: UI/UpgradeMenu[/Keyboard/c,/DualShock4GamepadHID/select]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
                            fadeDuration; // time it takes the enemy to fade away when it is being destroyed
     [SerializeField] bool canBeRevived; // only certain enenmies can be revived
     [SerializeField] AudioClip hurtSFX, blockSFX, deathSFX;
+    [SerializeField] string[] animationsArray;
 
     // private variables
     private Animator EnemyAnimator;
@@ -18,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
     private SpawnRandomItem SpawnRandomItemComponent;
     private EnemyAggro enemyAggro;
     private SpriteRenderer spriteRenderer;
+    private AnimationChecker animChecker;
     private bool coroutineIsRunning = false,
                  isDead = false,
                  isBlocking = false; // some enemies can block
@@ -31,6 +33,7 @@ public class EnemyHealth : MonoBehaviour
         SpawnRandomItemComponent = GetComponent<SpawnRandomItem>();
         enemyAggro = GetComponent<EnemyAggro>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animChecker = GetComponent<AnimationChecker>();
 
         Hurtbox = transform.Find("Hurtbox").gameObject;
 
@@ -47,10 +50,7 @@ public class EnemyHealth : MonoBehaviour
             Death();
         }
 
-        if (isDead && !coroutineIsRunning && (!canBeRevived || !EnemyManager.instance.GetNecromancerPresent()))
-        {
-            StartCoroutine(SelfDestruct()); // destroy the game object after a short delay
-        }
+        CheckSelfDestruct();
     }
 
     public void TakeDamage(int damage)
@@ -83,6 +83,12 @@ public class EnemyHealth : MonoBehaviour
         EnableDisable(false);
 
         isDead = true;
+    }
+
+    private void CheckSelfDestruct() // cheks if the enmy should destroy itself
+    {
+        if (isDead && !coroutineIsRunning && (!canBeRevived || !EnemyManager.instance.GetNecromancerPresent()) && animChecker.CheckAnimations(animationsArray))
+            StartCoroutine(SelfDestruct()); // destroy the game object after a short delay
     }
 
     public void SetIsBlocking(bool newState)
@@ -125,12 +131,6 @@ public class EnemyHealth : MonoBehaviour
             GetComponent<EnemyKnockback>().enabled = newState;
         }
 
-        RangedEnemyMovement RangedEnemyMovementComponent = GetComponent<RangedEnemyMovement>();
-        if (RangedEnemyMovementComponent != null)
-        {
-            GetComponent<RangedEnemyMovement>().enabled = newState;
-        }
-
         EnemyCastReviveSpell EnemyReviveComponent = GetComponent<EnemyCastReviveSpell>();
         if (EnemyReviveComponent != null)
         {
@@ -165,7 +165,7 @@ public class EnemyHealth : MonoBehaviour
     {
         coroutineIsRunning = true;
 
-        yield return new WaitForSeconds(selfDestructDelay);
+        yield return new WaitForSeconds(selfDestructDelay * Random.Range(0.5f, 1.5f));
 
         float currentTime = 0;
 
