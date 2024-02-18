@@ -17,6 +17,7 @@ TagManager:
   - Ground
   - UI
   - KillZone
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -60,7 +61,7 @@ TagManager:
   - name: Decoration
     uniqueID: 1997040493
     locked: 0
-  - name: Door
+  - name: BgItems
     uniqueID: 1588301033
     locked: 0
   - name: Foreground

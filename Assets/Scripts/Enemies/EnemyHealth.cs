@@ -20,6 +20,7 @@ public class EnemyHealth : MonoBehaviour
     private EnemyAggro enemyAggro;
     private SpriteRenderer spriteRenderer;
     private AnimationChecker animChecker;
+    private EnemyManager enemyManager;
     private bool coroutineIsRunning = false,
                  isDead = false,
                  isBlocking = false; // some enemies can block
@@ -39,7 +40,8 @@ public class EnemyHealth : MonoBehaviour
 
         currentHealth = maxHealth;
 
-        EnemyManager.instance.RegisterEnemy(gameObject); // add enemy to the enemies list in enemy manager
+        enemyManager = EnemyManager.instance;
+        enemyManager.RegisterEnemy(gameObject); // add enemy to the enemies list in enemy manager
     }
 
     // Update is called once per frame
@@ -87,7 +89,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void CheckSelfDestruct() // cheks if the enmy should destroy itself
     {
-        if (isDead && !coroutineIsRunning && (!canBeRevived || !EnemyManager.instance.GetNecromancerPresent()) && animChecker.CheckAnimations(animationsArray))
+        if (isDead && !coroutineIsRunning && (!canBeRevived || !enemyManager.GetNecromancerPresent()) && animChecker.CheckAnimations(animationsArray))
             StartCoroutine(SelfDestruct()); // destroy the game object after a short delay
     }
 
@@ -102,12 +104,12 @@ public class EnemyHealth : MonoBehaviour
     {
         if (newState)
         {
-            EnemyManager.instance.RegisterEnemy(gameObject); // add enemy to the enemies list in enemy manager
+            enemyManager.RegisterEnemy(gameObject); // add enemy to the enemies list in enemy manager
         }
         else
         {
             EnemyRB.velocity = Vector3.zero;
-            EnemyManager.instance.EnemyDied(gameObject); // remove enemy from the enemies list in enemy manager
+            enemyManager.EnemyDied(gameObject); // remove enemy from the enemies list in enemy manager
         }
 
         //EnemyCollider.enabled = newState; // game objects should not collide with dead enemies

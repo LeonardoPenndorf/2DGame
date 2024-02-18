@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 3143726481697374373}
   - component: {fileID: -3619389932709620366}
   - component: {fileID: 701683862012412736}
+  - component: {fileID: 1107361374201654349}
   m_Layer: 9
   m_Name: Warrior
   m_TagString: Player
@@ -524,6 +525,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: c114b90a-2e8e-49bc-94c1-dda8fbd33d11
     m_ActionName: UI/UpgradeMenu[/Keyboard/c,/DualShock4GamepadHID/select]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1107361374201654349}
+        m_TargetAssemblyTypeName: OpenChest, Assembly-CSharp
+        m_MethodName: CheckChest
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9ad28b60-e2e0-48e5-ad0c-60762fe060b4
+    m_ActionName: Player/Interact[/DualShock4GamepadHID/buttonNorth,/Keyboard/i]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -668,3 +685,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallDamageThreshold: -33.5
   damage: 20
+--- !u!114 &1107361374201654349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157536053932933172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2893b2d278e8e2418a7e268b3e8f469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

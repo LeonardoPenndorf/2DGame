@@ -25,6 +25,8 @@ angel of death: https://sanctumpixel.itch.io/angel-of-death-pixel-art-character
 
 more magic effects: https://bdragon1727.itch.io/retro-impact-effect-pack-all
 
+treasure chests: https://ankousse26.itch.io/free-treasure-boxes-pixel-art
+
 SFX Sources:
 
 https://mixkit.co/free-sound-effects/sword/
@@ -36,8 +38,7 @@ https://quicksounds.com/library/sounds/skeleton
 ToDo:
 1) Improve enemy vision
 2) Implement randomized room selection
-3) Implement treasure chests
-4) Fix enemy overlap
+3) Fix enemy overlap
 5) Add more rooms
 6) Add more SFX
 7) Add particle effects
