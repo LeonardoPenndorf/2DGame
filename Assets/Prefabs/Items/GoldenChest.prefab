@@ -166,14 +166,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyArray:
-  - {fileID: 7705512865641068251, guid: 46f0f4715f81a484a8802b63345e99c8, type: 3}
   - {fileID: 465361686494501331, guid: 3139876b64add29429ef2e419f50fee5, type: 3}
   - {fileID: 465361686494501331, guid: 34d85eec7ab4fdb4b8bacadff54b99e7, type: 3}
   - {fileID: 465361686494501331, guid: c18726abedcdd184391c3b3a00cafb53, type: 3}
   Diamond: {fileID: 3909300074024647732, guid: 2c53d24ac153e9c4eaf1cee31b34b94f, type: 3}
   enemiesAmount: 7
   diamondsAmount: 5
-  maxXOffset: 5
+  maxXOffset: 4
   yOffset: 1
   spawnTime: 1
   SpawnVector: {x: 5, y: 5}

@@ -45,3 +45,5 @@ ToDo:
 8) improve fire slash
 9) Improve enemy block
 10) Glow effects
+11) Improve camera
+12) Improve buff

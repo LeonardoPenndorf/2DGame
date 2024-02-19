@@ -26,7 +26,8 @@ public class EnemyMovement : MonoBehaviour
                   startingDirection,
                   distance, // distance between the player and the enemy in 2 dimension
                   xDistance; // distance between the player and the enemy on the x axis
-    private bool isAggroed;
+    private bool isAggroed, 
+                 falling = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +44,13 @@ public class EnemyMovement : MonoBehaviour
         movementSpeed = 0; // set movement speed
 
         Initialize();
+    }
+
+    private void FixedUpdate()
+    {
+        if (EnemyRigidbody.velocity.y < 0) falling = true;
+        
+        else falling = false;
     }
 
     // Update is called once per frame
@@ -69,7 +77,9 @@ public class EnemyMovement : MonoBehaviour
 
         if (!animationsChecker.CheckAnimations(animationsArray))
         {
-            Move();
+            if (!enemyNavigator.GetEnemyInFront()) Move(); // prevent overlap
+            else movementSpeed = 0;
+
             Rotate();
         }
         else EnemyRigidbody.velocity = Vector2.zero;
@@ -124,4 +134,6 @@ public class EnemyMovement : MonoBehaviour
     }
 
     public void SetDirection() { direction = -direction; }
+
+    public bool GetCanAttack() {  return !falling && !enemyKnockback.GetIsStunned(); }
 }

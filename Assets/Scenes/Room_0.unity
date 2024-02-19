@@ -261,120 +261,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105489901}
   m_CullTransparentMesh: 1
---- !u!1001 &122920131
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1404297578366103252, guid: e6783de05b57b2a41adf0b9027d3986c, type: 3}
-      propertyPath: m_Name
-      value: GoldenChest
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025826762849705550, guid: e6783de05b57b2a41adf0b9027d3986c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025826762849705550, guid: e6783de05b57b2a41adf0b9027d3986c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025826762849705550, guid: e6783de05b57b2a41adf0b9027d3986c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025826762849705550, guid: e6783de05b57b2a41adf0b9027d3986c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025826762849705550, guid: e6783de05b57b2a41adf0b9027d3986c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025826762849705550, guid: e6783de05b57b2a41adf0b9027d3986c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025826762849705550, guid: e6783de05b57b2a41adf0b9027d3986c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025826762849705550, guid: e6783de05b57b2a41adf0b9027d3986c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025826762849705550, guid: e6783de05b57b2a41adf0b9027d3986c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025826762849705550, guid: e6783de05b57b2a41adf0b9027d3986c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e6783de05b57b2a41adf0b9027d3986c, type: 3}
---- !u!1001 &175520463
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4721828838816449055, guid: 796604ec73a40d74293a543a701d73c2, type: 3}
-      propertyPath: m_Name
-      value: SilverChest
-      objectReference: {fileID: 0}
-    - target: {fileID: 8209436411021525931, guid: 796604ec73a40d74293a543a701d73c2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.296544
-      objectReference: {fileID: 0}
-    - target: {fileID: 8209436411021525931, guid: 796604ec73a40d74293a543a701d73c2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8209436411021525931, guid: 796604ec73a40d74293a543a701d73c2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8209436411021525931, guid: 796604ec73a40d74293a543a701d73c2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8209436411021525931, guid: 796604ec73a40d74293a543a701d73c2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8209436411021525931, guid: 796604ec73a40d74293a543a701d73c2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8209436411021525931, guid: 796604ec73a40d74293a543a701d73c2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8209436411021525931, guid: 796604ec73a40d74293a543a701d73c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8209436411021525931, guid: 796604ec73a40d74293a543a701d73c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8209436411021525931, guid: 796604ec73a40d74293a543a701d73c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 796604ec73a40d74293a543a701d73c2, type: 3}
 --- !u!1001 &180773339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25882,8 +25768,8 @@ MonoBehaviour:
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
+  m_SoftZoneWidth: 0.6
+  m_SoftZoneHeight: 0.4
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
@@ -27070,11 +26956,11 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 297472
+    m_Bits: 2394624
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -39187,6 +39073,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c114b90a-2e8e-49bc-94c1-dda8fbd33d11
     m_ActionName: UI/UpgradeMenu[/Keyboard/c,/DualShock4GamepadHID/select]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9ad28b60-e2e0-48e5-ad0c-60762fe060b4
+    m_ActionName: Player/Interact[/DualShock4GamepadHID/buttonNorth,/Keyboard/i]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -40058,5 +39948,3 @@ SceneRoots:
   - {fileID: 2032520296}
   - {fileID: 1026035029}
   - {fileID: 510072929}
-  - {fileID: 175520463}
-  - {fileID: 122920131}

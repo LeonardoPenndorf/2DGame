@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8791302812204833458}
   - component: {fileID: 7608002916959575293}
-  m_Layer: 15
+  m_Layer: 21
   m_Name: PlayerFeet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

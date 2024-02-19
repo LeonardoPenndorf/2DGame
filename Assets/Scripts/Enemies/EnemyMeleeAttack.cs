@@ -20,7 +20,7 @@ public class EnemyMeleeAttack : MonoBehaviour
     private Animator EnemyAnimator;
     private EnemyAggro enemyAggro;
     private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
-    private EnemyNavigator enemyNavigator;
+    private EnemyMovement enemyMovement;
     private float cooldown;
     private int playerLayerMask;
 
@@ -30,7 +30,7 @@ public class EnemyMeleeAttack : MonoBehaviour
         EnemyAnimator = GetComponent<Animator>();
         enemyAggro = GetComponent<EnemyAggro>();
         animationsChecker = GetComponent<AnimationChecker>();
-        enemyNavigator = GetComponentInChildren<EnemyNavigator>();
+        enemyMovement = GetComponent<EnemyMovement>();
 
         playerLayerMask = LayerMask.GetMask("Player");
     }
@@ -50,7 +50,7 @@ public class EnemyMeleeAttack : MonoBehaviour
     {
         Collider2D PlayerCollider = Physics2D.OverlapCircle(transform.position, attackRange, playerLayerMask);
 
-        if (PlayerCollider && !animationsChecker.CheckAnimations(animationsArray) && enemyNavigator.CheckNav())
+        if (PlayerCollider && !animationsChecker.CheckAnimations(animationsArray) && enemyMovement.GetCanAttack())
         {
             MeleeAttack(); // if player is within attack range, attack   
         }

@@ -27,8 +27,6 @@ public class Chest : MonoBehaviour
 
     public void CheckChest()
     {
-        if (!enemyManager.AreAllEnemiesDead() || isEmpty) return;
-
         if (unlocked) OpenChest();
 
         else  StartCoroutine(SummonEnemies());
@@ -36,6 +34,8 @@ public class Chest : MonoBehaviour
 
     private void OpenChest()
     {
+        if (!enemyManager.AreAllEnemiesDead() || isEmpty) return;
+
         animator.SetTrigger("Open");
         isEmpty = true;
         StartCoroutine(SpawnDiamonds());
@@ -53,6 +53,7 @@ public class Chest : MonoBehaviour
             Vector3 spawnPosition = new Vector3(transform.position.x + offset, transform.position.y +  yOffset, transform.position.z);
 
             Instantiate(randomEnemy, spawnPosition, Quaternion.identity);
+            randomEnemy.GetComponent<EnemyAggro>().SetIsAggroed(true);
         }
 
         unlocked = true;

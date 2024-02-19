@@ -11,7 +11,7 @@ public class EnemyNavigator : MonoBehaviour
     private EnemyMovement enemyMovement;
     private EnemyAggro enemyAggro;
     private int groundLayerMask, platformsLayerMask;
-    private bool canRotate = false;
+    private bool canRotate = false, enemyInFront = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +26,8 @@ public class EnemyNavigator : MonoBehaviour
         StartCoroutine(Wait());
     }
 
+    public bool GetEnemyInFront() {  return enemyInFront; }
+
     public bool CheckNav()
     {
         return navCollider.IsTouchingLayers(groundLayerMask) || navCollider.IsTouchingLayers(platformsLayerMask);
@@ -39,6 +41,9 @@ public class EnemyNavigator : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Enemy") && enemyAggro.GetIsAggroed())
+            CheckEnemy(collision);
+
         if (!canRotate) return;
 
         if (collision.CompareTag("Trap") && !enemyAggro.GetIsAggroed())
@@ -47,10 +52,33 @@ public class EnemyNavigator : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.CompareTag("Enemy") && enemyAggro.GetIsAggroed())
+        {
+            enemyInFront = false;
+        }
+
         if (!canRotate) return;
 
         if (!CheckNav() && !enemyAggro.GetIsAggroed())
             enemyMovement.SetDirection();
+    }
+
+
+    private void CheckEnemy(Collider2D collision) // check if a melee enemy is in front to prevent overlap
+    {
+        if (collision.GetComponent<EnemyHealth>().GetIsDead())
+        {
+            enemyInFront = false;
+            return;
+        }
+
+        if (collision.GetComponent<EnemyRangedAttack>() == null)
+        {
+            enemyInFront = true;
+            return;
+        }
+
+        enemyInFront = false;
     }
 
     private IEnumerator Wait() // wait a bit before being allowed to rotate

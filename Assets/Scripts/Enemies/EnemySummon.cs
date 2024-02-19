@@ -7,7 +7,8 @@ public class EnemySummon : MonoBehaviour
     // [SerializeField] variables
     [SerializeField] float summonXDistance,
                            summonYDistance,
-                           maxCooldown;
+                           maxCooldown,
+                           yOffset;
     [SerializeField] GameObject SummonPrefab;
     [SerializeField] string[] animationsArray;
 
@@ -15,8 +16,9 @@ public class EnemySummon : MonoBehaviour
     private Transform AimPoint;
     private Animator EnemyAnimator;
     private EnemyAggro enemyAggro;
+    private EnemyMovement enemyMovement;
     private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
-    private float cooldown, xDistance, yDistance, xOffset;
+    private float cooldown, xDistance, yDistance;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,7 @@ public class EnemySummon : MonoBehaviour
         EnemyAnimator = GetComponent<Animator>();
         enemyAggro = GetComponent<EnemyAggro>();
         animationsChecker = GetComponent<AnimationChecker>();
+        enemyMovement = GetComponent<EnemyMovement>();
 
         AimPoint = GameObject.FindGameObjectWithTag("Player").transform.Find("AimPoint");
     }
@@ -44,7 +47,7 @@ public class EnemySummon : MonoBehaviour
         xDistance = Mathf.Abs(AimPoint.position.x - transform.position.x);
         yDistance = Mathf.Abs(AimPoint.position.y - transform.position.y);
 
-        if ((xDistance <= summonXDistance) &&  (yDistance <= summonYDistance) && !animationsChecker.CheckAnimations(animationsArray))
+        if ((xDistance <= summonXDistance) &&  (yDistance <= summonYDistance) && !animationsChecker.CheckAnimations(animationsArray) && enemyMovement.GetCanAttack())
         {
             EnemyAnimator.SetTrigger("IsSummoning");
             cooldown = maxCooldown;
@@ -55,6 +58,6 @@ public class EnemySummon : MonoBehaviour
     {
         GameObject NewSummon = Instantiate(SummonPrefab) as GameObject;
 
-        NewSummon.transform.position = new Vector3(AimPoint.position.x, transform.position.y, 0);
+        NewSummon.transform.position = new Vector3(AimPoint.position.x, transform.position.y + yOffset, 0);
     }
 }

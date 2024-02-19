@@ -400,7 +400,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.68333334
+  - time: 0.75
     functionName: enableHurtboxCollider
     data: 
     objectReferenceParameter: {fileID: 0}

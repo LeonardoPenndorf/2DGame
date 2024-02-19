@@ -250,7 +250,7 @@ MonoBehaviour:
   damage: 5
   knockbackForce: 0
   stunDuration: 0
-  attackRange: 1.4
+  attackRange: 1.2
   maxCooldown: 2
 --- !u!114 &3896439737020859165
 MonoBehaviour:
@@ -401,7 +401,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6026330851827974414}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -517,7 +517,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.3336258, y: -0.11448705}
+  m_Offset: {x: 0.31066132, y: -0.11448705}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -528,7 +528,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.59199333, y: 0.38230634}
+  m_Size: {x: 0.6379223, y: 0.38230634}
   m_EdgeRadius: 0
 --- !u!114 &8508320474321472119
 MonoBehaviour:
