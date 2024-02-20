@@ -18,19 +18,21 @@ public class UpgradeSystem : MonoBehaviour
     // private variables
     private PlayerManager playerManager;
     private PlayerHealth playerHealth;
+    private Canvas canvas;
 
     // Start is called before the first frame update
     void Start()
     {
         playerManager = PlayerManager.instance;
         playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
+        canvas = GetComponentInParent<Canvas>();
 
         UpdateDescription();
     }
 
     public void UpgradeDamage()
     {
-        if (playerManager.GetDiamonds() < cost) return;
+        if (playerManager.GetDiamonds() < cost || !canvas.enabled) return;
         
         playerManager.UpgradeDamage(damageUpgradeAmount);
         Pay();
@@ -39,7 +41,7 @@ public class UpgradeSystem : MonoBehaviour
 
     public void UpgradeHealth()
     {
-        if (playerManager.GetDiamonds() < cost) return;
+        if (playerManager.GetDiamonds() < cost || !canvas.enabled) return;
 
         playerManager.UpgradeHealth(healthUpgradeAmount);
         Pay();
@@ -48,7 +50,7 @@ public class UpgradeSystem : MonoBehaviour
 
     public void Heal()
     {
-        if (playerManager.GetDiamonds() < cost) return;
+        if (playerManager.GetDiamonds() < cost || !canvas.enabled) return;
 
         int healAmount = (int)(playerManager.GetMaxHealth() * healPercentage);
         playerHealth.Heal(healAmount);

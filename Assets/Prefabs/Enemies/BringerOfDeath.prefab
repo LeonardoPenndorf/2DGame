@@ -422,14 +422,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd9415b4cbd87e428a7b3fd5c4b45a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 120
+  maxHealth: 150
   currentHealth: 0
   selfDestructDelay: 6
   fadeDuration: 3
   canBeRevived: 0
-  hurtSFX: {fileID: 8300000, guid: 4cd73b5459f7dfc4f98bf602efdfd4dc, type: 3}
-  blockSFX: {fileID: 8300000, guid: 17b758fb3cb1b7143b746cb5ffee7a3b, type: 3}
-  deathSFX: {fileID: 8300000, guid: 71069f49a2bca6945bd765c011af7fc3, type: 3}
   animationsArray:
   - BringerOfDeath_Death
 --- !u!114 &3057463593806246721

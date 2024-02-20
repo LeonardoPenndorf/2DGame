@@ -243,9 +243,6 @@ MonoBehaviour:
   selfDestructDelay: 6
   fadeDuration: 3
   canBeRevived: 1
-  hurtSFX: {fileID: 8300000, guid: 4cd73b5459f7dfc4f98bf602efdfd4dc, type: 3}
-  blockSFX: {fileID: 0}
-  deathSFX: {fileID: 8300000, guid: 71069f49a2bca6945bd765c011af7fc3, type: 3}
   animationsArray:
   - SkeletonSpearman_Death
 --- !u!114 &5034238083783719870

@@ -42,15 +42,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LeaveRoom",
-                    "type": "Button",
-                    "id": "86c35da0-70ae-467d-a77b-aa9e5e7d0cf2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Block",
                     "type": "Button",
                     "id": "67540289-c570-4292-b5e6-376b139b46fb",
@@ -160,28 +151,6 @@
                 },
                 {
                     "name": "",
-                    "id": "f9cba9ae-406a-45a2-908a-c9b7902aed5a",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LeaveRoom",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ed590240-cd5c-4bb0-ade0-6f203c03fa42",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LeaveRoom",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "d9714faf-890d-4785-b655-6a196896a3da",
                     "path": "<Mouse>/rightButton",
                     "interactions": "Hold",
@@ -216,7 +185,7 @@
                 {
                     "name": "",
                     "id": "b368f87b-ccd9-42b8-ae74-a3839fd3bf89",
-                    "path": "<Keyboard>/i",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

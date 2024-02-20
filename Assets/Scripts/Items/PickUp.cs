@@ -7,7 +7,6 @@ public class PickUp : MonoBehaviour
     // [SerializeField] variable
     [SerializeField] int healAmount, buffAmount;
     [SerializeField] float buffDuration;
-    [SerializeField] AudioClip PickUpSFX;
 
     // private variables
     private PlayerHealth playerHealth;
@@ -22,10 +21,7 @@ public class PickUp : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player")) // only the player can pick up items
-        {
-            AudioSource.PlayClipAtPoint(PickUpSFX, Camera.main.transform.position);
             ProcessPickup();
-        }
     }
 
     private void ProcessPickup() // based on the item tag, perform certain functions

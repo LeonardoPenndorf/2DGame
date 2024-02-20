@@ -37,6 +37,11 @@ public class ExitDoor : MonoBehaviour
             DoorAnimator.SetTrigger("Open");
             allEnemiesDead = true;
         }
+        else
+        {
+            DoorAnimator.SetTrigger("Close");
+            allEnemiesDead = false;
+        }
     }
 
     public void StartLoadingRoom()

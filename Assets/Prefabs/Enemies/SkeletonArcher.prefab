@@ -227,9 +227,6 @@ MonoBehaviour:
   selfDestructDelay: 6
   fadeDuration: 3
   canBeRevived: 1
-  hurtSFX: {fileID: 8300000, guid: 4cd73b5459f7dfc4f98bf602efdfd4dc, type: 3}
-  blockSFX: {fileID: 0}
-  deathSFX: {fileID: 8300000, guid: 71069f49a2bca6945bd765c011af7fc3, type: 3}
   animationsArray:
   - SkeletonArcher_Death
 --- !u!114 &8511971272375729107
@@ -250,7 +247,7 @@ MonoBehaviour:
   damage: 5
   knockbackForce: 0
   stunDuration: 0
-  attackRange: 1.2
+  attackRange: 1.5
   maxCooldown: 2
 --- !u!114 &3896439737020859165
 MonoBehaviour:
@@ -296,9 +293,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8dba4f4bd861ec4e943ac90c88cde88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewDistance: 10
+  viewDistance: 12
   aggroRange: 2
-  fovAngle: 45
+  fovAngle: 60
   looseAggroTime: 10
 --- !u!114 &-1100123820332016772
 MonoBehaviour:
@@ -517,7 +514,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.31066132, y: -0.11448705}
+  m_Offset: {x: 0.23314953, y: -0.11448705}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -528,7 +525,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6379223, y: 0.38230634}
+  m_Size: {x: 0.79294586, y: 0.38230634}
   m_EdgeRadius: 0
 --- !u!114 &8508320474321472119
 MonoBehaviour:

@@ -9,7 +9,6 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] float selfDestructDelay, // the enemy is destroyed after a short dealy on death
                            fadeDuration; // time it takes the enemy to fade away when it is being destroyed
     [SerializeField] bool canBeRevived; // only certain enenmies can be revived
-    [SerializeField] AudioClip hurtSFX, blockSFX, deathSFX;
     [SerializeField] string[] animationsArray;
 
     // private variables
@@ -65,19 +64,12 @@ public class EnemyHealth : MonoBehaviour
 
         if (!isBlocking)
         {
-            AudioSource.PlayClipAtPoint(hurtSFX, Camera.main.transform.position);
             currentHealth -= damage;
-        }
-        else // when blocking take no damage
-        {
-            AudioSource.PlayClipAtPoint(blockSFX, Camera.main.transform.position);
         }
     }
 
     private void Death()
     {
-        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position);
-
         EnemyAnimator.SetTrigger("IsDead");
 
         SpawnRandomItemComponent.SpawnItem(); // sometimes enemies will spawn items on death

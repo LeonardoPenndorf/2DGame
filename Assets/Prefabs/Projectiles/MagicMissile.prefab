@@ -176,7 +176,7 @@ MonoBehaviour:
   speed: 12
   xBounds: 10
   yBounds: 5
-  damage: 15
+  damage: 10
 --- !u!95 &2998981225662780254
 Animator:
   serializedVersion: 5

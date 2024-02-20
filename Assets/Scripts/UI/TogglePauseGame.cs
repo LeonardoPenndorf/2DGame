@@ -29,6 +29,7 @@ public class TogglePauseGame : MonoBehaviour
         PauseMenu.enabled = !PauseMenu.enabled;
         PauseUnpauseGame(gameIsPaused);
     }
+
     public void ToggleUpgradeMenu(InputAction.CallbackContext context)
     {
         if (PauseMenu.enabled || !context.performed) return;
@@ -50,5 +51,11 @@ public class TogglePauseGame : MonoBehaviour
             Time.timeScale = 0f;
             gameIsPaused = true;
         }
+    }
+
+    public void UnpauseGame()
+    {
+        PauseMenu.enabled = false;
+        PauseUnpauseGame(true);
     }
 }

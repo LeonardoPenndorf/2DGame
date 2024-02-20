@@ -1,7 +1,5 @@
 using System.Collections;
-using UnityEditor.Timeline;
 using UnityEngine;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerMovement : MonoBehaviour
 {

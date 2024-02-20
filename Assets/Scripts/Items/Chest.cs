@@ -12,6 +12,7 @@ public class Chest : MonoBehaviour
     [SerializeField] Vector2 SpawnVector;
 
     // private variables
+    private Chest chest;
     private Animator animator;
     private EnemyManager enemyManager;
     private bool unlocked = false,
@@ -20,25 +21,24 @@ public class Chest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        chest = GetComponent<Chest>();
         animator = GetComponent<Animator>();
         enemyManager = EnemyManager.instance;
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        if (!enemyManager.AreAllEnemiesDead() || isEmpty || ! unlocked) return;
+        
+        isEmpty = true;
+        animator.SetTrigger("Open");
+        StartCoroutine(SpawnDiamonds());
+    }
 
     public void CheckChest()
     {
-        if (unlocked) OpenChest();
-
-        else  StartCoroutine(SummonEnemies());
-    }
-
-    private void OpenChest()
-    {
-        if (!enemyManager.AreAllEnemiesDead() || isEmpty) return;
-
-        animator.SetTrigger("Open");
-        isEmpty = true;
-        StartCoroutine(SpawnDiamonds());
+        if (!unlocked) StartCoroutine(SummonEnemies());
     }
 
     private IEnumerator SummonEnemies()
@@ -53,7 +53,6 @@ public class Chest : MonoBehaviour
             Vector3 spawnPosition = new Vector3(transform.position.x + offset, transform.position.y +  yOffset, transform.position.z);
 
             Instantiate(randomEnemy, spawnPosition, Quaternion.identity);
-            randomEnemy.GetComponent<EnemyAggro>().SetIsAggroed(true);
         }
 
         unlocked = true;
@@ -63,7 +62,7 @@ public class Chest : MonoBehaviour
     {
         for (int i = 0; i <diamondsAmount; i++)
         {
-            yield return new WaitForSeconds(spawnTime);
+            yield return new WaitForSeconds(spawnTime * 0.5f);
 
             GameObject diamond = Instantiate(Diamond, transform.position, Quaternion.identity);
 
@@ -73,6 +72,8 @@ public class Chest : MonoBehaviour
             Vector2 force = new Vector2(SpawnVector.x * randomDirection.x, SpawnVector.y) * rb.mass;
             rb.velocity = force;
         }
+
+        chest.enabled = false;
     }
 
     void OnDrawGizmos()
