@@ -68,6 +68,6 @@ public class EnemyRangedAttack : MonoBehaviour
     private void SpawnProjectile() // called by the ranged attack animation
     {
         GameObject NewProjectile = Instantiate(Projectile, spawnPosition.position, Quaternion.identity);
-        NewProjectile.GetComponent<Arrow>().direction = transform.rotation.y; // ensure the arrow can only fly in the direction the enemy is facing
+        NewProjectile.GetComponent<AimForPlayer>().direction = transform.rotation.y; // ensure the arrow can only fly in the direction the enemy is facing
     }
 }

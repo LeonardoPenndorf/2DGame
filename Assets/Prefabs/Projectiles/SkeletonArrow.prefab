@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 942836535367685299}
   - component: {fileID: 2434307948691361826}
   - component: {fileID: -6355919365632638189}
+  - component: {fileID: -3747502808030843261}
   m_Layer: 14
   m_Name: SkeletonArrow
   m_TagString: Untagged
@@ -119,7 +120,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.36285985, y: -0.018211246}
+  m_Offset: {x: -0.3416133, y: -0.016693592}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -130,7 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6189134, y: 0.17057157}
+  m_Size: {x: 0.5764203, y: 0.112902164}
   m_EdgeRadius: 0
 --- !u!50 &2434307948691361826
 Rigidbody2D:
@@ -171,8 +172,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3252a7756cac2b4bbcb59219dec2f63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
+  timer: 20
+  fadeDuration: 3
+--- !u!114 &-3747502808030843261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859765699701903693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113a768b2d6c5074f88e20cd485a53e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   direction: 0
   speed: 12
   xBounds: 10
   yBounds: 5
-  damage: 5

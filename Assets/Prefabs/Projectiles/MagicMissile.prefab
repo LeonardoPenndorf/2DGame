@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 3835193848231528943}
   - component: {fileID: 942836535367685299}
   - component: {fileID: 2434307948691361826}
-  - component: {fileID: -6355919365632638189}
   - component: {fileID: 2998981225662780254}
+  - component: {fileID: 7861672693982878142}
+  - component: {fileID: 454632388005628879}
   m_Layer: 14
   m_Name: MagicMissile
   m_TagString: Untagged
@@ -160,23 +161,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-6355919365632638189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6859765699701903693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3252a7756cac2b4bbcb59219dec2f63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: 0
-  speed: 12
-  xBounds: 10
-  yBounds: 5
-  damage: 10
 --- !u!95 &2998981225662780254
 Animator:
   serializedVersion: 5
@@ -198,3 +182,35 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7861672693982878142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859765699701903693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113a768b2d6c5074f88e20cd485a53e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
+  speed: 15
+  xBounds: 10
+  yBounds: 5
+--- !u!114 &454632388005628879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859765699701903693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461e5b2a8123515429967fe37b298d4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunDuration: 1
+  timer: 5
+  damage: 10
+  KnockbackVector: {x: 10, y: 5}

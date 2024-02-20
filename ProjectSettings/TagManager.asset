@@ -65,9 +65,6 @@ TagManager:
   - name: BgItems
     uniqueID: 1588301033
     locked: 0
-  - name: Foreground
-    uniqueID: 1334260199
-    locked: 0
   - name: Platforms
     uniqueID: 2012992329
     locked: 0
@@ -88,4 +85,7 @@ TagManager:
     locked: 0
   - name: Effects
     uniqueID: 3582615981
+    locked: 0
+  - name: Foreground
+    uniqueID: 1334260199
     locked: 0

@@ -11,7 +11,7 @@ public class Explosion : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private HomingMissile homingMissile;
-    private CircleCollider2D circleCollider;
+    private Collider2D explosionCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class Explosion : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         homingMissile = GetComponent<HomingMissile>();
-        circleCollider = GetComponent<CircleCollider2D>();
+        explosionCollider = GetComponent<Collider2D>();
 
         StartCoroutine(LifeTime());
 
@@ -35,7 +35,7 @@ public class Explosion : MonoBehaviour
             return;
         }
 
-        if (circleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if (explosionCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             StartExplosion();
         }
@@ -44,9 +44,12 @@ public class Explosion : MonoBehaviour
     private void StartExplosion()
     {
         animator.SetTrigger("Explosion");
-        homingMissile.enabled = false;
+
+        if (homingMissile != null)
+            homingMissile.enabled = false;
+
         rb.velocity = Vector3.zero;
-        circleCollider.enabled = false;
+        explosionCollider.enabled = false;
     }
 
     private void SelfDestruct() { Destroy(gameObject); } // called at the end of the explosion animation

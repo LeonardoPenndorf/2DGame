@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9078263324011959898}
   - component: {fileID: -5801283732596421630}
   - component: {fileID: 5782029021762396900}
+  - component: {fileID: -7477128229602898140}
   m_Layer: 14
   m_Name: MagicWave
   m_TagString: Untagged
@@ -184,10 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3252a7756cac2b4bbcb59219dec2f63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 0
-  speed: 8
-  xBounds: 10
-  yBounds: 5
   damage: 15
 --- !u!114 &5782029021762396900
 MonoBehaviour:
@@ -201,3 +198,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d25fea86f43d7d49929cdc26a65cffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7477128229602898140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3038605286205751018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113a768b2d6c5074f88e20cd485a53e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
+  speed: 10
+  xBounds: 10
+  yBounds: 5

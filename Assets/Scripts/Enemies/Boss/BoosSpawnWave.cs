@@ -20,12 +20,12 @@ public class BoosSpawnWave : MonoBehaviour
 
         if (transform.rotation.y == 0)
         {
-            newWave.GetComponent<Arrow>().direction = -1;
+            newWave.GetComponent<AimForPlayer>().direction = -1;
 
         }
         else
         {
-            newWave.GetComponent<Arrow>().direction = 1;
+            newWave.GetComponent<AimForPlayer>().direction = 1;
         }
     }
 }

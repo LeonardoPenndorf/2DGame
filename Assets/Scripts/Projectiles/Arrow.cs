@@ -4,29 +4,21 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    // public vairables
-    public float direction = 0; // direction of the enemy that shot the projectile
-
     // [SerializeField] variables
-    [SerializeField] float speed, xBounds, yBounds;
     [SerializeField] int damage;
+    [SerializeField] float timer, fadeDuration;
 
     // private variables
-    private Transform AimPoint;
-    private Rigidbody2D ProjectileRB;
     private Collider2D ArrowCollider;
-    float xVelocity, yVelocity;
-    private Vector3 velocityVector;
+    private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        AimPoint = GameObject.FindGameObjectWithTag("Player").transform.Find("AimPoint");
-        ProjectileRB = GetComponent<Rigidbody2D>();
         ArrowCollider = GetComponent<Collider2D>();
-
-        SetVelocity();
-        SetRotation();
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,40 +28,34 @@ public class Arrow : MonoBehaviour
             collision.GetComponent<PlayerHealth>().TakeDamage(damage, transform);
             Destroy(gameObject);
         }
-        else if (ArrowCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        else if (ArrowCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) // when arrows collide with the wall they get stuck and fade away after a short delay
         {
-            Destroy(gameObject);
+            rb.velocity = Vector3.zero;
+            ArrowCollider.enabled = false;
+
+            StartCoroutine(FadeAway());
         }
     }
 
-    private void SetVelocity()
+    private IEnumerator FadeAway()
     {
-        velocityVector = AimPoint.position - transform.position;
-        
-        xVelocity = EnsureMinMagnitude(velocityVector.x);
-        yVelocity = Mathf.Clamp(velocityVector.y, -yBounds, yBounds);
+        yield return new WaitForSeconds(timer);
 
-        if ((direction < 0 && xVelocity < 0) || (direction >= 0 && xVelocity > 0)) // ensure the prjectile flies in the same direction the enemy is facing
+        float currentTime = 0;
+
+        Color initialColor = spriteRenderer.color;
+
+        while (currentTime < fadeDuration)
         {
-            xVelocity = -xVelocity;
+            // Calculate the proportion of the fade based on the elapsed time
+            float alpha = Mathf.Lerp(1f, 0f, currentTime / fadeDuration);
+
+            spriteRenderer.color = new Color(initialColor.r, initialColor.g, initialColor.b, alpha);
+
+            yield return null;
+            currentTime += Time.deltaTime;
         }
 
-        ProjectileRB.velocity = new Vector2 (xVelocity, yVelocity).normalized * speed;
-    }
-
-    private void SetRotation()
-    {
-        float rotation = Mathf.Atan2(-yVelocity, -xVelocity) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rotation);
-    }
-
-    private float EnsureMinMagnitude(float xVelocity)
-    {
-        if (Mathf.Abs(xVelocity) < xBounds)
-        {
-            return xVelocity < 0 ? -xBounds : xBounds;
-        }
-
-        return xVelocity;
+        Destroy(gameObject);
     }
 }
