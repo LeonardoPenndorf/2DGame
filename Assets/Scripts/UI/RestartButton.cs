@@ -22,7 +22,6 @@ public class RestartButton : MonoBehaviour
     {
         if (!canvas.enabled) return;
 
-        Debug.Log("Restart");
         togglePauseGame.PauseUnpauseGame(true);
         Destroy(GameManager);
         SceneManager.LoadScene(1); // start game loading first room

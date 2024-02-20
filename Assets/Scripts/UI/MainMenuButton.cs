@@ -23,7 +23,6 @@ public class MainMenuButton : MonoBehaviour
     {
         if (!canvas.enabled) return;
 
-        Debug.Log("Main Menu");
         togglePauseGame.PauseUnpauseGame(true);
         Destroy(GameManager);
         SceneManager.LoadScene(0); // start game loading first room

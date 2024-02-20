@@ -20,6 +20,7 @@ public class EnemyMovement : MonoBehaviour
     private Transform Player; // player transform is required for navigation when aggroed
     private EnemyKnockback enemyKnockback;
     private EnemyNavigator enemyNavigator;
+    private TogglePauseGame togglePauseGame;
     private float movementSpeed, // current movement speed
                   attackRange, // when player is within attack range, enemy stops moving
                   direction, // direction the enemy is facing
@@ -38,6 +39,7 @@ public class EnemyMovement : MonoBehaviour
         animationsChecker = GetComponent<AnimationChecker>();
         enemyKnockback = GetComponent<EnemyKnockback>();
         enemyNavigator = GetComponentInChildren<EnemyNavigator>();
+        togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
 
         Player = GameObject.FindWithTag("Player").transform;
 
@@ -56,7 +58,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemyKnockback.GetIsStunned()) return; // can't moved when stunned
+        if (enemyKnockback.GetIsStunned() || togglePauseGame.GetGameIsPaused()) return; // can't moved when stunned
 
         isAggroed = enemyAggro.GetIsAggroed();
 

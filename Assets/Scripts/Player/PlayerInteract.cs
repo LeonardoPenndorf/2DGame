@@ -12,6 +12,7 @@ public class PlayerInteract : MonoBehaviour
     private EnemyManager enemyManager;
     private Animator playerAnimator;
     private PlayerInput playerInput; // when leaving switch input map to disable input
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class PlayerInteract : MonoBehaviour
         enemyManager = EnemyManager.instance;
         playerAnimator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -51,6 +53,7 @@ public class PlayerInteract : MonoBehaviour
 
         if (exitDoor != null)
         {
+            rb.velocity = Vector3.zero;
             playerAnimator.SetTrigger("Leave");
             playerInput.SwitchCurrentActionMap("DisableMap");
             playerMovement.enabled = false;
