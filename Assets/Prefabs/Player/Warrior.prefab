@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &657909637872914812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8309707862301661556}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8309707862301661556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657909637872914812}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.261, y: -2.5, z: -0.03903745}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4389907814029081718}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2516605855976667709
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,10 +248,10 @@ GameObject:
   - component: {fileID: -5345504813646555920}
   - component: {fileID: 3553670192834770497}
   - component: {fileID: 1733006571222690284}
-  - component: {fileID: 41005810356047400}
   - component: {fileID: 3143726481697374373}
   - component: {fileID: 701683862012412736}
   - component: {fileID: -2731704944119797433}
+  - component: {fileID: 9219761080000195588}
   m_Layer: 9
   m_Name: Warrior
   m_TagString: Player
@@ -244,6 +275,7 @@ Transform:
   - {fileID: 8791302812204833458}
   - {fileID: 3218029088543505509}
   - {fileID: 4612613900933347163}
+  - {fileID: 8309707862301661556}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3247166011699043646
@@ -481,10 +513,6 @@ MonoBehaviour:
     m_ActionId: b656ca4f-964d-48e9-b079-2bf8fb5661bf
     m_ActionName: Player/SpecialAttack[/Mouse/leftButton,/DualShock4GamepadHID/buttonWest]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 86c35da0-70ae-467d-a77b-aa9e5e7d0cf2
-    m_ActionName: Player/LeaveRoom[/Keyboard/e,/DualShock4GamepadHID/dpad/up]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3143726481697374373}
         m_TargetAssemblyTypeName: PlayerBlock, Assembly-CSharp
@@ -617,23 +645,6 @@ MonoBehaviour:
   attackCooldown: 1
   stunDuration: 1
   knockbackVector: {x: 7, y: 3}
---- !u!114 &41005810356047400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7157536053932933172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83ef5b7f13eb4284b8b248279c344d14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FireSlash: {fileID: 2570856389410326685, guid: 4d579335fb455144290dd3e33af508e9, type: 3}
-  xOffset: 3
-  yOffset: -2
-  xVelocity: 15
-  yVelocity: 0
 --- !u!114 &3143726481697374373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,3 +683,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a16910368769048b7eaed00534ef6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9219761080000195588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157536053932933172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c6b9c26a24ff5948a57ebd1049ed235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wave: {fileID: 999278213958814219, guid: e4157479b6a29e64781b360df6f0edc4, type: 3}
+  SpawnPoint: {fileID: 8309707862301661556}
+  velocity: {x: 15, y: 0}
