@@ -21,6 +21,7 @@ public class EnemyMeleeAttack : MonoBehaviour
     private EnemyAggro enemyAggro;
     private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
     private EnemyMovement enemyMovement;
+    private TogglePauseGame togglePauseGame;
     private float cooldown;
     private int playerLayerMask;
 
@@ -31,6 +32,7 @@ public class EnemyMeleeAttack : MonoBehaviour
         enemyAggro = GetComponent<EnemyAggro>();
         animationsChecker = GetComponent<AnimationChecker>();
         enemyMovement = GetComponent<EnemyMovement>();
+        togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
 
         playerLayerMask = LayerMask.GetMask("Player");
     }
@@ -38,6 +40,8 @@ public class EnemyMeleeAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (togglePauseGame.GetGameIsPaused()) return;
+
         cooldown -= Time.deltaTime;
 
         if (cooldown <= 0 && enemyAggro.GetIsAggroed())

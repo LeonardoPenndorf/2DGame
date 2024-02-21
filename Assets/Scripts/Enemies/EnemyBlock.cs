@@ -15,6 +15,7 @@ public class EnemyBlock : MonoBehaviour
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
     private EnemyMovement enemyMovement;
     private Transform Player;
+    private TogglePauseGame togglePauseGame;
     private float cooldown;
 
     // Start is called before the first frame update
@@ -24,6 +25,7 @@ public class EnemyBlock : MonoBehaviour
         enemyHealth = GetComponent<EnemyHealth>();
         animationsChecker = GetComponent<AnimationChecker>();
         enemyMovement = GetComponent<EnemyMovement>();
+        togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
 
         Player = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -31,6 +33,8 @@ public class EnemyBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (togglePauseGame.GetGameIsPaused()) return;
+
         cooldown -= Time.deltaTime;
         if (cooldown <= 0)
         {

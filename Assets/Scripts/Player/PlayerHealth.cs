@@ -29,14 +29,9 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateIFrames();
+        iFrames -= Time.deltaTime;
 
         CheckDeathCondition();
-    }
-
-    private void UpdateIFrames()
-    {
-        if (iFrames > 0) iFrames -= Time.deltaTime;
     }
 
     private void CheckDeathCondition()
@@ -50,10 +45,7 @@ public class PlayerHealth : MonoBehaviour
 
         playerManager.AdjustPlayerHealth(-damage);
 
-        if (playerManager.GetPlayerHealth() > 0)
-        {
-            animator.SetTrigger("IsHit");
-        }
+        if (playerManager.GetPlayerHealth() > 0) animator.SetTrigger("IsHit");
 
         iFrames = maxIFrames;
     }

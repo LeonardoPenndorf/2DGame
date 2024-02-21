@@ -14,6 +14,7 @@ public class BossTeleport : MonoBehaviour
     private AnimationChecker animationChecker;
     private GameObject teleportAnchor; // used to check the boss teleoprts within the bounds of the arena
     private Transform aimTransform; // teleport to the aim transform + offset
+    private TogglePauseGame togglePauseGame;
     private float cooldown,
                   attackRange,
                   castDistance;
@@ -36,6 +37,7 @@ public class BossTeleport : MonoBehaviour
         attackRange = GetComponent<BossAttack>().attackRange;
         castDistance = GetComponent<BossCast>().minDistance;
         rectangleSize = teleportAnchor.GetComponent<DrawTeleportSquare>().rectangleSize;
+        togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
 
         cooldown = maxCooldown;
     }
@@ -43,12 +45,12 @@ public class BossTeleport : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (togglePauseGame.GetGameIsPaused()) return;
+
         cooldown -= Time.deltaTime;
 
         if (cooldown <= 0 && !animationChecker.CheckAnimations(animationsArray) && isPresent)
-        {
             Teleport();
-        }
     }
 
     private void Teleport()

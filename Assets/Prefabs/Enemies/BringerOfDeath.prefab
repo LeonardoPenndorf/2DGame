@@ -424,6 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 150
   currentHealth: 0
+  maxIFrames: 0.5
   selfDestructDelay: 6
   fadeDuration: 3
   canBeRevived: 0

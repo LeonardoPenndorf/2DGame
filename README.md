@@ -40,8 +40,8 @@ ToDo:
 2) Add more rooms
 4) Implement SFX, music & Audio settings
 5) Add particle & glow effects
-6) Improve enemy block
-7) Improve camera
-8) Implement controls page
-9) Improve killzone
-10) Prettier UI
+6) Improve camera
+7) Implement controls page
+8) Improve killzone
+9) Prettier UI
+10) Controller UI compatibility

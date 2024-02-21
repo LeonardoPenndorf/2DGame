@@ -18,6 +18,7 @@ public class EnemySummon : MonoBehaviour
     private EnemyAggro enemyAggro;
     private EnemyMovement enemyMovement;
     private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
+    private TogglePauseGame togglePauseGame;
     private float cooldown, xDistance, yDistance;
 
     // Start is called before the first frame update
@@ -27,6 +28,7 @@ public class EnemySummon : MonoBehaviour
         enemyAggro = GetComponent<EnemyAggro>();
         animationsChecker = GetComponent<AnimationChecker>();
         enemyMovement = GetComponent<EnemyMovement>();
+        togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
 
         AimPoint = GameObject.FindGameObjectWithTag("Player").transform.Find("AimPoint");
     }
@@ -34,6 +36,8 @@ public class EnemySummon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (togglePauseGame.GetGameIsPaused()) return;
+
         cooldown -= Time.deltaTime;
 
         if (cooldown <= 0 && enemyAggro.GetIsAggroed())

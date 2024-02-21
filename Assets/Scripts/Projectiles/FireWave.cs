@@ -30,7 +30,7 @@ public class FireWave : MonoBehaviour
             enemyHealth = collision.GetComponent<EnemyHealth>();
 
             if (enemyHealth != null && !enemyHealth.GetIsDead())
-                collision.GetComponent<EnemyHealth>().TakeDamage(damage);
+                collision.GetComponent<EnemyHealth>().TakeDamage(damage, transform);
         }
 
         if (fireWaveCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))

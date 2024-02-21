@@ -15,6 +15,7 @@ public class BossCast : MonoBehaviour
     // private variables
     private Animator animator;
     private AnimationChecker animationChecker;
+    private TogglePauseGame togglePauseGame;
     private Transform spawnTransform;
     private Transform playerTransform;
     private float cooldown, distance;
@@ -25,6 +26,7 @@ public class BossCast : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         animationChecker = GetComponent<AnimationChecker>();
+        togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
 
         spawnTransform = transform.Find("spawnPoint").transform;
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -37,12 +39,12 @@ public class BossCast : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (togglePauseGame.GetGameIsPaused()) return;
+
         cooldown -= Time.deltaTime;
 
         if (cooldown <= 0 && !animationChecker.CheckAnimations(animationsArray))
-        {
             CheckRange();
-        }
     }
 
     private void CheckRange()

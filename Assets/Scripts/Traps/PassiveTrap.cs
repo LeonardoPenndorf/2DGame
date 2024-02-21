@@ -22,6 +22,6 @@ public class PassiveTrap : MonoBehaviour
             collision.GetComponent<PlayerHealth>().TakeDamage(damage, transform);
 
         if (collision.CompareTag("Enemy"))
-            collision.GetComponent<EnemyHealth>().TakeDamage(damage);
+            collision.GetComponent<EnemyHealth>().TakeDamage(damage, transform);
     }
 }

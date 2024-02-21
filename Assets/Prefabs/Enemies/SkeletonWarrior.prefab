@@ -244,6 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 60
   currentHealth: 0
+  maxIFrames: 0.5
   selfDestructDelay: 6
   fadeDuration: 3
   canBeRevived: 1
@@ -263,7 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defenseRange: 3
   maxCooldown: 4
-  blockDuration: 1.5
+  blockDuration: 2
   EnemyAnimationsArray:
   - SkeletonWarrior_Hurt
   - SkeletonWarrior_Attack3

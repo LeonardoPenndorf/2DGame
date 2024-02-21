@@ -16,6 +16,7 @@ public class BossAttack : MonoBehaviour
     private Animator animator;
     private Transform playerTransform;
     private AnimationChecker animationChecker;
+    private TogglePauseGame togglePauseGame;
     private float cooldown, 
                   distance;
     private string[] animationsArray;
@@ -28,11 +29,14 @@ public class BossAttack : MonoBehaviour
         playerTransform = GameObject.FindWithTag("Player").transform;
         animationChecker = GetComponent<AnimationChecker>();
         animationsArray = GetComponent<BossFlying>().animationsArray;
+        togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (togglePauseGame.GetGameIsPaused()) return;
+
         cooldown -= Time.deltaTime;
 
         if (cooldown <= 0 && CheckRange() && !animationChecker.CheckAnimations(animationsArray))

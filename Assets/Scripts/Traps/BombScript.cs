@@ -50,7 +50,7 @@ public class BombScript : MonoBehaviour
 
         foreach (Collider2D collision in enemyCollision)
         {
-            collision.GetComponent<EnemyHealth>().TakeDamage(damage);
+            collision.GetComponent<EnemyHealth>().TakeDamage(damage, transform);
             collision.GetComponent<EnemyKnockback>().Knockback(KnockbackVector, stunDuration);
         }
     }

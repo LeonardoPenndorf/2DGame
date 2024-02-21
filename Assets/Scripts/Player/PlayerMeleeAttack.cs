@@ -39,10 +39,7 @@ public class PlayerMeleeAttack : MonoBehaviour
     {
         if (togglePauseGame.GetGameIsPaused()) return;
 
-        if (cooldownTimer > 0)
-        {
-            cooldownTimer -= Time.deltaTime;
-        }
+        cooldownTimer -= Time.deltaTime;
     }
 
 
@@ -81,7 +78,7 @@ public class PlayerMeleeAttack : MonoBehaviour
                 PlayerAnimator.SetInteger("AttackComboCounter", 2);
                 break;
             case "Warrior_MeleeAttack_2":
-                damage *= 2;
+                damage += (int)(damage * 0.5f);
                 PlayerAnimator.SetInteger("AttackComboCounter", 3);
                 break;
             default:
@@ -92,7 +89,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     private void AirAttack() // a single attack that can  be performed mid air
     {
-        damage = playerManager.GetDamage() / 2; // set damage to base damage
+        damage = playerManager.GetDamage() / 2;
         PlayerAnimator.SetTrigger("AirAttack");
     }
 
@@ -101,8 +98,8 @@ public class PlayerMeleeAttack : MonoBehaviour
         if (togglePauseGame.GetGameIsPaused() || cooldownTimer > 0) return;
 
         if (context.performed)
-        {
-            damage = playerManager.GetDamage() * 4; // special attacks deals a lot of damage
+        { 
+            damage = playerManager.GetDamage() * 2; // special attacks deals a lot of damage
             PlayerAnimator.SetTrigger("SpecialAttack");
             cooldownTimer = attackCooldown;
         }
