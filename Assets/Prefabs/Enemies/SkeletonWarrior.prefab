@@ -264,7 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defenseRange: 3
   maxCooldown: 4
-  blockDuration: 2
+  blockDuration: 1.75
   EnemyAnimationsArray:
   - SkeletonWarrior_Hurt
   - SkeletonWarrior_Attack3

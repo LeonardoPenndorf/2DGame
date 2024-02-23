@@ -8,7 +8,10 @@ public class AimForPlayer : MonoBehaviour
     public float direction = 0; // direction of the enemy that shot the projectile
 
     // [SerializeField] variables
-    [SerializeField] float speed, xBounds, yBounds;
+    [SerializeField] float speed, 
+                           xBounds, 
+                           yBounds, 
+                           innacuracy;
 
     // private variables
     private Transform AimPoint;
@@ -37,6 +40,8 @@ public class AimForPlayer : MonoBehaviour
         {
             xVelocity = -xVelocity;
         }
+
+        if (innacuracy > 0) yVelocity += Random.Range(-innacuracy, innacuracy);
 
         ProjectileRB.velocity = new Vector2(xVelocity, yVelocity).normalized * speed;
     }

@@ -37,11 +37,6 @@ https://quicksounds.com/library/sounds/skeleton
 
 ToDo:
 1) Improve enemy vision
-2) Add more rooms
-4) Implement SFX, music & Audio settings
-5) Add particle & glow effects
-6) Improve camera
-7) Implement controls page
-8) Improve killzone
-9) Prettier UI
-10) Controller UI compatibility
+2) Implement SFX, music & Audio settings
+3) Add particle & glow effects
+4) Implement controls page

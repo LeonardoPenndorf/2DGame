@@ -1,23 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class TogglePauseGame : MonoBehaviour
 {
     // [SerializeField] variables
-    [SerializeField] Canvas PauseMenu;
-    [SerializeField] Canvas UpgradeMenu;
+    [SerializeField] Canvas PauseMenu, UpgradeMenu;
+    [SerializeField] GameObject ContinueButton, UpgradeDamageButton;
 
     // private variables
     private UpgradeSystem upgradeSystem;
+    private EventSystem eventSystem;
     private bool gameIsPaused = false;
 
     // Start is called before the first frame update
     void Start()
     {
         upgradeSystem = UpgradeMenu.GetComponent<UpgradeSystem>();
+        eventSystem = UpgradeMenu.GetComponent<EventSystem>();
     }
 
     public bool GetGameIsPaused() { return gameIsPaused; }
@@ -28,6 +31,7 @@ public class TogglePauseGame : MonoBehaviour
 
         PauseMenu.enabled = !PauseMenu.enabled;
         PauseUnpauseGame(gameIsPaused);
+        EventSystem.current.SetSelectedGameObject(ContinueButton.gameObject);
     }
 
     public void ToggleUpgradeMenu(InputAction.CallbackContext context)
@@ -37,6 +41,7 @@ public class TogglePauseGame : MonoBehaviour
         upgradeSystem.UpdateDescription();
         UpgradeMenu.enabled = !UpgradeMenu.enabled;
         PauseUnpauseGame(gameIsPaused);
+        EventSystem.current.SetSelectedGameObject(UpgradeDamageButton.gameObject);
     }
 
     public void PauseUnpauseGame(bool state)

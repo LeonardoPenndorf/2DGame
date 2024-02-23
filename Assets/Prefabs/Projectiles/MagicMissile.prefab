@@ -198,6 +198,7 @@ MonoBehaviour:
   speed: 15
   xBounds: 10
   yBounds: 5
+  innacuracy: 0.25
 --- !u!114 &454632388005628879
 MonoBehaviour:
   m_ObjectHideFlags: 0

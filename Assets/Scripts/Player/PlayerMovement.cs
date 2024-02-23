@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -78,9 +79,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetCanRotate(bool newState) { canRotate = newState; }
 
-    public void Jump()
+    public void Jump(InputAction.CallbackContext context)
     {
-        if (togglePauseGame.GetGameIsPaused() || !isGrounded || isStunned || reducedMobilty || animationsChecker.CheckAnimations(animationsArray)) return;
+        if (togglePauseGame.GetGameIsPaused() || !isGrounded || isStunned || reducedMobilty || animationsChecker.CheckAnimations(animationsArray) || !context.performed) return;
 
         PlayerRigidbody.velocity = new Vector2(PlayerRigidbody.velocity.x, jumpSpeed); // jump
     }

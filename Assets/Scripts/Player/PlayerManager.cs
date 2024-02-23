@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] Healthbar healthbar;
     [SerializeField] DiamondsUI diamondsUI;
     [SerializeField] Canvas deathCanvas;
+    [SerializeField] GameObject RestartButton;
     [SerializeField] int currentHealth, maxHealth, damage; // stores the health of player
     [SerializeField] int currentDiamonds; // amount of diamonds collected by the player
 
@@ -58,7 +60,11 @@ public class PlayerManager : MonoBehaviour
         healthbar.SetSliderValue(currentHealth);
     }
 
-    public void OnPlayerDeath() { deathCanvas.enabled = true; }
+    public void OnPlayerDeath() 
+    { 
+        deathCanvas.enabled = true;
+        EventSystem.current.SetSelectedGameObject(RestartButton.gameObject);
+    }
 
     public int GetDiamonds() { return currentDiamonds; }
 
