@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Warrior_TakeHit
+  m_Name: Warrior_Dodge
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,17 +21,21 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 34f3f4d9dd55a794e9c9a0e9a2492e42, type: 3}
+      value: {fileID: 21300000, guid: fb3088a0bc2621c48a1d788520d28e3b, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: 5a205ff07814fc54090e2d91b94a1b53, type: 3}
+      value: {fileID: 21300000, guid: 4c2fd9c15af50c74e9bfc350c5201ed2, type: 3}
     - time: 0.16666667
-      value: {fileID: 21300000, guid: b3bd9b90be3fb274f8165fa266d4ba9b, type: 3}
+      value: {fileID: 21300000, guid: 431eb2d9fdc868747a6beb5e90837ec2, type: 3}
     - time: 0.25
-      value: {fileID: 21300000, guid: c4a1037f74351e14c98be8856a89bc36, type: 3}
+      value: {fileID: 21300000, guid: 04bb7f52f3ad0c247a6c3aac80dff601, type: 3}
     - time: 0.33333334
-      value: {fileID: 21300000, guid: 97dded34615aa0343ae2a9b2a32d90f9, type: 3}
+      value: {fileID: 21300000, guid: 82460bba3b162574f89fbbead53b789e, type: 3}
     - time: 0.41666666
-      value: {fileID: 21300000, guid: 8ecfd0c2436292e4f8faea5cc2f2b1f4, type: 3}
+      value: {fileID: 21300000, guid: f16ea69250196e446958dfe447b03e7b, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: 98f76f129265b76458f7dcee85a68a32, type: 3}
+    - time: 0.5833333
+      value: {fileID: 21300000, guid: c8b59b61065f8ab4683a2f66777e16cf, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -54,18 +58,20 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 34f3f4d9dd55a794e9c9a0e9a2492e42, type: 3}
-    - {fileID: 21300000, guid: 5a205ff07814fc54090e2d91b94a1b53, type: 3}
-    - {fileID: 21300000, guid: b3bd9b90be3fb274f8165fa266d4ba9b, type: 3}
-    - {fileID: 21300000, guid: c4a1037f74351e14c98be8856a89bc36, type: 3}
-    - {fileID: 21300000, guid: 97dded34615aa0343ae2a9b2a32d90f9, type: 3}
-    - {fileID: 21300000, guid: 8ecfd0c2436292e4f8faea5cc2f2b1f4, type: 3}
+    - {fileID: 21300000, guid: fb3088a0bc2621c48a1d788520d28e3b, type: 3}
+    - {fileID: 21300000, guid: 4c2fd9c15af50c74e9bfc350c5201ed2, type: 3}
+    - {fileID: 21300000, guid: 431eb2d9fdc868747a6beb5e90837ec2, type: 3}
+    - {fileID: 21300000, guid: 04bb7f52f3ad0c247a6c3aac80dff601, type: 3}
+    - {fileID: 21300000, guid: 82460bba3b162574f89fbbead53b789e, type: 3}
+    - {fileID: 21300000, guid: f16ea69250196e446958dfe447b03e7b, type: 3}
+    - {fileID: 21300000, guid: 98f76f129265b76458f7dcee85a68a32, type: 3}
+    - {fileID: 21300000, guid: c8b59b61065f8ab4683a2f66777e16cf, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.43333334
+    m_StopTime: 0.59999996
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -85,43 +91,15 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
-    functionName: disableHurtboxCollider
+  - time: 0.083333336
+    functionName: StartDodge
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.016666668
-    functionName: StartInv
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.033333335
-    functionName: RestoreMobility
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.36666667
-    functionName: ResetCounter
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.38333333
-    functionName: EnableRotate
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.4
-    functionName: StopInv
+  - time: 0.41666666
+    functionName: EndDodge
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

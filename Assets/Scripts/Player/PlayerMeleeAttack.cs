@@ -7,7 +7,8 @@ public class PlayerMeleeAttack : MonoBehaviour
 {
     // [SerializeField] variables
     [SerializeField] GameObject HurtBox; // melee attack hurt box
-    [SerializeField] float maxComboDelay, // maximum amount of time between clicks
+    [SerializeField] float holdThreshold,
+                           maxComboDelay, // maximum amount of time between clicks
                            attackCooldown, // after air attacking cooldown must end before attacking again 
                            stunDuration; // after being hit by an attack, the enemy is stunned for a short while
     [SerializeField] Vector2 knockbackVector; // the knockback force of an attack
@@ -45,7 +46,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     public void CheckAttack(InputAction.CallbackContext context) // check which attack should be executed
     {
-        if (togglePauseGame.GetGameIsPaused() || cooldownTimer > 0 || !context.performed) return;
+        if (togglePauseGame.GetGameIsPaused() || cooldownTimer > 0 || !context.performed || context.duration > holdThreshold) return;
 
         isGrounded = PlayerMovementComponent.GetIsGrounded();
 

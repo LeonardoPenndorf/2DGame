@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void KnockBack(Vector2 knockbackVector, float stunDuration, Transform enemyTransform)
     {
-        if (playerHealth.GetIsDead()) return;
+        if (playerHealth.GetIsDead() || playerHealth.GetIsInv()) return;
 
         isStunned = true; // prevent player from moving
 

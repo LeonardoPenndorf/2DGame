@@ -23,17 +23,9 @@ public class PlayerBlock : MonoBehaviour
     {
         if (togglePauseGame.GetGameIsPaused()) return;
 
-        if (context.started)
-        {
-            PlayerAnimator.SetBool("IsBlocking", true);
+        if (context.performed) PlayerAnimator.SetBool("IsBlocking", true);
 
-        }
-
-        if (context.canceled)
-        {
-            PlayerAnimator.SetBool("IsBlocking", false);
-
-        }
+        if (context.canceled) PlayerAnimator.SetBool("IsBlocking", false);
     }
 
     public bool IsAttackComingFromFront(Transform hurtboxTrasnform)

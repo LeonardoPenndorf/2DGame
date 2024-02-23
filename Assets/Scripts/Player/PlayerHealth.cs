@@ -5,16 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerHealth : MonoBehaviour
 {
-    // [SerializeField] variables
-    [SerializeField] float maxIFrames;
-
     // private variables
     private PlayerManager playerManager; // player manager stores persistent values such as health
     private PlayerBlock playerBlock;
     private Animator animator;
     private PlayerInput playerInput; // upon death switch input mapto disable input
-    private float iFrames;
-    private bool isDead = false, 
+    private bool isInv = false, // if player is invulnerable he can't be damaged
+                 isDead = false, 
                  isBlocking = false; // when blocking takes less damage
 
     // Start is called before the first frame update
@@ -29,8 +26,6 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        iFrames -= Time.deltaTime;
-
         CheckDeathCondition();
     }
 
@@ -41,13 +36,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage, Transform hurtboxTransform)
     {
-        if ((iFrames > 0) || isDead || (isBlocking && playerBlock.IsAttackComingFromFront(hurtboxTransform))) { return; }
+        if (isInv || isDead || (isBlocking && playerBlock.IsAttackComingFromFront(hurtboxTransform))) { return; }
 
         playerManager.AdjustPlayerHealth(-damage);
 
         if (playerManager.GetPlayerHealth() > 0) animator.SetTrigger("IsHit");
-
-        iFrames = maxIFrames;
     }
 
     public void Heal(int healAmount)
@@ -70,6 +63,12 @@ public class PlayerHealth : MonoBehaviour
     {
         isBlocking = newIsBlocking;
     }
+
+    public void StartInv() { isInv = true; }
+
+    public void StopInv() { isInv = false; }
+
+    public bool GetIsInv() {  return isInv; }
 
     private void Death()
     {
