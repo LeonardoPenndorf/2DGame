@@ -27,6 +27,8 @@ more magic effects: https://bdragon1727.itch.io/retro-impact-effect-pack-all
 
 treasure chests: https://ankousse26.itch.io/free-treasure-boxes-pixel-art
 
+Controls UI: https://dizeoakamatsu.itch.io/ui-buttons-20x16-px
+
 SFX Sources:
 
 https://mixkit.co/free-sound-effects/sword/
