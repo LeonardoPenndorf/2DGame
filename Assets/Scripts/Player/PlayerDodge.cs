@@ -41,15 +41,16 @@ public class PlayerDodge : MonoBehaviour
 
     public void Dodge(InputAction.CallbackContext context)
     {
-        if (togglePauseGame.GetGameIsPaused() || cooldownTimer > 0 || !context.performed) return;
+        if (togglePauseGame.GetGameIsPaused() || cooldownTimer > 0 || !context.started) return;
 
-        if(context.duration < holdThreshold) PlayerAnimator.SetTrigger("Dodge");
+        PlayerAnimator.SetTrigger("Dodge");
     }
 
     private void StartDodge() // called at the beginning of the dodge animation
     {
         PlayerHealthComponent.StartInv();
 
+        cooldownTimer = MaxCooldown;
         rb.velocity = dodgeVelocity * new Vector2(rotation, 1);
 
         PlayerMovementComponent.SetCanRotate(false);

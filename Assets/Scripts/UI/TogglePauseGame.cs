@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class TogglePauseGame : MonoBehaviour
 {
     // [SerializeField] variables
-    [SerializeField] Canvas PauseMenu, UpgradeMenu;
+    [SerializeField] Canvas PauseMenu, UpgradeMenu, PlyastationControls, MouseKeyboardControls;
     [SerializeField] GameObject ContinueButton, UpgradeDamageButton;
 
     // private variables
@@ -20,7 +20,7 @@ public class TogglePauseGame : MonoBehaviour
     void Start()
     {
         upgradeSystem = UpgradeMenu.GetComponent<UpgradeSystem>();
-        eventSystem = UpgradeMenu.GetComponent<EventSystem>();
+        eventSystem = EventSystem.current;
     }
 
     public bool GetGameIsPaused() { return gameIsPaused; }
@@ -29,19 +29,28 @@ public class TogglePauseGame : MonoBehaviour
     {
         if (UpgradeMenu.enabled || !context.performed) return;
 
-        PauseMenu.enabled = !PauseMenu.enabled;
+        if (PlyastationControls.enabled || MouseKeyboardControls.enabled)
+        {
+            PlyastationControls.enabled = false;
+            MouseKeyboardControls.enabled = false;
+        }
+        else
+        {
+            PauseMenu.enabled = !PauseMenu.enabled;
+            eventSystem.SetSelectedGameObject(ContinueButton.gameObject);
+        }
+
         PauseUnpauseGame(gameIsPaused);
-        EventSystem.current.SetSelectedGameObject(ContinueButton.gameObject);
     }
 
     public void ToggleUpgradeMenu(InputAction.CallbackContext context)
     {
-        if (PauseMenu.enabled || !context.performed) return;
+        if (PauseMenu.enabled || PlyastationControls.enabled || MouseKeyboardControls.enabled || !context.performed) return;
 
         upgradeSystem.UpdateDescription();
         UpgradeMenu.enabled = !UpgradeMenu.enabled;
         PauseUnpauseGame(gameIsPaused);
-        EventSystem.current.SetSelectedGameObject(UpgradeDamageButton.gameObject);
+        eventSystem.SetSelectedGameObject(UpgradeDamageButton.gameObject);
     }
 
     public void PauseUnpauseGame(bool state)
