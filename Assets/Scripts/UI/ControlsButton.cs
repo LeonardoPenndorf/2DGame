@@ -6,12 +6,18 @@ using UnityEngine.InputSystem;
 
 public class ControlsButton : MonoBehaviour
 {
-    [SerializeField] Canvas PlaystationCanvas, MouseKeyboardCanvas, PreviousCanvas;
-    [SerializeField] GameObject PlaystationBack, MouseKeyboardBack, Controls;
+    [SerializeField] Canvas PlaystationCanvas, XboxCanvas, MouseKeyboardCanvas, PreviousCanvas, BackButtonCanvas;
 
     private Canvas ControlsCanvas;
-    private GameObject BackButton;
+    private GameObject BackButton, Controls;
     private bool isEnabled = false;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        BackButton = BackButtonCanvas.transform.Find("BackButton").gameObject;
+        Controls = PreviousCanvas.transform.Find("ControlsButton").gameObject;
+    }
 
     private Canvas DetectControls()
     {
@@ -20,25 +26,15 @@ public class ControlsButton : MonoBehaviour
         {
             // Check if it's a PlayStation controller
             if (Gamepad.current is UnityEngine.InputSystem.DualShock.DualShockGamepad)
-            {
-                BackButton = PlaystationBack.gameObject;
                 return PlaystationCanvas;
-            }
+
             // Check if it's an Xbox controller
             else if (Gamepad.current is UnityEngine.InputSystem.XInput.XInputController)
-            {
-                BackButton = PlaystationBack.gameObject;
-                return PlaystationCanvas;
-            }
+                return XboxCanvas;
 
-            else
-            {
-                BackButton = PlaystationBack.gameObject;
-                return PlaystationCanvas;
-            }
+            else return PlaystationCanvas;
         }
 
-        BackButton = MouseKeyboardBack.gameObject;
         return MouseKeyboardCanvas;
     }
     
@@ -50,6 +46,7 @@ public class ControlsButton : MonoBehaviour
         else isEnabled = false;
 
         ControlsCanvas.enabled = !isEnabled;
+        BackButtonCanvas.enabled = !isEnabled;
         PreviousCanvas.enabled = isEnabled;
 
         EventSystem.current.SetSelectedGameObject(!isEnabled ? BackButton.gameObject : Controls.gameObject);

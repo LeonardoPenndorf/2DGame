@@ -180,6 +180,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c18726abedcdd184391c3b3a00cafb53, type: 3}
+--- !u!223 &147419515 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 3776752406308749, guid: a46843b19d031dd40a22fe3fe7f7ea78, type: 3}
+  m_PrefabInstance: {fileID: 7807039453173451000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &180773339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20166,11 +20171,6 @@ Transform:
   - {fileID: 368720111}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1221781732 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6689103681296965415, guid: a46843b19d031dd40a22fe3fe7f7ea78, type: 3}
-  m_PrefabInstance: {fileID: 7807039453173451000}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1313837840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30799,11 +30799,6 @@ PolygonCollider2D:
       - {x: 27.992153, y: -9.994752}
       - {x: 27.99014, y: 19.968397}
   m_UseDelaunayMesh: 0
---- !u!1 &1810384693 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3233203203036606500, guid: a46843b19d031dd40a22fe3fe7f7ea78, type: 3}
-  m_PrefabInstance: {fileID: 7807039453173451000}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2032520295
 GameObject:
   m_ObjectHideFlags: 0
@@ -31039,14 +31034,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2181500669286729304, guid: a46843b19d031dd40a22fe3fe7f7ea78, type: 3}
-      propertyPath: PlaystationBack
+    - target: {fileID: 103794891812853617, guid: a46843b19d031dd40a22fe3fe7f7ea78, type: 3}
+      propertyPath: XboxControls
       value: 
-      objectReference: {fileID: 1221781732}
-    - target: {fileID: 2181500669286729304, guid: a46843b19d031dd40a22fe3fe7f7ea78, type: 3}
-      propertyPath: MouseKeyboardBack
-      value: 
-      objectReference: {fileID: 1810384693}
+      objectReference: {fileID: 147419515}
     - target: {fileID: 4049618007442880297, guid: a46843b19d031dd40a22fe3fe7f7ea78, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.5737746

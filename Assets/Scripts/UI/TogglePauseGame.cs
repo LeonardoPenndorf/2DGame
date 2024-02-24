@@ -8,10 +8,11 @@ using UnityEngine.UI;
 public class TogglePauseGame : MonoBehaviour
 {
     // [SerializeField] variables
-    [SerializeField] Canvas PauseMenu, UpgradeMenu, PlyastationControls, MouseKeyboardControls;
+    [SerializeField] Canvas PauseMenu, UpgradeMenu, PlyastationControls, MouseKeyboardControls, XboxControls;
     [SerializeField] GameObject ContinueButton, UpgradeDamageButton;
 
     // private variables
+    private PlayerManager playerManager; // player manager stores persistent values such as health
     private UpgradeSystem upgradeSystem;
     private EventSystem eventSystem;
     private bool gameIsPaused = false;
@@ -19,6 +20,7 @@ public class TogglePauseGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerManager = PlayerManager.instance; // there is only ever a single player manager instance
         upgradeSystem = UpgradeMenu.GetComponent<UpgradeSystem>();
         eventSystem = EventSystem.current;
     }
@@ -27,12 +29,13 @@ public class TogglePauseGame : MonoBehaviour
 
     public void TogglePauseMenu(InputAction.CallbackContext context)
     {
-        if (UpgradeMenu.enabled || !context.performed) return;
+        if (UpgradeMenu.enabled || !context.performed || playerManager.GetPlayerHealth() <= 0) return;
 
-        if (PlyastationControls.enabled || MouseKeyboardControls.enabled)
+        if (PlyastationControls.enabled || MouseKeyboardControls.enabled || XboxControls.enabled)
         {
             PlyastationControls.enabled = false;
             MouseKeyboardControls.enabled = false;
+            XboxControls.enabled = false;
         }
         else
         {
@@ -45,7 +48,7 @@ public class TogglePauseGame : MonoBehaviour
 
     public void ToggleUpgradeMenu(InputAction.CallbackContext context)
     {
-        if (PauseMenu.enabled || PlyastationControls.enabled || MouseKeyboardControls.enabled || !context.performed) return;
+        if (PauseMenu.enabled || PlyastationControls.enabled || MouseKeyboardControls.enabled || XboxControls.enabled || !context.performed || playerManager.GetPlayerHealth() <= 0) return;
 
         upgradeSystem.UpdateDescription();
         UpgradeMenu.enabled = !UpgradeMenu.enabled;
