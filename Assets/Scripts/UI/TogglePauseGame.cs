@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class TogglePauseGame : MonoBehaviour
 {
     // [SerializeField] variables
-    [SerializeField] Canvas PauseMenu, UpgradeMenu, PlyastationControls, MouseKeyboardControls, XboxControls;
+    [SerializeField] Canvas PauseMenu, UpgradeMenu, PlyastationControls, MouseKeyboardControls, XboxControls, Backbutton;
     [SerializeField] GameObject ContinueButton, UpgradeDamageButton;
 
     // private variables
@@ -36,6 +36,7 @@ public class TogglePauseGame : MonoBehaviour
             PlyastationControls.enabled = false;
             MouseKeyboardControls.enabled = false;
             XboxControls.enabled = false;
+            Backbutton.enabled = false;
         }
         else
         {

@@ -1,7 +1,7 @@
 # 2DGame
 A 2D game I made for practice
 
-Sprites used:
+Assets used:
 
 background: https://pixelfrog-assets.itch.io/kings-and-pigs
 
@@ -41,4 +41,3 @@ ToDo:
 1) Improve enemy vision
 2) Implement SFX, music & Audio settings
 3) Add particle & glow effects
-4) Improve dodge

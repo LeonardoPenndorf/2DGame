@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,7 @@ public class UpgradeSystem : MonoBehaviour
     [SerializeField] int cost, // prize needed to pay to purchase upgrades
                          damageUpgradeAmount, 
                          healthUpgradeAmount;
-    [SerializeField] Text CostText, 
+    [SerializeField] TextMeshProUGUI CostText, 
                           UpgradedamageText, 
                           UpgradeHealthText, 
                           HealText;
