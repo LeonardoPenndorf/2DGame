@@ -128,8 +128,8 @@
                 {
                     "name": "",
                     "id": "6b75195b-7015-4fd6-a875-167a764cc646",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "Hold",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "SpecialAttack",
@@ -150,7 +150,7 @@
                 {
                     "name": "",
                     "id": "e6fd07de-bc92-4a44-a79f-ef8d491ceff1",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "",

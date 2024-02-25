@@ -19,6 +19,7 @@ TagManager:
   - KillZone
   - Chest
   - World
+  - Hurtbox
   layers:
   - Default
   - TransparentFX

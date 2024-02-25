@@ -9,6 +9,7 @@ public class PlayerBlock : MonoBehaviour
     private Animator PlayerAnimator;
     private PlayerHealth playerHealth;
     private TogglePauseGame togglePauseGame;
+    private Collider2D blockCollider;
     private bool isFacingRight = true;
 
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class PlayerBlock : MonoBehaviour
         PlayerAnimator = GetComponent<Animator>();
         playerHealth = GetComponent<PlayerHealth>();
         togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
+        blockCollider = transform.Find("BlockHurtbox").gameObject.GetComponent<Collider2D>();
     }
 
     public void HandleBlockInput(InputAction.CallbackContext context)
@@ -50,10 +52,12 @@ public class PlayerBlock : MonoBehaviour
     private void StartBlock() // called in the start block animation
     {
         playerHealth.SetIsBlocking(true);
+        blockCollider.enabled = true;
     }
 
     private void EndBlock() // called in the end block animation
     {
         playerHealth.SetIsBlocking(false);
+        blockCollider.enabled = false;
     }
 }

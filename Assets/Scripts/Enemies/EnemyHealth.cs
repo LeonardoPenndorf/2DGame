@@ -56,7 +56,7 @@ public class EnemyHealth : MonoBehaviour
             Death();
         }
 
-        CheckSelfDestruct();
+        //CheckSelfDestruct();
     }
 
     public void TakeDamage(int damage, Transform hurtboxTransform)

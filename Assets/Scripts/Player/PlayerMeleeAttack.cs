@@ -96,14 +96,11 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     public void SpecialAttack(InputAction.CallbackContext context) // a very powerful attack that also shoots a projectile
     {
-        if (togglePauseGame.GetGameIsPaused() || cooldownTimer > 0) return;
+        if (togglePauseGame.GetGameIsPaused() || cooldownTimer > 0 || !context.performed) return;
 
-        if (context.performed)
-        { 
-            damage = playerManager.GetDamage() * 2; // special attacks deals a lot of damage
-            PlayerAnimator.SetTrigger("SpecialAttack");
-            cooldownTimer = attackCooldown;
-        }
+        damage = playerManager.GetDamage() * 2; // special attacks deals a lot of damage
+        PlayerAnimator.SetTrigger("SpecialAttack");
+        cooldownTimer = attackCooldown;
     }
 
     private void enableHurtboxCollider() // enable hurtbox collider at beginning of attack animation

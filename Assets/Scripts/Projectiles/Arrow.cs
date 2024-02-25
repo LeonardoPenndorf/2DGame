@@ -33,7 +33,7 @@ public class Arrow : MonoBehaviour
             rb.velocity = Vector3.zero;
             ArrowCollider.enabled = false;
 
-            StartCoroutine(FadeAway());
+            //StartCoroutine(FadeAway());
         }
     }
 

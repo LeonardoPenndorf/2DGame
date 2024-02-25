@@ -651,7 +651,7 @@ GameObject:
   - component: {fileID: 3297052136645549850}
   - component: {fileID: 1092159822413832524}
   m_Layer: 5
-  m_Name: X
+  m_Name: RT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -704,7 +704,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1803270424, guid: e9a89690bc084ef498ea5a9cca8700b3, type: 3}
+  m_Sprite: {fileID: 1395030297, guid: e9a89690bc084ef498ea5a9cca8700b3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1032,7 +1032,7 @@ GameObject:
   - component: {fileID: 8074711010928290363}
   - component: {fileID: 8862862169458894888}
   m_Layer: 5
-  m_Name: X
+  m_Name: RB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1054,8 +1054,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -84.5, y: 135}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: -84.5, y: 138.8}
+  m_SizeDelta: {x: 56.25, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8074711010928290363
 CanvasRenderer:
@@ -1085,7 +1085,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1803270424, guid: e9a89690bc084ef498ea5a9cca8700b3, type: 3}
+  m_Sprite: {fileID: -3447139, guid: e9a89690bc084ef498ea5a9cca8700b3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1940,4 +1940,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2
-  m_Text: "Hold\t: special attack\n"
+  m_Text: "Press\t: special attack\n"
