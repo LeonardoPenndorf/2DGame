@@ -180,11 +180,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c18726abedcdd184391c3b3a00cafb53, type: 3}
---- !u!223 &147419515 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 3776752406308749, guid: a46843b19d031dd40a22fe3fe7f7ea78, type: 3}
-  m_PrefabInstance: {fileID: 7807039453173451000}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &180773339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21228,7 +21223,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 2394624
+    m_Bits: 6588928
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
@@ -31034,10 +31029,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 103794891812853617, guid: a46843b19d031dd40a22fe3fe7f7ea78, type: 3}
-      propertyPath: XboxControls
-      value: 
-      objectReference: {fileID: 147419515}
     - target: {fileID: 4049618007442880297, guid: a46843b19d031dd40a22fe3fe7f7ea78, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.5737746

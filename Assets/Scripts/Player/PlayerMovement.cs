@@ -16,9 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator PlayerAnimator;
     private BoxCollider2D PlayerFeetCollider;
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
-    private PlayerHealth playerHealth;
     private TogglePauseGame togglePauseGame;
-
     private float xAxisInput, 
                   speed;
     private bool isGrounded, 
@@ -34,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
         PlayerAnimator = GetComponent<Animator>();
         PlayerFeetCollider = PlayerFeet.GetComponent<BoxCollider2D>(); 
         animationsChecker = GetComponent<AnimationChecker>();
-        playerHealth = GetComponent<PlayerHealth>();
         togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
 
         PlayerRigidbody.gravityScale = gravity; // set starting gravity
@@ -52,14 +49,9 @@ public class PlayerMovement : MonoBehaviour
         xAxisInput = Input.GetAxis("Horizontal"); // get horizontal axis input
 
         if (!animationsChecker.CheckAnimations(animationsArray)) // cannot move when stunned or during certain animations
-        {
             Run();
-        }
 
-        if (canRotate)
-        {
-            Rotate();
-        }
+        if (canRotate) Rotate();
     }
 
     private void Run()
@@ -88,8 +80,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void KnockBack(Vector2 knockbackVector, float stunDuration, Transform enemyTransform)
     {
-        if (playerHealth.GetIsDead() || playerHealth.GetIsInv()) return;
-
         isStunned = true; // prevent player from moving
 
         facingRight = transform.localScale.x > 0;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,9 +11,10 @@ public class PlayerHealth : MonoBehaviour
     private PlayerBlock playerBlock;
     private Animator animator;
     private PlayerInput playerInput; // upon death switch input mapto disable input
-    private bool isInv = false, // if player is invulnerable he can't be damaged
-                 isDead = false, 
+    private bool isDead = false, 
                  isBlocking = false; // when blocking takes less damage
+    private int playerlayerMask, 
+                invLayermask;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,9 @@ public class PlayerHealth : MonoBehaviour
         playerBlock = GetComponent<PlayerBlock>();
         animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
+
+        playerlayerMask = gameObject.layer;
+        invLayermask = LayerMask.NameToLayer("Player_Inv");
     }
 
     // Update is called once per frame
@@ -36,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage, Transform hurtboxTransform)
     {
-        if (isInv || isDead || (isBlocking && playerBlock.IsAttackComingFromFront(hurtboxTransform))) { return; }
+        if (isDead || (isBlocking && playerBlock.IsAttackComingFromFront(hurtboxTransform))) { return; }
 
         playerManager.AdjustPlayerHealth(-damage);
 
@@ -64,18 +69,20 @@ public class PlayerHealth : MonoBehaviour
         isBlocking = newIsBlocking;
     }
 
-    public void StartInv() { isInv = true; }
+    public void StartInv() { gameObject.layer = invLayermask; }
 
-    public void StopInv() { isInv = false; }
+    public void StopInv() { gameObject.layer = playerlayerMask; }
 
-    public bool GetIsInv() {  return isInv; }
 
     private void Death()
     {
         isDead = true;
+        
         animator.SetTrigger("IsDead");
         gameObject.GetComponent<PlayerMovement>().enabled = false; // prevent movement after death
         playerInput.SwitchCurrentActionMap("DisableMap");
+        
+        StartInv();
 
         playerManager.OnPlayerDeath();
     }

@@ -10,21 +10,23 @@ public class PlayerDodge : MonoBehaviour
 
     private Animator PlayerAnimator;
     private PlayerMovement PlayerMovementComponent;
-    private PlayerHealth PlayerHealthComponent;
     private TogglePauseGame togglePauseGame;
     private Rigidbody2D rb;
     private float cooldownTimer, rotation;
+    private int playerlayerMask, invLayermask;
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerAnimator = GetComponent<Animator>();
         PlayerMovementComponent = GetComponent<PlayerMovement>();
-        PlayerHealthComponent = GetComponent<PlayerHealth>();
         togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
         rb = GetComponent<Rigidbody2D>();
 
         cooldownTimer = 0;
+
+        playerlayerMask = gameObject.layer;
+        invLayermask = LayerMask.NameToLayer("Player_Inv");
     }
 
     // Update is called once per frame
@@ -47,7 +49,7 @@ public class PlayerDodge : MonoBehaviour
 
     private void StartDodge() // called at the beginning of the dodge animation
     {
-        PlayerHealthComponent.StartInv();
+        gameObject.layer = invLayermask;
 
         cooldownTimer = MaxCooldown;
         rb.velocity = dodgeVelocity * new Vector2(rotation, 1);
@@ -57,7 +59,7 @@ public class PlayerDodge : MonoBehaviour
 
     private void EndDodge() // called at the end of the dodge animation
     {
-        PlayerHealthComponent.StopInv();
+        gameObject.layer = playerlayerMask;
 
         cooldownTimer = MaxCooldown;
         rb.velocity = Vector2.zero;

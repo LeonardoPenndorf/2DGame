@@ -1241,6 +1241,7 @@ MonoBehaviour:
   UpgradeMenu: {fileID: 6506487685780152944}
   PlyastationControls: {fileID: 3344439008465586642}
   MouseKeyboardControls: {fileID: 7199155049418362276}
+  XboxControls: {fileID: 3776752406308749}
   ContinueButton: {fileID: 1570786938899909780}
   UpgradeDamageButton: {fileID: 7057857240525317619}
 --- !u!1 &2033768154796270001
@@ -1890,8 +1891,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 160, y: 50}
+  m_AnchoredPosition: {x: 45.1425, y: 100}
+  m_SizeDelta: {x: 250.2851, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5514430540063112472
 CanvasRenderer:
@@ -1936,7 +1937,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Damage: 20
 
-    Upgrade Amount: +5'
+    Upgrade: +5'
 --- !u!1 &4037394186919089850
 GameObject:
   m_ObjectHideFlags: 0
@@ -4139,8 +4140,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 50}
+  m_AnchoredPosition: {x: 41.591995, y: 0}
+  m_SizeDelta: {x: 243.184, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3781500655959252657
 CanvasRenderer:
@@ -4185,7 +4186,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Max Health: 100
 
-    Upgrade Amount: +10'
+    Upgrade: +10'
 --- !u!1 &7867094703110793428
 GameObject:
   m_ObjectHideFlags: 0
@@ -4489,8 +4490,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -100}
-  m_SizeDelta: {x: 160, y: 50}
+  m_AnchoredPosition: {x: 45.142, y: -100}
+  m_SizeDelta: {x: 250.29, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5762910037248831004
 CanvasRenderer:
@@ -4535,7 +4536,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Health: 100
 
-    Heal Percentage: 50%'
+    Heal: 50%'
 --- !u!1 &8420110898788924092
 GameObject:
   m_ObjectHideFlags: 0

@@ -68,8 +68,8 @@ public class UpgradeSystem : MonoBehaviour
     public void UpdateDescription()
     {
         CostText.text = $"Cost: {cost}";
-        UpgradedamageText.text = $"Damage: {playerManager.GetDamage()}\r\nUpgrade Amount: +{damageUpgradeAmount}";
-        UpgradeHealthText.text = $"Max Health: {playerManager.GetMaxHealth()}\r\nUpgrade Amount: +{healthUpgradeAmount}";
-        HealText.text = $"Health: {playerManager.GetPlayerHealth()}\r\nHeal Percentage: {healPercentage * 100}%";
+        UpgradedamageText.text = $"Damage: {playerManager.GetDamage()}\r\nUpgrade: +{damageUpgradeAmount}";
+        UpgradeHealthText.text = $"Max Health: {playerManager.GetMaxHealth()}\r\nUpgrade: +{healthUpgradeAmount}";
+        HealText.text = $"Health: {playerManager.GetPlayerHealth()}\r\nHeal: {healPercentage * 100}%";
     }
 }

@@ -41,4 +41,4 @@ ToDo:
 1) Improve enemy vision
 2) Implement SFX, music & Audio settings
 3) Add particle & glow effects
-4) Improve block
+4) Improve dodge
