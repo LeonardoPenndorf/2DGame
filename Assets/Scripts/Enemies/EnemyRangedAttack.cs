@@ -13,7 +13,6 @@ public class EnemyRangedAttack : MonoBehaviour
     [SerializeField] float fovAngle,
                            maxCooldown; // second the enemy needs to wait until he can attack again
     [SerializeField] GameObject Projectile; // Projectiles shot by ranged attacks are separate prefabs
-    [SerializeField] string[] animationsArray;
 
     // private variables
     private Transform Player;
@@ -22,7 +21,7 @@ public class EnemyRangedAttack : MonoBehaviour
     private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
     private EnemyMovement enemyMovement;
     private TogglePauseGame togglePauseGame;
-
+    private string[] animationsArray;
     private float cooldown;
 
     // Start is called before the first frame update
@@ -33,6 +32,7 @@ public class EnemyRangedAttack : MonoBehaviour
         animationsChecker = GetComponent<AnimationChecker>();
         enemyMovement = GetComponent<EnemyMovement>();
         togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
+        animationsArray = enemyMovement.animationsArray;
 
         Player = GameObject.FindGameObjectWithTag("Player").transform;
     }

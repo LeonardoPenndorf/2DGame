@@ -10,7 +10,6 @@ public class EnemySummon : MonoBehaviour
                            maxCooldown,
                            yOffset;
     [SerializeField] GameObject SummonPrefab;
-    [SerializeField] string[] animationsArray;
 
     // private variables
     private Transform AimPoint;
@@ -20,6 +19,7 @@ public class EnemySummon : MonoBehaviour
     private AnimationChecker animationsChecker; // class containing functions to check which animtions are running
     private TogglePauseGame togglePauseGame;
     private float cooldown, xDistance, yDistance;
+    private string[] animationsArray;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class EnemySummon : MonoBehaviour
         animationsChecker = GetComponent<AnimationChecker>();
         enemyMovement = GetComponent<EnemyMovement>();
         togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
-
+        animationsArray = enemyMovement.animationsArray;
         AimPoint = GameObject.FindGameObjectWithTag("Player").transform.Find("AimPoint");
     }
 

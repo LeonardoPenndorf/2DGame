@@ -6,12 +6,9 @@ using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 public class EnemyHealth : MonoBehaviour
 {
     // [SerializeField] variables
-    [SerializeField] int maxHealth, currentHealth;
-    [SerializeField] float maxIFrames,
-                           selfDestructDelay, // the enemy is destroyed after a short dealy on death
-                           fadeDuration; // time it takes the enemy to fade away when it is being destroyed
+    [SerializeField] int maxHealth, 
+                         currentHealth;
     [SerializeField] bool canBeRevived; // only certain enenmies can be revived
-    [SerializeField] string[] animationsArray;
 
     // private variables
     private Animator EnemyAnimator;
@@ -19,12 +16,8 @@ public class EnemyHealth : MonoBehaviour
     private GameObject Hurtbox;
     private SpawnRandomItem SpawnRandomItemComponent;
     private EnemyAggro enemyAggro;
-    private SpriteRenderer spriteRenderer;
-    private AnimationChecker animChecker;
     private EnemyManager enemyManager;
-    private float iFrames;
-    private bool coroutineIsRunning = false,
-                 isDead = false,
+    private bool isDead = false,
                  isBlocking = false, // some enemies can block
                  isFacingRight = true;
 
@@ -35,8 +28,6 @@ public class EnemyHealth : MonoBehaviour
         EnemyRB = GetComponent<Rigidbody2D>();
         SpawnRandomItemComponent = GetComponent<SpawnRandomItem>();
         enemyAggro = GetComponent<EnemyAggro>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animChecker = GetComponent<AnimationChecker>();
 
         Hurtbox = transform.Find("Hurtbox").gameObject;
 
@@ -49,19 +40,12 @@ public class EnemyHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        iFrames -= Time.deltaTime;
-
-        if (currentHealth <= 0 && !isDead)
-        {
-            Death();
-        }
-
-        //CheckSelfDestruct();
+        if (currentHealth <= 0 && !isDead) Death();
     }
 
     public void TakeDamage(int damage, Transform hurtboxTransform)
     {
-        if (isDead || currentHealth <= 0 || iFrames > 0) return;
+        if (isDead || currentHealth <= 0) return;
 
         enemyAggro.SetIsAggroed(true);
 
@@ -71,7 +55,6 @@ public class EnemyHealth : MonoBehaviour
             if (isBlocking) EnemyAnimator.SetBool("IsBlocking", false);
 
             currentHealth -= damage;
-            iFrames = maxIFrames;
             EnemyAnimator.SetTrigger("IsHit");
         }
     }
@@ -87,16 +70,7 @@ public class EnemyHealth : MonoBehaviour
         isDead = true;
     }
 
-    private void CheckSelfDestruct() // cheks if the enmy should destroy itself
-    {
-        if (isDead && !coroutineIsRunning && (!canBeRevived || !enemyManager.GetNecromancerPresent()) && animChecker.CheckAnimations(animationsArray))
-            StartCoroutine(SelfDestruct()); // destroy the game object after a short delay
-    }
-
-    public void SetIsBlocking(bool newState)
-    {
-        isBlocking = newState;
-    }
+    public void SetIsBlocking(bool newState) { isBlocking = newState; }
 
     public bool GetCanBeRevived() {  return canBeRevived; }
 
@@ -121,10 +95,7 @@ public class EnemyHealth : MonoBehaviour
         ToggleComponent<EnemyKnockback>(newState);
         ToggleComponent<EnemyCastReviveSpell>(newState);
         if (ToggleComponent<EnemyBlock>(newState))
-        {
             EnemyAnimator.SetBool("IsBlocking", false);
-        }
-
     }
 
     // Helper method to toggle component states
@@ -155,31 +126,6 @@ public class EnemyHealth : MonoBehaviour
         canBeRevived = false; // enemies may only be revived once
     }
 
-    private IEnumerator SelfDestruct()
-    {
-        coroutineIsRunning = true;
-        EnableDisable(false);
-
-        yield return new WaitForSeconds(selfDestructDelay * Random.Range(0.5f, 1.5f));
-
-        float currentTime = 0;
-
-        Color initialColor = spriteRenderer.color;
-
-        while (currentTime < fadeDuration)
-        {
-            // Calculate the proportion of the fade based on the elapsed time
-            float alpha = Mathf.Lerp(1f, 0f, currentTime / fadeDuration);
-
-            spriteRenderer.color = new Color(initialColor.r, initialColor.g, initialColor.b, alpha);
-
-            yield return null;
-            currentTime += Time.deltaTime;
-        }
-
-        Destroy(gameObject);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("KillZone"))
@@ -187,7 +133,6 @@ public class EnemyHealth : MonoBehaviour
             TakeDamage(10000000, collision.transform);
         }
     }
-
 
     public bool IsAttackComingFromFront(Transform hurtboxTrasnform)
     {

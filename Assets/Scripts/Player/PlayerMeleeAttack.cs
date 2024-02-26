@@ -68,8 +68,6 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     private void AttackCombo() // a 3 hit attack combo
     {
-        damage = playerManager.GetDamage(); // all combo attack except the last one deal base damage
-
         switch (animationChecker.GetCurrentAnimation())
         {
             case "Warrior_MeleeAttack_3":
@@ -79,7 +77,6 @@ public class PlayerMeleeAttack : MonoBehaviour
                 PlayerAnimator.SetInteger("AttackComboCounter", 2);
                 break;
             case "Warrior_MeleeAttack_2":
-                damage += (int)(damage * 0.5f);
                 PlayerAnimator.SetInteger("AttackComboCounter", 3);
                 break;
             default:
@@ -116,6 +113,20 @@ public class PlayerMeleeAttack : MonoBehaviour
     private void ResetCounter() // called in the attack end animations and the third attack
     {
         PlayerAnimator.SetInteger("AttackComboCounter", 0);
+    }
+
+    private void SetFirstAtkDamage() { damage = playerManager.GetDamage(); }
+
+    private void SetSecondAtkDamage() 
+    {
+        damage = playerManager.GetDamage();
+        damage += (int)(damage * 0.25f);
+    }
+
+    private void SetThirdAtkDamage()
+    {
+        damage = playerManager.GetDamage(); 
+        damage += (int)(damage * 0.5f);
     }
 
     public int GetDamage() { return damage; }

@@ -244,12 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 60
   currentHealth: 0
-  maxIFrames: 0.5
-  selfDestructDelay: 6
-  fadeDuration: 3
   canBeRevived: 1
-  animationsArray:
-  - SkeletonWarrior_Death
 --- !u!114 &577543980193481257
 MonoBehaviour:
   m_ObjectHideFlags: 0

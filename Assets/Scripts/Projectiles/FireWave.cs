@@ -8,14 +8,20 @@ public class FireWave : MonoBehaviour
 
     // private variables
     private PlayerManager playerManager; // player manager stores persistent values such as health
-    private Collider2D fireWaveCollider;
+    private Collider2D fireWaveCollider, 
+                       navCollider;
     private EnemyHealth enemyHealth;
-    private int damage;
+    private int damage, 
+                groundLayerMask, 
+                platformsLayerMask;
 
     // Start is called before the first frame update
     void Start()
     {
         fireWaveCollider = GetComponent<Collider2D>();
+        navCollider = transform.Find("Navigator").GetComponent<Collider2D>();
+        groundLayerMask = LayerMask.GetMask("Ground");
+        platformsLayerMask = LayerMask.GetMask("Platforms");
         playerManager = PlayerManager.instance;
 
         damage = playerManager.GetDamage() / 2;
@@ -34,6 +40,12 @@ public class FireWave : MonoBehaviour
         }
 
         if (fireWaveCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            Destroy(gameObject);
+    }
+
+    private void CheckGround() // called in the firewave animation
+    {
+        if (!navCollider.IsTouchingLayers(groundLayerMask) && !navCollider.IsTouchingLayers(platformsLayerMask))
             Destroy(gameObject);
     }
 

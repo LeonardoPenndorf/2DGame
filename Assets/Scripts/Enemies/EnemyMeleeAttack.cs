@@ -7,7 +7,6 @@ public class EnemyMeleeAttack : MonoBehaviour
 {
     // [SerializeField] variables
     [SerializeField] GameObject HurtBox; // melee attack hurt box
-    [SerializeField] string[] animationsArray;
 
     // public variables
     public int damage;
@@ -24,6 +23,7 @@ public class EnemyMeleeAttack : MonoBehaviour
     private TogglePauseGame togglePauseGame;
     private float cooldown;
     private int playerLayerMask;
+    private string[] animationsArray;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,7 @@ public class EnemyMeleeAttack : MonoBehaviour
         animationsChecker = GetComponent<AnimationChecker>();
         enemyMovement = GetComponent<EnemyMovement>();
         togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
-
+        animationsArray = enemyMovement.animationsArray;
         playerLayerMask = LayerMask.GetMask("Player");
     }
 

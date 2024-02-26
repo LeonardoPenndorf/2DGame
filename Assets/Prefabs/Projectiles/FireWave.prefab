@@ -205,7 +205,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6812516916436300186}
   - component: {fileID: 7101461073565705303}
-  - component: {fileID: 8098060010425564516}
   m_Layer: 0
   m_Name: Navigator
   m_TagString: Untagged
@@ -273,15 +272,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.12501049, y: 0.34623456}
   m_EdgeRadius: 0
---- !u!114 &8098060010425564516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5312018997657278332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf4be64bcdde5374aa028a6d8f15eba8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

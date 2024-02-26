@@ -7,7 +7,7 @@ public class EnemyBlock : MonoBehaviour
 {
     // [SerializeField] variables
     [SerializeField] float defenseRange, maxCooldown, blockDuration;
-    [SerializeField] string[] EnemyAnimationsArray, PlayerAnimationsArray;
+    [SerializeField] string[] PlayerAnimationsArray;
 
     // private variables
     private Animator EnemyAnimator;
@@ -17,6 +17,7 @@ public class EnemyBlock : MonoBehaviour
     private Transform Player;
     private TogglePauseGame togglePauseGame;
     private float cooldown;
+    private string[] EnemyAnimationsArray;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class EnemyBlock : MonoBehaviour
         animationsChecker = GetComponent<AnimationChecker>();
         enemyMovement = GetComponent<EnemyMovement>();
         togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
-
+        EnemyAnimationsArray = enemyMovement.animationsArray;
         Player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 

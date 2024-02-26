@@ -16,7 +16,8 @@ public class Chest : MonoBehaviour
     private Animator animator;
     private EnemyManager enemyManager;
     private bool unlocked = false,
-                 isEmpty = false;
+                 isEmpty = false,
+                 triggered = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,11 @@ public class Chest : MonoBehaviour
 
     public void CheckChest()
     {
+        if (triggered) return;
+
         if (!unlocked) StartCoroutine(SummonEnemies());
+
+        triggered = true;
     }
 
     private IEnumerator SummonEnemies()
