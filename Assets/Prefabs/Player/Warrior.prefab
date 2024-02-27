@@ -72,6 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8791302812204833458}
   - component: {fileID: 7608002916959575293}
+  - component: {fileID: 5975025225911374298}
   m_Layer: 21
   m_Name: PlayerFeet
   m_TagString: Untagged
@@ -139,6 +140,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8149252, y: 0.037176847}
   m_EdgeRadius: 0
+--- !u!114 &5975025225911374298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3792087196651171425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919012b2f4a2110468fc0df1a741595f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5723424041047716205
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,7 +718,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da1590f1e193584cbdaef051150b026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerFeet: {fileID: 3792087196651171425}
   runSpeed: 10
   jumpSpeed: 17
   gravity: 4
@@ -721,6 +733,8 @@ MonoBehaviour:
   - Warrior_Block_Start
   - Warrior_Block_End
   - Warrior_Dodge
+  - Warrior_Invisible
+  - Warrior_Enter
 --- !u!114 &3553670192834770497
 MonoBehaviour:
   m_ObjectHideFlags: 0

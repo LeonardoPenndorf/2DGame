@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     // [SerializeField]  variables
-    [SerializeField] GameObject PlayerFeet; // empty game object with a box collider 2D
     [SerializeField] float runSpeed, jumpSpeed, gravity;
     
     // public variables
@@ -14,13 +13,12 @@ public class PlayerMovement : MonoBehaviour
     // private variables
     private Rigidbody2D PlayerRigidbody;
     private Animator PlayerAnimator;
-    private BoxCollider2D PlayerFeetCollider;
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
     private TogglePauseGame togglePauseGame;
+    private PlayerFeet playerFeet;
     private float xAxisInput, 
                   speed;
-    private bool isGrounded, 
-                 isStunned = false, 
+    private bool isStunned = false, 
                  facingRight,
                  canRotate = true,
                  reducedMobilty = false;
@@ -30,20 +28,15 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerRigidbody = GetComponent<Rigidbody2D>();
         PlayerAnimator = GetComponent<Animator>();
-        PlayerFeetCollider = PlayerFeet.GetComponent<BoxCollider2D>(); 
         animationsChecker = GetComponent<AnimationChecker>();
         togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
-
+        playerFeet = transform.Find("PlayerFeet").GetComponent<PlayerFeet>();
         PlayerRigidbody.gravityScale = gravity; // set starting gravity
     }
 
     // Update is called once per frame
     void Update()
     {
-        isGrounded = PlayerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || PlayerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Platforms")); // check if feet are touching the ground
-
-        PlayerAnimator.SetBool("IsGrounded", isGrounded); // toggle jumping animation
-
         if (togglePauseGame.GetGameIsPaused()) return;
 
         xAxisInput = Input.GetAxis("Horizontal"); // get horizontal axis input
@@ -73,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (togglePauseGame.GetGameIsPaused() || !isGrounded || isStunned || reducedMobilty || animationsChecker.CheckAnimations(animationsArray) || !context.performed) return;
+        if (togglePauseGame.GetGameIsPaused() || !playerFeet.GetIsGrounded() || isStunned || reducedMobilty || animationsChecker.CheckAnimations(animationsArray) || !context.performed) return;
 
         PlayerRigidbody.velocity = new Vector2(PlayerRigidbody.velocity.x, jumpSpeed); // jump
     }
@@ -117,6 +110,4 @@ public class PlayerMovement : MonoBehaviour
 
         isStunned = false;
     }
-
-    public bool GetIsGrounded() {  return isGrounded; }
 }

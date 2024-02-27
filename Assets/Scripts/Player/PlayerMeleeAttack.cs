@@ -17,22 +17,21 @@ public class PlayerMeleeAttack : MonoBehaviour
     private PlayerManager playerManager; // player manager stores persistent values such as health
     private BoxCollider2D HurtBoxCollider;
     private Animator PlayerAnimator;
-    private PlayerMovement PlayerMovementComponent;
     private AnimationChecker animationChecker;
     private TogglePauseGame togglePauseGame;
+    private PlayerFeet playerFeet;
     private int damage; // damage of the current attack
     private float cooldownTimer;
-    private bool isGrounded;
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerAnimator = GetComponent<Animator>();
         HurtBoxCollider = HurtBox.GetComponent<BoxCollider2D>();
-        PlayerMovementComponent = GetComponent<PlayerMovement>();
         animationChecker = GetComponent<AnimationChecker>();
         playerManager = PlayerManager.instance;
         togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
+        playerFeet = transform.Find("PlayerFeet").GetComponent<PlayerFeet>();
     }
 
     // Update is called once per frame
@@ -48,9 +47,7 @@ public class PlayerMeleeAttack : MonoBehaviour
     {
         if (togglePauseGame.GetGameIsPaused() || cooldownTimer > 0 || !context.performed || context.duration > holdThreshold) return;
 
-        isGrounded = PlayerMovementComponent.GetIsGrounded();
-
-        if (isGrounded)
+        if (playerFeet.GetIsGrounded())
         {
             AttackCombo();
         }

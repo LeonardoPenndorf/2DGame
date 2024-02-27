@@ -12,12 +12,9 @@ public class PlayerJumpDown : MonoBehaviour
     [SerializeField] float disableTime;
 
     // private variables
-    private Animator PlayerAnimator;
-    private BoxCollider2D PlayerFeetCollider;
-    private PlatformEffector2D CurrentPlatformEffector; // alows to jump through a platform from one side
-    private PlayerMovement PlayerMovementScript; // We get isGrounded from the movement script
     private AnimationChecker animationsChecker; // class containing functions to check which animations are running
     private TogglePauseGame togglePauseGame;
+    private PlayerFeet playerFeetScript;
     private string[] animationsArray; // array containing the name of all animations that would stop you from moving
     private bool isGrounded; // player can only jump down when grounded
     private int playerlayerMask, navigationLayerMask, ignorePlatformsLayerMask;
@@ -25,11 +22,9 @@ public class PlayerJumpDown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerAnimator = GetComponent<Animator>();
-        PlayerFeetCollider = PlayerFeet.GetComponent<BoxCollider2D>();
-        PlayerMovementScript = GetComponent<PlayerMovement>();
         animationsChecker = GetComponent<AnimationChecker>();
         togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
+        playerFeetScript = transform.Find("PlayerFeet").GetComponent<PlayerFeet>();
 
         animationsArray = GetComponent<PlayerMovement>().animationsArray;
 
@@ -38,37 +33,14 @@ public class PlayerJumpDown : MonoBehaviour
         ignorePlatformsLayerMask = LayerMask.NameToLayer("IgnorePlatforms");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (PlayerRB.velocity.y >= 0 && PlayerRB.velocity.y <= 1 && !isGrounded) // switch to JumpPeak animation when velocity approaches 0
-        {
-            PlayerAnimator.SetTrigger("IsPeaking");
-        }
-    }
-
     public void JumpDown() // Jump down from a platform
     {
         if (togglePauseGame.GetGameIsPaused()) return;
 
-        if (!animationsChecker.CheckAnimations(animationsArray))
-        {
-            isGrounded = PlayerMovementScript.GetIsGrounded();
+        isGrounded = playerFeetScript.GetIsGrounded();
 
-            if (CurrentPlatformEffector != null && isGrounded)
-            {
-                StartCoroutine(DisableCollision());
-            }
-
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (PlayerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Platforms"))) // check if feet are touching a platform
-        {
-            CurrentPlatformEffector = collision.gameObject.GetComponent<PlatformEffector2D>(); // fehhc platform effector of the platform, the player is curretnly standing on
-        }
+        if (!animationsChecker.CheckAnimations(animationsArray) && isGrounded)
+            StartCoroutine(DisableCollision());
     }
 
     private IEnumerator DisableCollision() // by briethly turning around the surface arc, the player can jump down

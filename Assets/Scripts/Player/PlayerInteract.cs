@@ -13,6 +13,7 @@ public class PlayerInteract : MonoBehaviour
     private Animator playerAnimator;
     private PlayerInput playerInput; // when leaving switch input map to disable input
     private Rigidbody2D rb;
+    private PlayerFeet playerFeet;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class PlayerInteract : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
+        playerFeet = transform.Find("PlayerFeet").GetComponent<PlayerFeet>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,7 +46,7 @@ public class PlayerInteract : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
-        if (!context.performed || !playerMovement.GetIsGrounded() || !enemyManager.AreAllEnemiesDead()) return;
+        if (!context.performed || !playerFeet.GetIsGrounded() || !enemyManager.AreAllEnemiesDead()) return;
 
         if (chest != null)
         {
