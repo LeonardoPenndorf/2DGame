@@ -252,14 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd9415b4cbd87e428a7b3fd5c4b45a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 40
+  maxHealth: 50
   currentHealth: 0
-  maxIFrames: 0.5
-  selfDestructDelay: 6
-  fadeDuration: 3
   canBeRevived: 0
-  animationsArray:
-  - Necromancer_Death
 --- !u!114 &3896439737020859165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,8 +272,6 @@ MonoBehaviour:
   fovAngle: 60
   maxCooldown: 4
   Projectile: {fileID: 6859765699701903693, guid: cf817a71d815be244a1e30a7c4b6628f, type: 3}
-  animationsArray:
-  - Necromancer_Hurt
 --- !u!114 &2955763526739391039
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -39,6 +39,8 @@ public class PlayerFeet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (PlayerRB.velocity.y > 0.5) return;
+
         if (((1 << collision.gameObject.layer) & groundAndPlatformsLayerMask) != 0)
         {
             isGrounded = true;

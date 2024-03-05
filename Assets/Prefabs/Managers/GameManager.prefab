@@ -4609,6 +4609,7 @@ GameObject:
   - component: {fileID: 2131675931776463001}
   - component: {fileID: 2195482215825246382}
   - component: {fileID: 4903663275935851044}
+  - component: {fileID: 295207317296736566}
   m_Layer: 5
   m_Name: HUDCanvas
   m_TagString: Untagged
@@ -4701,6 +4702,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &295207317296736566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7867094703110793428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06b03f51c79683429217687f509937f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUDCanvas: {fileID: 2131675931776463001}
 --- !u!1 &7909927055152641873
 GameObject:
   m_ObjectHideFlags: 0
@@ -5012,6 +5026,7 @@ GameObject:
   - component: {fileID: 4486185447787356187}
   - component: {fileID: 8819898146882429944}
   - component: {fileID: 3418222315386945115}
+  - component: {fileID: 7877065511767017938}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5161,6 +5176,21 @@ MonoBehaviour:
   m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &7877065511767017938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8885483614254276019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e960a374688594d8679eac89272806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kills: 0
+  diamonds: 0
+  timer: 0
 --- !u!1 &8908575252299572322
 GameObject:
   m_ObjectHideFlags: 0

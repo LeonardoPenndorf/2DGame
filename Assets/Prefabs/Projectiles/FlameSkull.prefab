@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8e1750ceff111489b6bf5a29c55ddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 15
   rotateSpeed: 150
 --- !u!114 &7207990809152332369
 MonoBehaviour:
@@ -200,5 +200,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stunDuration: 1
   timer: 3
-  damage: 10
-  KnockbackVector: {x: 7, y: 7}
+  damage: 15
+  KnockbackVector: {x: 7, y: 1}

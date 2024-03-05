@@ -17,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
     private SpawnRandomItem SpawnRandomItemComponent;
     private EnemyAggro enemyAggro;
     private EnemyManager enemyManager;
+    private StatsManager statsManager;
     private bool isDead = false,
                  isBlocking = false, // some enemies can block
                  isFacingRight = true;
@@ -33,6 +34,7 @@ public class EnemyHealth : MonoBehaviour
 
         currentHealth = maxHealth;
 
+        statsManager = StatsManager.instance;
         enemyManager = EnemyManager.instance;
         enemyManager.RegisterEnemy(gameObject); // add enemy to the enemies list in enemy manager
     }
@@ -61,13 +63,15 @@ public class EnemyHealth : MonoBehaviour
 
     private void Death()
     {
+        isDead = true;
+
+        statsManager.RegisterKill();
+
         EnemyAnimator.SetTrigger("IsDead");
 
         SpawnRandomItemComponent.SpawnItem(); // sometimes enemies will spawn items on death
 
         EnableDisable(false);
-
-        isDead = true;
     }
 
     public void SetIsBlocking(bool newState) { isBlocking = newState; }

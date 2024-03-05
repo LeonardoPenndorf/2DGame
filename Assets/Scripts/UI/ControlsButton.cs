@@ -3,20 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ControlsButton : MonoBehaviour
 {
-    [SerializeField] Canvas PlaystationCanvas, XboxCanvas, MouseKeyboardCanvas, PreviousCanvas, BackButtonCanvas;
+    [SerializeField] Canvas PlaystationCanvas, 
+                            XboxCanvas, 
+                            MouseKeyboardCanvas, 
+                            PreviousCanvas, 
+                            BackButtonCanvas;
 
     private Canvas ControlsCanvas;
     private GameObject BackButton, Controls;
+    private TogglePauseGame togglePauseGame;
     private bool isEnabled = false;
+    private int currentSceneIndex;
 
     // Start is called before the first frame update
     void Start()
     {
         BackButton = BackButtonCanvas.transform.Find("BackButton").gameObject;
         Controls = PreviousCanvas.transform.Find("ControlsButton").gameObject;
+
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex > 0)
+            togglePauseGame = GameObject.FindWithTag("UI").GetComponent<TogglePauseGame>();
     }
 
     private Canvas DetectControls()
@@ -40,6 +51,8 @@ public class ControlsButton : MonoBehaviour
     
     public void ToggleControls()
     {
+        if (!CheckPaused()) return;
+
         ControlsCanvas = DetectControls();
 
         if (ControlsCanvas.enabled) isEnabled = true;
@@ -50,5 +63,12 @@ public class ControlsButton : MonoBehaviour
         PreviousCanvas.enabled = isEnabled;
 
         EventSystem.current.SetSelectedGameObject(!isEnabled ? BackButton.gameObject : Controls.gameObject);
+    }
+
+    private bool CheckPaused()
+    {
+        if (currentSceneIndex == 0) return true;
+
+        return togglePauseGame.GetGameIsPaused();
     }
 }

@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
-  speed: 15
+  speed: 17
   xBounds: 10
   yBounds: 5
   innacuracy: 0.5

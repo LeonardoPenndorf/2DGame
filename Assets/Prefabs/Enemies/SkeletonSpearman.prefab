@@ -220,7 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HurtBox: {fileID: 7177992886720302207}
-  animationsArray: []
   damage: 10
   knockbackForce: 0
   stunDuration: 0
@@ -240,12 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 40
   currentHealth: 0
-  maxIFrames: 0.5
-  selfDestructDelay: 6
-  fadeDuration: 3
   canBeRevived: 1
-  animationsArray:
-  - SkeletonSpearman_Death
 --- !u!114 &5034238083783719870
 MonoBehaviour:
   m_ObjectHideFlags: 0

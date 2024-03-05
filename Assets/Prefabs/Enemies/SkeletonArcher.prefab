@@ -224,12 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   currentHealth: 0
-  maxIFrames: 0.5
-  selfDestructDelay: 6
-  fadeDuration: 3
   canBeRevived: 1
-  animationsArray:
-  - SkeletonArcher_Death
 --- !u!114 &8511971272375729107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,8 +238,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HurtBox: {fileID: 7177992886720302207}
-  animationsArray:
-  - SkeletonArcher_Shot
   damage: 5
   knockbackForce: 0
   stunDuration: 0
@@ -267,9 +260,6 @@ MonoBehaviour:
   fovAngle: 60
   maxCooldown: 4
   Projectile: {fileID: 6859765699701903693, guid: e841f7282892fd346b8ce5bf754cc5d1, type: 3}
-  animationsArray:
-  - SkeletonArcher_Hurt
-  - SkeletonArcher_Attack2
 --- !u!114 &2955763526739391039
 MonoBehaviour:
   m_ObjectHideFlags: 0

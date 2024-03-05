@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TogglePauseGame : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class TogglePauseGame : MonoBehaviour
     private PlayerManager playerManager; // player manager stores persistent values such as health
     private UpgradeSystem upgradeSystem;
     private EventSystem eventSystem;
-    private bool gameIsPaused = false;
+    private bool gameIsPaused = false, 
+                 lastScene = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,13 +25,15 @@ public class TogglePauseGame : MonoBehaviour
         playerManager = PlayerManager.instance; // there is only ever a single player manager instance
         upgradeSystem = UpgradeMenu.GetComponent<UpgradeSystem>();
         eventSystem = EventSystem.current;
+
+        lastScene = IsCurrentSceneLast();
     }
 
     public bool GetGameIsPaused() { return gameIsPaused; }
 
     public void TogglePauseMenu(InputAction.CallbackContext context)
     {
-        if (UpgradeMenu.enabled || !context.performed || playerManager.GetPlayerHealth() <= 0) return;
+        if (lastScene || UpgradeMenu.enabled || !context.performed || playerManager.GetPlayerHealth() <= 0) return;
 
         if (PlyastationControls.enabled || MouseKeyboardControls.enabled || XboxControls.enabled)
         {
@@ -49,7 +53,7 @@ public class TogglePauseGame : MonoBehaviour
 
     public void ToggleUpgradeMenu(InputAction.CallbackContext context)
     {
-        if (PauseMenu.enabled || PlyastationControls.enabled || MouseKeyboardControls.enabled || XboxControls.enabled || !context.performed || playerManager.GetPlayerHealth() <= 0) return;
+        if (lastScene || PauseMenu.enabled || PlyastationControls.enabled || MouseKeyboardControls.enabled || XboxControls.enabled || !context.performed || playerManager.GetPlayerHealth() <= 0) return;
 
         upgradeSystem.UpdateDescription();
         UpgradeMenu.enabled = !UpgradeMenu.enabled;
@@ -75,5 +79,12 @@ public class TogglePauseGame : MonoBehaviour
     {
         PauseMenu.enabled = false;
         PauseUnpauseGame(true);
+    }
+
+    private bool IsCurrentSceneLast()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        return currentSceneIndex == SceneManager.sceneCountInBuildSettings - 1;
     }
 }

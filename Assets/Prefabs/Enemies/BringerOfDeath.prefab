@@ -403,8 +403,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HurtBox: {fileID: 4190136140541308022}
-  animationsArray:
-  - BringerOfDeath_Summon
   damage: 20
   knockbackForce: 0
   stunDuration: 0
@@ -424,12 +422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 150
   currentHealth: 0
-  maxIFrames: 0.5
-  selfDestructDelay: 6
-  fadeDuration: 3
   canBeRevived: 0
-  animationsArray:
-  - BringerOfDeath_Death
 --- !u!114 &3057463593806246721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,8 +496,5 @@ MonoBehaviour:
   summonXDistance: 15
   summonYDistance: 15
   maxCooldown: 10
-  yOffset: 0.66
+  yOffset: 1.1
   SummonPrefab: {fileID: 4041557730093189792, guid: a8feef04b3a7ea244a7cde5c9cd7c65b, type: 3}
-  animationsArray:
-  - BringerOfDeath_Attack
-  - BringerOfDeath_Hurt

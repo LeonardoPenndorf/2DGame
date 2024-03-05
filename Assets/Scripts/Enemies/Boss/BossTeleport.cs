@@ -98,8 +98,8 @@ public class BossTeleport : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f); // Short delay to ensure position update is visible
 
-        if (isAttacking) animator.SetTrigger("IsAttacking");
-        else animator.SetTrigger("IsCasting");
+        if (isAttacking) animator.SetTrigger("TeleportAttack");
+        else animator.SetTrigger("TeleportCast");
 
         bossCollider.enabled = true;
         bossFlying.enabled = true;
@@ -107,4 +107,6 @@ public class BossTeleport : MonoBehaviour
 
         cooldown = maxCooldown;
     }
+
+    public bool GetIsPresent() {  return isPresent; }
 }

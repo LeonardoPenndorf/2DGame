@@ -41,9 +41,7 @@ public class EnemySummon : MonoBehaviour
         cooldown -= Time.deltaTime;
 
         if (cooldown <= 0 && enemyAggro.GetIsAggroed())
-        {
             CheckRange();
-        }
     }
 
     private void CheckRange() // check if player is within summon range
@@ -62,6 +60,6 @@ public class EnemySummon : MonoBehaviour
     {
         GameObject NewSummon = Instantiate(SummonPrefab) as GameObject;
 
-        NewSummon.transform.position = new Vector3(AimPoint.position.x, transform.position.y + yOffset, 0);
+        NewSummon.transform.position = new Vector3(AimPoint.position.x, AimPoint.position.y + yOffset, 0);
     }
 }

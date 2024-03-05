@@ -11,12 +11,14 @@ public class PickUp : MonoBehaviour
     // private variables
     private PlayerHealth playerHealth;
     private PlayerManager playerManager;
+    private StatsManager statsManager;
 
     // Start is called before the first frame update
     void Start()
     {
         playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
         playerManager = PlayerManager.instance;
+        statsManager = StatsManager.instance;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -33,6 +35,7 @@ public class PickUp : MonoBehaviour
                 break;
             case "Diamond":
                 playerManager.AdjustDiamonds(1);
+                statsManager.RegisterDaimond();
                 break;
             case "Buff":
                 playerManager.BuffDamage(buffAmount, buffDuration);

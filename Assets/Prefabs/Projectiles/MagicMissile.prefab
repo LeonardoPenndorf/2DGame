@@ -214,4 +214,4 @@ MonoBehaviour:
   stunDuration: 1
   timer: 5
   damage: 10
-  KnockbackVector: {x: 10, y: 5}
+  KnockbackVector: {x: 10, y: 1}

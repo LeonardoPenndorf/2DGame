@@ -222,9 +222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HurtBox: {fileID: 7177992886720302207}
-  animationsArray:
-  - SkeletonWarrior_Hurt
-  - SkeletonWarrior_Block
   damage: 10
   knockbackForce: 0
   stunDuration: 0
@@ -260,9 +257,6 @@ MonoBehaviour:
   defenseRange: 3
   maxCooldown: 4
   blockDuration: 1.75
-  EnemyAnimationsArray:
-  - SkeletonWarrior_Hurt
-  - SkeletonWarrior_Attack3
   PlayerAnimationsArray:
   - Warrior_AirAttack
   - Warrior_SpecialAttack

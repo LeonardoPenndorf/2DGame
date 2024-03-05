@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 6824842298860111508}
   - component: {fileID: 1719293751857645380}
   - component: {fileID: 5212282412839720494}
+  - component: {fileID: 886782692262330385}
   - component: {fileID: 3504878707104760798}
   m_Layer: 20
   m_Name: AngelOfDeath
@@ -282,6 +283,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCooldown: 20
   teleportTime: 3
+--- !u!114 &886782692262330385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4260116733164473512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2b0df690ff07746a62f85dcbd36b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SummonPrefab: {fileID: 4041557730093189792, guid: a8feef04b3a7ea244a7cde5c9cd7c65b, type: 3}
+  maxWaitTime: 0.9
+  maxCooldown: 0.65
+  yOffset: 1.1
 --- !u!114 &3504878707104760798
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class BossHealth : MonoBehaviour
     [SerializeField] int maxHealth;
 
     // private variables
+    private EnemyManager enemyManager;
     private Animator animator;
     private int currentHealth;
     private bool isDead;
@@ -19,6 +20,9 @@ public class BossHealth : MonoBehaviour
         currentHealth = maxHealth;
 
         DisplayHealthbar();
+
+        enemyManager = EnemyManager.instance;
+        enemyManager.RegisterEnemy(gameObject); // add enemy to the enemies list in enemy manager
     }
 
     void Update()
@@ -56,5 +60,7 @@ public class BossHealth : MonoBehaviour
         GetComponent<BossTeleport>().enabled = false;
 
         animator.SetTrigger("IsDead");
+
+        enemyManager.EnemyDied(gameObject); // remove enemy from the enemies list in enemy manager
     }
 }
