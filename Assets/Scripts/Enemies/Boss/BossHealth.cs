@@ -46,6 +46,8 @@ public class BossHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isDead) return;
+
         currentHealth -= damage;
         animator.SetTrigger("IsHit");
     }

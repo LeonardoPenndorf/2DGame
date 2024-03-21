@@ -30970,14 +30970,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8841034352198641626, guid: a46843b19d031dd40a22fe3fe7f7ea78, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841034352198641626, guid: a46843b19d031dd40a22fe3fe7f7ea78, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8885483614254276019, guid: a46843b19d031dd40a22fe3fe7f7ea78, type: 3}
       propertyPath: m_Name
       value: GameManager
